@@ -1,0 +1,772 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no">
+<title>Articles — Branko Lukic</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,700;1,9..40,400&family=Playfair+Display:ital,wght@0,400;0,500;0,600;1,400;1,500&display=swap" rel="stylesheet">
+<script>
+  // Determine theme before page renders to prevent flash
+  (function() {
+    var stored = localStorage.getItem('branko-theme');
+    if (stored === 'light') {
+      document.documentElement.classList.add('light-theme');
+    }
+  })();
+</script>
+<style>
+  /* Dark theme (default) */
+  :root {
+    --bg: #1a1a1a;
+    --bg-card: #232323;
+    --text: #e8e4df;
+    --text-dim: #9a9590;
+    --text-body: #c4bfb8;
+    --accent: #c43e2a;
+    --accent-soft: rgba(196, 62, 42, 0.12);
+    --border: #333333;
+    --nav-bg: rgba(26, 26, 26, 0.75);
+    --nav-bg-scrolled: rgba(26, 26, 26, 0.95);
+    --serif: 'Playfair Display', Georgia, serif;
+    --sans: 'DM Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+  }
+
+  /* Light theme */
+  :root.light-theme {
+    --bg: #e8e6e3;
+    --bg-card: #f0efed;
+    --text: #2a2a2a;
+    --text-dim: #6b6b6b;
+    --text-body: #4a4a4a;
+    --accent: #c43e2a;
+    --accent-soft: rgba(196, 62, 42, 0.08);
+    --border: #d4d2cf;
+    --nav-bg: rgba(232, 230, 227, 0.85);
+    --nav-bg-scrolled: rgba(232, 230, 227, 0.95);
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: var(--sans);
+    background: var(--bg);
+    color: var(--text);
+    line-height: 1.7;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  ::selection {
+    background: var(--accent);
+    color: white;
+  }
+
+  /* NAV */
+  nav {
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    padding: 1.25rem 3rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    z-index: 1000;
+    background: var(--bg);
+    border-bottom: 1px solid transparent;
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+  }
+
+  nav.scrolled {
+    border-bottom: 1px solid var(--border);
+    box-shadow: 0 2px 20px rgba(0,0,0,0.08);
+  }
+
+  .nav-left {
+    display: flex;
+    align-items: baseline;
+    gap: 1.5rem;
+    text-decoration: none;
+    transition: opacity 0.3s ease;
+  }
+  
+  .nav-left:hover {
+    opacity: 0.8;
+  }
+
+  .logo {
+    font-family: var(--sans);
+    font-size: 0.85rem;
+    font-weight: 700;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--text);
+    text-decoration: none;
+    transition: all 0.3s ease;
+  }
+  .logo:hover { color: var(--accent); }
+
+  .nav-tagline {
+    font-size: 0.85rem;
+    color: var(--accent);
+    letter-spacing: 0.15em;
+    font-weight: 400;
+    text-transform: uppercase;
+  }
+
+  .nav-right {
+    display: flex;
+    align-items: center;
+    gap: 2rem;
+  }
+
+  .nav-links {
+    display: flex;
+    gap: 2rem;
+    align-items: center;
+  }
+
+  .nav-links a {
+    color: var(--text-dim);
+    text-decoration: none;
+    font-size: 0.85rem;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    transition: all 0.3s ease;
+    position: relative;
+    padding: 0.25rem 0;
+  }
+
+  .nav-links a::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 0;
+    height: 1px;
+    background: var(--accent);
+    transition: width 0.4s cubic-bezier(0.22, 1, 0.36, 1);
+  }
+
+  .nav-links a:hover { color: var(--text); }
+  .nav-links a:hover::after { width: 100%; }
+  .nav-links a.active { color: var(--text); }
+  .nav-links a.active::after { width: 100%; }
+
+  .nav-social {
+    display: flex;
+    gap: 1rem;
+    align-items: center;
+  }
+
+  .nav-social a {
+    color: var(--text-dim);
+    transition: color 0.3s ease;
+  }
+
+  .nav-social a:hover {
+    color: var(--text);
+  }
+
+  .nav-social svg {
+    width: 18px;
+    height: 18px;
+  }
+
+  /* HAMBURGER MENU */
+  .hamburger {
+    display: none;
+    flex-direction: column;
+    gap: 5px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 8px;
+    z-index: 1002;
+  }
+
+  .hamburger span {
+    display: block;
+    width: 24px;
+    height: 2px;
+    background: var(--text);
+    transition: all 0.3s ease;
+  }
+
+  .hamburger.active span:nth-child(1) {
+    transform: translateY(7px) rotate(45deg);
+  }
+
+  .hamburger.active span:nth-child(2) {
+    opacity: 0;
+  }
+
+  .hamburger.active span:nth-child(3) {
+    transform: translateY(-7px) rotate(-45deg);
+  }
+
+  .mobile-menu-overlay {
+    position: fixed;
+    top: 0;
+    right: -100%;
+    width: 100%;
+    height: 100vh;
+    background: var(--bg);
+    z-index: 1001;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 2rem;
+    transition: right 0.4s cubic-bezier(0.22, 1, 0.36, 1);
+  }
+
+  .mobile-menu-overlay.active {
+    right: 0;
+  }
+
+  .mobile-menu-close {
+    position: absolute;
+    top: 1.5rem;
+    right: 2rem;
+    background: none;
+    border: none;
+    color: var(--text);
+    font-size: 2.5rem;
+    cursor: pointer;
+    width: 44px;
+    height: 44px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: color 0.3s ease;
+  }
+
+  .mobile-menu-close:hover {
+    color: var(--accent);
+  }
+
+  .mobile-menu-links {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 2rem;
+  }
+
+  .mobile-menu-links a {
+    color: var(--text);
+    text-decoration: none;
+    font-size: 1.5rem;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    transition: color 0.3s ease;
+    padding: 0.75rem 1.5rem;
+    min-height: 44px;
+    display: flex;
+    align-items: center;
+  }
+
+  .mobile-menu-links a:hover,
+  .mobile-menu-links a.active {
+    color: var(--accent);
+  }
+
+  .mobile-menu-social {
+    display: flex;
+    gap: 2rem;
+    margin-top: 2rem;
+  }
+
+  .mobile-menu-social a {
+    color: var(--text-dim);
+    transition: color 0.3s ease;
+    padding: 0.75rem;
+  }
+
+  .mobile-menu-social a:hover {
+    color: var(--accent);
+  }
+
+  .mobile-menu-social svg {
+    width: 28px;
+    height: 28px;
+  }
+
+  /* THEME TOGGLE */
+  .theme-toggle {
+    position: fixed;
+    bottom: 2rem;
+    right: 2rem;
+    width: 44px;
+    height: 44px;
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--text-dim);
+    z-index: 100;
+    transition: all 0.3s ease;
+    cursor: pointer;
+  }
+
+  .theme-toggle:hover {
+    color: var(--accent);
+    border-color: var(--accent);
+    transform: scale(1.1);
+  }
+
+  .theme-toggle svg {
+    width: 20px;
+    height: 20px;
+  }
+
+  /* Show sun icon in dark mode, moon icon in light mode */
+  .theme-toggle .sun-icon { display: block; }
+  .theme-toggle .moon-icon { display: none !important; }
+  :root.light-theme .theme-toggle .sun-icon { display: none !important; }
+  :root.light-theme .theme-toggle .moon-icon { display: block; }
+
+  /* HEADER */
+  .page-header {
+    padding: 10rem 3rem 4rem;
+    max-width: 900px;
+    margin: 0 auto;
+  }
+
+  .page-header h1 {
+    font-family: var(--serif);
+    font-size: clamp(2rem, 4vw, 3rem);
+    font-weight: 400;
+    margin-bottom: 1rem;
+  }
+
+  .page-header p {
+    color: var(--text-body);
+    font-size: 1.1rem;
+    max-width: 600px;
+    line-height: 1.8;
+  }
+
+  /* ARTICLES LIST */
+  .articles-list {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 0 3rem 6rem;
+  }
+
+  .article-item-link {
+    display: block;
+    text-decoration: none;
+    color: inherit;
+    cursor: pointer;
+  }
+
+  .article-item {
+    border-top: 1px solid var(--border);
+    padding: 3rem 0;
+    transition: all 0.4s cubic-bezier(0.22, 1, 0.36, 1);
+    position: relative;
+    overflow: hidden;
+  }
+
+  .article-item.latest {
+    border-top: none;
+    border-left: 3px solid var(--accent);
+    padding-left: 1rem;
+    overflow: hidden;
+  }
+
+  .article-item::before {
+    content: '';
+    position: absolute;
+    left: -3rem;
+    top: 0;
+    bottom: 0;
+    width: 0;
+    background: linear-gradient(90deg, var(--accent-soft) 0%, transparent 100%);
+    transition: width 0.5s cubic-bezier(0.22, 1, 0.36, 1);
+  }
+
+  .article-item:hover::before {
+    width: calc(100% + 6rem);
+  }
+
+  .article-item:hover {
+    padding-left: 1.5rem;
+  }
+
+  .article-date {
+    font-size: 0.8rem;
+    color: var(--text-dim);
+    margin-bottom: 0.75rem;
+    position: relative;
+    z-index: 1;
+  }
+
+  .article-item h2 {
+    font-family: var(--serif);
+    font-size: 1.5rem;
+    font-weight: 400;
+    margin-bottom: 0.75rem;
+    position: relative;
+    z-index: 1;
+  }
+
+  .article-item h2 a {
+    color: var(--text);
+    text-decoration: none;
+    transition: color 0.3s ease;
+  }
+
+  .article-item:hover h2 a {
+    color: var(--accent);
+  }
+
+  .article-excerpt {
+    color: var(--text-body);
+    font-size: 1rem;
+    line-height: 1.8;
+    max-width: 700px;
+    margin-bottom: 1rem;
+    position: relative;
+    z-index: 1;
+  }
+
+  .read-more {
+    color: var(--accent);
+    text-decoration: none;
+    font-size: 0.9rem;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    position: relative;
+    z-index: 1;
+    transition: gap 0.3s ease;
+  }
+
+  .read-more:hover {
+    gap: 0.75rem;
+  }
+
+  /* FOOTER */
+  footer {
+    padding: 3rem;
+    text-align: center;
+    color: var(--text-dim);
+    font-size: 0.8rem;
+    border-top: 1px solid var(--border);
+  }
+
+  /* SCROLL INDICATOR */
+  .scroll-indicator {
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 2px;
+    background: var(--accent);
+    z-index: 1001;
+    transform-origin: left;
+    transform: scaleX(0);
+  }
+
+  @media (max-width: 1024px) {
+    .nav-links,
+    .nav-social {
+      display: none !important;
+    }
+
+    .hamburger {
+      display: flex;
+    }
+
+    .nav-left {
+      gap: 0.5rem;
+      flex-wrap: nowrap;
+      white-space: nowrap;
+    }
+
+    nav { padding: 1rem 1.5rem; }
+    .page-header, .articles-list { padding-left: 1.5rem; padding-right: 1.5rem; }
+    .article-item::before { left: -1.5rem; }
+    .article-item:hover::before { width: calc(100% + 3rem); }
+  }
+
+  @media (max-width: 480px) {
+    .nav-tagline {
+      display: inline;
+      font-size: 0.65rem;
+      letter-spacing: 0.08em;
+      font-weight: 300;
+    }
+
+    .logo {
+      font-size: 0.65rem;
+      letter-spacing: 0.08em;
+    }
+  }
+
+  ::-webkit-scrollbar { width: 8px; }
+  ::-webkit-scrollbar-track { background: var(--bg); }
+  ::-webkit-scrollbar-thumb { background: var(--border); border-radius: 4px; }
+  ::-webkit-scrollbar-thumb:hover { background: var(--text-dim); }
+</style>
+</head>
+<body>
+
+<div class="scroll-indicator" id="scrollIndicator"></div>
+
+<button class="theme-toggle" id="themeToggle" title="Toggle theme" onclick="toggleTheme()">
+  <svg class="sun-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+    <circle cx="12" cy="12" r="5"/>
+    <line x1="12" y1="1" x2="12" y2="3"/>
+    <line x1="12" y1="21" x2="12" y2="23"/>
+    <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/>
+    <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/>
+    <line x1="1" y1="12" x2="3" y2="12"/>
+    <line x1="21" y1="12" x2="23" y2="12"/>
+    <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/>
+    <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/>
+  </svg>
+  <svg class="moon-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+    <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/>
+  </svg>
+</button>
+
+<nav id="nav">
+  <a href="/" class="nav-left">
+    <span class="logo">Branko Lukic</span>
+    <span class="nav-tagline">COGNITIVE ARCHITECTURE</span>
+  </a>
+  <div class="nav-right">
+    <div class="nav-links">
+      <a href="/#research">research</a>
+      <a href="/#frameworks">frameworks</a>
+      <a href="/#about">about</a>
+      <a href="/#speaking">speaking</a>
+      <a href="articles.html" class="active">articles</a>
+    </div>
+    <div class="nav-social">
+      <a href="https://www.instagram.com/copyself.xyz/" target="_blank" title="Instagram">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+          <rect x="2" y="2" width="20" height="20" rx="5" ry="5"/>
+          <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/>
+          <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/>
+        </svg>
+      </a>
+      <a href="https://www.linkedin.com/in/brankolukic/" target="_blank" title="LinkedIn">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+          <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/>
+          <rect x="2" y="9" width="4" height="12"/>
+          <circle cx="4" cy="4" r="2"/>
+        </svg>
+      </a>
+    </div>
+    <button class="hamburger" id="hamburger" aria-label="Menu">
+      <span></span>
+      <span></span>
+      <span></span>
+    </button>
+  </div>
+</nav>
+
+<!-- Mobile Menu Overlay -->
+<div class="mobile-menu-overlay" id="mobileMenu">
+  <button class="mobile-menu-close" id="mobileMenuClose" aria-label="Close menu">&times;</button>
+  <div class="mobile-menu-links">
+    <a href="/#research">research</a>
+    <a href="/#frameworks">frameworks</a>
+    <a href="/#about">about</a>
+    <a href="/#speaking">speaking</a>
+    <a href="articles.html" class="active">articles</a>
+  </div>
+  <div class="mobile-menu-social">
+    <a href="https://www.instagram.com/copyself.xyz/" target="_blank" title="Instagram">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+        <rect x="2" y="2" width="20" height="20" rx="5" ry="5"/>
+        <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/>
+        <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/>
+      </svg>
+    </a>
+    <a href="https://www.linkedin.com/in/brankolukic/" target="_blank" title="LinkedIn">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+        <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/>
+        <rect x="2" y="9" width="4" height="12"/>
+        <circle cx="4" cy="4" r="2"/>
+      </svg>
+    </a>
+  </div>
+</div>
+
+<header class="page-header">
+  <h1>Articles</h1>
+  <p>Thoughts on AI, creativity, and the future of human-machine collaboration.</p>
+</header>
+
+<div class="articles-list">
+
+  <a href="article-firmware.html" class="article-item-link">
+    <article class="article-item latest">
+      <div class="article-date">March 5, 2026</div>
+      <h2>Human Firmware Update Required</h2>
+      <p class="article-excerpt">There is no shortage of AI tools. A Niagara of them. But here is a question we are not asking loud enough: what about the human? What about our stack? Our firmware and software? When do we update that?</p>
+      <span class="read-more">Read More →</span>
+    </article>
+  </a>
+
+  <a href="article-everything-garage.html" class="article-item-link">
+    <article class="article-item">
+      <div class="article-date">February 17, 2026</div>
+      <h2>The Everything Garage</h2>
+      <p class="article-excerpt">What happens when a single person in a two-car garage can manufacture almost anything? The tools are arriving. 3D printers, laser cutters, robot arms, AI. The question is no longer what we can make — it's what we choose to make, and why.</p>
+      <span class="read-more">Read More →</span>
+    </article>
+  </a>
+
+  <a href="article-co-intelligence.html" class="article-item-link">
+    <article class="article-item">
+      <div class="article-date">February 9, 2026</div>
+      <h2>You Cannot Fix Fear with a Spreadsheet</h2>
+      <p class="article-excerpt">How narrative simulation unlocks what business logic cannot. AI changed the physics of business execution. The bottleneck has moved from process to intent. Most executives missed the shift.</p>
+      <span class="read-more">Read More →</span>
+    </article>
+  </a>
+
+  <a href="article-mp3.html" class="article-item-link">
+    <article class="article-item">
+      <div class="article-date">January 6, 2026</div>
+      <h2>AI Needs Its MP3 Moment</h2>
+      <p class="article-excerpt">The year was 1993. A small team of scientists in Germany finalized a file format that nobody asked for. It seemed like just another technical tweak to shrink a digital file. But MP3 did something more important than quality. It made music liquid.</p>
+      <span class="read-more">Read More →</span>
+    </article>
+  </a>
+
+  <a href="article-authenticity.html" class="article-item-link">
+    <article class="article-item">
+      <div class="article-date">November 25, 2025</div>
+      <h2>Authenticity After AI: Why Provenance Misses the Point</h2>
+      <p class="article-excerpt">Provenance tracks the tool. It tells you nothing about the mind behind it. Most conversations about AI and creativity today circle around watermarking, detection, and whether something is "AI-made." It sounds serious and responsible, but it quietly misses the core issue.</p>
+      <span class="read-more">Read More →</span>
+    </article>
+  </a>
+
+  <a href="article-tiny-agent.html" class="article-item-link">
+    <article class="article-item">
+      <div class="article-date">November 19, 2025</div>
+      <h2>How a Tiny AI Agent Gave Me My Attention Back</h2>
+      <p class="article-excerpt">What if you spent zero percent of your brain on file organization? Somewhere between "I'll clean this up on the weekend" and 2,400 files in Downloads, I realised my digital life was quietly draining my attention.</p>
+      <span class="read-more">Read More →</span>
+    </article>
+  </a>
+
+  <a href="article-aios.html" class="article-item-link">
+    <article class="article-item">
+      <div class="article-date">February 15, 2025</div>
+      <h2>AI:OS — The Living Operating System</h2>
+      <p class="article-excerpt">The impossible drives the possible. You never needed an interface to speak with another human. You simply talk. No apps. No menus. No buttons. Just pure connection. Imagine a world with no apps on your phone.</p>
+      <span class="read-more">Read More →</span>
+    </article>
+  </a>
+
+</div>
+
+<footer>
+  <p>Silicon Valley, California · Branko Lukic</p>
+</footer>
+
+<script>
+// Hamburger menu functionality
+const hamburger = document.getElementById('hamburger');
+const mobileMenu = document.getElementById('mobileMenu');
+const mobileMenuClose = document.getElementById('mobileMenuClose');
+const mobileMenuLinks = document.querySelectorAll('.mobile-menu-links a');
+
+function openMobileMenu() {
+  mobileMenu.classList.add('active');
+  hamburger.classList.add('active');
+  document.body.style.overflow = 'hidden';
+}
+
+function closeMobileMenu() {
+  mobileMenu.classList.remove('active');
+  hamburger.classList.remove('active');
+  document.body.style.overflow = '';
+}
+
+hamburger.addEventListener('click', openMobileMenu);
+mobileMenuClose.addEventListener('click', closeMobileMenu);
+
+// Close menu when clicking on a link
+mobileMenuLinks.forEach(link => {
+  link.addEventListener('click', closeMobileMenu);
+});
+
+// Close menu when clicking outside
+mobileMenu.addEventListener('click', (e) => {
+  if (e.target === mobileMenu) {
+    closeMobileMenu();
+  }
+});
+
+// Close menu on escape key
+document.addEventListener('keydown', (e) => {
+  if (e.key === 'Escape' && mobileMenu.classList.contains('active')) {
+    closeMobileMenu();
+  }
+});
+
+// Theme functions
+function toggleTheme() {
+  const root = document.documentElement;
+  const isLight = root.classList.toggle('light-theme');
+  localStorage.setItem('branko-theme', isLight ? 'light' : 'dark');
+  
+  const sunIcon = document.querySelector('.sun-icon');
+  const moonIcon = document.querySelector('.moon-icon');
+  const toggleBtn = document.getElementById('themeToggle');
+  
+  if (isLight) {
+    sunIcon.style.display = 'none';
+    moonIcon.style.display = 'block';
+    toggleBtn.title = 'Switch to dark theme';
+  } else {
+    sunIcon.style.display = 'block';
+    moonIcon.style.display = 'none';
+    toggleBtn.title = 'Switch to light theme';
+  }
+}
+
+// Apply saved theme on load - update icons after DOM loads
+document.addEventListener('DOMContentLoaded', function() {
+  const savedTheme = localStorage.getItem('branko-theme');
+  if (savedTheme === 'light') {
+    const sunIcon = document.querySelector('.sun-icon');
+    const moonIcon = document.querySelector('.moon-icon');
+    const toggleBtn = document.getElementById('themeToggle');
+    if (sunIcon) sunIcon.style.display = 'none';
+    if (moonIcon) moonIcon.style.display = 'block';
+    if (toggleBtn) toggleBtn.title = 'Switch to dark theme';
+  }
+});
+
+// Nav scroll effect
+const nav = document.getElementById('nav');
+const scrollIndicator = document.getElementById('scrollIndicator');
+
+window.addEventListener('scroll', () => {
+  if (window.scrollY > 50) {
+    nav.classList.add('scrolled');
+  } else {
+    nav.classList.remove('scrolled');
+  }
+  
+  const winScroll = document.body.scrollTop || document.documentElement.scrollTop;
+  const height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+  const scrolled = (winScroll / height);
+  scrollIndicator.style.transform = `scaleX(${scrolled})`;
+});
+</script>
+
+</body>
+</html>

@@ -1,0 +1,863 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no, viewport-fit=cover">
+<title>About Branko Lukic — Cognitive Architecture</title>
+<meta name="description" content="Branko Lukic — cognitive architecture, AI-native interfaces, Logitech AI Fellow, Cerebras Lead Designer. Building the missing layer between human creativity and frontier AI.">
+<meta name="robots" content="index, follow">
+<link rel="icon" type="image/x-icon" href="/favicon.ico">
+<link rel="canonical" href="https://brankolukic.com/about">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,700;1,9..40,400&family=Playfair+Display:ital,wght@0,400;0,500;0,600;1,400;1,500&display=swap" rel="stylesheet">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+<script>
+  (function() {
+    var stored = localStorage.getItem('branko-theme');
+    if (stored === 'light') {
+      document.documentElement.classList.add('light-theme');
+    }
+  })();
+</script>
+<style>
+  :root {
+    --bg: #1a1a1a;
+    --bg-card: #232323;
+    --bg-hover: #2a2a2a;
+    --text: #e8e4df;
+    --text-dim: #9a9590;
+    --text-body: #c4bfb8;
+    --accent: #c43e2a;
+    --accent-soft: rgba(196, 62, 42, 0.12);
+    --accent-glow: rgba(196, 62, 42, 0.25);
+    --border: #333333;
+    --border-light: #3a3a3a;
+    --serif: 'Playfair Display', Georgia, serif;
+    --sans: 'DM Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+  }
+
+  :root.light-theme {
+    --bg: #e8e6e3;
+    --bg-card: #f0efed;
+    --bg-hover: #e4e2df;
+    --text: #2a2a2a;
+    --text-dim: #6b6b6b;
+    --text-body: #4a4a4a;
+    --accent: #c43e2a;
+    --accent-soft: rgba(196, 62, 42, 0.08);
+    --accent-glow: rgba(196, 62, 42, 0.2);
+    --border: #d4d2cf;
+    --border-light: #dddbd8;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html { scroll-behavior: smooth; font-size: 16px; }
+
+  body {
+    font-family: var(--sans);
+    background: var(--bg);
+    color: var(--text);
+    line-height: 1.8;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    overflow-x: hidden;
+  }
+
+  /* NOISE TEXTURE */
+  body::before {
+    content: '';
+    position: fixed;
+    top: 0; left: 0;
+    width: 100%; height: 100%;
+    pointer-events: none;
+    z-index: 9999;
+    opacity: 0.03;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
+  }
+
+  ::selection { background: var(--accent); color: white; }
+
+  /* SCROLL INDICATOR */
+  .scroll-indicator {
+    position: fixed;
+    top: 0; left: 0;
+    width: 100%; height: 3px;
+    z-index: 10000;
+    transform-origin: left;
+    transform: scaleX(0);
+    pointer-events: none;
+  }
+  :root .scroll-indicator { background: #888888; }
+  :root.light-theme .scroll-indicator { background: #444444; }
+
+  /* NAV — matches index.html exactly */
+  nav {
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    padding: 1.25rem 3rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    z-index: 1000;
+    background: var(--bg);
+    border-bottom: 1px solid transparent;
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+  }
+
+  nav.scrolled {
+    border-bottom: 1px solid var(--border);
+    box-shadow: 0 2px 20px rgba(0,0,0,0.15);
+  }
+
+  .nav-left {
+    display: flex;
+    align-items: baseline;
+    gap: 1.5rem;
+    text-decoration: none;
+    transition: opacity 0.3s ease;
+  }
+  .nav-left:hover { opacity: 0.8; }
+
+  .logo {
+    font-family: var(--sans);
+    font-size: 0.85rem;
+    font-weight: 700;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--text);
+    text-decoration: none;
+    transition: all 0.3s ease;
+  }
+  .logo:hover { color: var(--accent); }
+
+  .nav-tagline {
+    font-size: 0.85rem;
+    color: var(--accent);
+    letter-spacing: 0.15em;
+    font-weight: 400;
+    text-transform: uppercase;
+  }
+
+  .nav-right {
+    display: flex;
+    align-items: center;
+    gap: 2rem;
+  }
+
+  .nav-links {
+    display: flex;
+    gap: 2rem;
+    align-items: center;
+  }
+
+  .nav-links a {
+    color: var(--text-dim);
+    text-decoration: none;
+    font-size: 0.85rem;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    transition: all 0.3s ease;
+    position: relative;
+    padding: 0.25rem 0;
+  }
+
+  .nav-links a::after {
+    content: '';
+    position: absolute;
+    bottom: 0; left: 0;
+    width: 0; height: 1px;
+    background: var(--accent);
+    transition: width 0.4s cubic-bezier(0.22, 1, 0.36, 1);
+  }
+
+  .nav-links a:hover { color: var(--text); }
+  .nav-links a:hover::after { width: 100%; }
+  .nav-links a.active { color: var(--text); }
+  .nav-links a.active::after { width: 100%; }
+
+  .nav-social {
+    display: flex;
+    gap: 1rem;
+    align-items: center;
+  }
+  .nav-social a {
+    color: var(--text-dim);
+    transition: color 0.3s ease;
+  }
+  .nav-social a:hover { color: var(--text); }
+  .nav-social svg { width: 18px; height: 18px; }
+
+  /* HAMBURGER */
+  .hamburger {
+    display: none;
+    flex-direction: column;
+    gap: 5px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 8px;
+    z-index: 1002;
+  }
+  .hamburger span {
+    display: block;
+    width: 24px;
+    height: 2px;
+    background: var(--text);
+    transition: all 0.3s ease;
+  }
+  .hamburger.active span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+  .hamburger.active span:nth-child(2) { opacity: 0; }
+  .hamburger.active span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+
+  .mobile-menu-overlay {
+    position: fixed;
+    top: 0; right: -100%;
+    width: 100%; height: 100vh;
+    background: var(--bg);
+    z-index: 1001;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 2rem;
+    transition: right 0.4s cubic-bezier(0.22, 1, 0.36, 1);
+  }
+  .mobile-menu-overlay.active { right: 0; }
+
+  .mobile-menu-close {
+    position: absolute;
+    top: 1.5rem; right: 2rem;
+    background: none; border: none;
+    color: var(--text);
+    font-size: 2.5rem;
+    cursor: pointer;
+    width: 44px; height: 44px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: color 0.3s ease;
+  }
+  .mobile-menu-close:hover { color: var(--accent); }
+
+  .mobile-menu-links {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 2rem;
+  }
+  .mobile-menu-links a {
+    color: var(--text);
+    text-decoration: none;
+    font-size: 1.5rem;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    transition: color 0.3s ease;
+    padding: 0.75rem 1.5rem;
+    min-height: 44px;
+    display: flex;
+    align-items: center;
+  }
+  .mobile-menu-links a:hover,
+  .mobile-menu-links a.active { color: var(--accent); }
+
+  .mobile-menu-social {
+    display: flex;
+    gap: 2rem;
+    margin-top: 2rem;
+  }
+  .mobile-menu-social a {
+    color: var(--text-dim);
+    transition: color 0.3s ease;
+    padding: 0.75rem;
+  }
+  .mobile-menu-social a:hover { color: var(--accent); }
+  .mobile-menu-social svg { width: 28px; height: 28px; }
+
+  /* THEME TOGGLE */
+  .theme-toggle {
+    position: fixed;
+    bottom: 2rem; right: 2rem;
+    width: 44px; height: 44px;
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--text-dim);
+    z-index: 100;
+    transition: all 0.3s ease;
+    cursor: pointer;
+  }
+  .theme-toggle:hover {
+    color: var(--accent);
+    border-color: var(--accent);
+    transform: scale(1.1);
+  }
+  .theme-toggle svg { width: 20px; height: 20px; }
+
+  /* CONTENT */
+  .content {
+    max-width: 720px;
+    margin: 0 auto;
+    padding: 10rem 2rem 6rem;
+  }
+
+  .about-intro {
+    font-size: 1.15rem;
+    color: var(--text-body);
+    line-height: 1.85;
+    margin-bottom: 1.5rem;
+  }
+
+  .about-intro-bold {
+    font-size: 1.15rem;
+    color: var(--text);
+    font-weight: 500;
+    line-height: 1.85;
+    margin-bottom: 3rem;
+  }
+
+  /* Thin divider matching LinkedIn style */
+  .thin-divider {
+    width: 100%;
+    height: 1px;
+    background: var(--border);
+    margin: 3rem 0;
+  }
+
+  /* Section headers — subtle labels, not screaming */
+  .about-section-label {
+    font-family: var(--sans);
+    font-size: 0.7rem;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 1.5rem;
+    font-weight: 500;
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+  }
+  .about-section-label::after {
+    content: '';
+    flex: 1;
+    max-width: 60px;
+    height: 1px;
+    background: var(--accent);
+    opacity: 0.4;
+  }
+
+  .about-body p {
+    color: var(--text-body);
+    font-size: 1.05rem;
+    line-height: 1.85;
+    margin-bottom: 1.5rem;
+    max-width: 100%;
+  }
+
+  .about-body p strong {
+    color: var(--text);
+    font-weight: 500;
+  }
+
+  /* Portrait */
+  .about-portrait {
+    margin: 2rem 0 0;
+  }
+  .about-portrait img {
+    width: 100%;
+    max-width: 280px;
+    aspect-ratio: 1;
+    object-fit: cover;
+    border: 1px solid var(--border);
+    filter: grayscale(100%);
+    transition: all 0.5s cubic-bezier(0.22, 1, 0.36, 1);
+  }
+  .about-portrait img:hover {
+    filter: grayscale(0%);
+    border-color: var(--accent);
+    transform: scale(1.02);
+    box-shadow: 0 25px 50px rgba(0,0,0,0.4);
+  }
+
+  /* Credentials block */
+  .credentials {
+    margin: 1rem 0 1.5rem;
+    font-size: 1.05rem;
+    color: var(--text-body);
+    line-height: 1.85;
+  }
+
+  /* Closing question */
+  .closing-question {
+    font-family: var(--serif);
+    font-size: 1.25rem;
+    font-style: italic;
+    color: var(--text);
+    line-height: 1.6;
+    margin: 0 0 1.5rem;
+  }
+
+  .closing-note {
+    color: var(--text-dim);
+    font-style: italic;
+    font-size: 1.05rem;
+  }
+
+  /* Lab links grid — same as index */
+  .links-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1.25rem;
+    margin-top: 2rem;
+  }
+
+  .link-block {
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    padding: 0;
+    text-decoration: none;
+    transition: all 0.5s cubic-bezier(0.22, 1, 0.36, 1);
+    position: relative;
+    overflow: hidden;
+  }
+
+  .link-block img {
+    width: 100%;
+    aspect-ratio: 1;
+    object-fit: cover;
+    filter: grayscale(100%);
+    transition: all 0.5s cubic-bezier(0.22, 1, 0.36, 1);
+  }
+  .link-block:hover img {
+    filter: grayscale(0%);
+    transform: scale(1.05);
+  }
+
+  .link-block-text { padding: 1.5rem; }
+
+  .link-block::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0;
+    width: 100%; height: 2px;
+    background: var(--accent);
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform 0.5s cubic-bezier(0.22, 1, 0.36, 1);
+  }
+  .link-block::after {
+    content: '→';
+    position: absolute;
+    bottom: 2rem; right: 2rem;
+    color: var(--text-dim);
+    font-size: 1.25rem;
+    opacity: 0;
+    transform: translateX(-10px);
+    transition: all 0.4s cubic-bezier(0.22, 1, 0.36, 1);
+  }
+  .link-block:hover {
+    border-color: var(--accent);
+    transform: translateY(-8px) scale(1.02);
+    box-shadow: 0 25px 50px rgba(0,0,0,0.4), 0 0 30px rgba(196,62,42,0.15);
+  }
+  .link-block:hover::before { transform: scaleX(1); }
+  .link-block:hover::after {
+    opacity: 1;
+    transform: translateX(0);
+    color: var(--accent);
+  }
+  .link-block h4 {
+    font-family: var(--sans);
+    font-size: 0.95rem;
+    color: var(--text);
+    font-weight: 500;
+    margin-bottom: 0.4rem;
+    transition: color 0.3s ease;
+  }
+  .link-block:hover h4 { color: var(--accent); }
+  .link-block span {
+    font-size: 0.8rem;
+    color: var(--text-dim);
+  }
+
+  /* Contact */
+  .contact {
+    text-align: center;
+    padding: 4rem 0;
+  }
+  .contact-link {
+    font-family: var(--serif);
+    font-size: clamp(1.8rem, 3.5vw, 2.5rem);
+    font-weight: 400;
+    color: var(--text);
+    text-decoration: none;
+    position: relative;
+    padding-bottom: 6px;
+    transition: color 0.3s ease;
+  }
+  .contact-link:hover { color: var(--accent); }
+  .contact-link::after {
+    content: '';
+    position: absolute;
+    bottom: 0; left: 0;
+    width: 0; height: 2px;
+    background: var(--accent);
+    transition: width 0.4s cubic-bezier(0.22, 1, 0.36, 1);
+  }
+  .contact-link:hover::after { width: 100%; }
+
+  footer {
+    padding: 3rem;
+    text-align: center;
+    color: var(--text-dim);
+    font-size: 0.8rem;
+    border-top: 1px solid var(--border);
+  }
+
+  /* ANIMATIONS */
+  .animate-on-scroll {
+    opacity: 0;
+    transform: translateY(40px);
+    transition: opacity 0.9s cubic-bezier(0.22, 1, 0.36, 1), transform 0.9s cubic-bezier(0.22, 1, 0.36, 1);
+  }
+  .animate-on-scroll.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  /* RESPONSIVE */
+  @media (max-width: 1024px) {
+    .nav-links, .nav-social { display: none !important; }
+    .hamburger { display: flex; }
+    nav { padding: 1rem 1.5rem; }
+    .nav-left {
+      gap: 0.5rem;
+      flex-wrap: nowrap;
+      white-space: nowrap;
+    }
+  }
+
+  @media (max-width: 768px) {
+    .content { padding: 8rem 1.5rem 4rem; }
+    .links-grid { grid-template-columns: repeat(2, 1fr); }
+  }
+
+  @media (max-width: 640px) {
+    .links-grid { grid-template-columns: 1fr; }
+    .about-portrait img { max-width: 100%; }
+  }
+
+  @media (max-width: 480px) {
+    .nav-tagline {
+      display: inline;
+      font-size: 0.65rem;
+      letter-spacing: 0.08em;
+      font-weight: 300;
+    }
+    .logo {
+      font-size: 0.65rem;
+      letter-spacing: 0.08em;
+    }
+  }
+
+  /* SCROLLBAR */
+  ::-webkit-scrollbar { width: 8px; }
+  ::-webkit-scrollbar-track { background: var(--bg); }
+  ::-webkit-scrollbar-thumb { background: var(--border); border-radius: 4px; }
+  ::-webkit-scrollbar-thumb:hover { background: var(--text-dim); }
+</style>
+</head>
+<body>
+
+<div class="scroll-indicator" id="scrollIndicator"></div>
+
+<button class="theme-toggle" id="themeToggle" title="Switch to light theme" onclick="toggleTheme()">
+  <svg class="sun-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+    <circle cx="12" cy="12" r="5"/>
+    <line x1="12" y1="1" x2="12" y2="3"/>
+    <line x1="12" y1="21" x2="12" y2="23"/>
+    <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/>
+    <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/>
+    <line x1="1" y1="12" x2="3" y2="12"/>
+    <line x1="21" y1="12" x2="23" y2="12"/>
+    <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/>
+    <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/>
+  </svg>
+  <svg class="moon-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" style="display:none;">
+    <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/>
+  </svg>
+</button>
+
+<nav id="nav">
+  <a href="/" class="nav-left">
+    <span class="logo">Branko Lukic</span>
+    <span class="nav-tagline">COGNITIVE ARCHITECTURE</span>
+  </a>
+  <div class="nav-right">
+    <div class="nav-links">
+      <a href="/#research">research</a>
+      <a href="/#frameworks">frameworks</a>
+      <a href="about.html" class="active">about</a>
+      <a href="/#speaking">speaking</a>
+      <a href="articles.html">articles</a>
+    </div>
+    <div class="nav-social">
+      <a href="https://www.instagram.com/copyself.xyz/" target="_blank" title="Instagram">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+          <rect x="2" y="2" width="20" height="20" rx="5" ry="5"/>
+          <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/>
+          <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/>
+        </svg>
+      </a>
+      <a href="https://www.linkedin.com/in/brankolukic/" target="_blank" title="LinkedIn">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+          <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/>
+          <rect x="2" y="9" width="4" height="12"/>
+          <circle cx="4" cy="4" r="2"/>
+        </svg>
+      </a>
+    </div>
+    <button class="hamburger" id="hamburger" aria-label="Menu">
+      <span></span>
+      <span></span>
+      <span></span>
+    </button>
+  </div>
+</nav>
+
+<!-- Mobile Menu -->
+<div class="mobile-menu-overlay" id="mobileMenu">
+  <button class="mobile-menu-close" id="mobileMenuClose" aria-label="Close menu">&times;</button>
+  <div class="mobile-menu-links">
+    <a href="/#research">research</a>
+    <a href="/#frameworks">frameworks</a>
+    <a href="about.html" class="active">about</a>
+    <a href="/#speaking">speaking</a>
+    <a href="articles.html">articles</a>
+  </div>
+  <div class="mobile-menu-social">
+    <a href="https://www.instagram.com/copyself.xyz/" target="_blank" title="Instagram">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+        <rect x="2" y="2" width="20" height="20" rx="5" ry="5"/>
+        <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/>
+        <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/>
+      </svg>
+    </a>
+    <a href="https://www.linkedin.com/in/brankolukic/" target="_blank" title="LinkedIn">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+        <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/>
+        <rect x="2" y="9" width="4" height="12"/>
+        <circle cx="4" cy="4" r="2"/>
+      </svg>
+    </a>
+  </div>
+</div>
+
+<!-- CONTENT -->
+<div class="content">
+
+  <p class="about-intro animate-on-scroll">My field of work is cognitive architecture: the inner workings of the human mind and the underlying cognitive mechanisms behind how humans interact with AI systems.</p>
+
+  <p class="about-intro-bold animate-on-scroll">Everything I know comes from working with people. Not theory. Practice.</p>
+
+  <div class="thin-divider animate-on-scroll"></div>
+
+  <!-- AI-NATIVE INTERFACES -->
+  <div class="about-body animate-on-scroll">
+    <div class="about-section-label">AI-Native Interfaces</div>
+    <p>Traditional screen patterns are hitting a wall. AI doesn’t just need better button placement. It needs a new architectural layer: interfaces that transform around how humans think. The work is mapping cognitive modes, diagnosing where flow breaks, and figuring out the control surfaces that come next.</p>
+  </div>
+
+  <div class="thin-divider animate-on-scroll"></div>
+
+  <!-- AT LOGITECH -->
+  <div class="about-body animate-on-scroll">
+    <div class="about-section-label">At Logitech</div>
+    <p>Co-founded the Creative and Design AI Lab and led AI transformation for 250 designers across global studios.</p>
+    <p>30,000+ experiments in co-cognition proved that human nuance can be amplified through AI rather than averaged out.</p>
+    <p>Built and deployed AI agents at enterprise scale: a brand intelligence agent adopted company-wide for unified brand standards, and AI clones of team members for a long-distance collaboration project where AI augmented human presence and helped people feel connected across time zones.</p>
+    <p>The work was never about the tools. It was about helping people find their way into a new way of working. What they discovered changed how I think about everything.</p>
+  </div>
+
+  <div class="thin-divider animate-on-scroll"></div>
+
+  <!-- THE HARDWARE -->
+  <div class="about-body animate-on-scroll">
+    <div class="about-section-label">The Hardware</div>
+    <p>Lead Designer for Cerebras Systems since 2017, designing the supercomputers that train frontier models.</p>
+    <p>Worked with Logitech's innovation, software and hardware teams on Physical Intelligence: the first and last millimeter between human and machine, where thought becomes movement and AI learns to read and respond to it.</p>
+  </div>
+
+  <div class="thin-divider animate-on-scroll"></div>
+
+  <!-- THE RESEARCH -->
+  <div class="about-body animate-on-scroll">
+    <div class="about-section-label">The Research</div>
+    <p>AI doesn't converge toward sameness because it was trained wrong. It converges because averaging is its mathematical nature. The research focuses on what breaks that convergence: how to transmit human imperfection, the Creative Fingerprint, through AI without losing it.</p>
+  </div>
+
+  <div class="thin-divider animate-on-scroll"></div>
+
+  <!-- Portrait -->
+  <div class="about-portrait animate-on-scroll">
+    <img src="images/branko-portrait.jpg" alt="Branko Lukic">
+  </div>
+
+  <div class="thin-divider animate-on-scroll"></div>
+
+  <!-- CREDENTIALS -->
+  <div class="about-body animate-on-scroll">
+    <p class="credentials">Published "AI Powered Design" in 2017, five years before the transformer wave. Founded NONOBJECT (acquired 2018). Authored Nonobject (MIT Press). Created the UE Boom.</p>
+    <p class="credentials">2026: Keynoting iF Design Berlin on "The Perfect Flaw."<br>2025: Opening Keynote IXDC Beijing on Human x AI Symbiosis. Lectures at UC Berkeley.</p>
+  </div>
+
+  <div class="thin-divider animate-on-scroll"></div>
+
+  <!-- CLOSING -->
+  <div class="about-body animate-on-scroll">
+    <p class="closing-question" style="color: var(--accent);">How do we capture, transmit, and amplify human creativity through AI systems so that people become more authentic, more original, not less? That is the work.</p>
+  </div>
+
+  <div class="thin-divider animate-on-scroll"></div>
+
+  <p class="closing-note animate-on-scroll">I work from Silicon Valley, California. When not running experiments, I meditate and hike.</p>
+
+  <!-- LAB LINKS -->
+  <div style="margin-top: 4rem;">
+    <div class="links-grid">
+      <a href="https://www.instagram.com/copyself.xyz/" class="link-block animate-on-scroll" target="_blank">
+        <img src="images/copyself-lab.jpg" alt="copyself_xyz lab">
+        <div class="link-block-text">
+          <h4>copyself_xyz</h4>
+          <span>lab</span>
+        </div>
+      </a>
+      <a href="https://nonai.space" class="link-block animate-on-scroll" target="_blank">
+        <img src="images/nonai-research.jpg" alt="nonai.space research">
+        <div class="link-block-text">
+          <h4>nonai.space</h4>
+          <span>research</span>
+        </div>
+      </a>
+      <a href="https://mitpress.mit.edu/9780262014847/nonobject/" class="link-block animate-on-scroll" target="_blank">
+        <img src="images/nonobject-book.jpg" alt="nonobject MIT book">
+        <div class="link-block-text">
+          <h4>nonobject MIT</h4>
+          <span>book</span>
+        </div>
+      </a>
+      <a href="https://www.nonobject.com" class="link-block animate-on-scroll" target="_blank">
+        <img src="images/nonobject-beginnings.jpg" alt="nonobject beginnings">
+        <div class="link-block-text">
+          <h4>nonobject</h4>
+          <span>beginnings</span>
+        </div>
+      </a>
+    </div>
+  </div>
+
+</div>
+
+<!-- CONTACT -->
+<section class="contact">
+  <a href="#" id="contact-link" class="contact-link animate-on-scroll">Get in Touch</a>
+</section>
+
+<footer>
+  <p>Silicon Valley, California · Branko Lukic</p>
+</footer>
+
+<script>
+// Theme toggle
+function toggleTheme() {
+  const root = document.documentElement;
+  const isLight = root.classList.toggle('light-theme');
+  localStorage.setItem('branko-theme', isLight ? 'light' : 'dark');
+  const sunIcon = document.querySelector('.sun-icon');
+  const moonIcon = document.querySelector('.moon-icon');
+  const toggleBtn = document.getElementById('themeToggle');
+  if (isLight) {
+    sunIcon.style.display = 'none';
+    moonIcon.style.display = 'block';
+    toggleBtn.title = 'Switch to dark theme';
+  } else {
+    sunIcon.style.display = 'block';
+    moonIcon.style.display = 'none';
+    toggleBtn.title = 'Switch to light theme';
+  }
+}
+
+(function() {
+  const savedTheme = localStorage.getItem('branko-theme');
+  if (savedTheme === 'light') {
+    document.addEventListener('DOMContentLoaded', function() {
+      const sunIcon = document.querySelector('.sun-icon');
+      const moonIcon = document.querySelector('.moon-icon');
+      const toggleBtn = document.getElementById('themeToggle');
+      if (sunIcon) sunIcon.style.display = 'none';
+      if (moonIcon) moonIcon.style.display = 'block';
+      if (toggleBtn) toggleBtn.title = 'Switch to dark theme';
+    });
+  }
+})();
+
+// Hamburger menu
+const hamburger = document.getElementById('hamburger');
+const mobileMenu = document.getElementById('mobileMenu');
+const mobileMenuClose = document.getElementById('mobileMenuClose');
+const mobileMenuLinks = document.querySelectorAll('.mobile-menu-links a');
+
+function openMobileMenu() {
+  mobileMenu.classList.add('active');
+  hamburger.classList.add('active');
+  document.body.style.overflow = 'hidden';
+}
+function closeMobileMenu() {
+  mobileMenu.classList.remove('active');
+  hamburger.classList.remove('active');
+  document.body.style.overflow = '';
+}
+hamburger.addEventListener('click', openMobileMenu);
+mobileMenuClose.addEventListener('click', closeMobileMenu);
+mobileMenuLinks.forEach(link => link.addEventListener('click', closeMobileMenu));
+mobileMenu.addEventListener('click', (e) => { if (e.target === mobileMenu) closeMobileMenu(); });
+document.addEventListener('keydown', (e) => { if (e.key === 'Escape' && mobileMenu.classList.contains('active')) closeMobileMenu(); });
+
+// Nav scroll
+const nav = document.getElementById('nav');
+window.addEventListener('scroll', () => {
+  if (window.scrollY > 50) nav.classList.add('scrolled');
+  else nav.classList.remove('scrolled');
+});
+
+// Email protection
+(function(){var a='brranko';var b='gmail.com';var e=document.getElementById('contact-link');e.href='mai'+'lto:'+a+'@'+b;})();
+
+// Scroll reveal
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) entry.target.classList.add('visible');
+  });
+}, { threshold: 0.1, rootMargin: '0px 0px -80px 0px' });
+document.querySelectorAll('.animate-on-scroll').forEach(el => observer.observe(el));
+
+// GSAP scroll indicator
+gsap.registerPlugin(ScrollTrigger);
+gsap.to('#scrollIndicator', {
+  scaleX: 1,
+  ease: 'none',
+  scrollTrigger: {
+    trigger: document.body,
+    start: 'top top',
+    end: 'bottom bottom',
+    scrub: 0.3
+  }
+});
+</script>
+
+</body>
+</html>

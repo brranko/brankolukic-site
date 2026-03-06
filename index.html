@@ -1,0 +1,2455 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no, viewport-fit=cover">
+<title>Branko Lukic | Cognitive Architecture — Building the Missing Layer Between Human Creativity and Frontier AI</title>
+<meta name="description" content="Branko Lukic operates at the cognitive frontier where human creativity meets AI. 30,000+ experiments in co-cognition, developing systematic protocols for transmitting human creative fingerprints through frontier AI.">
+<meta name="keywords" content="cognitive architect, AI creativity, human-AI collaboration, creative fingerprint, frontier AI, design innovation, Logitech AI Fellow, NONOBJECT, UE Boom, Cerebras">
+<meta name="author" content="Branko Lukic">
+<meta name="robots" content="index, follow">
+<link rel="canonical" href="https://brankolukic.com">
+
+<!-- AI Discovery -->
+<link rel="alternate" type="text/plain" href="https://brankolukic.com/llms.txt" title="LLM-readable site info">
+
+<!-- Favicons -->
+<link rel="icon" type="image/x-icon" href="/favicon.ico">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon.ico">
+<link rel="apple-touch-icon" href="/favicon.ico">
+
+<!-- Open Graph / Facebook -->
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://brankolukic.com">
+<meta property="og:title" content="Branko Lukic | Cognitive Architecture — Building the Missing Layer Between Human Creativity and Frontier AI">
+<meta property="og:description" content="Systematic approaches that transmit human creative fingerprint through AI, enabling original work while preventing collapse into sameness.">
+<meta property="og:image" content="https://brankolukic.com/images/og-image.jpg">
+
+<!-- Twitter -->
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:url" content="https://brankolukic.com">
+<meta name="twitter:title" content="Branko Lukic | Cognitive Architecture — Building the Missing Layer Between Human Creativity and Frontier AI">
+<meta name="twitter:description" content="Building the missing layer between human creativity and frontier AI. Preserving creative fingerprints in the age of AI.">
+<meta name="twitter:image" content="https://brankolukic.com/images/og-image.jpg">
+
+<!-- Schema.org structured data -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Person",
+  "name": "Branko Lukic",
+  "jobTitle": "Cognitive Architect",
+  "description": "Building the missing layer between human creativity and frontier AI",
+  "url": "https://brankolukic.com",
+  "sameAs": [
+    "https://www.linkedin.com/in/brankolukic/",
+    "https://www.instagram.com/copyself.xyz/"
+  ],
+  "knowsAbout": ["AI", "Design", "Human-AI Collaboration", "Creative Technology", "Product Design"],
+  "worksFor": [
+    {
+      "@type": "Organization",
+      "name": "Logitech",
+      "description": "First AI Fellow, Co-founder Creative & Design AI Lab"
+    },
+    {
+      "@type": "Organization", 
+      "name": "Cerebras Systems",
+      "description": "Supercomputer design for AI training"
+    }
+  ],
+  "alumniOf": {
+    "@type": "Organization",
+    "name": "NONOBJECT Studio",
+    "description": "Founded 2001, acquired 2018"
+  },
+  "award": "IDEA Gold Award - UE Boom"
+}
+</script>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,700;1,9..40,400&family=Playfair+Display:ital,wght@0,400;0,500;0,600;1,400;1,500&display=swap" rel="stylesheet">
+
+<!-- GSAP for SOTA animations -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+<style>
+  :root {
+    --bg: #1a1a1a;
+    --bg-card: #232323;
+    --bg-hover: #2a2a2a;
+    --text: #e8e4df;
+    --text-dim: #9a9590;
+    --text-body: #c4bfb8;
+    --accent: #c43e2a;
+    --accent-soft: rgba(196, 62, 42, 0.12);
+    --accent-glow: rgba(196, 62, 42, 0.25);
+    --border: #333333;
+    --border-light: #3a3a3a;
+    --serif: 'Playfair Display', Georgia, serif;
+    --sans: 'DM Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+  }
+
+  /* Light theme */
+  :root.light-theme {
+    --bg: #e8e6e3;
+    --bg-card: #f0efed;
+    --bg-hover: #e4e2df;
+    --text: #2a2a2a;
+    --text-dim: #6b6b6b;
+    --text-body: #4a4a4a;
+    --accent: #c43e2a;
+    --accent-soft: rgba(196, 62, 42, 0.18);
+    --accent-glow: rgba(196, 62, 42, 0.3);
+    --border: #d4d2cf;
+    --border-light: #dddbd8;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  
+  html { 
+    scroll-behavior: smooth;
+    font-size: 16px;
+  }
+
+  body {
+    font-family: var(--sans);
+    background: var(--bg);
+    color: var(--text);
+    line-height: 1.7;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    overflow-x: hidden;
+    /* Prevent horizontal sway on mobile */
+    overscroll-behavior-x: none;
+    -webkit-overflow-scrolling: touch;
+  }
+  
+  html {
+    overflow-x: hidden;
+    overscroll-behavior-x: none;
+    /* Prevent pinch zoom on iOS */
+    touch-action: pan-x pan-y;
+  }
+  
+  /* Double-tap zoom prevention */
+  * {
+    touch-action: manipulation;
+  }
+
+  /* NOISE TEXTURE OVERLAY - SOTA organic feel */
+  body::before {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 9999;
+    opacity: 0.03;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
+  }
+
+  /* SELECTION */
+  ::selection {
+    background: var(--accent);
+    color: white;
+  }
+
+  /* ANIMATIONS */
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(40px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  @keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+  }
+
+  @keyframes slideInLeft {
+    from { opacity: 0; transform: translateX(-30px); }
+    to { opacity: 1; transform: translateX(0); }
+  }
+
+  @keyframes pulse {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.5; }
+  }
+
+  @keyframes glowPulse {
+    0%, 100% { box-shadow: 0 0 0 rgba(196, 62, 42, 0); }
+    50% { box-shadow: 0 0 20px rgba(196, 62, 42, 0.3); }
+  }
+
+  @keyframes lineExpand {
+    from { transform: scaleX(0); }
+    to { transform: scaleX(1); }
+  }
+
+  .animate-on-scroll {
+    opacity: 0;
+    transform: translateY(40px);
+    transition: opacity 0.9s cubic-bezier(0.22, 1, 0.36, 1), transform 0.9s cubic-bezier(0.22, 1, 0.36, 1);
+  }
+
+  .animate-on-scroll.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  /* Stagger delays for grid items */
+  .stagger-1 { transition-delay: 0.1s; }
+  .stagger-2 { transition-delay: 0.2s; }
+  .stagger-3 { transition-delay: 0.3s; }
+  .stagger-4 { transition-delay: 0.4s; }
+
+  /* NAV */
+  nav {
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    padding: 1.25rem 3rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    z-index: 1000;
+    background: var(--bg);
+    border-bottom: 1px solid transparent;
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+  }
+
+  /* HAMBURGER MENU */
+  .hamburger {
+    display: none;
+    flex-direction: column;
+    gap: 5px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 8px;
+    z-index: 1002;
+  }
+
+  .hamburger span {
+    display: block;
+    width: 24px;
+    height: 2px;
+    background: var(--text);
+    transition: all 0.3s ease;
+  }
+
+  .hamburger.active span:nth-child(1) {
+    transform: translateY(7px) rotate(45deg);
+  }
+
+  .hamburger.active span:nth-child(2) {
+    opacity: 0;
+  }
+
+  .hamburger.active span:nth-child(3) {
+    transform: translateY(-7px) rotate(-45deg);
+  }
+
+  .mobile-menu-overlay {
+    position: fixed;
+    top: 0;
+    right: -100%;
+    width: 100%;
+    height: 100vh;
+    background: var(--bg);
+    z-index: 1001;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 2rem;
+    transition: right 0.4s cubic-bezier(0.22, 1, 0.36, 1);
+  }
+
+  .mobile-menu-overlay.active {
+    right: 0;
+  }
+
+  .mobile-menu-close {
+    position: absolute;
+    top: 1.5rem;
+    right: 2rem;
+    background: none;
+    border: none;
+    color: var(--text);
+    font-size: 2.5rem;
+    cursor: pointer;
+    width: 44px;
+    height: 44px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: color 0.3s ease;
+  }
+
+  .mobile-menu-close:hover {
+    color: var(--accent);
+  }
+
+  .mobile-menu-links {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 2rem;
+  }
+
+  .mobile-menu-links a {
+    color: var(--text);
+    text-decoration: none;
+    font-size: 1.5rem;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    transition: color 0.3s ease;
+    padding: 0.75rem 1.5rem;
+    min-height: 44px;
+    display: flex;
+    align-items: center;
+  }
+
+  .mobile-menu-links a:hover,
+  .mobile-menu-links a.active {
+    color: var(--accent);
+  }
+
+  .mobile-menu-social {
+    display: flex;
+    gap: 2rem;
+    margin-top: 2rem;
+  }
+
+  .mobile-menu-social a {
+    color: var(--text-dim);
+    transition: color 0.3s ease;
+    padding: 0.75rem;
+  }
+
+  .mobile-menu-social a:hover {
+    color: var(--accent);
+  }
+
+  .mobile-menu-social svg {
+    width: 28px;
+    height: 28px;
+  }
+
+  nav.scrolled {
+    border-bottom: 1px solid var(--border);
+    box-shadow: 0 2px 20px rgba(0,0,0,0.15);
+  }
+
+  .nav-left {
+    display: flex;
+    align-items: baseline;
+    gap: 1.5rem;
+    text-decoration: none;
+    transition: opacity 0.3s ease;
+  }
+  
+  .nav-left:hover {
+    opacity: 0.8;
+  }
+
+  .logo {
+    font-family: var(--sans);
+    font-size: 0.85rem;
+    font-weight: 700;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--text);
+    text-decoration: none;
+    transition: all 0.3s ease;
+  }
+
+  .logo:hover { 
+    color: var(--accent);
+  }
+
+  .nav-tagline {
+    font-size: 0.85rem;
+    color: var(--accent);
+    letter-spacing: 0.15em;
+    font-weight: 400;
+    text-transform: uppercase;
+  }
+
+  .nav-right {
+    display: flex;
+    align-items: center;
+    gap: 2rem;
+  }
+
+  .nav-links {
+    display: flex;
+    gap: 2rem;
+    align-items: center;
+  }
+
+  .nav-links a {
+    color: var(--text-dim);
+    text-decoration: none;
+    font-size: 0.85rem;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    transition: all 0.3s ease;
+    position: relative;
+    padding: 0.25rem 0;
+  }
+
+  .nav-links a::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 0;
+    height: 1px;
+    background: var(--accent);
+    transition: width 0.4s cubic-bezier(0.22, 1, 0.36, 1);
+  }
+
+  .nav-links a:hover { color: var(--text); }
+  .nav-links a:hover::after { width: 100%; }
+  
+  .nav-links a.active { color: var(--text); }
+  .nav-links a.active::after { width: 100%; }
+
+  .nav-social {
+    display: flex;
+    gap: 1rem;
+    align-items: center;
+  }
+
+  .nav-social a {
+    color: var(--text-dim);
+    transition: color 0.3s ease;
+  }
+
+  .nav-social a:hover {
+    color: var(--text);
+  }
+
+  .nav-social svg {
+    width: 18px;
+    height: 18px;
+  }
+
+  /* THEME TOGGLE */
+  .theme-toggle {
+    position: fixed;
+    bottom: 2rem;
+    right: 2rem;
+    width: 44px;
+    height: 44px;
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--text-dim);
+    z-index: 100;
+    transition: all 0.3s ease;
+    cursor: pointer;
+  }
+
+  .theme-toggle:hover {
+    color: var(--accent);
+    border-color: var(--accent);
+    transform: scale(1.1);
+  }
+
+  .theme-toggle svg {
+    width: 20px;
+    height: 20px;
+  }
+
+  /* HERO */
+  .hero {
+    min-height: 50vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 8rem 3rem 6rem;
+    max-width: 1100px;
+    margin: 0 auto;
+    position: relative;
+  }
+
+  /* ANIMATED GRADIENT - disabled, replaced by particle canvas */
+  .hero::before {
+    content: '';
+    position: absolute;
+    top: -20%;
+    right: -30%;
+    width: 800px;
+    height: 800px;
+    background: radial-gradient(ellipse at center, 
+      rgba(196, 62, 42, 0.15) 0%, 
+      rgba(196, 62, 42, 0.08) 25%,
+      rgba(196, 62, 42, 0.03) 50%,
+      transparent 70%);
+    pointer-events: none;
+    opacity: 0;
+    animation: gradientFloat 8s ease-in-out infinite, fadeIn 1.5s ease 0.5s forwards;
+    filter: blur(60px);
+    display: none;
+  }
+
+  .hero::after {
+    content: '';
+    position: absolute;
+    bottom: -10%;
+    left: -20%;
+    width: 500px;
+    height: 500px;
+    background: radial-gradient(ellipse at center, 
+      rgba(196, 62, 42, 0.08) 0%, 
+      transparent 60%);
+    pointer-events: none;
+    opacity: 0;
+    animation: gradientFloat2 12s ease-in-out infinite, fadeIn 2s ease 1s forwards;
+    filter: blur(80px);
+    display: none;
+  }
+
+  @keyframes gradientFloat {
+    0%, 100% { transform: translate(0, 0) scale(1); }
+    33% { transform: translate(30px, -20px) scale(1.05); }
+    66% { transform: translate(-20px, 10px) scale(0.95); }
+  }
+
+  @keyframes gradientFloat2 {
+    0%, 100% { transform: translate(0, 0) scale(1); }
+    50% { transform: translate(40px, 30px) scale(1.1); }
+  }
+
+  .hero-tagline {
+    font-family: var(--sans);
+    font-size: 0.75rem;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 2rem;
+    opacity: 0;
+    animation: fadeUp 0.9s cubic-bezier(0.22, 1, 0.36, 1) 0.1s forwards;
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+  }
+
+  .hero-tagline::before {
+    content: '';
+    width: 40px;
+    height: 1px;
+    background: var(--accent);
+    opacity: 0;
+    animation: lineExpand 0.6s ease 0.8s forwards;
+  }
+
+  .hero h1 {
+    font-family: var(--serif);
+    font-size: clamp(2.4rem, 5vw, 3.8rem);
+    font-weight: 400;
+    line-height: 1.18;
+    max-width: 920px;
+    margin-bottom: 2rem;
+    opacity: 0;
+    animation: fadeUp 0.9s cubic-bezier(0.22, 1, 0.36, 1) 0.2s forwards;
+  }
+
+  .hero h1 em {
+    font-style: italic;
+    color: var(--accent);
+  }
+
+  .hero-sub {
+    font-size: 1.15rem;
+    color: var(--text-body);
+    max-width: 700px;
+    line-height: 1.85;
+    opacity: 0;
+    animation: fadeUp 0.9s cubic-bezier(0.22, 1, 0.36, 1) 0.35s forwards;
+  }
+
+  /* SECTIONS */
+  section {
+    padding: 6rem 3rem;
+    max-width: 1100px;
+    margin: 0 auto;
+  }
+
+  .section-label {
+    font-size: 0.7rem;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 1.5rem;
+    font-weight: 500;
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+  }
+
+  .section-label::after {
+    content: '';
+    flex: 1;
+    max-width: 60px;
+    height: 1px;
+    background: var(--accent);
+    opacity: 0.4;
+  }
+
+  section h2 {
+    font-family: var(--serif);
+    font-size: clamp(1.8rem, 3.5vw, 2.5rem);
+    font-weight: 400;
+    line-height: 1.35;
+    margin-bottom: 2rem;
+    max-width: 800px;
+  }
+
+  section p {
+    color: var(--text-body);
+    font-size: 1.05rem;
+    max-width: 700px;
+    margin-bottom: 1.5rem;
+    line-height: 1.85;
+  }
+
+  section p strong {
+    color: var(--text);
+    font-weight: 500;
+  }
+
+  /* DIVIDER */
+  .divider {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 0 3rem;
+  }
+
+  .divider hr {
+    border: none;
+    border-top: 1px solid var(--border);
+  }
+
+  /* PROBLEM SECTION */
+  .problem-section {
+    border-left: 2px solid var(--accent);
+    padding-left: 2.5rem;
+    margin-left: 0;
+    position: relative;
+  }
+
+  .problem-section::before {
+    content: '';
+    position: absolute;
+    left: -5px;
+    top: 0;
+    width: 8px;
+    height: 8px;
+    background: var(--accent);
+    border-radius: 50%;
+    box-shadow: 0 0 12px var(--accent-glow);
+  }
+
+  /* THREE SCALES */
+  .scales {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.5rem;
+    margin-top: 3rem;
+  }
+
+  .scale-card {
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    padding: 2.5rem;
+    transition: all 0.5s cubic-bezier(0.22, 1, 0.36, 1);
+    position: relative;
+    overflow: hidden;
+  }
+
+  .scale-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 2px;
+    background: linear-gradient(90deg, var(--accent), transparent);
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform 0.5s cubic-bezier(0.22, 1, 0.36, 1);
+  }
+
+  .scale-card::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(135deg, var(--accent-soft) 0%, transparent 50%);
+    opacity: 0;
+    transition: opacity 0.5s ease;
+    pointer-events: none;
+  }
+
+  .scale-card:hover {
+    border-color: var(--accent);
+    transform: translateY(-8px) scale(1.02);
+    box-shadow: 0 25px 50px rgba(0, 0, 0, 0.4), 0 0 0 1px var(--accent);
+  }
+
+  .scale-card:hover::before {
+    transform: scaleX(1);
+  }
+
+  .scale-card:hover::after {
+    opacity: 1;
+  }
+
+  .scale-card .axis-letter {
+    position: absolute;
+    top: 1rem;
+    right: 1.2rem;
+    font-family: var(--serif);
+    font-size: 2.5rem;
+    font-weight: 300;
+    color: var(--accent);
+    opacity: 0.15;
+    line-height: 1;
+    transition: opacity 0.4s ease;
+    z-index: 1;
+  }
+
+  .scale-card:hover .axis-letter {
+    opacity: 0.4;
+  }
+
+  .scale-card h3 {
+    font-family: var(--serif);
+    font-size: 1.25rem;
+    font-weight: 400;
+    margin-bottom: 1rem;
+    color: var(--text);
+    position: relative;
+    z-index: 1;
+  }
+
+  .scale-card p {
+    font-size: 0.95rem;
+    color: var(--text-dim);
+    line-height: 1.75;
+    max-width: 100%;
+    position: relative;
+    z-index: 1;
+  }
+
+  /* SHIFTS */
+  .shifts {
+    margin-top: 3rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+  }
+
+  .shift-item {
+    display: flex;
+    align-items: baseline;
+    gap: 2rem;
+    padding: 2rem 0;
+    border-bottom: 1px solid var(--border);
+    position: relative;
+  }
+
+  .shift-item:last-child {
+    border-bottom: none;
+  }
+
+  .shift-item::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    width: 0;
+    background: linear-gradient(90deg, var(--accent-soft) 0%, transparent 100%);
+    transition: width 0.5s cubic-bezier(0.22, 1, 0.36, 1);
+  }
+
+  .shift-item:hover::before {
+    width: 100%;
+  }
+
+  .shift-item:first-child {
+    border-top: 1px solid var(--border);
+  }
+
+  .shift-label {
+    transition: color 0.3s ease;
+  }
+
+  .shift-item:hover .shift-label {
+    color: var(--accent);
+  }
+
+  .shift-label {
+    font-family: var(--serif);
+    font-size: 1.1rem;
+    font-style: italic;
+    color: var(--accent);
+    min-width: 120px;
+    flex-shrink: 0;
+    position: relative;
+    z-index: 1;
+  }
+
+  .shift-text {
+    color: var(--text-body);
+    font-size: 1.05rem;
+    line-height: 1.75;
+    position: relative;
+    z-index: 1;
+  }
+
+  /* FRAMEWORKS */
+  .frameworks {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2rem;
+    margin-top: 3rem;
+  }
+
+  .framework-card {
+    padding: 2rem 0;
+    border-top: 2px solid var(--accent);
+    transition: all 0.4s cubic-bezier(0.22, 1, 0.36, 1);
+    position: relative;
+  }
+
+  .framework-card::before {
+    content: '';
+    position: absolute;
+    top: -2px;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background: var(--text);
+    transition: width 0.5s cubic-bezier(0.22, 1, 0.36, 1);
+  }
+
+  .framework-card:hover::before {
+    width: 100%;
+  }
+
+  .framework-card:hover {
+    transform: translateY(-2px);
+  }
+
+  .framework-card h3 {
+    font-family: var(--sans);
+    font-size: 0.8rem;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--text);
+    margin-bottom: 1rem;
+    font-weight: 500;
+  }
+
+  .framework-card p {
+    font-size: 0.95rem;
+    color: var(--text-dim);
+    line-height: 1.75;
+    max-width: 100%;
+  }
+
+  /* ABOUT */
+  .about-grid {
+    display: grid;
+    grid-template-columns: 280px 1fr;
+    gap: 4rem;
+    align-items: start;
+    margin-top: 2rem;
+  }
+
+  .about-photo {
+    width: 100%;
+    aspect-ratio: 1;
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--text-dim);
+    font-size: 0.75rem;
+    letter-spacing: 0.1em;
+    position: relative;
+    overflow: hidden;
+    transition: all 0.5s cubic-bezier(0.22, 1, 0.36, 1);
+  }
+
+  .about-photo::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(135deg, transparent 0%, var(--accent-soft) 100%);
+    opacity: 0;
+    transition: opacity 0.5s ease;
+    pointer-events: none;
+  }
+
+  .about-photo:hover {
+    transform: scale(1.02);
+    border-color: var(--accent);
+    box-shadow: 0 25px 50px rgba(0, 0, 0, 0.4);
+  }
+
+  .about-photo:hover::after {
+    opacity: 1;
+  }
+
+  .about-text p {
+    max-width: 600px;
+  }
+
+  .about-text p:last-of-type {
+    color: var(--text-dim);
+    font-style: italic;
+  }
+
+  /* LINKS */
+  .links-section {
+    padding: 4rem 3rem;
+    max-width: 1100px;
+    margin: 0 auto;
+  }
+
+  .links-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1.25rem;
+  }
+
+  .link-block {
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    padding: 0;
+    text-decoration: none;
+    transition: all 0.5s cubic-bezier(0.22, 1, 0.36, 1);
+    position: relative;
+    overflow: hidden;
+  }
+
+  .link-block img {
+    width: 100%;
+    aspect-ratio: 1;
+    object-fit: cover;
+    filter: grayscale(100%);
+    transition: all 0.5s cubic-bezier(0.22, 1, 0.36, 1);
+  }
+
+  .link-block:hover img {
+    filter: grayscale(0%);
+    transform: scale(1.05);
+  }
+
+  .link-block-text {
+    padding: 1.5rem;
+  }
+
+  .link-block::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 2px;
+    background: var(--accent);
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform 0.5s cubic-bezier(0.22, 1, 0.36, 1);
+  }
+
+  .link-block::after {
+    content: '→';
+    position: absolute;
+    bottom: 2rem;
+    right: 2rem;
+    color: var(--text-dim);
+    font-size: 1.25rem;
+    opacity: 0;
+    transform: translateX(-10px);
+    transition: all 0.4s cubic-bezier(0.22, 1, 0.36, 1);
+  }
+
+  .link-block:hover {
+    border-color: var(--accent);
+    transform: translateY(-8px) scale(1.02);
+    box-shadow: 0 25px 50px rgba(0, 0, 0, 0.4), 0 0 30px rgba(196, 62, 42, 0.15);
+  }
+
+  .link-block:hover::before {
+    transform: scaleX(1);
+  }
+
+  .link-block:hover::after {
+    opacity: 1;
+    transform: translateX(0);
+    color: var(--accent);
+  }
+
+  .link-block h4 {
+    font-family: var(--sans);
+    font-size: 0.95rem;
+    color: var(--text);
+    font-weight: 500;
+    margin-bottom: 0.4rem;
+    transition: color 0.3s ease;
+  }
+
+  .link-block:hover h4 {
+    color: var(--accent);
+  }
+
+  .link-block span {
+    font-size: 0.8rem;
+    color: var(--text-dim);
+  }
+
+  /* SPEAKING */
+  .event {
+    display: grid;
+    grid-template-columns: 140px 1fr;
+    gap: 3rem;
+    padding: 2.5rem 0;
+    border-bottom: 1px solid var(--border);
+    align-items: start;
+    transition: all 0.4s cubic-bezier(0.22, 1, 0.36, 1);
+    position: relative;
+  }
+
+  .event:first-of-type {
+    border-top: 1px solid var(--border);
+  }
+
+  .event::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    width: 0;
+    background: linear-gradient(90deg, var(--accent-soft) 0%, transparent 100%);
+    transition: width 0.5s cubic-bezier(0.22, 1, 0.36, 1);
+  }
+
+  .event:hover::before {
+    width: 100%;
+  }
+
+  .event:hover {
+    padding-left: 1.5rem;
+  }
+
+  .event-date {
+    font-family: var(--serif);
+    font-size: clamp(1.8rem, 3.5vw, 2.5rem);
+    color: var(--text-dim);
+    font-style: italic;
+    position: relative;
+    z-index: 1;
+  }
+
+  .event-upcoming {
+    display: block;
+    width: fit-content;
+    font-family: var(--sans);
+    font-size: 0.6rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: #fff;
+    font-weight: 500;
+    font-style: normal;
+    margin-bottom: 0.75rem;
+    padding: 0.3rem 0.7rem;
+    background: var(--accent);
+    border-radius: 3px;
+  }
+
+  .event-date-upcoming {
+    color: var(--accent);
+  }
+
+  .event-upcoming-item {
+    position: relative;
+    border-left: 3px solid var(--accent);
+    padding-left: 1.5rem;
+  }
+
+  .event-content {
+    position: relative;
+    z-index: 1;
+  }
+
+  .event h3 {
+    font-family: var(--sans);
+    font-size: 1rem;
+    font-weight: 500;
+    color: var(--text);
+    margin-bottom: 0.5rem;
+    transition: color 0.3s ease;
+  }
+
+  .event:hover h3 {
+    color: var(--accent);
+  }
+
+  .event-location {
+    font-size: 0.9rem;
+    color: var(--text-dim);
+    margin-bottom: 0.75rem;
+  }
+
+  .event-location a {
+    color: var(--text-dim);
+    text-decoration: none;
+    border-bottom: 1px solid var(--border);
+    transition: all 0.3s ease;
+  }
+
+  .event-location a:hover {
+    color: var(--accent);
+    border-color: var(--accent);
+  }
+
+  .event-description {
+    font-size: 0.95rem;
+    color: var(--text-dim);
+    line-height: 1.7;
+    max-width: 600px;
+  }
+
+  .event-image-placeholder {
+    width: 100%;
+    max-width: 120px;
+    aspect-ratio: 1;
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--text-dim);
+    font-size: 0.6rem;
+    letter-spacing: 0.1em;
+    margin-bottom: 0.75rem;
+    transition: all 0.4s cubic-bezier(0.22, 1, 0.36, 1);
+    overflow: hidden;
+    position: relative;
+  }
+
+  .event-image-placeholder img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    filter: grayscale(1);
+    opacity: 0.65;
+    transition: filter 0.4s ease, transform 0.4s ease, opacity 0.4s ease;
+  }
+
+  .event-image-placeholder::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: rgba(196, 62, 42, 0.35);
+    mix-blend-mode: multiply;
+    transition: opacity 0.4s ease;
+    pointer-events: none;
+    z-index: 1;
+  }
+
+  .event:hover .event-image-placeholder::after {
+    opacity: 0;
+  }
+
+  .event:hover .event-image-placeholder img {
+    filter: grayscale(0);
+    transform: scale(1.05);
+    opacity: 1;
+  }
+
+  .event:hover .event-image-placeholder {
+    border-color: var(--border-light);
+    background: var(--bg-hover);
+  }
+
+  /* CONTACT */
+  .contact {
+    text-align: center;
+    padding: 4rem 3rem;
+  }
+
+  .contact-link {
+    font-family: var(--serif);
+    font-size: clamp(1.8rem, 3.5vw, 2.5rem);
+    font-weight: 400;
+    color: var(--text);
+    text-decoration: none;
+    position: relative;
+    padding-bottom: 6px;
+    transition: color 0.3s ease;
+  }
+
+  .contact-link:hover {
+    color: var(--accent);
+  }
+
+  .contact-link::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background: var(--accent);
+    transition: width 0.4s cubic-bezier(0.22, 1, 0.36, 1);
+  }
+
+  .contact-link:hover::after {
+    width: 100%;
+  }
+
+  .contact h2 {
+    max-width: 100%;
+    margin: 0 auto 1.5rem;
+    font-family: var(--serif);
+    font-size: 2rem;
+  }
+
+  .contact a {
+    color: var(--accent);
+    text-decoration: none;
+    font-size: 1.1rem;
+    position: relative;
+    padding-bottom: 4px;
+    transition: all 0.3s ease;
+  }
+
+  .contact a::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 1px;
+    background: var(--accent);
+    transition: transform 0.4s cubic-bezier(0.22, 1, 0.36, 1);
+  }
+
+  .contact a:hover {
+    color: var(--text);
+  }
+
+  .contact a:hover::after {
+    transform: scaleX(0);
+  }
+
+  /* FOOTER */
+  footer {
+    padding: 3rem;
+    text-align: center;
+    color: var(--text-dim);
+    font-size: 0.8rem;
+    border-top: 1px solid var(--border);
+  }
+
+  /* VERSION BADGE */
+  .version-badge {
+    position: fixed;
+    bottom: 2rem;
+    right: 2rem;
+    background: var(--accent);
+    color: white;
+    padding: 0.6rem 1.2rem;
+    font-size: 0.7rem;
+    font-weight: 600;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    z-index: 100;
+    box-shadow: 0 4px 20px rgba(196, 62, 42, 0.4);
+    cursor: pointer;
+    transition: all 0.3s ease;
+  }
+
+  .version-badge:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 30px rgba(196, 62, 42, 0.5);
+  }
+
+  /* SCROLL INDICATOR - Theme aware */
+  .scroll-indicator {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 3px; /* Slightly thicker for mobile visibility */
+    z-index: 10000; /* Above everything including nav */
+    transform-origin: left;
+    transform: scaleX(0);
+    pointer-events: none;
+  }
+
+  /* Dark theme: light gray | Light theme: dark gray */
+  :root .scroll-indicator {
+    background: #888888; /* Light gray on dark */
+  }
+  
+  :root.light-theme .scroll-indicator {
+    background: #444444; /* Dark gray on light */
+  }
+
+  /* RESPONSIVE */
+  @media (max-width: 1024px) {
+    .nav-links,
+    .nav-social {
+      display: none !important;
+    }
+
+    .hamburger {
+      display: flex;
+    }
+
+    nav {
+      padding: 1rem 1.5rem;
+    }
+
+    .nav-left {
+      gap: 0.5rem;
+      flex-wrap: nowrap;
+      white-space: nowrap;
+    }
+  }
+
+  @media (max-width: 480px) {
+    .nav-tagline {
+      display: inline;
+      font-size: 0.65rem;
+      letter-spacing: 0.08em;
+      font-weight: 300;
+    }
+
+    .logo {
+      font-size: 0.65rem;
+      letter-spacing: 0.08em;
+    }
+  }
+
+  @media (max-width: 968px) {
+    nav { padding: 1rem 1.5rem; }
+    .hero, section, .links-section { padding-left: 1.5rem; padding-right: 1.5rem; }
+    .scales, .frameworks { grid-template-columns: 1fr; }
+    .about-grid { grid-template-columns: 1fr; gap: 2rem; }
+    .event { grid-template-columns: 1fr; gap: 1rem; }
+    .links-grid { grid-template-columns: repeat(2, 1fr); }
+    .shift-item { flex-direction: column; gap: 0.75rem; }
+    .shift-label { min-width: auto; }
+    .hero h1 { font-size: 2rem; }
+  }
+
+  @media (max-width: 640px) {
+    .links-grid { grid-template-columns: 1fr; }
+    .nav-links { display: none !important; }
+    .nav-social { display: none !important; }
+    .hero-tagline::before { display: none; }
+    .section-label::after { display: none; }
+  }
+
+  /* SMOOTH SCROLLBAR */
+  ::-webkit-scrollbar {
+    width: 8px;
+  }
+
+  ::-webkit-scrollbar-track {
+    background: var(--bg);
+  }
+
+  ::-webkit-scrollbar-thumb {
+    background: var(--border);
+    border-radius: 4px;
+  }
+
+  ::-webkit-scrollbar-thumb:hover {
+    background: var(--text-dim);
+  }
+
+/* PILLARS — Three Visual Navigation Cards */
+.pillars-section {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 0;
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 4rem 3rem;
+}
+
+.pillar-card {
+  cursor: pointer;
+  opacity: 0;
+  transform: translateY(40px);
+  transition: opacity 0.9s cubic-bezier(0.22, 1, 0.36, 1), transform 0.9s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.pillar-card.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.pillar-card:nth-child(2) { transition-delay: 0.15s; }
+.pillar-card:nth-child(3) { transition-delay: 0.3s; }
+
+.pillar-image-wrap {
+  position: relative;
+  overflow: hidden;
+  aspect-ratio: 1;
+}
+
+.pillar-image-wrap img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  filter: grayscale(1);
+  transition: filter 0.4s ease, transform 0.4s ease;
+}
+
+.pillar-card:hover .pillar-image-wrap img {
+  filter: grayscale(0);
+  transform: scale(1.03);
+}
+
+.pillar-overlay {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: linear-gradient(to top, rgba(26,26,26,0.95) 0%, rgba(26,26,26,0.85) 70%, transparent 100%);
+  padding: 2rem 1.5rem 1.5rem;
+  transform: translateY(100%);
+  transition: transform 0.5s cubic-bezier(0.22, 1, 0.36, 1);
+  max-height: 70%;
+  overflow-y: auto;
+}
+
+.pillar-card.active .pillar-overlay {
+  transform: translateY(0);
+}
+
+.pillar-overlay p {
+  font-family: var(--sans);
+  font-size: 0.8rem;
+  color: #c4bfb8;
+  line-height: 1.6;
+  margin-bottom: 0.75rem;
+}
+
+.pillar-overlay p strong {
+  color: #e8e4df;
+}
+
+.pillar-cta {
+  display: inline-block;
+  font-family: var(--sans);
+  font-size: 0.75rem;
+  color: var(--accent);
+  text-decoration: none;
+  letter-spacing: 0.1em;
+  margin-top: 0.5rem;
+  transition: opacity 0.3s ease;
+}
+
+.pillar-cta:hover {
+  opacity: 0.7;
+}
+
+.pillar-title {
+  font-family: var(--serif);
+  font-size: 1.1rem;
+  font-weight: 400;
+  color: var(--text);
+  padding: 1.25rem 1.5rem 0;
+  transition: color 0.3s ease;
+}
+
+.pillar-card:hover .pillar-title {
+  color: var(--accent);
+}
+
+.pillar-card:hover .pillar-title::after {
+  content: '';
+  display: block;
+  width: 30px;
+  height: 1px;
+  background: var(--accent);
+  margin-top: 0.5rem;
+  animation: underlineGrow 0.4s ease forwards;
+}
+
+@keyframes underlineGrow {
+  from { width: 0; }
+  to { width: 30px; }
+}
+
+@media (max-width: 768px) {
+  .pillars-section {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+    padding: 2rem 0;
+  }
+  .pillar-title {
+    padding: 1rem 1.5rem 0;
+  }
+
+  /* Mobile: tap-to-expand text BELOW the image (no obstruction) */
+  .pillar-overlay {
+    position: relative;
+    left: auto;
+    right: auto;
+    bottom: auto;
+    transform: none;
+    max-height: 0;
+    padding: 0 1.5rem;
+    overflow: hidden;
+    background: rgba(26,26,26,0.92);
+    transition: max-height 0.45s cubic-bezier(0.22, 1, 0.36, 1), padding 0.45s cubic-bezier(0.22, 1, 0.36, 1);
+  }
+
+  .pillar-card.active .pillar-overlay {
+    max-height: 420px;
+    padding: 1.25rem 1.5rem 1.25rem;
+  }
+
+  .pillar-overlay p {
+    font-size: 0.9rem;
+  }
+}
+
+/* Desktop: hover/tap overlay ON the image (keep current behavior) */
+@media (min-width: 769px) {
+  .pillar-overlay {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    transform: translateY(100%);
+  }
+  .pillar-card.active .pillar-overlay {
+    transform: translateY(0);
+  }
+}
+</style>
+</head>
+<body>
+
+<div class="scroll-indicator" id="scrollIndicator"></div>
+<button class="theme-toggle" id="themeToggle" title="Switch to light theme" onclick="toggleTheme()">
+  <svg class="sun-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+    <circle cx="12" cy="12" r="5"/>
+    <line x1="12" y1="1" x2="12" y2="3"/>
+    <line x1="12" y1="21" x2="12" y2="23"/>
+    <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/>
+    <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/>
+    <line x1="1" y1="12" x2="3" y2="12"/>
+    <line x1="21" y1="12" x2="23" y2="12"/>
+    <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/>
+    <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/>
+  </svg>
+  <svg class="moon-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" style="display:none;">
+    <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/>
+  </svg>
+</button>
+<script>
+function toggleTheme() {
+  const root = document.documentElement;
+  const isLight = root.classList.toggle('light-theme');
+  localStorage.setItem('branko-theme', isLight ? 'light' : 'dark');
+  
+  const sunIcon = document.querySelector('.sun-icon');
+  const moonIcon = document.querySelector('.moon-icon');
+  const toggleBtn = document.getElementById('themeToggle');
+  
+  if (isLight) {
+    sunIcon.style.display = 'none';
+    moonIcon.style.display = 'block';
+    toggleBtn.title = 'Switch to dark theme';
+  } else {
+    sunIcon.style.display = 'block';
+    moonIcon.style.display = 'none';
+    toggleBtn.title = 'Switch to light theme';
+  }
+}
+
+// Apply saved theme on load
+(function() {
+  const savedTheme = localStorage.getItem('branko-theme');
+  if (savedTheme === 'light') {
+    document.documentElement.classList.add('light-theme');
+    document.addEventListener('DOMContentLoaded', function() {
+      const sunIcon = document.querySelector('.sun-icon');
+      const moonIcon = document.querySelector('.moon-icon');
+      const toggleBtn = document.getElementById('themeToggle');
+      if (sunIcon) sunIcon.style.display = 'none';
+      if (moonIcon) moonIcon.style.display = 'block';
+      if (toggleBtn) toggleBtn.title = 'Switch to dark theme';
+    });
+  }
+})();
+</script>
+
+<nav id="nav">
+  <a href="/" class="nav-left">
+    <span class="logo">Branko Lukic</span>
+    <span class="nav-tagline">COGNITIVE ARCHITECTURE</span>
+  </a>
+  <div class="nav-right">
+    <div class="nav-links">
+      <a href="#research" data-section="research">research</a>
+      <a href="#frameworks" data-section="frameworks">frameworks</a>
+      <a href="about.html">about</a>
+      <a href="#speaking" data-section="speaking">speaking</a>
+      <a href="articles.html">articles</a>
+    </div>
+    <div class="nav-social">
+      <a href="https://www.instagram.com/copyself.xyz/" target="_blank" title="Instagram">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+          <rect x="2" y="2" width="20" height="20" rx="5" ry="5"/>
+          <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/>
+          <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/>
+        </svg>
+      </a>
+      <a href="https://www.linkedin.com/in/brankolukic/" target="_blank" title="LinkedIn">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+          <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/>
+          <rect x="2" y="9" width="4" height="12"/>
+          <circle cx="4" cy="4" r="2"/>
+        </svg>
+      </a>
+    </div>
+    <button class="hamburger" id="hamburger" aria-label="Menu">
+      <span></span>
+      <span></span>
+      <span></span>
+    </button>
+  </div>
+</nav>
+
+<!-- Mobile Menu Overlay -->
+<div class="mobile-menu-overlay" id="mobileMenu">
+  <button class="mobile-menu-close" id="mobileMenuClose" aria-label="Close menu">&times;</button>
+  <div class="mobile-menu-links">
+    <a href="#research" data-section="research">research</a>
+    <a href="#frameworks" data-section="frameworks">frameworks</a>
+    <a href="about.html">about</a>
+    <a href="#speaking" data-section="speaking">speaking</a>
+    <a href="articles.html">articles</a>
+  </div>
+  <div class="mobile-menu-social">
+    <a href="https://www.instagram.com/copyself.xyz/" target="_blank" title="Instagram">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+        <rect x="2" y="2" width="20" height="20" rx="5" ry="5"/>
+        <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/>
+        <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/>
+      </svg>
+    </a>
+    <a href="https://www.linkedin.com/in/brankolukic/" target="_blank" title="LinkedIn">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+        <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/>
+        <rect x="2" y="9" width="4" height="12"/>
+        <circle cx="4" cy="4" r="2"/>
+      </svg>
+    </a>
+  </div>
+</div>
+
+<!-- HERO -->
+<section class="hero">
+  <canvas id="hero-particles" style="position:absolute;top:0;left:0;width:100%;height:100%;pointer-events:none;opacity:0;transition:opacity 2.5s ease;"></canvas>
+  <!-- tagline moved to nav -->
+  <h1>We do not compute. We <em>comprehend.</em><br>Building the layer between human creativity and frontier AI.</h1>
+  <p class="hero-sub">The inner workings of the human mind and the underlying cognitive mechanisms behind how humans interact with AI systems.</p>
+</section>
+
+<!-- FEATURED ARTICLE — event-style with left accent bar -->
+<section style="padding-top:1.5rem;padding-bottom:1.5rem;">
+  <a href="article-firmware" style="text-decoration:none;display:block;padding:2rem 0 2rem 1rem;border-left:3px solid var(--accent);transition:all 0.4s cubic-bezier(0.22,1,0.36,1);position:relative;overflow:hidden;" class="featured-article-link animate-on-scroll"
+    onmouseover="this.style.paddingLeft='2rem';this.querySelector('.fa-bg').style.width='100%'"
+    onmouseout="this.style.paddingLeft='1rem';this.querySelector('.fa-bg').style.width='0'">
+    <div class="fa-bg" style="position:absolute;left:0;top:0;bottom:0;width:0;background:linear-gradient(90deg,var(--accent-soft) 0%,transparent 100%);transition:width 0.5s cubic-bezier(0.22,1,0.36,1);pointer-events:none;"></div>
+    <div style="position:relative;z-index:1;">
+      <h3 style="font-family:var(--serif);font-size:1.25rem;font-weight:400;color:var(--text);margin-bottom:0.5rem;line-height:1.3;transition:color 0.3s ease;">Human Firmware Update Required</h3>
+      <p style="font-family:var(--sans);font-size:0.85rem;color:var(--text-dim);line-height:1.6;margin-bottom:0.5rem;">When every day brings a new AI tool, the most important upgrade isn't on any app store. It's sitting inside the mind, waiting to be uncrumpled.</p>
+      <span style="font-family:var(--sans);font-size:0.75rem;color:var(--accent);letter-spacing:0.1em;">Read Article →</span>
+    </div>
+  </a>
+</section>
+
+<div class="divider"><hr></div>
+
+<!-- THE PROBLEM -->
+<section>
+  <div class="section-label animate-on-scroll">The Problem</div>
+  <div class="problem-section animate-on-scroll">
+    <p>AI tools are advancing exponentially. The creative explosion is real. But something unexpected is happening: when everyone uses the same tools, output collapses toward the mean.</p>
+    <p>Your imperfections are not weaknesses. They are your Creative Fingerprint: your perspective on what needs to exist, based on your entire lived experience. No one can copy it. This work is about capturing, transmitting, and amplifying that fingerprint through AI, not despite AI.</p>
+    <p>Everything here comes from working alongside people. Designers, creators, teams. Not theory. Practice and application.</p>
+    <p>30,000+ experiments in co-cognition proved that human nuance can be captured, transmitted, and amplified through frontier AI rather than averaged out. The work operates at three scales: individual creators preserving their fingerprints, teams maintaining collective originality, and organizations building competitive advantage through authentic human-AI collaboration.</p>
+  </div>
+</section>
+
+<div class="pillars-section">
+  <div class="pillar-card" data-section="research">
+    <div class="pillar-image-wrap">
+      <img src="images/card-research.webp" alt="Research and Experiments" loading="lazy">
+      <div class="pillar-overlay">
+        <p>Branko's work operates at three scales: individual creators preserving their fingerprints, teams maintaining collective originality, and organizations building competitive advantage through authentic human-AI collaboration.</p>
+        <p>Research explores four shifts: <strong>Humans</strong> — How we evolve when AI becomes our creative partner. <strong>Interfaces</strong> — The distance from thought to outcome is collapsing. The next generation of software has to be rethought from how humans think and create, not retrofitted from old screen patterns. <strong>Products</strong> — What happens when intelligence lives in everything we touch. <strong>Design</strong> — Why human creativity becomes more valuable, not less.</p>
+        <a href="mailto:branko@lukic.com" class="pillar-cta">Get in Touch →</a>
+      </div>
+    </div>
+    <h3 class="pillar-title">Research and Experiments</h3>
+  </div>
+  <div class="pillar-card" data-section="frameworks">
+    <div class="pillar-image-wrap">
+      <img src="images/card-frameworks.webp" alt="Frameworks & Workshops" loading="lazy">
+      <div class="pillar-overlay">
+        <p>Collaborations and workshops to map how teams and organizations can transmit their creative DNA through AI systems while maintaining strategic differentiation.</p>
+        <p>Vibe Designing, Copyself Protocol, Creative Fingerprint Transmission — systematic approaches for preserving originality in human-AI work.</p>
+        <a href="mailto:branko@lukic.com" class="pillar-cta">Get in Touch →</a>
+      </div>
+    </div>
+    <h3 class="pillar-title">Frameworks & Workshops</h3>
+  </div>
+  <div class="pillar-card" data-section="speaking">
+    <div class="pillar-image-wrap">
+      <img src="images/card-speaking.webp" alt="Keynotes & Speaking" loading="lazy">
+      <div class="pillar-overlay">
+        <p>Presenting research findings on creative fingerprint transmission, co-cognition protocols, and preventing creativity collapse in human × AI collaboration.</p>
+        <a href="mailto:branko@lukic.com" class="pillar-cta">Get in Touch →</a>
+      </div>
+    </div>
+    <h3 class="pillar-title">Keynotes & Speaking</h3>
+  </div>
+</div>
+
+<div class="divider"><hr></div>
+
+<!-- THREE SCALES -->
+<section>
+  <div class="section-label animate-on-scroll">Three Scales</div>
+  <h2 class="animate-on-scroll">Creative fingerprint transmission operates at three scales: the individual, the team, and the organization</h2>
+  <div class="scales">
+    <div class="scale-card animate-on-scroll stagger-1">
+      <span class="axis-letter">X</span>
+      <h3>Creators</h3>
+      <p>Preserving your fingerprint when the tool wants to average it away. Your Perfect Flaws are the engines of original work.</p>
+    </div>
+    <div class="scale-card animate-on-scroll stagger-2">
+      <span class="axis-letter">Y</span>
+      <h3>Teams</h3>
+      <p>Maintaining collective originality when everyone has access to the same intelligence. The challenge is co-cognition, not just co-creation.</p>
+    </div>
+    <div class="scale-card animate-on-scroll stagger-3">
+      <span class="axis-letter">Z</span>
+      <h3>Organizations</h3>
+      <p>Building competitive advantage through authentic human-AI collaboration, not through speed alone. Differentiation comes from what only your people can see.</p>
+    </div>
+  </div>
+</section>
+
+<div class="divider"><hr></div>
+
+<!-- THREE SHIFTS -->
+<section id="research">
+  <div class="section-label animate-on-scroll">Research</div>
+  <h2 class="animate-on-scroll">Exploring four shifts</h2>
+  <div class="shifts">
+    <div class="shift-item animate-on-scroll stagger-1">
+      <span class="shift-label">Humans</span>
+      <span class="shift-text">How we evolve when AI becomes our creative partner. The challenge is not learning the tool. It is training our minds to think alongside it.</span>
+    </div>
+    <div class="shift-item animate-on-scroll stagger-2">
+      <span class="shift-label">Interfaces</span>
+      <span class="shift-text">The distance from thought to outcome is collapsing. The next generation of software has to be rethought from how humans think and create, not retrofitted from old screen patterns.</span>
+    </div>
+    <div class="shift-item animate-on-scroll stagger-3">
+      <span class="shift-label">Products</span>
+      <span class="shift-text">What happens when intelligence lives in everything we touch. There is no button to press to eat a tomato, yet our software still requires us to peck and poke.</span>
+    </div>
+    <div class="shift-item animate-on-scroll stagger-4">
+      <span class="shift-label">Design</span>
+      <span class="shift-text">Why human creativity becomes more valuable, not less. For 2.6 million years, every tool demanded we adapt to it. Now we have a tool that learns us back.</span>
+    </div>
+  </div>
+</section>
+
+<div class="divider"><hr></div>
+
+<!-- FRAMEWORKS -->
+<section id="frameworks">
+  <div class="section-label animate-on-scroll">Frameworks & Workshops</div>
+  <h2 class="animate-on-scroll">Systematic approaches for preserving originality in human-AI work</h2>
+  <p class="animate-on-scroll">Collaborations and workshops mapping how teams and organizations can transmit their creative DNA through AI systems while maintaining strategic differentiation. The approach is experimental. Not theorizing but building. Not predicting but discovering what actually happens when two intelligences meet.</p>
+  <div class="frameworks">
+    <div class="framework-card animate-on-scroll stagger-1">
+      <h3>Vibe Designing</h3>
+      <p>Maps how creative intent travels through AI systems. A framework for translating the prelinguistic signals, the gut feelings and aesthetic instincts, into structured guidance that AI can actually work with. Developed through practice with design teams navigating AI-augmented workflows.</p>
+    </div>
+    <div class="framework-card animate-on-scroll stagger-2">
+      <h3>Copyself Protocol</h3>
+      <p>A systematic approach for capturing and transmitting your creative identity through any AI system. Not your style. Your cognitive signature: the way you see, decide, and make. Built from 30,000+ experiments in co-cognition.</p>
+    </div>
+    <div class="framework-card animate-on-scroll stagger-3">
+      <h3>Creative Fingerprint Transmission</h3>
+      <p>Preserves what makes your work yours at scale. How teams and organizations encode their collective creative DNA so it survives and strengthens through AI collaboration rather than averaging out.</p>
+    </div>
+  </div>
+</section>
+
+<div class="divider"><hr></div>
+
+<!-- ABOUT -->
+<section id="about">
+  <div class="section-label animate-on-scroll">Bio</div>
+  <div class="about-grid">
+    <div class="about-photo animate-on-scroll"><img src="images/branko-portrait.jpg" alt="Branko Lukic - Cognitive Architect" style="width:100%;height:100%;object-fit:cover;border-radius:inherit;"></div>
+    <div class="about-text">
+      <p class="animate-on-scroll">My field of work is cognitive architecture: the inner workings of the human mind and the underlying cognitive mechanisms behind how humans interact with AI systems.</p>
+      <p class="animate-on-scroll">Everything I know comes from working with people. Not theory. Practice.</p>
+      <p class="animate-on-scroll">From working with 250 designers on AI transformation at Logitech, to designing the supercomputers at Cerebras that train frontier models, to figuring out what AI-native interfaces need to become. One continuous thread: the cognitive layer between people and intelligent systems.</p>
+      <p class="animate-on-scroll">How do we capture, transmit, and amplify human creativity through AI systems so that people become more authentic, more original, not less? That is the work.</p>
+      <p class="animate-on-scroll"><a href="about.html" style="color: var(--accent); text-decoration: none; font-size: 1.05rem; position: relative; padding-bottom: 2px; border-bottom: 1px solid var(--accent); transition: all 0.3s ease;">Read full bio →</a></p>
+    </div>
+  </div>
+</section>
+
+<div class="divider"><hr></div>
+
+<!-- LINKS -->
+<div class="links-section">
+  <div class="links-grid">
+    <a href="https://www.instagram.com/copyself.xyz/" class="link-block animate-on-scroll stagger-1" target="_blank">
+      <img src="images/copyself-lab.jpg" alt="copyself_xyz lab">
+      <div class="link-block-text">
+        <h4>copyself_xyz</h4>
+        <span>lab</span>
+      </div>
+    </a>
+    <a href="https://nonai.space" class="link-block animate-on-scroll stagger-2" target="_blank">
+      <img src="images/nonai-research.jpg" alt="nonai.space research">
+      <div class="link-block-text">
+        <h4>nonai.space</h4>
+        <span>research</span>
+      </div>
+    </a>
+    <a href="https://mitpress.mit.edu/9780262014847/nonobject/" class="link-block animate-on-scroll stagger-3" target="_blank">
+      <img src="images/nonobject-book.jpg" alt="nonobject MIT book">
+      <div class="link-block-text">
+        <h4>nonobject MIT</h4>
+        <span>book</span>
+      </div>
+    </a>
+    <a href="https://www.nonobject.com" class="link-block animate-on-scroll stagger-4" target="_blank">
+      <img src="images/nonobject-beginnings.jpg" alt="nonobject beginnings">
+      <div class="link-block-text">
+        <h4>nonobject</h4>
+        <span>beginnings</span>
+      </div>
+    </a>
+  </div>
+</div>
+
+<div class="divider"><hr></div>
+
+<!-- SPEAKING -->
+<section id="speaking">
+  <div class="section-label animate-on-scroll">Speaking</div>
+  <h2 class="animate-on-scroll">Keynotes & Events</h2>
+
+  <!-- Perfect Flaw Exhibition - August 2026 -->
+  <div class="event animate-on-scroll">
+    <div class="event-date">August '26</div>
+    <div class="event-content">
+      <div class="event-image-placeholder"><img src="images/events/museum-belgrade.png" alt="Museum of Applied Arts Belgrade"></div>
+      <h3>Perfect Flaw</h3>
+      <p class="event-location"><a href="https://mpu.rs/en/" target="_blank" rel="noopener">Museum of Applied Arts</a> · Belgrade, Serbia</p>
+      <p class="event-description">An exhibition exploring Perfect Flaws — the unique ways we process that lead to original work. When AI averages, your Creative Fingerprint becomes gold.</p>
+    </div>
+  </div>
+
+  <!-- iF Design Trend Conference - April 28, 2026 (UPCOMING - IMMINENT) -->
+  <div class="event event-upcoming-item animate-on-scroll">
+    <div class="event-date event-date-upcoming">April<br>28 '26</div>
+    <div class="event-content">
+      <div class="event-image-placeholder"><img src="images/events/if-berlin.webp" alt="iF Design Trend Conference Berlin"></div>
+      <h3>Perfect Flaw: When Imperfection Becomes Gold</h3>
+      <p class="event-location"><a href="https://ifdesign.com" target="_blank" rel="noopener">iF Design Trend Conference</a> · Berlin, Germany</p>
+      <p class="event-description">Keynote exploring why human imperfections become valuable creative assets in an age of AI-generated perfection. How "Perfect Flaws" drive originality and why your quirks are your competitive advantage.</p>
+    </div>
+  </div>
+
+  <!-- Co-Intelligence Academy - February 6, 2026 (PAST) -->
+  <div class="event animate-on-scroll">
+    <div class="event-date">February 6 '26</div>
+    <div class="event-content">
+      <div class="event-image-placeholder"><img src="images/events/co-intelligence.jpg" alt="Co-Intelligence Academy"></div>
+      <h3>AI + Creativity: From Tool Use to Co-Intelligence</h3>
+      <p class="event-location"><a href="https://co-intelligence.academy" target="_blank" rel="noopener">Co-Intelligence Academy</a> · Stanford University (Virtual)</p>
+      <p class="event-description">Course module on transitioning from AI as assistant to AI as thinking partner. Frameworks for creative collaboration that preserve human judgment while leveraging machine capability.</p>
+    </div>
+  </div>
+
+  <!-- Creative Mornings - December 12, 2025 -->
+  <div class="event animate-on-scroll">
+    <div class="event-date">December 12 '25</div>
+    <div class="event-content">
+      <div class="event-image-placeholder"><img src="images/events/creative-mornings-sf.webp" alt="Creative Mornings SF"></div>
+      <h3>The Missing Layer Between Human and Machine</h3>
+      <p class="event-location"><a href="https://creativemornings.com" target="_blank" rel="noopener">Creative Mornings</a> at Frog Design · San Francisco, California</p>
+      <p class="event-description">Morning talk on cognitive architecture: the protocols that translate human intent through AI systems. Why the interface between minds matters more than either mind alone.</p>
+    </div>
+  </div>
+
+  <!-- POLITEHNIKA Belgrade - November 28, 2025 -->
+  <div class="event animate-on-scroll">
+    <div class="event-date">November 28 '25</div>
+    <div class="event-content">
+      <div class="event-image-placeholder"><img src="images/events/politehnika.webp" alt="POLITEHNIKA Belgrade"></div>
+      <h3>Human + Machine: Co-Creating the Future of Design</h3>
+      <p class="event-location"><a href="https://politehnika.rs" target="_blank" rel="noopener">POLITEHNIKA 2025</a> International Scientific and Professional Conference · Belgrade, Serbia</p>
+      <p class="event-description">Panel with Ljubiša Bojić and Željko Zdravković on AI as a creative partner in design, the changing role of the designer, and how human intuition and machine intelligence work together in practice.</p>
+    </div>
+  </div>
+
+  <!-- UC Berkeley - November 19, 2025 -->
+  <div class="event animate-on-scroll">
+    <div class="event-date">November 19 '25</div>
+    <div class="event-content">
+      <div class="event-image-placeholder"><img src="images/events/uc-berkeley.webp" alt="UC Berkeley Jacobs Institute"></div>
+      <h3>Design in the Age of Co-Intelligence</h3>
+      <p class="event-location"><a href="https://jacobsinstitute.berkeley.edu" target="_blank" rel="noopener">Jacobs Institute for Design Innovation</a> · UC Berkeley, California</p>
+      <p class="event-description">Guest lecture exploring how design practice evolves when intelligence is no longer scarce. The shift from designing objects to designing thinking partnerships.</p>
+    </div>
+  </div>
+
+  <!-- IXDC Beijing Opening Keynote - October 30, 2025 -->
+  <div class="event animate-on-scroll">
+    <div class="event-date">October 30 '25</div>
+    <div class="event-content">
+      <div class="event-image-placeholder"><img src="images/events/ixdc-beijing.webp" alt="IXDC Beijing"></div>
+      <h3>Opening Keynote: The Creative Fingerprint Protocol</h3>
+      <p class="event-location"><a href="https://ixdc.org" target="_blank" rel="noopener">IXDC International Experience Design Conference</a> · Beijing, China</p>
+      <p class="event-description">Conference opening keynote on preserving individual creative identity in an age of averaged outputs. Why your imperfections are unforgeable and how to systematically transmit them.</p>
+    </div>
+  </div>
+
+  <!-- SF Tech Week Freepik - October 7, 2025 -->
+  <div class="event animate-on-scroll">
+    <div class="event-date">October 7 '25</div>
+    <div class="event-content">
+      <div class="event-image-placeholder"><img src="images/events/sf-tech-week.webp" alt="SF Tech Week"></div>
+      <h3>Better Tech for Creative Humans</h3>
+      <p class="event-location"><a href="https://www.freepik.com" target="_blank" rel="noopener">Freepik</a> at SF Tech Week · San Francisco, California</p>
+      <p class="event-description">Panel discussion on building creative tools that amplify rather than replace human judgment. The responsibility of tool-makers in the age of generative AI.</p>
+    </div>
+  </div>
+
+  <!-- Future of Creativity - August 21, 2025 -->
+  <div class="event animate-on-scroll">
+    <div class="event-date">August 21 '25</div>
+    <div class="event-content">
+      <div class="event-image-placeholder"><img src="images/events/future-creativity-sf.webp" alt="Future of Creativity SF"></div>
+      <h3>The Future of Creativity: AI, Art & the Human Touch</h3>
+      <p class="event-location">Future of Creativity Summit · San Francisco, California</p>
+      <p class="event-description">Closing keynote on why human creativity becomes more valuable, not less, as AI capabilities expand. The economics of authenticity in a world of infinite generation.</p>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section class="contact">
+  <a href="#" id="contact-link" class="contact-link animate-on-scroll">Get in Touch</a>
+</section>
+<script>
+(function(){var a='brranko';var b='gmail.com';var e=document.getElementById('contact-link');e.href='mai'+'lto:'+a+'@'+b;})();
+</script>
+
+<footer>
+  <p>Silicon Valley, California · Branko Lukic</p>
+</footer>
+
+<script>
+// Hamburger menu functionality
+const hamburger = document.getElementById('hamburger');
+const mobileMenu = document.getElementById('mobileMenu');
+const mobileMenuClose = document.getElementById('mobileMenuClose');
+const mobileMenuLinks = document.querySelectorAll('.mobile-menu-links a');
+
+function openMobileMenu() {
+  mobileMenu.classList.add('active');
+  hamburger.classList.add('active');
+  document.body.style.overflow = 'hidden';
+}
+
+function closeMobileMenu() {
+  mobileMenu.classList.remove('active');
+  hamburger.classList.remove('active');
+  document.body.style.overflow = '';
+}
+
+hamburger.addEventListener('click', openMobileMenu);
+mobileMenuClose.addEventListener('click', closeMobileMenu);
+
+// Close menu when clicking on a link
+mobileMenuLinks.forEach(link => {
+  link.addEventListener('click', closeMobileMenu);
+});
+
+// Close menu when clicking outside
+mobileMenu.addEventListener('click', (e) => {
+  if (e.target === mobileMenu) {
+    closeMobileMenu();
+  }
+});
+
+// Close menu on escape key
+document.addEventListener('keydown', (e) => {
+  if (e.key === 'Escape' && mobileMenu.classList.contains('active')) {
+    closeMobileMenu();
+  }
+});
+
+// Nav scroll effect
+const nav = document.getElementById('nav');
+const scrollIndicator = document.getElementById('scrollIndicator');
+
+window.addEventListener('scroll', () => {
+  // Nav shrink
+  if (window.scrollY > 50) {
+    nav.classList.add('scrolled');
+  } else {
+    nav.classList.remove('scrolled');
+  }
+  
+  // Scroll progress indicator
+  const winScroll = document.body.scrollTop || document.documentElement.scrollTop;
+  const height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+  const scrolled = (winScroll / height);
+  scrollIndicator.style.transform = `scaleX(${scrolled})`;
+});
+
+// Scroll reveal animation with IntersectionObserver
+const observerOptions = {
+  threshold: 0.1,
+  rootMargin: '0px 0px -80px 0px'
+};
+
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      entry.target.classList.add('visible');
+    }
+  });
+}, observerOptions);
+
+document.querySelectorAll('.animate-on-scroll').forEach(el => {
+  observer.observe(el);
+});
+
+// Scroll spy for nav active states
+const sections = document.querySelectorAll('section[id]');
+const navLinks = document.querySelectorAll('.nav-links a[data-section], .mobile-menu-links a[data-section]');
+
+function updateActiveNav() {
+  const scrollPos = window.scrollY + 150;
+  
+  sections.forEach(section => {
+    const sectionTop = section.offsetTop;
+    const sectionHeight = section.offsetHeight;
+    const sectionId = section.getAttribute('id');
+    
+    if (scrollPos >= sectionTop && scrollPos < sectionTop + sectionHeight) {
+      navLinks.forEach(link => {
+        link.classList.remove('active');
+        if (link.getAttribute('data-section') === sectionId) {
+          link.classList.add('active');
+        }
+      });
+    }
+  });
+}
+
+window.addEventListener('scroll', updateActiveNav);
+updateActiveNav();
+
+// Smooth scroll for anchor links
+document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+  anchor.addEventListener('click', function (e) {
+    e.preventDefault();
+    const target = document.querySelector(this.getAttribute('href'));
+    if (target) {
+      target.scrollIntoView({
+        behavior: 'smooth',
+        block: 'start'
+      });
+    }
+  });
+});
+
+// Scroll position persistence
+window.addEventListener('beforeunload', () => {
+  sessionStorage.setItem('scrollPos', window.scrollY);
+});
+
+window.addEventListener('load', () => {
+  const scrollPos = sessionStorage.getItem('scrollPos');
+  if (scrollPos) {
+    window.scrollTo(0, parseInt(scrollPos));
+    sessionStorage.removeItem('scrollPos');
+  }
+});
+
+// ========== GSAP SOTA ANIMATIONS ==========
+gsap.registerPlugin(ScrollTrigger);
+
+// Scroll progress indicator - controlled by GSAP
+gsap.to('#scrollIndicator', {
+  scaleX: 1,
+  ease: 'none',
+  scrollTrigger: {
+    trigger: document.body,
+    start: 'top top',
+    end: 'bottom bottom',
+    scrub: 0.3
+  }
+});
+
+// Hero parallax - text layers move at different speeds
+gsap.to('.hero h1', {
+  yPercent: 30,
+  ease: 'none',
+  scrollTrigger: {
+    trigger: '.hero',
+    start: 'top top',
+    end: 'bottom top',
+    scrub: 1
+  }
+});
+
+gsap.to('.hero-sub', {
+  yPercent: 50,
+  ease: 'none',
+  scrollTrigger: {
+    trigger: '.hero',
+    start: 'top top',
+    end: 'bottom top',
+    scrub: 1.5
+  }
+});
+
+// NOTE: Removed opacity animations to avoid dark text issue
+// The page uses CSS .animate-on-scroll for reveals
+// GSAP handles: parallax, scroll progress, line draws only
+
+// Dividers - draw line effect (no opacity, just scale)
+gsap.utils.toArray('.divider hr').forEach(hr => {
+  gsap.from(hr, {
+    scaleX: 0,
+    transformOrigin: 'left center',
+    duration: 0.8,
+    ease: 'power2.inOut',
+    scrollTrigger: {
+      trigger: hr,
+      start: 'top 90%',
+      toggleActions: 'play none none none'
+    }
+  });
+});
+
+console.log('✨ SOTA animations loaded');
+
+// Pillars — staggered reveal + click overlay
+document.querySelectorAll('.pillar-card').forEach(card => {
+  // Scroll reveal
+  ScrollTrigger.create({
+    trigger: card,
+    start: 'top 85%',
+    onEnter: () => card.classList.add('visible'),
+    once: true
+  });
+  
+  // Click to toggle overlay
+  card.addEventListener('click', function(e) {
+    if (e.target.closest('.pillar-cta')) return; // let links work
+    const wasActive = this.classList.contains('active');
+    // Close all
+    document.querySelectorAll('.pillar-card').forEach(c => c.classList.remove('active'));
+    // Toggle clicked
+    if (!wasActive) this.classList.add('active');
+  });
+});
+
+// Click outside to close
+document.addEventListener('click', function(e) {
+  if (!e.target.closest('.pillar-card')) {
+    document.querySelectorAll('.pillar-card').forEach(c => c.classList.remove('active'));
+  }
+});
+
+// HERO PARTICLE MORPH — sphere → cube → cone → sphere (organic, dense, alive)
+(function() {
+  const canvas = document.getElementById('hero-particles');
+  if (!canvas) return;
+  const ctx = canvas.getContext('2d');
+  const isMobile = window.innerWidth < 768;
+  const N = isMobile ? 800 : 2500;
+  let W, H;
+  
+  function resize() {
+    const r = window.devicePixelRatio || 1;
+    W = canvas.parentElement.offsetWidth;
+    H = canvas.parentElement.offsetHeight;
+    canvas.width = W * r;
+    canvas.height = H * r;
+    ctx.setTransform(r, 0, 0, r, 0, 0);
+  }
+  resize();
+  window.addEventListener('resize', resize);
+  
+  // Noise-like pseudo-random per particle
+  function hash(i) { let x = Math.sin(i * 127.1 + i * 311.7) * 43758.5453; return x - Math.floor(x); }
+  
+  // Generate points on shapes with organic jitter
+  function sphere(i, n) {
+    const phi = Math.acos(1 - 2 * (i + 0.5) / n);
+    const theta = Math.PI * (1 + Math.sqrt(5)) * i;
+    const jit = 0.03;
+    return [
+      Math.sin(phi) * Math.cos(theta) + (hash(i*3) - 0.5) * jit,
+      Math.cos(phi) + (hash(i*3+1) - 0.5) * jit,
+      Math.sin(phi) * Math.sin(theta) + (hash(i*3+2) - 0.5) * jit
+    ];
+  }
+  
+  function cube(i, n) {
+    const face = Math.floor(i / (n / 6));
+    const fi = i % Math.ceil(n / 6);
+    const side = Math.ceil(n / 6);
+    // Random distribution on face
+    const u = hash(fi * 7 + face) * 2 - 1;
+    const v = hash(fi * 13 + face + 99) * 2 - 1;
+    const jit = 0.04;
+    const j1 = (hash(i*5) - 0.5) * jit, j2 = (hash(i*5+1) - 0.5) * jit;
+    switch(face) {
+      case 0: return [u + j1, v + j2, 1];
+      case 1: return [u + j1, v + j2, -1];
+      case 2: return [1, u + j1, v + j2];
+      case 3: return [-1, u + j1, v + j2];
+      case 4: return [u + j1, 1, v + j2];
+      default: return [u + j1, -1, v + j2];
+    }
+  }
+  
+  function cone(i, n) {
+    const h = hash(i * 17 + 3);
+    const y = h * 2 - 1;
+    const r = (1 - h) * 0.95;
+    const theta = hash(i * 31 + 7) * Math.PI * 2;
+    const rr = r * Math.sqrt(hash(i * 41 + 11));
+    return [rr * Math.cos(theta), y, rr * Math.sin(theta)];
+  }
+  
+  // Cylinder
+  function cylinder(i, n) {
+    const h = hash(i * 19 + 5) * 2 - 1;
+    const theta = hash(i * 37 + 9) * Math.PI * 2;
+    const isTop = hash(i * 61) > 0.7;
+    const isBot = !isTop && hash(i * 67) > 0.65;
+    if (isTop) return [hash(i*23)*0.8*Math.cos(theta), 1, hash(i*23)*0.8*Math.sin(theta)];
+    if (isBot) return [hash(i*29)*0.8*Math.cos(theta), -1, hash(i*29)*0.8*Math.sin(theta)];
+    return [0.8 * Math.cos(theta), h, 0.8 * Math.sin(theta)];
+  }
+  
+  // Torus (donut)
+  function torus(i, n) {
+    const u = hash(i * 41 + 3) * Math.PI * 2;
+    const v = hash(i * 59 + 7) * Math.PI * 2;
+    const R = 0.7, r = 0.3;
+    return [(R + r * Math.cos(v)) * Math.cos(u), r * Math.sin(v), (R + r * Math.cos(v)) * Math.sin(u)];
+  }
+  
+  // Dodecahedron (12-faced)
+  function dodecahedron(i, n) {
+    const phi = (1 + Math.sqrt(5)) / 2;
+    const verts = [
+      [1,1,1],[1,1,-1],[1,-1,1],[1,-1,-1],[-1,1,1],[-1,1,-1],[-1,-1,1],[-1,-1,-1],
+      [0,phi,1/phi],[0,phi,-1/phi],[0,-phi,1/phi],[0,-phi,-1/phi],
+      [1/phi,0,phi],[1/phi,0,-phi],[-1/phi,0,phi],[-1/phi,0,-phi],
+      [phi,1/phi,0],[phi,-1/phi,0],[-phi,1/phi,0],[-phi,-1/phi,0]
+    ];
+    // Distribute on edges/faces by interpolating between vertices
+    const vi = Math.floor(hash(i * 83) * verts.length);
+    const vj = Math.floor(hash(i * 89 + 1) * verts.length);
+    const t = hash(i * 97 + 2);
+    const s = 0.55; // scale to ~unit
+    return [
+      (verts[vi][0] + (verts[vj][0] - verts[vi][0]) * t) * s,
+      (verts[vi][1] + (verts[vj][1] - verts[vi][1]) * t) * s,
+      (verts[vi][2] + (verts[vj][2] - verts[vi][2]) * t) * s
+    ];
+  }
+  
+  // Octahedron (8-faced)
+  function octahedron(i, n) {
+    const verts = [[1,0,0],[-1,0,0],[0,1,0],[0,-1,0],[0,0,1],[0,0,-1]];
+    const vi = Math.floor(hash(i * 71) * 6);
+    const vj = Math.floor(hash(i * 79 + 1) * 6);
+    const t = hash(i * 101 + 2);
+    return [
+      verts[vi][0] + (verts[vj][0] - verts[vi][0]) * t,
+      verts[vi][1] + (verts[vj][1] - verts[vi][1]) * t,
+      verts[vi][2] + (verts[vj][2] - verts[vi][2]) * t
+    ];
+  }
+  
+  // Icosahedron (20-faced)
+  function icosahedron(i, n) {
+    const phi = (1 + Math.sqrt(5)) / 2;
+    const s = 0.6;
+    const verts = [
+      [0,1,phi],[0,1,-phi],[0,-1,phi],[0,-1,-phi],
+      [1,phi,0],[1,-phi,0],[-1,phi,0],[-1,-phi,0],
+      [phi,0,1],[phi,0,-1],[-phi,0,1],[-phi,0,-1]
+    ];
+    const vi = Math.floor(hash(i * 103) * 12);
+    const vj = Math.floor(hash(i * 107 + 1) * 12);
+    const vk = Math.floor(hash(i * 109 + 2) * 12);
+    const t1 = hash(i * 113 + 3), t2 = hash(i * 127 + 4);
+    const w1 = t1, w2 = (1 - t1) * t2, w3 = 1 - w1 - w2;
+    return [
+      (verts[vi][0]*w1 + verts[vj][0]*w2 + verts[vk][0]*w3) * s,
+      (verts[vi][1]*w1 + verts[vj][1]*w2 + verts[vk][1]*w3) * s,
+      (verts[vi][2]*w1 + verts[vj][2]*w2 + verts[vk][2]*w3) * s
+    ];
+  }
+  
+  // Scattered random cloud — particles emerge from chaos
+  function scattered(i, n) {
+    return [(hash(i*7) - 0.5) * 4, (hash(i*11) - 0.5) * 4, (hash(i*13) - 0.5) * 4];
+  }
+  
+  const shapes = [
+    Array.from({length: N}, (_, i) => scattered(i, N)),
+    Array.from({length: N}, (_, i) => sphere(i, N)),
+    Array.from({length: N}, (_, i) => cube(i, N)),
+    Array.from({length: N}, (_, i) => cylinder(i, N)),
+    Array.from({length: N}, (_, i) => cone(i, N)),
+    Array.from({length: N}, (_, i) => torus(i, N)),
+    Array.from({length: N}, (_, i) => octahedron(i, N)),
+    Array.from({length: N}, (_, i) => dodecahedron(i, N)),
+    Array.from({length: N}, (_, i) => icosahedron(i, N)),
+    Array.from({length: N}, (_, i) => sphere(i, N))
+  ];
+  
+  // Per-particle properties: individual speed offsets, sizes, drift
+  const pData = Array.from({length: N}, (_, i) => ({
+    speed: 0.6 + hash(i * 97) * 0.8,
+    size: 0.4 + hash(i * 53) * 1.2,
+    drift: (hash(i * 71) - 0.5) * 0.015,
+    phase: hash(i * 43) * Math.PI * 2
+  }));
+  
+  let shapeIdx = 0, morphT = 0;
+  let holdTime = 0;
+  const morphSpeed = 0.0006; // slow morph
+  const holdDuration = 400;  // frames to hold each shape (rotate and admire)
+  const rotSpeed = 0.0003;   // gentle rotation
+  let time = 0;
+  
+  function lerp(a, b, t) { return a + (b - a) * t; }
+  function ease(t) { return t < 0.5 ? 4*t*t*t : 1 - Math.pow(-2*t+2, 3)/2; }
+  
+  function draw() {
+    ctx.clearRect(0, 0, W, H);
+    time += 1;
+    
+    if (holdTime > 0) {
+      holdTime--;
+    } else {
+      morphT += morphSpeed;
+      if (morphT >= 1) {
+        morphT = 0;
+        shapeIdx = (shapeIdx + 1) % (shapes.length - 1);
+        holdTime = holdDuration; // pause to admire the new shape
+      }
+    }
+    
+    const from = shapes[shapeIdx];
+    const to = shapes[shapeIdx + 1] || shapes[0];
+    
+    const cosR = Math.cos(time * rotSpeed);
+    const sinR = Math.sin(time * rotSpeed);
+    const cosY = Math.cos(time * rotSpeed * 0.6);
+    const sinY = Math.sin(time * rotSpeed * 0.6);
+    const R = isMobile ? W * 0.35 : Math.min(W, H) * 0.3;
+    const cx = isMobile ? W * 0.5 : W * 0.62;
+    const cy = isMobile ? H * 0.7 : H * 0.5;
+    
+    for (let i = 0; i < N; i++) {
+      const p = pData[i];
+      // Individual easing — each particle morphs at its own speed
+      const individualT = Math.min(1, morphT * (0.7 + p.speed * 0.6));
+      const eased = ease(individualT);
+      
+      let x = lerp(from[i][0], to[i][0], eased);
+      let y = lerp(from[i][1], to[i][1], eased);
+      let z = lerp(from[i][2], to[i][2], eased);
+      
+      // Organic drift — each particle breathes
+      const breathe = Math.sin(time * 0.008 * p.speed + p.phase);
+      x += breathe * p.drift;
+      y += Math.cos(time * 0.006 * p.speed + p.phase) * p.drift;
+      z += Math.sin(time * 0.007 * p.speed + p.phase * 1.3) * p.drift;
+      
+      // Rotate Y
+      let x2 = x * cosR - z * sinR;
+      let z2 = x * sinR + z * cosR;
+      // Rotate X
+      let y2 = y * cosY - z2 * sinY;
+      let z3 = y * sinY + z2 * cosY;
+      
+      const scale = 1 / (1 + z3 * 0.3);
+      const px = cx + x2 * R * scale;
+      const py = cy + y2 * R * scale;
+      const alpha = 0.1 + (1 + z3) * 0.3;
+      const sz = p.size * scale;
+      
+      ctx.beginPath();
+      ctx.arc(px, py, sz, 0, Math.PI * 2);
+      const isLightTheme = document.documentElement.classList.contains('light-theme');
+      ctx.fillStyle = isLightTheme ? `rgba(30, 30, 30, ${alpha})` : `rgba(232, 228, 223, ${alpha})`;
+      ctx.fill();
+    }
+    
+    requestAnimationFrame(draw);
+  }
+  
+  draw();
+  // Emerge — fade canvas in on load
+  setTimeout(() => { canvas.style.opacity = '0.5'; }, 100);
+})();
+</script>
+
+</body>
+</html>

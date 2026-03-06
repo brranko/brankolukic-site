@@ -1,0 +1,1919 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no">
+<title>Authenticity After AI — Branko Lukic</title>
+<meta name="description" content="Provenance tracks the tool. It tells you nothing about the mind behind it. Why the obsession with AI watermarking misses the deeper crisis of creative authenticity.">
+<meta name="author" content="Branko Lukic">
+<link rel="canonical" href="https://brankolukic.com/article-authenticity.html">
+
+<!-- Open Graph -->
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://brankolukic.com/article-authenticity.html">
+<meta property="og:title" content="Authenticity After AI — Branko Lukic">
+<meta property="og:description" content="Provenance tracks the tool. It tells you nothing about the mind behind it.">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,700;1,9..40,400&family=Playfair+Display:ital,wght@0,400;0,500;0,600;1,400;1,500&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #1a1a1a;
+    --bg-card: #232323;
+    --bg-hover: #2a2a2a;
+    --text: #e8e4df;
+    --text-dim: #9a9590;
+    --text-body: #c4bfb8;
+    --accent: #c43e2a;
+    --accent-soft: rgba(196, 62, 42, 0.12);
+    --accent-glow: rgba(196, 62, 42, 0.25);
+    --border: #333333;
+    --border-light: #3a3a3a;
+    --surface: #141414;
+    --surface-2: #1e1e1e;
+    --serif: 'Playfair Display', Georgia, serif;
+    --sans: 'DM Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+    --mono: 'DM Mono', monospace;
+    --font-serif: var(--serif);
+    --font-sans: var(--sans);
+    --accent-bright: var(--accent);
+  }
+
+  /* Light theme */
+  :root.light-theme {
+    --bg: #e8e6e3;
+    --bg-card: #f0efed;
+    --bg-hover: #e4e2df;
+    --text: #2a2a2a;
+    --text-dim: #6b6b6b;
+    --text-body: #4a4a4a;
+    --accent: #c43e2a;
+    --accent-soft: rgba(196, 62, 42, 0.08);
+    --accent-glow: rgba(196, 62, 42, 0.2);
+    --border: #d4d2cf;
+    --border-light: #dddbd8;
+    --surface: #e4e2df;
+    --surface-2: #dbd9d6;
+    --bg-secondary: #dfddd9;
+    --text-secondary: #5a5a5a;
+    --text-muted: #777;
+    --accent-bright: #c43e2a;
+    --accent-dim: rgba(196, 62, 42, 0.08);
+    --border-subtle: rgba(0, 0, 0, 0.06);
+    --border-warm: rgba(196, 62, 42, 0.15);
+  }
+
+  /* Light theme: Engagement zone, email capture, footer */
+  :root.light-theme .engagement-zone {
+    --ez-border: rgba(0, 0, 0, 0.1);
+    --ez-text: #2a2a2a;
+    --ez-text-muted: #6b6b6b;
+    --ez-text-dim: #888;
+  }
+  :root.light-theme .email-capture-inner {
+    background: #d6d4d0;
+    border: 1px solid rgba(0, 0, 0, 0.08);
+  }
+  :root.light-theme .email-capture-inner::before {
+    background: radial-gradient(circle, rgba(196, 62, 42, 0.04) 0%, transparent 70%);
+  }
+  :root.light-theme .email-capture .caption {
+    color: rgba(0, 0, 0, 0.5);
+  }
+  :root.light-theme .email-form input[type="email"] {
+    border: 1px solid rgba(0, 0, 0, 0.12);
+    background: rgba(255, 255, 255, 0.5);
+    color: #2a2a2a;
+  }
+  :root.light-theme .email-form input[type="email"]::placeholder {
+    color: rgba(0, 0, 0, 0.35);
+  }
+  :root.light-theme .email-form input[type="email"]:focus {
+    border-color: rgba(0, 0, 0, 0.3);
+  }
+  :root.light-theme .email-form button {
+    background: #2a2a2a;
+    color: #e8e6e3;
+  }
+  :root.light-theme .email-privacy {
+    color: rgba(0, 0, 0, 0.35);
+  }
+  :root.light-theme .share-buttons a {
+    border-color: rgba(0, 0, 0, 0.1);
+    color: #5a5a5a;
+  }
+  :root.light-theme .share-buttons a:hover {
+    border-color: rgba(0, 0, 0, 0.25);
+    color: #2a2a2a;
+  }
+  :root.light-theme .explore-card {
+    border-color: rgba(196, 62, 42, 0.3);
+  }
+  :root.light-theme .explore-card:hover {
+    border-color: rgba(196, 62, 42, 0.6);
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  
+  html { 
+    scroll-behavior: smooth;
+    font-size: 16px;
+  }
+
+  body {
+    font-family: var(--serif);
+    background: var(--bg);
+    color: var(--text);
+    line-height: 1.7;
+    font-size: 20px;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    overflow-x: hidden;
+  }
+
+  ::selection {
+    background: var(--accent);
+    color: white;
+  }
+
+  /* ANIMATIONS */
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(40px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  @keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+  }
+
+  @keyframes slideInLeft {
+    from { opacity: 0; transform: translateX(-30px); }
+    to { opacity: 1; transform: translateX(0); }
+  }
+
+  @keyframes pulse {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.6; }
+  }
+
+  .animate-on-scroll {
+    opacity: 0;
+    transform: translateY(40px);
+    transition: opacity 0.9s cubic-bezier(0.22, 1, 0.36, 1), transform 0.9s cubic-bezier(0.22, 1, 0.36, 1);
+  }
+
+  .animate-on-scroll.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  /* Stagger delays */
+  .stagger-1 { transition-delay: 0.1s; }
+  .stagger-2 { transition-delay: 0.2s; }
+
+  /* Article Audio Player */
+  .article-audio {
+    margin: 1.5rem 0 2rem;
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+  }
+
+  .audio-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.6rem 1rem;
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: 2rem;
+    color: var(--text-dim);
+    font-family: var(--sans);
+    font-size: 0.85rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+  }
+
+  .audio-btn:hover {
+    border-color: var(--accent);
+    color: var(--text);
+    background: var(--accent-soft);
+  }
+
+  .audio-btn.playing {
+    border-color: var(--accent);
+    color: var(--accent);
+    background: var(--accent-soft);
+  }
+
+  .audio-btn svg {
+    width: 16px;
+    height: 16px;
+  }
+
+  .audio-label {
+    font-weight: 500;
+  }
+
+  .audio-time {
+    font-family: var(--mono);
+    font-size: 0.75rem;
+    opacity: 0.7;
+  }
+  .stagger-3 { transition-delay: 0.3s; }
+  .stagger-4 { transition-delay: 0.4s; }
+  .stagger-5 { transition-delay: 0.5s; }
+
+  /* SCROLL INDICATOR */
+  .scroll-indicator {
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 2px;
+    background: var(--accent);
+    z-index: 1001;
+    transform-origin: left;
+    transform: scaleX(0);
+    transition: transform 0.1s linear;
+  }
+
+  /* NAV */
+  nav {
+    font-family: var(--sans);
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    padding: 1.25rem 3rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    z-index: 1000;
+    background: var(--bg);
+    border-bottom: 1px solid transparent;
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+  }
+
+  nav.scrolled {
+    border-bottom: 1px solid var(--border);
+    box-shadow: 0 2px 20px rgba(0,0,0,0.15);
+  }
+
+  .nav-left {
+    display: flex;
+    align-items: baseline;
+    gap: 1.5rem;
+    text-decoration: none;
+    transition: opacity 0.3s ease;
+  }
+  
+  .nav-left:hover {
+    opacity: 0.8;
+  }
+
+  .logo {
+    font-family: var(--sans);
+    font-size: 0.85rem;
+    font-weight: 700;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--text);
+    text-decoration: none;
+    transition: all 0.3s ease;
+  }
+
+  .logo:hover { 
+    color: var(--accent);
+  }
+
+  .nav-tagline {
+    font-size: 0.85rem;
+    color: var(--accent);
+    letter-spacing: 0.15em;
+    font-weight: 400;
+    text-transform: uppercase;
+  }
+
+  .nav-right {
+    display: flex;
+    align-items: center;
+    gap: 2rem;
+  }
+
+  .nav-links {
+    display: flex;
+    gap: 2rem;
+    align-items: center;
+  }
+
+  .nav-links a {
+    color: var(--text-dim);
+    text-decoration: none;
+    font-size: 0.85rem;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    transition: all 0.3s ease;
+    position: relative;
+    padding: 0.25rem 0;
+  }
+
+  .nav-links a::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 0;
+    height: 1px;
+    background: var(--accent);
+    transition: width 0.4s cubic-bezier(0.22, 1, 0.36, 1);
+  }
+
+  .nav-links a:hover { color: var(--text); }
+  .nav-links a:hover::after { width: 100%; }
+  
+  .nav-links a.active { color: var(--text); }
+  .nav-links a.active::after { width: 100%; }
+
+  .nav-social {
+    display: flex;
+    gap: 1rem;
+    align-items: center;
+  }
+
+  .nav-social a {
+    color: var(--text-dim);
+    transition: color 0.3s ease;
+  }
+
+  .nav-social a:hover {
+    color: var(--text);
+  }
+
+  .nav-social svg {
+    width: 18px;
+    height: 18px;
+  }
+
+  .back-link {
+    font-family: var(--sans);
+    font-size: 0.85rem;
+    color: var(--text-dim);
+    text-decoration: none;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+  }
+
+  .back-link:hover {
+    color: var(--accent);
+  }
+
+  .back-link svg {
+    width: 14px;
+    height: 14px;
+    transition: transform 0.3s ease;
+  }
+
+  .back-link:hover svg {
+    transform: translateX(-4px);
+  }
+
+  /* HAMBURGER MENU */
+  .hamburger {
+    display: none;
+    flex-direction: column;
+    gap: 5px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 8px;
+    z-index: 1002;
+  }
+
+  .hamburger span {
+    display: block;
+    width: 24px;
+    height: 2px;
+    background: var(--text);
+    transition: all 0.3s ease;
+  }
+
+  .hamburger.active span:nth-child(1) {
+    transform: translateY(7px) rotate(45deg);
+  }
+
+  .hamburger.active span:nth-child(2) {
+    opacity: 0;
+  }
+
+  .hamburger.active span:nth-child(3) {
+    transform: translateY(-7px) rotate(-45deg);
+  }
+
+  .mobile-menu-overlay {
+    position: fixed;
+    top: 0;
+    right: -100%;
+    width: 100%;
+    height: 100vh;
+    background: var(--bg);
+    z-index: 1001;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 2rem;
+    transition: right 0.4s cubic-bezier(0.22, 1, 0.36, 1);
+  }
+
+  .mobile-menu-overlay.active {
+    right: 0;
+  }
+
+  .mobile-menu-close {
+    position: absolute;
+    top: 1.5rem;
+    right: 2rem;
+    background: none;
+    border: none;
+    color: var(--text);
+    font-size: 2.5rem;
+    cursor: pointer;
+    width: 44px;
+    height: 44px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: color 0.3s ease;
+  }
+
+  .mobile-menu-close:hover {
+    color: var(--accent);
+  }
+
+  .mobile-menu-links {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 2rem;
+  }
+
+  .mobile-menu-links a {
+    color: var(--text);
+    text-decoration: none;
+    font-size: 1.5rem;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    transition: color 0.3s ease;
+    padding: 0.75rem 1.5rem;
+    min-height: 44px;
+    display: flex;
+    align-items: center;
+  }
+
+  .mobile-menu-links a:hover,
+  .mobile-menu-links a.active {
+    color: var(--accent);
+  }
+
+  .mobile-menu-social {
+    display: flex;
+    gap: 2rem;
+    margin-top: 2rem;
+  }
+
+  .mobile-menu-social a {
+    color: var(--text-dim);
+    transition: color 0.3s ease;
+    padding: 0.75rem;
+  }
+
+  .mobile-menu-social a:hover {
+    color: var(--accent);
+  }
+
+  .mobile-menu-social svg {
+    width: 28px;
+    height: 28px;
+  }
+
+  /* THEME TOGGLE */
+  .theme-toggle {
+    position: fixed;
+    bottom: 2rem;
+    right: 2rem;
+    width: 44px;
+    height: 44px;
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--text-dim);
+    z-index: 100;
+    transition: all 0.3s ease;
+    cursor: pointer;
+  }
+
+  .theme-toggle:hover {
+    color: var(--accent);
+    border-color: var(--accent);
+    transform: scale(1.1);
+  }
+
+  .theme-toggle svg {
+    width: 20px;
+    height: 20px;
+  }
+
+  /* ARTICLE CONTAINER */
+  .article-container {
+    max-width: 780px;
+    margin: 0 auto;
+    padding: 140px 24px 120px;
+  }
+
+  /* LABEL */
+  .label {
+    font-family: var(--sans);
+    font-size: 0.7rem;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 1.5rem;
+    font-weight: 500;
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    opacity: 0;
+    animation: fadeUp 0.9s cubic-bezier(0.22, 1, 0.36, 1) 0.1s forwards;
+  }
+
+  .label::after {
+    content: '';
+    flex: 1;
+    max-width: 60px;
+    height: 1px;
+    background: var(--accent);
+    opacity: 0.4;
+  }
+
+  /* TITLE */
+  h1 {
+    font-family: var(--serif);
+    font-size: clamp(2.2rem, 5vw, 3.2rem);
+    font-weight: 500;
+    line-height: 1.15;
+    margin-bottom: 1rem;
+    letter-spacing: -0.02em;
+    opacity: 0;
+    animation: fadeUp 0.9s cubic-bezier(0.22, 1, 0.36, 1) 0.2s forwards;
+  }
+
+  .subtitle {
+    font-family: var(--serif);
+    font-size: 1.3rem;
+    font-style: italic;
+    color: var(--text-dim);
+    margin-bottom: 3rem;
+    line-height: 1.5;
+    opacity: 0;
+    animation: fadeUp 0.9s cubic-bezier(0.22, 1, 0.36, 1) 0.3s forwards;
+  }
+
+  .context {
+    font-family: var(--sans);
+    font-size: 0.9rem;
+    color: var(--text-dim);
+    padding-bottom: 3rem;
+    border-bottom: 1px solid var(--border);
+    margin-bottom: 3.5rem;
+    line-height: 1.7;
+    opacity: 0;
+    animation: fadeUp 0.9s cubic-bezier(0.22, 1, 0.36, 1) 0.4s forwards;
+  }
+
+  /* BODY TEXT */
+  p {
+    margin-bottom: 1.75rem;
+    font-size: 1.15rem;
+    line-height: 1.85;
+    color: var(--text-body);
+  }
+
+  /* SECTION HEADINGS */
+  h2 {
+    font-family: var(--sans);
+    font-size: 0.7rem;
+    font-weight: 700;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-top: 4.5rem;
+    margin-bottom: 2rem;
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+  }
+
+  h2::after {
+    content: '';
+    flex: 1;
+    max-width: 60px;
+    height: 1px;
+    background: var(--accent);
+    opacity: 0.4;
+  }
+
+  /* PULL QUOTES */
+  .pull-quote {
+    font-family: var(--serif);
+    font-size: clamp(1.6rem, 4vw, 2.2rem);
+    font-style: italic;
+    line-height: 1.4;
+    color: var(--text);
+    margin: 3.5rem 0;
+    padding: 2rem 0;
+    border-top: 1px solid var(--border);
+    border-bottom: 1px solid var(--border);
+    text-align: center;
+  }
+
+  .pull-quote em {
+    color: var(--accent);
+    font-style: italic;
+  }
+
+  /* INSIGHT REVEAL */
+  .insight-reveal {
+    background: var(--bg-card);
+    color: var(--text);
+    padding: 2rem 2.5rem;
+    margin: 3rem 0;
+    font-family: var(--sans);
+    font-size: 1rem;
+    font-weight: 400;
+    line-height: 1.7;
+    position: relative;
+    overflow: hidden;
+    border: 1px solid var(--border);
+    border-left: 3px solid var(--accent);
+  }
+
+  .insight-reveal::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    right: -50%;
+    width: 100%;
+    height: 100%;
+    background: radial-gradient(circle, var(--accent-soft), transparent);
+    pointer-events: none;
+  }
+
+  .insight-reveal .insight-label {
+    font-size: 0.55rem;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    color: var(--accent);
+    opacity: 0.9;
+    margin-bottom: 0.5rem;
+    font-weight: 500;
+  }
+
+  /* MAXIM BOX */
+  .maxim {
+    background: var(--surface);
+    border-left: 4px solid var(--accent);
+    padding: 2rem 2.5rem;
+    margin: 3rem 0;
+    font-family: var(--serif);
+    font-size: 1.25rem;
+    font-style: italic;
+    line-height: 1.6;
+    color: var(--text);
+    position: relative;
+  }
+
+  .maxim::before {
+    content: '"';
+    position: absolute;
+    top: 0.5rem;
+    left: 1rem;
+    font-size: 3rem;
+    color: var(--accent);
+    opacity: 0.3;
+    font-family: var(--serif);
+  }
+
+  /* COMPARISON CARDS */
+  .comparison-diagram {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2px;
+    margin: 3.5rem 0;
+  }
+
+  @media (max-width: 600px) {
+    .comparison-diagram { grid-template-columns: 1fr; }
+  }
+
+  .comparison-card {
+    padding: 2.5rem 2rem;
+    font-family: var(--sans);
+    transition: all 0.5s cubic-bezier(0.22, 1, 0.36, 1);
+  }
+
+  .comparison-card.empty {
+    background: var(--surface);
+    border: 1px solid var(--border);
+  }
+
+  .comparison-card.authentic {
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-left: 3px solid var(--accent);
+    color: var(--text);
+  }
+
+  .comparison-card:hover {
+    transform: translateY(-4px);
+  }
+
+  .comparison-card .card-label {
+    font-size: 0.55rem;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    margin-bottom: 1.25rem;
+    opacity: 0.6;
+  }
+
+  .comparison-card .card-title {
+    font-family: var(--serif);
+    font-size: 1.5rem;
+    font-weight: 500;
+    margin-bottom: 1rem;
+    line-height: 1.25;
+  }
+
+  .comparison-card .card-desc {
+    font-size: 0.9rem;
+    line-height: 1.7;
+    opacity: 0.85;
+  }
+
+  .comparison-card .card-verdict {
+    font-size: 0.8rem;
+    font-weight: 700;
+    margin-top: 1.25rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+  }
+
+  .comparison-card.empty .card-verdict { color: var(--text-dim); }
+  .comparison-card.authentic .card-verdict { color: var(--accent); }
+
+  /* FINGERPRINT DIAGRAM */
+  .fingerprint-diagram {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    padding: 3rem 2.5rem;
+    margin: 3.5rem 0;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .fingerprint-diagram::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 2px;
+    background: linear-gradient(90deg, transparent, var(--accent), transparent);
+  }
+
+  .fingerprint-icon {
+    width: 80px;
+    height: 80px;
+    margin: 0 auto 1.5rem;
+    color: var(--accent);
+    opacity: 0;
+    transform: scale(0.5);
+    transition: all 0.6s cubic-bezier(0.34, 1.56, 0.64, 1);
+  }
+
+  .fingerprint-diagram.animated .fingerprint-icon {
+    opacity: 1;
+    transform: scale(1);
+  }
+
+  .fingerprint-diagram .diagram-label {
+    font-family: var(--sans);
+    font-size: 0.55rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--text-dim);
+    margin-bottom: 1rem;
+  }
+
+  .fingerprint-diagram .diagram-title {
+    font-family: var(--serif);
+    font-size: 1.5rem;
+    color: var(--text);
+    margin-bottom: 1rem;
+  }
+
+  .fingerprint-elements {
+    display: flex;
+    justify-content: center;
+    gap: 2rem;
+    flex-wrap: wrap;
+    margin-top: 2rem;
+  }
+
+  .fingerprint-element {
+    text-align: center;
+    opacity: 0;
+    transform: translateY(20px);
+    transition: all 0.5s cubic-bezier(0.22, 1, 0.36, 1);
+  }
+
+  .fingerprint-diagram.animated .fingerprint-element {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  .fingerprint-diagram.animated .fingerprint-element:nth-child(1) { transition-delay: 0.2s; }
+  .fingerprint-diagram.animated .fingerprint-element:nth-child(2) { transition-delay: 0.4s; }
+  .fingerprint-diagram.animated .fingerprint-element:nth-child(3) { transition-delay: 0.6s; }
+
+  .fingerprint-element .element-icon {
+    font-size: 1.5rem;
+    margin-bottom: 0.5rem;
+  }
+
+  .fingerprint-element .element-text {
+    font-family: var(--sans);
+    font-size: 0.8rem;
+    color: var(--text-dim);
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+  }
+
+  .fingerprint-element .element-cross {
+    color: var(--text-dim);
+    opacity: 0.4;
+  }
+
+  .fingerprint-element .element-check {
+    color: var(--accent);
+  }
+
+  /* PROVENANCE TRAP DIAGRAM */
+  .provenance-diagram {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    padding: 3rem 2.5rem;
+    margin: 3.5rem 0;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .provenance-diagram::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 2px;
+    background: linear-gradient(90deg, var(--accent), transparent);
+  }
+
+  .provenance-diagram .diagram-label {
+    font-family: var(--sans);
+    font-size: 0.55rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--text-dim);
+    margin-bottom: 2rem;
+  }
+
+  .provenance-flow {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 1rem;
+    flex-wrap: wrap;
+    margin-bottom: 1.5rem;
+  }
+
+  .provenance-step {
+    font-family: var(--sans);
+    font-size: 0.85rem;
+    padding: 0.75rem 1.25rem;
+    border: 1px solid var(--border);
+    color: var(--text-dim);
+    transition: all 0.3s ease;
+  }
+
+  .provenance-arrow {
+    font-size: 1.25rem;
+    color: var(--border);
+  }
+
+  .provenance-question {
+    font-family: var(--mono);
+    font-size: 0.8rem;
+    color: var(--accent);
+    text-align: center;
+    padding: 1rem;
+    border: 1px dashed var(--accent);
+    margin-top: 1.5rem;
+    background: var(--accent-soft);
+  }
+
+  /* ARTICLE FOOTER */
+  .article-footer {
+    margin-top: 5rem;
+    padding-top: 2rem;
+    border-top: 1px solid var(--border);
+    font-family: var(--sans);
+    font-size: 0.85rem;
+    color: var(--text-dim);
+    line-height: 1.7;
+  }
+
+  .article-footer .footer-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    color: var(--accent);
+    text-decoration: none;
+    transition: all 0.3s ease;
+  }
+
+  .article-footer .footer-link:hover {
+    flex-direction: column;
+  }
+
+  .article-footer .footer-link svg {
+    width: 16px;
+    height: 16px;
+    transition: transform 0.3s ease;
+  }
+
+  .article-footer .footer-link:hover svg {
+    transform: translateX(-4px);
+  }
+
+  strong {
+    font-weight: 600;
+    color: var(--text);
+  }
+
+  /* FOOTER */
+  footer {
+    padding: 3rem;
+    text-align: center;
+    color: var(--text-dim);
+    font-family: var(--sans);
+    font-size: 0.8rem;
+    border-top: 1px solid var(--border);
+  }
+
+  /* RESPONSIVE */
+  @media (max-width: 768px) {
+    .nav-links,
+    .nav-social {
+      display: none !important;
+    }
+
+    .hamburger {
+      display: flex;
+    }
+
+    nav {
+    font-family: var(--sans); padding: 1rem 1.5rem; }
+    .article-container { padding: 120px 1.5rem 80px; }
+    .provenance-diagram { padding: 2rem 1.5rem; }
+    .fingerprint-diagram { padding: 2rem 1.5rem; }
+    .insight-reveal { padding: 1.5rem; }
+    .comparison-card { padding: 2rem 1.5rem; }
+    
+    .nav-tagline {
+      display: block;
+      font-size: 0.5rem;
+      letter-spacing: 0.05em;
+    }
+
+    .logo {
+      font-size: 1rem;
+      letter-spacing: 0.1em;
+    }
+
+    .nav-left {
+      gap: 0.5rem;
+      flex-wrap: nowrap;
+      white-space: nowrap;
+    }
+    h1 { font-size: 1.8rem; }
+    .subtitle { font-size: 1.1rem; }
+  }
+
+  /* SCROLLBAR */
+  ::-webkit-scrollbar {
+    width: 8px;
+  }
+
+  ::-webkit-scrollbar-track {
+    background: var(--bg);
+  }
+
+  ::-webkit-scrollbar-thumb {
+    background: var(--border);
+    border-radius: 4px;
+  }
+
+  ::-webkit-scrollbar-thumb:hover {
+    background: var(--text-dim);
+  }
+
+  /* ARTICLE NAVIGATION */
+  .article-nav {
+    font-family: var(--sans);
+    margin-top: 4rem;
+    padding-top: 3rem;
+    border-top: 1px solid var(--border);
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+    font-family: var(--sans);
+  }
+
+  .next-article {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    text-decoration: none;
+    padding: 1.5rem;
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    transition: all 0.3s ease;
+  }
+
+  .next-article:hover {
+    border-color: var(--accent);
+    transform: translateX(8px);
+  }
+
+  .next-article .nav-label {
+    font-size: 0.7rem;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--accent);
+  }
+
+  .next-article .nav-title {
+    font-size: 1.1rem;
+    color: var(--text);
+    font-weight: 500;
+  }
+
+  .all-articles {
+    font-size: 0.85rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--text-dim);
+    text-decoration: none;
+    transition: color 0.3s ease;
+  }
+
+  .all-articles:hover {
+    color: var(--accent);
+  }
+
+        /* === ENGAGEMENT SECTION === */
+        .engagement-zone {
+            max-width: 780px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            --ez-border: rgba(255, 255, 255, 0.12);
+            --ez-text: #e8e4df;
+            --ez-text-muted: #a8a29e;
+            --ez-text-dim: #8a8580;
+        }
+
+        /* Share bar */
+        .share-bar {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            padding: 1.5rem 0;
+            border-top: 1px solid var(--ez-border);
+            margin-top: 0;
+        }
+        .share-bar .share-label {
+            font-family: var(--font-sans);
+            font-size: 0.72rem;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+            color: var(--ez-text-muted);
+        }
+        .share-buttons {
+            display: flex;
+            gap: 0.6rem;
+        }
+        .share-btn {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 38px;
+            height: 38px;
+            border-radius: 50%;
+            border: 1px solid rgba(255,255,255,0.2);
+            background: transparent;
+            color: var(--ez-text);
+            text-decoration: none;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        .share-btn:hover {
+            border-color: var(--accent-bright);
+            color: var(--accent-bright);
+        }
+        .share-btn svg {
+            width: 16px;
+            height: 16px;
+        }
+        .copy-btn {
+            font-family: var(--font-sans);
+            font-size: 0.72rem;
+            letter-spacing: 0.03em;
+            color: var(--ez-text);
+            border: 1px solid rgba(255,255,255,0.2);
+            background: transparent;
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+            cursor: pointer;
+            transition: all 0.2s;
+            display: flex;
+            align-items: center;
+            gap: 0.4rem;
+        }
+        .copy-btn:hover { border-color: var(--accent-bright); color: var(--accent-bright); }
+        .copy-btn.copied { border-color: #4a9; color: #4a9; }
+
+        /* Email capture — contrast block */
+        .email-capture {
+            padding: 3.5rem 0;
+            border-top: 1px solid var(--ez-border);
+        }
+        .email-capture-inner {
+            background: #0d0d0d;
+            border: 1px solid rgba(255,255,255,0.15);
+            padding: 3rem 2.5rem;
+            position: relative;
+            overflow: hidden;
+        }
+        .email-capture-inner::before {
+            content: '';
+            position: absolute;
+            top: -60%;
+            right: -20%;
+            width: 500px;
+            height: 500px;
+            background: radial-gradient(circle, rgba(196,168,130,0.04) 0%, transparent 70%);
+            pointer-events: none;
+        }
+        .email-capture h3 {
+            font-family: var(--font-serif);
+            font-size: 1.5rem;
+            font-weight: 400;
+            color: var(--text);
+            margin-bottom: 0.5rem;
+            position: relative;
+        }
+        .email-capture .caption {
+            font-family: var(--font-sans);
+            font-size: 0.82rem;
+            color: rgba(255,255,255,0.55);
+            margin-bottom: 1.6rem;
+            line-height: 1.55;
+            max-width: 440px;
+            font-weight: 300;
+            position: relative;
+        }
+        .email-form {
+            display: flex;
+            gap: 0.7rem;
+            max-width: 460px;
+            position: relative;
+        }
+        .email-form input[type="email"] {
+            flex: 1;
+            font-family: var(--font-sans);
+            font-size: 0.85rem;
+            padding: 0.8rem 1.1rem;
+            border: 1px solid rgba(255,255,255,0.1);
+            background: rgba(255,255,255,0.04);
+            color: var(--text);
+            outline: none;
+            transition: border-color 0.2s;
+        }
+        .email-form input[type="email"]::placeholder { color: rgba(255,255,255,0.35); }
+        .email-form input[type="email"]:focus { border-color: rgba(255,255,255,0.4); }
+        .email-form button {
+            font-family: var(--font-sans);
+            font-size: 0.8rem;
+            font-weight: 500;
+            letter-spacing: 0.04em;
+            padding: 0.8rem 1.6rem;
+            background: var(--text);
+            color: #0a0a0a;
+            border: none;
+            cursor: pointer;
+            transition: opacity 0.2s;
+            white-space: nowrap;
+        }
+        .email-form button:hover { opacity: 0.85; }
+        .email-privacy {
+            font-family: var(--font-sans);
+            font-size: 0.65rem;
+            color: rgba(255,255,255,0.35);
+            opacity: 1;
+            margin-top: 0.8rem;
+            position: relative;
+        }
+
+        /* Continue exploring — 4-card grid */
+        .continue-exploring {
+            padding: 3rem 0;
+            border-top: 1px solid var(--ez-border);
+        }
+        .continue-exploring .section-label {
+            font-family: var(--font-sans);
+            font-size: 0.68rem;
+            letter-spacing: 0.12em;
+            text-transform: uppercase;
+            color: var(--ez-text-muted);
+            margin-bottom: 1.5rem;
+        }
+        .explore-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1.5rem;
+        }
+        .explore-card {
+            border: 1px solid rgba(196, 62, 42, 0.3);
+            padding: 1.8rem;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            display: block;
+            position: relative;
+        }
+        .explore-card:hover {
+            border-color: rgba(196, 62, 42, 0.6);
+            transform: translateY(-2px);
+        }
+        .explore-card .card-label {
+            font-family: var(--font-sans);
+            font-size: 0.62rem;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            color: var(--ez-text-muted);
+            margin-bottom: 0.7rem;
+        }
+        .explore-card h4 {
+            font-family: var(--font-serif);
+            font-size: 1.1rem;
+            font-weight: 400;
+            color: var(--text);
+            line-height: 1.35;
+            margin-bottom: 0.5rem;
+        }
+        .explore-card .card-desc {
+            font-family: var(--font-sans);
+            font-size: 0.78rem;
+            color: var(--ez-text-muted);
+            line-height: 1.55;
+            font-weight: 300;
+        }
+        .explore-card .arrow {
+            position: absolute;
+            top: 1.8rem;
+            right: 1.8rem;
+            font-family: var(--font-sans);
+            font-size: 1rem;
+            color: var(--ez-text-muted);
+            transition: color 0.2s, transform 0.2s;
+        }
+        .explore-card:hover .arrow { color: var(--accent-bright); transform: translateX(3px); }
+
+        /* Author bar */
+        .author-bar {
+            padding: 2.5rem 0;
+            border-top: 1px solid var(--ez-border);
+        }
+        .author-bar-inner {
+            display: flex;
+            gap: 1.5rem;
+            align-items: flex-start;
+        }
+        .author-photo {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            overflow: hidden;
+            flex-shrink: 0;
+            background: rgba(255,255,255,0.1);
+        }
+        .author-photo img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        .author-info h4 {
+            font-family: var(--font-sans);
+            font-size: 0.88rem;
+            font-weight: 500;
+            color: var(--text);
+            margin-bottom: 0.25rem;
+        }
+        .author-info .author-title {
+            font-family: var(--font-sans);
+            font-size: 0.76rem;
+            color: var(--ez-text-muted);
+            margin-bottom: 0.6rem;
+            line-height: 1.45;
+            font-weight: 300;
+        }
+        .author-links {
+            display: flex;
+            gap: 1rem;
+            align-items: center;
+        }
+        .author-links a {
+            font-family: var(--font-sans);
+            font-size: 0.72rem;
+            color: var(--ez-text-muted);
+            text-decoration: none;
+            transition: color 0.2s;
+            display: flex;
+            align-items: center;
+            gap: 0.35rem;
+        }
+        .author-links a:hover { color: var(--accent-bright); }
+        .author-links a svg { width: 14px; height: 14px; fill: currentColor; }
+
+        /* Engagement footer */
+        .engagement-footer {
+            border-top: 1px solid var(--ez-border);
+            padding: 2rem 0 3rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .engagement-footer .footer-left {
+            font-family: var(--font-sans);
+            font-size: 0.7rem;
+            color: var(--ez-text-dim);
+        }
+        .engagement-footer .footer-links {
+            display: flex;
+            gap: 1.5rem;
+        }
+        .engagement-footer .footer-links a {
+            font-family: var(--font-sans);
+            font-size: 0.7rem;
+            color: var(--ez-text-dim);
+            text-decoration: none;
+            transition: color 0.2s;
+        }
+        .engagement-footer .footer-links a:hover { color: var(--text); }
+
+        @media (max-width: 600px) {
+            .explore-grid { grid-template-columns: 1fr; }
+            .email-form { flex-direction: column; }
+            .email-form button { width: 100%; text-align: center; }
+            .email-capture-inner { padding: 2.5rem 1.5rem; }
+            .author-bar-inner { flex-direction: column; gap: 1rem; }
+            .engagement-footer { flex-direction: column; gap: 1rem; text-align: center; }
+        }
+
+</style>
+</head>
+<body>
+
+<div class="scroll-indicator" id="scrollIndicator"></div>
+
+<button class="theme-toggle" id="themeToggle" title="Switch to light theme" onclick="toggleTheme()">
+  <svg class="sun-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+    <circle cx="12" cy="12" r="5"/>
+    <line x1="12" y1="1" x2="12" y2="3"/>
+    <line x1="12" y1="21" x2="12" y2="23"/>
+    <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/>
+    <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/>
+    <line x1="1" y1="12" x2="3" y2="12"/>
+    <line x1="21" y1="12" x2="23" y2="12"/>
+    <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/>
+    <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/>
+  </svg>
+  <svg class="moon-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" style="display:none;">
+    <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/>
+  </svg>
+</button>
+
+<nav id="nav">
+  <a href="/" class="nav-left">
+    <span class="logo">Branko Lukic</span>
+    <span class="nav-tagline">COGNITIVE ARCHITECTURE</span>
+  </a>
+  <div class="nav-right">
+    <div class="nav-links">
+      <a href="/#research">RESEARCH</a>
+      <a href="/#frameworks">FRAMEWORKS</a>
+      <a href="/#about">ABOUT</a>
+      <a href="/#speaking">SPEAKING</a>
+      <a href="articles.html">ARTICLES</a>
+    </div>
+    <div class="nav-social">
+      <a href="https://www.instagram.com/copyself.xyz/" target="_blank" title="Instagram">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+          <rect x="2" y="2" width="20" height="20" rx="5" ry="5"/>
+          <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/>
+          <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/>
+        </svg>
+      </a>
+      <a href="https://www.linkedin.com/in/brankolukic/" target="_blank" title="LinkedIn">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+          <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/>
+          <rect x="2" y="9" width="4" height="12"/>
+          <circle cx="4" cy="4" r="2"/>
+        </svg>
+      </a>
+    </div>
+    <button class="hamburger" id="hamburger" aria-label="Menu">
+      <span></span>
+      <span></span>
+      <span></span>
+    </button>
+  </div>
+</nav>
+
+<!-- Mobile Menu Overlay -->
+<div class="mobile-menu-overlay" id="mobileMenu">
+  <button class="mobile-menu-close" id="mobileMenuClose" aria-label="Close menu">&times;</button>
+  <div class="mobile-menu-links">
+    <a href="/#research">RESEARCH</a>
+    <a href="/#frameworks">FRAMEWORKS</a>
+    <a href="/#about">ABOUT</a>
+    <a href="/#speaking">SPEAKING</a>
+    <a href="articles.html">ARTICLES</a>
+  </div>
+  <div class="mobile-menu-social">
+    <a href="https://www.instagram.com/copyself.xyz/" target="_blank" title="Instagram">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+        <rect x="2" y="2" width="20" height="20" rx="5" ry="5"/>
+        <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/>
+        <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/>
+      </svg>
+    </a>
+    <a href="https://www.linkedin.com/in/brankolukic/" target="_blank" title="LinkedIn">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+        <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/>
+        <rect x="2" y="9" width="4" height="12"/>
+        <circle cx="4" cy="4" r="2"/>
+      </svg>
+    </a>
+  </div>
+</div>
+
+<article class="article-container">
+
+  <div class="label">November 25, 2025</div>
+
+  <h1>Authenticity After AI: Why Provenance Misses the Point</h1>
+
+  <div class="subtitle">Provenance tracks the tool. It tells you nothing about the mind behind it.</div>
+
+  <!-- Audio Player -->
+  <div class="article-audio">
+    <button class="audio-btn" id="audioBtn" onclick="toggleAudio()">
+      <svg class="play-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+        <polygon points="5 3 19 12 5 21 5 3"/>
+      </svg>
+      <svg class="pause-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="display:none">
+        <rect x="6" y="4" width="4" height="16"/>
+        <rect x="14" y="4" width="4" height="16"/>
+      </svg>
+      <span class="audio-label">Listen to article</span>
+      <span class="audio-time" id="audioTime"></span>
+    </button>
+    <audio id="articleAudio" src="audio/article-authenticity.mp3" preload="metadata"></audio>
+  </div>
+
+  <div class="context">
+    Most conversations about AI and creativity today circle around watermarking, detection, and whether something is "AI-made." It sounds serious and responsible, but it quietly misses the core issue.
+  </div>
+
+  <!-- CORE THESIS -->
+  <p class="animate-on-scroll">The question is not whether AI touched a work. The question is whether a human mind shaped it.</p>
+
+  <div class="pull-quote animate-on-scroll">Authenticity is not about the <em>tool.</em> It is about the <em>intent</em> behind it.</div>
+
+  <p class="animate-on-scroll">A photograph can be staged. A painting can be derivative. A song can be ghost-written. None of these require AI. Yet we obsess over AI provenance while ignoring the deeper crisis: a world flooded with work that looks creative but carries no genuine perspective.</p>
+
+  <!-- SECTION: THE PROVENANCE TRAP -->
+  <h2 class="animate-on-scroll">The Provenance Trap</h2>
+
+  <p class="animate-on-scroll">Watermarking tells you which tool was used. It cannot tell you whether the person using it had something real to say.</p>
+
+  <!-- PROVENANCE DIAGRAM -->
+  <div class="provenance-diagram animate-on-scroll">
+    <div class="diagram-label">What Provenance Actually Tracks</div>
+    <div class="provenance-flow">
+      <span class="provenance-step">Human</span>
+      <span class="provenance-arrow">→</span>
+      <span class="provenance-step">AI Tool</span>
+      <span class="provenance-arrow">→</span>
+      <span class="provenance-step">Output</span>
+      <span class="provenance-arrow">→</span>
+      <span class="provenance-step">✓ Watermark</span>
+    </div>
+    <div class="provenance-question">But did the human have something real to say?</div>
+  </div>
+
+  <p class="animate-on-scroll">Consider two pieces of writing:</p>
+
+  <!-- COMPARISON CARDS -->
+  <div class="comparison-diagram">
+    <div class="comparison-card empty animate-on-scroll stagger-1">
+      <div class="card-label">Piece A · Human-Written</div>
+      <div class="card-title">Technically "authentic"</div>
+      <div class="card-desc">Entirely human-written but says nothing new. Follows templates. Optimizes for engagement. Authentic in provenance but empty in substance.</div>
+      <div class="card-verdict">No fingerprint</div>
+    </div>
+    <div class="comparison-card authentic animate-on-scroll stagger-2">
+      <div class="card-label">Piece B · AI-Assisted</div>
+      <div class="card-title">Genuinely authentic</div>
+      <div class="card-desc">Uses AI as a collaborator but carries a perspective that could only come from one mind. The human shaped every word, every turn, every surprise.</div>
+      <div class="card-verdict">Clear fingerprint</div>
+    </div>
+  </div>
+
+  <p class="animate-on-scroll">Which one is more authentic?</p>
+
+  <div class="insight-reveal animate-on-scroll">
+    <div class="insight-label">The Real Question</div>
+    The future of authenticity is not about proving human hands touched every pixel. It is about proving a human mind had something worth saying.
+  </div>
+
+  <!-- SECTION: THE CREATIVE FINGERPRINT -->
+  <h2 class="animate-on-scroll">The Creative Fingerprint</h2>
+
+  <p class="animate-on-scroll">What we should track is not whether AI was involved. We should track whether a genuine creative fingerprint is present.</p>
+
+  <p class="animate-on-scroll">Your fingerprint is not your style. It is not your technique. It is your perspective—the way you see what others miss, shaped by everything you have lived through.</p>
+
+  <!-- FINGERPRINT DIAGRAM -->
+  <div class="fingerprint-diagram animate-on-scroll" id="fingerprintDiagram">
+    <svg class="fingerprint-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+      <path d="M12 10a2 2 0 0 0-2 2c0 1.02-.1 2.51-.26 4"/>
+      <path d="M14 13.12c0 2.38 0 6.38-1 8.88"/>
+      <path d="M17.29 21.02c.12-.6.43-2.3.5-3.02"/>
+      <path d="M2 12a10 10 0 0 1 18-6"/>
+      <path d="M2 16h.01"/>
+      <path d="M21.8 16c.2-2 .131-5.354 0-6"/>
+      <path d="M5 19.5C5.5 18 6 15 6 12a6 6 0 0 1 .34-2"/>
+      <path d="M8.65 22c.21-.66.45-1.32.57-2"/>
+      <path d="M9 6.8a6 6 0 0 1 9 5.2c0 .47 0 1.17-.02 2"/>
+    </svg>
+    <div class="diagram-label">Your Creative Fingerprint</div>
+    <div class="diagram-title">Perspective · Experience · Vision</div>
+    <div class="fingerprint-elements">
+      <div class="fingerprint-element">
+        <div class="element-icon element-cross">✗</div>
+        <div class="element-text">Not your style</div>
+      </div>
+      <div class="fingerprint-element">
+        <div class="element-icon element-cross">✗</div>
+        <div class="element-text">Not your technique</div>
+      </div>
+      <div class="fingerprint-element">
+        <div class="element-icon element-check">✓</div>
+        <div class="element-text">Your perspective</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="maxim animate-on-scroll">No AI can generate your fingerprint. It can only help you transmit it more clearly.</div>
+
+  <p class="animate-on-scroll">The future of authenticity is not about proving human hands touched every pixel. It is about proving a human mind had something worth saying.</p>
+
+  <!-- ARTICLE FOOTER -->
+  <div class="article-footer animate-on-scroll">
+    <a href="articles.html" class="footer-link">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+        <path d="M19 12H5M12 19l-7-7 7-7"/>
+      </svg>
+      Back to Articles
+    </a>
+  </div>
+
+  <!-- ARTICLE NAVIGATION -->
+
+</article>
+
+
+<!-- ENGAGEMENT ZONE -->
+<div class="engagement-zone">
+
+    <!-- Share bar -->
+    <div class="share-bar">
+        <span class="share-label">Share</span>
+        <div class="share-buttons">
+            <a href="https://www.linkedin.com/sharing/share-offsite/?url=https://www.brankolukic.com/article-authenticity.html" target="_blank" rel="noopener" class="share-btn" aria-label="Share on LinkedIn">
+                <svg viewBox="0 0 24 24" fill="currentColor"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+            </a>
+            <a href="https://twitter.com/intent/tweet?url=https://www.brankolukic.com/article-authenticity.html&text=The%20Authenticity%20Gap%20by%20Branko%20Luki%C4%87" target="_blank" rel="noopener" class="share-btn" aria-label="Share on X">
+                <svg viewBox="0 0 24 24" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
+            </a>
+            <a href="mailto:?subject=The%20Authenticity%20Gap%20by%20Branko%20Luki%C4%87&body=An%20essay%20on%20authenticity%20in%20the%20age%20of%20AI.%0A%0Ahttps://www.brankolukic.com/article-authenticity.html" class="share-btn" aria-label="Share via email">
+                <svg viewBox="0 0 24 24" fill="currentColor"><path d="M1.5 8.67v8.58a3 3 0 003 3h15a3 3 0 003-3V8.67l-8.928 5.493a3 3 0 01-3.144 0L1.5 8.67z"/><path d="M22.5 6.908V6.75a3 3 0 00-3-3h-15a3 3 0 00-3 3v.158l9.714 5.978a1.5 1.5 0 001.572 0L22.5 6.908z"/></svg>
+            </a>
+        </div>
+        <button class="copy-btn" onclick="copyLink(this)">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg>
+            Copy link
+        </button>
+    </div>
+
+    <!-- Email capture -->
+    <div class="email-capture">
+        <div class="email-capture-inner">
+            <h3>Follow this thinking</h3>
+            <p class="caption">Occasional writing on cognitive architecture, creative fingerprints, and the space between human intent and frontier AI. No noise.</p>
+            <form class="email-form" action="https://buttondown.com/api/emails/embed-subscribe/branko" method="post" target="popupwindow" onsubmit="window.open('https://buttondown.com/branko', 'popupwindow')">
+                <input type="email" name="email" placeholder="Your email" required />
+                <button type="submit">Subscribe</button>
+            </form>
+            <p class="email-privacy">No tracking. No cookies. No spam. Unsubscribe anytime.</p>
+        </div>
+    </div>
+
+    <!-- Continue exploring -->
+    <div class="continue-exploring">
+        <p class="section-label">Continue exploring</p>
+        <div class="explore-grid">
+            <a href="/#research" class="explore-card">
+                <span class="arrow">→</span>
+                <p class="card-label">Research</p>
+                <h4>30,000+ Experiments in Co-Cognition</h4>
+                <p class="card-desc">How human nuance can be amplified through frontier AI rather than averaged out.</p>
+            </a>
+            <a href="/#frameworks" class="explore-card">
+                <span class="arrow">→</span>
+                <p class="card-label">Framework</p>
+                <h4>The Creative Fingerprint</h4>
+                <p class="card-desc">Your imperfections are not weaknesses. They are your perspective on what needs to exist.</p>
+            </a>
+            <a href="https://nonai.space" target="_blank" class="explore-card">
+                <span class="arrow">→</span>
+                <p class="card-label">Lab</p>
+                <h4>nonai.space</h4>
+                <p class="card-desc">Ongoing research into the space between human creativity and machine intelligence.</p>
+            </a>
+            <a href="/#speaking" class="explore-card">
+                <span class="arrow">→</span>
+                <p class="card-label">Speaking</p>
+                <h4>Perfect Flaw: When Imperfection Becomes Gold</h4>
+                <p class="card-desc">iF Design Conference Berlin, April 2026.</p>
+            </a>
+        </div>
+    </div>
+
+    <!-- Author bar -->
+    <div class="author-bar">
+        <div class="author-bar-inner">
+            <div class="author-photo">
+                <img src="images/branko-portrait.jpg" alt="Branko Lukic" loading="lazy">
+            </div>
+            <div class="author-info">
+                <h4>Branko Lukic</h4>
+                <p class="author-title">Cognitive Architect · Design Perception, Cerebras · Co-founder, Creative & Design AI Lab, Logitech</p>
+                <div class="author-links">
+                    <a href="https://www.linkedin.com/in/brankolukic/" target="_blank" rel="noopener">
+                        <svg viewBox="0 0 24 24"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+                        LinkedIn
+                    </a>
+                    <a href="https://www.instagram.com/copyself.xyz/" target="_blank" rel="noopener">
+                        <svg viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/></svg>
+                        Instagram
+                    </a>
+                    <a href="mailto:branko@lukic.com">
+                        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M1.5 8.67v8.58a3 3 0 003 3h15a3 3 0 003-3V8.67l-8.928 5.493a3 3 0 01-3.144 0L1.5 8.67z"/><path d="M22.5 6.908V6.75a3 3 0 00-3-3h-15a3 3 0 00-3 3v.158l9.714 5.978a1.5 1.5 0 001.572 0L22.5 6.908z"/></svg>
+                        Contact
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <div class="engagement-footer">
+        <div class="footer-left">© 2027 Branko Lukic · Silicon Valley, California</div>
+        <div class="footer-links">
+            <a href="/">Home</a>
+            <a href="/articles.html">Articles</a>
+            <a href="https://www.linkedin.com/in/brankolukic/" target="_blank" rel="noopener">LinkedIn</a>
+        </div>
+    </div>
+
+</div>
+
+
+<script>
+// Article Audio Player
+const audioBtn = document.getElementById('audioBtn');
+const articleAudio = document.getElementById('articleAudio');
+const audioTime = document.getElementById('audioTime');
+const playIcon = audioBtn.querySelector('.play-icon');
+const pauseIcon = audioBtn.querySelector('.pause-icon');
+const audioLabel = audioBtn.querySelector('.audio-label');
+
+function formatTime(seconds) {
+  const mins = Math.floor(seconds / 60);
+  const secs = Math.floor(seconds % 60);
+  return mins + ':' + secs.toString().padStart(2, '0');
+}
+
+articleAudio.addEventListener('loadedmetadata', () => {
+  audioTime.textContent = formatTime(articleAudio.duration);
+});
+
+function toggleAudio() {
+  if (articleAudio.paused) {
+    articleAudio.play();
+    playIcon.style.display = 'none';
+    pauseIcon.style.display = 'block';
+    audioLabel.textContent = 'Playing';
+    audioBtn.classList.add('playing');
+  } else {
+    articleAudio.pause();
+    playIcon.style.display = 'block';
+    pauseIcon.style.display = 'none';
+    audioLabel.textContent = 'Listen to article';
+    audioBtn.classList.remove('playing');
+  }
+}
+
+articleAudio.addEventListener('timeupdate', () => {
+  audioTime.textContent = formatTime(articleAudio.currentTime) + ' / ' + formatTime(articleAudio.duration);
+});
+
+articleAudio.addEventListener('ended', () => {
+  playIcon.style.display = 'block';
+  pauseIcon.style.display = 'none';
+  audioLabel.textContent = 'Listen again';
+  audioBtn.classList.remove('playing');
+  audioTime.textContent = formatTime(articleAudio.duration);
+});
+
+// Hamburger menu functionality
+const hamburger = document.getElementById('hamburger');
+const mobileMenu = document.getElementById('mobileMenu');
+const mobileMenuClose = document.getElementById('mobileMenuClose');
+const mobileMenuLinks = document.querySelectorAll('.mobile-menu-links a');
+
+function openMobileMenu() {
+  mobileMenu.classList.add('active');
+  hamburger.classList.add('active');
+  document.body.style.overflow = 'hidden';
+}
+
+function closeMobileMenu() {
+  mobileMenu.classList.remove('active');
+  hamburger.classList.remove('active');
+  document.body.style.overflow = '';
+}
+
+hamburger.addEventListener('click', openMobileMenu);
+mobileMenuClose.addEventListener('click', closeMobileMenu);
+
+// Close menu when clicking on a link
+mobileMenuLinks.forEach(link => {
+  link.addEventListener('click', closeMobileMenu);
+});
+
+// Close menu when clicking outside
+mobileMenu.addEventListener('click', (e) => {
+  if (e.target === mobileMenu) {
+    closeMobileMenu();
+  }
+});
+
+// Close menu on escape key
+document.addEventListener('keydown', (e) => {
+  if (e.key === 'Escape' && mobileMenu.classList.contains('active')) {
+    closeMobileMenu();
+  }
+});
+
+// Theme toggle
+function toggleTheme() {
+  const root = document.documentElement;
+  const isLight = root.classList.toggle('light-theme');
+  localStorage.setItem('branko-theme', isLight ? 'light' : 'dark');
+  
+  const sunIcon = document.querySelector('.sun-icon');
+  const moonIcon = document.querySelector('.moon-icon');
+  const toggleBtn = document.getElementById('themeToggle');
+  
+  if (isLight) {
+    sunIcon.style.display = 'none';
+    moonIcon.style.display = 'block';
+    toggleBtn.title = 'Switch to dark theme';
+  } else {
+    sunIcon.style.display = 'block';
+    moonIcon.style.display = 'none';
+    toggleBtn.title = 'Switch to light theme';
+  }
+}
+
+// Apply saved theme on load
+(function() {
+  const savedTheme = localStorage.getItem('branko-theme');
+  if (savedTheme === 'light') {
+    document.documentElement.classList.add('light-theme');
+    document.addEventListener('DOMContentLoaded', function() {
+      const sunIcon = document.querySelector('.sun-icon');
+      const moonIcon = document.querySelector('.moon-icon');
+      const toggleBtn = document.getElementById('themeToggle');
+      if (sunIcon) sunIcon.style.display = 'none';
+      if (moonIcon) moonIcon.style.display = 'block';
+      if (toggleBtn) toggleBtn.title = 'Switch to dark theme';
+    });
+  }
+})();
+
+// Nav scroll effect
+const nav = document.getElementById('nav');
+const scrollIndicator = document.getElementById('scrollIndicator');
+
+window.addEventListener('scroll', () => {
+  // Nav shrink
+  if (window.scrollY > 50) {
+    nav.classList.add('scrolled');
+  } else {
+    nav.classList.remove('scrolled');
+  }
+  
+  // Scroll progress indicator
+  const winScroll = document.body.scrollTop || document.documentElement.scrollTop;
+  const height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+  const scrolled = (winScroll / height);
+  scrollIndicator.style.transform = `scaleX(${scrolled})`;
+});
+
+// Scroll reveal animation with IntersectionObserver
+const observerOptions = {
+  threshold: 0.1,
+  rootMargin: '0px 0px -80px 0px'
+};
+
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      entry.target.classList.add('visible');
+    }
+  });
+}, observerOptions);
+
+document.querySelectorAll('.animate-on-scroll').forEach(el => {
+  observer.observe(el);
+});
+
+// Fingerprint diagram animation
+const fingerprintObserver = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      entry.target.classList.add('animated');
+      fingerprintObserver.unobserve(entry.target);
+    }
+  });
+}, { threshold: 0.5 });
+
+const fingerprintDiagram = document.getElementById('fingerprintDiagram');
+if (fingerprintDiagram) {
+  fingerprintObserver.observe(fingerprintDiagram);
+}
+</script>
+
+</body>
+</html>

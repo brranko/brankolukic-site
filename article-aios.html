@@ -1,0 +1,2417 @@
+<!DOCTYPE html>
+<html lang="en">
+<script>if(localStorage.getItem('branko-theme')==='light')document.documentElement.classList.add('light-theme');</script>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>AI:OS | The Living Operating System — Branko Lukic</title>
+    <meta name="description" content="AI:OS — The Living Operating System. A long-form essay about the future of human-computer interaction by Branko Lukic.">
+    <meta property="og:title" content="AI:OS | The Living Operating System — Branko Lukic">
+    <meta property="og:description" content="For 2.6 million years, every tool demanded we adapt to it. Now we have a tool that learns our language instead.">
+    <meta property="og:type" content="article">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600&family=Poppins:wght@300;400;500;600&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,700;1,9..40,400&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+
+    <style>
+        :root {
+            --bg: #1a1a1a;
+            --bg-secondary: #141414;
+            --text: #f0ede8;
+            --text-secondary: #a8a29e;
+            --text-muted: #6b6560;
+            --accent: #c43e2a;
+            --accent-bright: #dfc49e;
+            --accent-dim: rgba(196, 168, 130, 0.10);
+            --accent-glow: rgba(196, 168, 130, 0.06);
+            --border-subtle: rgba(255, 255, 255, 0.04);
+            --border-warm: rgba(196, 168, 130, 0.15);
+            --font-serif: 'Playfair Display', Georgia, serif;
+            --font-sans: 'Poppins', -apple-system, BlinkMacSystemFont, sans-serif;
+            --sans: 'DM Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+            --serif: 'Playfair Display', Georgia, serif;
+            --mono: 'DM Mono', monospace;
+            --bg-card: #232323;
+            --bg-hover: #2a2a2a;
+            --text-dim: #9a9590;
+            --border: #333333;
+            --border-light: #3a3a3a;
+        }
+
+        /* Light theme */
+        :root.light-theme {
+            --bg: #e8e6e3;
+            --bg-secondary: #dfddd9;
+            --bg-card: #f0efed;
+            --bg-hover: #e4e2df;
+            --text: #2a2a2a;
+            --text-secondary: #5a5a5a;
+            --text-muted: #777;
+            --text-dim: #6b6b6b;
+            --accent: #c43e2a;
+            --accent-bright: #c43e2a;
+            --accent-dim: rgba(196, 62, 42, 0.08);
+            --accent-glow: rgba(196, 62, 42, 0.2);
+            --border: #d4d2cf;
+            --border-light: #dddbd8;
+            --border-subtle: rgba(0, 0, 0, 0.06);
+            --border-warm: rgba(196, 62, 42, 0.15);
+            --surface: #e4e2df;
+            --surface-2: #dbd9d6;
+        }
+        :root.light-theme .hero-image img {
+            filter: none;
+            opacity: 1;
+        }
+        :root.light-theme .engagement-zone {
+            --ez-border: rgba(0, 0, 0, 0.1);
+            --ez-text: #2a2a2a;
+            --ez-text-muted: #6b6b6b;
+            --ez-text-dim: #888;
+        }
+        :root.light-theme .email-capture-inner {
+            background: #d6d4d0;
+            border: 1px solid rgba(0, 0, 0, 0.08);
+        }
+        :root.light-theme .email-capture-inner::before {
+            background: radial-gradient(circle, rgba(196, 62, 42, 0.04) 0%, transparent 70%);
+        }
+        :root.light-theme .email-capture .caption {
+            color: rgba(0, 0, 0, 0.5);
+        }
+        :root.light-theme .email-form input[type="email"] {
+            border: 1px solid rgba(0, 0, 0, 0.12);
+            background: rgba(255, 255, 255, 0.5);
+            color: #2a2a2a;
+        }
+        :root.light-theme .email-form input[type="email"]::placeholder {
+            color: rgba(0, 0, 0, 0.35);
+        }
+        :root.light-theme .email-form input[type="email"]:focus {
+            border-color: rgba(0, 0, 0, 0.3);
+        }
+        :root.light-theme .email-form button {
+            background: #2a2a2a;
+            color: #e8e6e3;
+        }
+        :root.light-theme .email-privacy {
+            color: rgba(0, 0, 0, 0.35);
+        }
+        :root.light-theme .share-buttons a {
+            border-color: rgba(0, 0, 0, 0.1);
+            color: #5a5a5a;
+        }
+        :root.light-theme .share-buttons a:hover {
+            border-color: rgba(0, 0, 0, 0.25);
+            color: #2a2a2a;
+        }
+        :root.light-theme .explore-card {
+            border-color: rgba(196, 62, 42, 0.3);
+        }
+        :root.light-theme .explore-card:hover {
+            border-color: rgba(196, 62, 42, 0.6);
+        }
+        :root.light-theme ::selection {
+            background: rgba(196, 62, 42, 0.3);
+        }
+        :root.light-theme #audioProgress {
+            background: rgba(0,0,0,0.12) !important;
+        }
+
+        *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+        html { scroll-behavior: smooth; }
+        body {
+            font-family: var(--font-sans);
+            background: var(--bg);
+            color: var(--text);
+            line-height: 1.8;
+            overflow-x: hidden;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+        ::selection { background: rgba(196, 168, 130, 0.3); color: #fff; }
+
+        /* Noise texture */
+        body::before {
+            content: '';
+            position: fixed;
+            inset: 0;
+            pointer-events: none;
+            z-index: 9999;
+            opacity: 0.03;
+            background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
+        }
+
+        /* Scroll progress */
+        .scroll-progress {
+            position: fixed;
+            top: 0;
+            left: 0;
+            height: 2px;
+            background: var(--accent);
+            z-index: 10001;
+            transform-origin: left;
+            transform: scaleX(0);
+            width: 100%;
+        }
+
+        /* NAV */
+        nav#nav {
+            font-family: var(--sans);
+            position: fixed;
+            top: 0; left: 0; right: 0;
+            padding: 1.25rem 3rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            z-index: 10000;
+            background: var(--bg);
+            border-bottom: 1px solid transparent;
+            transition: border-color 0.3s ease, box-shadow 0.3s ease;
+        }
+        nav#nav.scrolled {
+            border-bottom: 1px solid var(--border);
+            box-shadow: 0 2px 20px rgba(0,0,0,0.15);
+        }
+        .nav-left {
+            display: flex;
+            align-items: baseline;
+            gap: 1.5rem;
+            text-decoration: none;
+            transition: opacity 0.3s ease;
+        }
+        .nav-left:hover { opacity: 0.8; }
+        .logo {
+            font-family: var(--sans);
+            font-size: 0.85rem;
+            font-weight: 700;
+            letter-spacing: 0.15em;
+            text-transform: uppercase;
+            color: var(--text);
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+        .logo:hover { color: var(--accent); }
+        .nav-tagline {
+            font-size: 0.85rem;
+            color: var(--accent);
+            letter-spacing: 0.15em;
+            font-weight: 400;
+            text-transform: uppercase;
+        }
+
+        .nav-right {
+            display: flex;
+            align-items: center;
+            gap: 2rem;
+        }
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            align-items: center;
+        }
+        .nav-links a {
+            color: var(--text-dim);
+            text-decoration: none;
+            font-size: 0.85rem;
+            letter-spacing: 0.15em;
+            text-transform: uppercase;
+            transition: all 0.3s ease;
+            position: relative;
+            padding: 0.25rem 0;
+            font-family: var(--sans);
+        }
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 1px;
+            background: var(--accent);
+            transition: width 0.4s cubic-bezier(0.22, 1, 0.36, 1);
+        }
+        .nav-links a:hover { color: var(--text); }
+        .nav-links a:hover::after { width: 100%; }
+        .nav-links a.active { color: var(--text); }
+        .nav-links a.active::after { width: 100%; }
+        .nav-social {
+            display: flex;
+            gap: 1rem;
+            align-items: center;
+        }
+        .nav-social a {
+            color: var(--text-dim);
+            transition: color 0.3s ease;
+        }
+        .nav-social a:hover { color: var(--text); }
+        .nav-social svg { width: 18px; height: 18px; }
+
+        /* Scroll indicator */
+        .scroll-indicator {
+            position: fixed;
+            top: 0;
+            left: 0;
+            height: 2px;
+            background: var(--accent);
+            z-index: 10002;
+            transform-origin: left;
+            transform: scaleX(0);
+            width: 100%;
+        }
+
+        /* Hamburger */
+        .hamburger {
+            display: none;
+            flex-direction: column;
+            gap: 5px;
+            background: none;
+            border: none;
+            cursor: pointer;
+            padding: 8px;
+            z-index: 10003;
+        }
+        .hamburger span {
+            display: block;
+            width: 24px;
+            height: 2px;
+            background: var(--text);
+            transition: all 0.3s ease;
+        }
+        .hamburger.active span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+        .hamburger.active span:nth-child(2) { opacity: 0; }
+        .hamburger.active span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+
+        /* Mobile menu */
+        .mobile-menu-overlay {
+            position: fixed;
+            top: 0;
+            right: -100%;
+            width: 100%;
+            height: 100vh;
+            background: var(--bg);
+            z-index: 10001;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            gap: 2rem;
+            transition: right 0.4s cubic-bezier(0.22, 1, 0.36, 1);
+        }
+        .mobile-menu-overlay.active { right: 0; }
+        .mobile-menu-close {
+            position: absolute;
+            top: 1.5rem;
+            right: 2rem;
+            background: none;
+            border: none;
+            color: var(--text);
+            font-size: 2.5rem;
+            cursor: pointer;
+            width: 44px;
+            height: 44px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: color 0.3s ease;
+        }
+        .mobile-menu-close:hover { color: var(--accent); }
+        .mobile-menu-links {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 2rem;
+        }
+        .mobile-menu-links a {
+            color: var(--text);
+            text-decoration: none;
+            font-size: 1.5rem;
+            letter-spacing: 0.15em;
+            text-transform: uppercase;
+            transition: color 0.3s ease;
+            padding: 0.75rem 1.5rem;
+            min-height: 44px;
+            display: flex;
+            align-items: center;
+            font-family: var(--sans);
+        }
+        .mobile-menu-links a:hover,
+        .mobile-menu-links a.active { color: var(--accent); }
+        .mobile-menu-social {
+            display: flex;
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+        .mobile-menu-social a {
+            color: var(--text-dim);
+            transition: color 0.3s ease;
+            padding: 0.75rem;
+        }
+        .mobile-menu-social a:hover { color: var(--accent); }
+        .mobile-menu-social svg { width: 28px; height: 28px; }
+
+        /* Full-bleed viz (for VizAdaptive) */
+        .viz-fullbleed {
+            margin-left: calc(-50vw + 50%);
+            margin-right: calc(-50vw + 50%);
+            width: 100vw;
+            max-width: 100vw;
+            border-radius: 0;
+            border-left: none;
+            border-right: none;
+        }
+
+        /* Typography */
+        h1, h2, h3, h4 { font-family: var(--font-serif); font-weight: 400; }
+
+        @media (max-width: 900px) {
+            .nav-links { display: none; }
+            .nav-social { display: none; }
+            .hamburger { display: flex; }
+        }
+
+        /* Hero image */
+        .hero-image {
+            width: 100%;
+            position: relative;
+            overflow: hidden;
+            background: var(--bg);
+        }
+        .hero-image img {
+            width: 100%;
+            height: auto;
+            display: block;
+            object-fit: cover;
+        }
+
+        /* Hero */
+        .hero {
+            position: relative;
+            width: 100%;
+            min-height: 52vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-end;
+            overflow: hidden;
+            background: radial-gradient(ellipse at center, rgba(196,168,130,0.06) 0%, transparent 70%), var(--bg);
+        }
+        .hero::after {
+            content: '';
+            position: absolute;
+            bottom: -200px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 800px;
+            height: 800px;
+            background: radial-gradient(ellipse at center, rgba(196,168,130,0.08) 0%, rgba(196,168,130,0.02) 50%, transparent 70%);
+            filter: blur(60px);
+            z-index: 0;
+            pointer-events: none;
+            animation: gradientFloat 8s ease-in-out infinite;
+        }
+        @keyframes gradientFloat {
+            0%, 100% { transform: translateX(-50%) scale(1); }
+            33% { transform: translateX(-47%) scale(1.05); }
+            66% { transform: translateX(-53%) scale(0.95); }
+        }
+        .hero-content {
+            position: relative;
+            z-index: 2;
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 0 2rem 6rem;
+            width: 100%;
+        }
+        .hero-label {
+            font-family: var(--font-sans);
+            font-size: 0.7rem;
+            letter-spacing: 0.3em;
+            text-transform: uppercase;
+            color: var(--accent);
+            margin-bottom: 1.5rem;
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+        .hero-label::after {
+            content: '';
+            width: 60px;
+            height: 1px;
+            background: var(--accent);
+            opacity: 0.4;
+        }
+        .hero h1 {
+            font-size: clamp(2.8rem, 7vw, 5.5rem);
+            line-height: 1.05;
+            font-weight: 400;
+            color: var(--text);
+            margin-bottom: 1.5rem;
+            letter-spacing: -0.02em;
+        }
+        .hero h1 em {
+            font-style: italic;
+            color: var(--accent);
+        }
+        .hero-subtitle {
+            font-family: var(--font-sans);
+            font-size: clamp(1rem, 2vw, 1.25rem);
+            font-weight: 300;
+            color: var(--text-secondary);
+            line-height: 1.7;
+            max-width: 900px;
+        }
+        .hero-meta {
+            margin-top: 2rem;
+            font-size: 0.8rem;
+            color: var(--text-muted);
+            font-weight: 300;
+            letter-spacing: 0.02em;
+        }
+        .hero-meta span { color: var(--accent); }
+
+        /* Article container */
+        .article {
+            max-width: 720px;
+            margin: 0 auto;
+            padding: 4rem 2rem 2rem;
+        }
+
+        /* Article paragraphs */
+        .article p {
+            font-size: clamp(1rem, 1.8vw, 1.1rem);
+            line-height: 1.85;
+            color: var(--text);
+            font-weight: 300;
+            margin-bottom: 1.8rem;
+            opacity: 0.92;
+        }
+
+        /* Drop cap */
+        .drop-cap::first-letter {
+            font-family: var(--font-serif);
+            font-size: 4.2em;
+            float: left;
+            line-height: 0.8;
+            margin-right: 0.12em;
+            margin-top: 0.08em;
+            color: var(--accent);
+            font-weight: 400;
+        }
+
+        /* Section break */
+        .section-break {
+            text-align: center;
+            padding: 4rem 0;
+            position: relative;
+        }
+        .section-break::before {
+            content: '';
+            display: block;
+            width: 60px;
+            height: 1px;
+            background: var(--accent);
+            margin: 0 auto;
+            opacity: 0.7;
+        }
+
+        /* Pull quotes */
+        .pull-quote {
+            font-family: var(--font-serif);
+            font-size: clamp(1.6rem, 3.5vw, 2.4rem);
+            line-height: 1.35;
+            color: var(--accent);
+            font-style: italic;
+            text-align: center;
+            padding: 4rem 1rem;
+            margin: 3rem 0;
+            position: relative;
+            font-weight: 400;
+            opacity: 0.95;
+        }
+        .pull-quote::before,
+        .pull-quote::after {
+            display: none;
+        }
+
+        /* Section headings */
+        .section-heading {
+            font-family: var(--font-serif);
+            font-size: clamp(1.4rem, 3vw, 2rem);
+            color: var(--text);
+            margin: 4rem 0 2rem;
+            font-weight: 400;
+            letter-spacing: -0.01em;
+        }
+
+        /* SVG Vignettes */
+        .vignette {
+            width: 100%;
+            max-width: 900px;
+            margin: 3rem auto;
+            display: block;
+            overflow: visible;
+        }
+        .vignette svg {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        /* Viz containers (card-style) */
+        .viz {
+            margin: 2.5rem 0 3rem;
+            border: 1px solid rgba(255,255,255,0.06);
+            background: linear-gradient(180deg, var(--bg-card), #1a1a1a);
+            border-radius: 18px;
+            overflow: hidden;
+            position: relative;
+        }
+        .viz .label {
+            font-family: var(--mono);
+            color: var(--text-secondary);
+            font-size: 0.72rem;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+            padding: 14px 16px;
+            border-bottom: 1px solid rgba(255,255,255,0.06);
+        }
+        .viz svg {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        /* Viz caption */
+        .viz-caption {
+            font-family: var(--font-serif);
+            font-style: italic;
+            font-size: 0.92rem;
+            color: #dfc49e;
+            text-align: center;
+            padding: 18px 20px 22px;
+            line-height: 1.5;
+        }
+
+        /* VizTimeline — vertical stack */
+        .timeline-vertical {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 28px 20px 10px;
+            gap: 2px;
+        }
+        .timeline-era {
+            margin-top: 4px;
+        }
+        .timeline-date {
+            font-family: var(--mono);
+            font-size: 0.82rem;
+            color: var(--text-secondary);
+            letter-spacing: 0.04em;
+        }
+        .timeline-date--now {
+            color: var(--terracotta);
+        }
+        .timeline-tool-btn {
+            display: inline-block;
+            font-family: var(--sans);
+            font-size: 0.95rem;
+            font-weight: 500;
+            color: var(--text-primary);
+            letter-spacing: 0.04em;
+            border: 1px solid rgba(240,237,232,0.35);
+            border-radius: 8px;
+            padding: 10px 30px;
+            margin: 4px 0;
+            background: transparent;
+        }
+        .timeline-tool-btn--active {
+            color: var(--terracotta);
+            border-color: var(--terracotta);
+        }
+        .timeline-arrow {
+            font-size: 0.85rem;
+            color: var(--text-secondary);
+            opacity: 0.5;
+            line-height: 1;
+            margin: 0;
+        }
+
+        /* VizTax — emoji flow */
+        .tax-flow {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            padding: 30px 20px 12px;
+            flex-wrap: wrap;
+        }
+        .tax-step-item {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 8px;
+            min-width: 60px;
+        }
+        .tax-icon {
+            width: 44px;
+            height: 44px;
+            color: var(--text-primary);
+        }
+        .tax-label {
+            font-family: var(--sans);
+            font-size: 0.82rem;
+            color: var(--text-primary);
+            letter-spacing: 0.03em;
+        }
+        .tax-arrow {
+            font-size: 0.9rem;
+            color: var(--text-secondary);
+            opacity: 0.45;
+            margin: 0 4px;
+            align-self: center;
+            margin-bottom: 22px;
+        }
+
+        /* Grid cards inside viz */
+        .grid-cards {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 14px;
+            padding: 16px;
+        }
+        .card {
+            border: 1px solid rgba(255,255,255,0.06);
+            padding: 18px;
+            border-radius: 12px;
+            background: rgba(255,255,255,0.02);
+        }
+        .card h4 {
+            margin: 0 0 8px;
+            font-size: 0.85rem;
+            letter-spacing: 0.11em;
+            text-transform: uppercase;
+            color: var(--text-secondary);
+            font-family: var(--sans);
+            font-weight: 500;
+        }
+        .card .card-subtitle {
+            margin: 0 0 12px;
+            font-size: 0.9rem;
+            color: var(--accent);
+            font-weight: 500;
+            font-family: var(--sans);
+        }
+        .card p {
+            margin: 0 0 12px;
+            font-size: 1rem;
+            line-height: 1.6;
+            color: #e6dfd5;
+            opacity: 1;
+        }
+        .card .result {
+            margin: 0;
+            font-size: 0.85rem;
+            color: var(--text-secondary);
+            font-style: italic;
+        }
+
+        /* Callout box */
+        .callout-box {
+            border: 1px solid rgba(255,255,255,0.06);
+            padding: 48px 32px;
+            border-radius: 16px;
+            background: rgba(255,255,255,0.02);
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            margin: 2.5rem 0 3rem;
+        }
+        .callout-box .answer-label {
+            font-family: var(--mono);
+            color: var(--accent);
+            font-size: 0.72rem;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+            margin: 0 0 16px;
+        }
+        .callout-box .answer-text {
+            font-family: var(--font-serif);
+            font-size: clamp(1.8rem, 5vw, 3rem);
+            color: var(--text);
+            margin: 0 0 20px;
+            line-height: 1.2;
+        }
+        .callout-box .answer-description {
+            font-size: 0.95rem;
+            color: var(--text);
+            margin: 0;
+            line-height: 1.8;
+            opacity: 0.85;
+            font-weight: 300;
+        }
+
+        /* Audio player pill */
+        .audio-player:hover {
+            border-color: rgba(196,168,130,0.5) !important;
+            box-shadow: 0 8px 32px rgba(196,168,130,0.1);
+        }
+        .audio-player {
+            max-width: calc(100vw - 4rem) !important;
+            overflow: hidden;
+        }
+        .audio-player.is-playing .audio-label { display: none; }
+        #audioControls {
+            min-width: 0 !important;
+            flex: 1 !important;
+        }
+        #audioProgress {
+            min-width: 100px !important;
+        }
+
+        /* Engagement zone — cloned from article-everything-garage */
+        .engagement-zone {
+            max-width: 780px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            --ez-border: rgba(255, 255, 255, 0.12);
+            --ez-text: #e8e4df;
+            --ez-text-muted: #a8a29e;
+            --ez-text-dim: #8a8580;
+        }
+        .share-bar {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            padding: 1.5rem 0;
+            border-top: 1px solid var(--ez-border);
+            margin-top: 0;
+        }
+        .share-bar .share-label {
+            font-family: var(--sans);
+            font-size: 0.72rem;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+            color: var(--ez-text-muted);
+        }
+        .share-buttons {
+            display: flex;
+            gap: 0.6rem;
+        }
+        .share-btn {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 38px;
+            height: 38px;
+            border-radius: 50%;
+            border: 1px solid rgba(255,255,255,0.2);
+            background: transparent;
+            color: var(--ez-text);
+            text-decoration: none;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        .share-btn:hover {
+            border-color: var(--accent-bright);
+            color: var(--accent-bright);
+        }
+        .share-btn svg {
+            width: 16px;
+            height: 16px;
+        }
+        .copy-btn {
+            font-family: var(--sans);
+            font-size: 0.72rem;
+            letter-spacing: 0.03em;
+            color: var(--ez-text);
+            border: 1px solid rgba(255,255,255,0.2);
+            background: transparent;
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+            cursor: pointer;
+            transition: all 0.2s;
+            display: flex;
+            align-items: center;
+            gap: 0.4rem;
+        }
+        .copy-btn:hover { border-color: var(--accent-bright); color: var(--accent-bright); }
+        .copy-btn.copied { border-color: #4a9; color: #4a9; }
+
+        .email-capture {
+            padding: 3.5rem 0;
+            border-top: 1px solid var(--ez-border);
+        }
+        .email-capture-inner {
+            background: #0d0d0d;
+            border: 1px solid rgba(255,255,255,0.15);
+            padding: 3rem 2.5rem;
+            position: relative;
+            overflow: hidden;
+        }
+        .email-capture-inner::before {
+            content: '';
+            position: absolute;
+            top: -60%;
+            right: -20%;
+            width: 500px;
+            height: 500px;
+            background: radial-gradient(circle, rgba(196,168,130,0.04) 0%, transparent 70%);
+            pointer-events: none;
+        }
+        .email-capture h3 {
+            font-family: var(--font-serif);
+            font-size: 1.5rem;
+            font-weight: 400;
+            color: var(--text-primary);
+            margin-bottom: 0.5rem;
+            position: relative;
+        }
+        .email-capture .caption {
+            font-family: var(--sans);
+            font-size: 0.82rem;
+            color: rgba(255,255,255,0.55);
+            margin-bottom: 1.6rem;
+            line-height: 1.55;
+            max-width: 440px;
+            font-weight: 300;
+            position: relative;
+        }
+        .email-form {
+            display: flex;
+            gap: 0.7rem;
+            max-width: 460px;
+            position: relative;
+        }
+        .email-form input[type="email"] {
+            flex: 1;
+            font-family: var(--sans);
+            font-size: 0.85rem;
+            padding: 0.8rem 1.1rem;
+            border: 1px solid rgba(255,255,255,0.1);
+            background: rgba(255,255,255,0.04);
+            color: var(--text-primary);
+            outline: none;
+            transition: border-color 0.2s;
+        }
+        .email-form input[type="email"]::placeholder { color: rgba(255,255,255,0.35); }
+        .email-form input[type="email"]:focus { border-color: rgba(255,255,255,0.4); }
+        .email-form button {
+            font-family: var(--sans);
+            font-size: 0.8rem;
+            font-weight: 500;
+            letter-spacing: 0.04em;
+            padding: 0.8rem 1.6rem;
+            background: var(--text-primary);
+            color: #0a0a0a;
+            border: none;
+            cursor: pointer;
+            transition: opacity 0.2s;
+            white-space: nowrap;
+        }
+        .email-form button:hover { opacity: 0.85; }
+        .email-privacy {
+            font-family: var(--sans);
+            font-size: 0.65rem;
+            color: rgba(255,255,255,0.35);
+            margin-top: 0.8rem;
+            position: relative;
+        }
+
+        .continue-exploring {
+            padding: 3rem 0;
+            border-top: 1px solid var(--ez-border);
+        }
+        .continue-exploring .section-label {
+            font-family: var(--sans);
+            font-size: 0.68rem;
+            letter-spacing: 0.12em;
+            text-transform: uppercase;
+            color: var(--ez-text-muted);
+            margin-bottom: 1.5rem;
+        }
+        .explore-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1.5rem;
+        }
+        .explore-card {
+            border: 1px solid rgba(196, 62, 42, 0.3);
+            padding: 1.8rem;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            display: block;
+            position: relative;
+        }
+        .explore-card:hover {
+            border-color: rgba(196, 62, 42, 0.6);
+            transform: translateY(-2px);
+        }
+        .explore-card .card-label {
+            font-family: var(--sans);
+            font-size: 0.62rem;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            color: var(--ez-text-muted);
+            margin-bottom: 0.7rem;
+        }
+        .explore-card h4 {
+            font-family: var(--font-serif);
+            font-size: 1.1rem;
+            font-weight: 400;
+            color: var(--text-primary);
+            line-height: 1.35;
+            margin-bottom: 0.5rem;
+        }
+        .explore-card .card-desc {
+            font-family: var(--sans);
+            font-size: 0.78rem;
+            color: var(--ez-text-muted);
+            line-height: 1.55;
+            font-weight: 300;
+        }
+        .explore-card .arrow {
+            position: absolute;
+            top: 1.8rem;
+            right: 1.8rem;
+            font-family: var(--sans);
+            font-size: 1rem;
+            color: var(--ez-text-muted);
+            transition: color 0.2s, transform 0.2s;
+        }
+        .explore-card:hover .arrow { color: var(--accent-bright); transform: translateX(3px); }
+
+        .author-bar {
+            padding: 2.5rem 0;
+            border-top: 1px solid var(--ez-border);
+        }
+        .author-bar-inner {
+            display: flex;
+            gap: 1.5rem;
+            align-items: flex-start;
+        }
+        .author-photo {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            overflow: hidden;
+            flex-shrink: 0;
+            background: rgba(255,255,255,0.1);
+        }
+        .author-photo img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        .author-info h4 {
+            font-family: var(--sans);
+            font-size: 0.88rem;
+            font-weight: 500;
+            color: var(--text-primary);
+            margin-bottom: 0.25rem;
+        }
+        .author-info .author-title {
+            font-family: var(--sans);
+            font-size: 0.76rem;
+            color: var(--ez-text-muted);
+            margin-bottom: 0.6rem;
+            line-height: 1.45;
+            font-weight: 300;
+        }
+        .author-links {
+            display: flex;
+            gap: 1rem;
+            align-items: center;
+        }
+        .author-links a {
+            font-family: var(--sans);
+            font-size: 0.72rem;
+            color: var(--ez-text-muted);
+            text-decoration: none;
+            transition: color 0.2s;
+            display: flex;
+            align-items: center;
+            gap: 0.35rem;
+        }
+        .author-links a:hover { color: var(--accent-bright); }
+        .author-links a svg { width: 14px; height: 14px; fill: currentColor; }
+
+        .engagement-footer {
+            border-top: 1px solid var(--ez-border);
+            padding: 2rem 0 3rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .engagement-footer .footer-left {
+            font-family: var(--sans);
+            font-size: 0.7rem;
+            color: var(--ez-text-dim, #8a8580);
+        }
+        .engagement-footer .footer-links {
+            display: flex;
+            gap: 1.5rem;
+        }
+        .engagement-footer .footer-links a {
+            font-family: var(--sans);
+            font-size: 0.7rem;
+            color: var(--ez-text-dim, #8a8580);
+            text-decoration: none;
+            transition: color 0.2s;
+        }
+        .engagement-footer .footer-links a:hover { color: var(--text-primary); }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            nav#nav { padding: 1rem 1.5rem; }
+            .hero-content { padding: 0 1.5rem 4rem; }
+            .article { padding: 3rem 1.5rem 2rem; }
+            .grid-cards { grid-template-columns: 1fr; }
+            .callout-box { padding: 32px 20px; }
+            .explore-grid { grid-template-columns: 1fr; }
+            .email-form { flex-direction: column; }
+            .email-form button { width: 100%; text-align: center; }
+            .email-capture-inner { padding: 2.5rem 1.5rem; }
+            .author-bar-inner { flex-direction: column; gap: 1rem; }
+            .engagement-footer { flex-direction: column; gap: 1rem; text-align: center; }
+        }
+    </style>
+</head>
+<body>
+
+<!-- Scroll progress bar -->
+<div class="scroll-progress" id="scrollProgress"></div>
+
+<!-- Scroll indicator -->
+<div class="scroll-indicator" id="scrollIndicator"></div>
+
+<!-- Navigation -->
+<nav id="nav">
+    <a href="/" class="nav-left">
+        <span class="logo">Branko Lukic</span>
+        <span class="nav-tagline">COGNITIVE ARCHITECTURE</span>
+    </a>
+    <div class="nav-right">
+        <div class="nav-links">
+            <a href="/">home</a>
+            <a href="/articles.html" class="active">articles</a>
+            <a href="/about.html">about</a>
+        </div>
+        <div class="nav-social">
+            <a href="https://www.instagram.com/copyself.xyz/" target="_blank" title="Instagram">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                    <rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect>
+                    <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path>
+                    <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line>
+                </svg>
+            </a>
+            <a href="https://www.linkedin.com/in/brankolukic/" target="_blank" title="LinkedIn">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                    <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path>
+                    <rect x="2" y="9" width="4" height="12"></rect>
+                    <circle cx="4" cy="4" r="2"></circle>
+                </svg>
+            </a>
+        </div>
+        <button class="theme-toggle" id="themeToggle" onclick="toggleTheme()" title="Switch to light theme" style="background:none;border:none;cursor:pointer;padding:6px;color:var(--text-muted);display:flex;align-items:center;transition:color 0.2s;">
+            <svg class="sun-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" style="width:18px;height:18px;"><circle cx="12" cy="12" r="5"/><path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"/></svg>
+            <svg class="moon-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" style="width:18px;height:18px;display:none;"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+        </button>
+        <button class="hamburger" id="hamburger" aria-label="Menu">
+            <span></span>
+            <span></span>
+            <span></span>
+        </button>
+    </div>
+</nav>
+
+<!-- Mobile menu overlay -->
+<div class="mobile-menu-overlay" id="mobileMenu">
+    <button class="mobile-menu-close" id="mobileMenuClose">&times;</button>
+    <div class="mobile-menu-links">
+        <a href="/">Home</a>
+        <a href="/articles.html" class="active">Articles</a>
+        <a href="/about.html">About</a>
+    </div>
+    <div class="mobile-menu-social">
+        <a href="https://www.instagram.com/copyself.xyz/" target="_blank">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                <rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect>
+                <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path>
+                <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line>
+            </svg>
+        </a>
+        <a href="https://www.linkedin.com/in/brankolukic/" target="_blank">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path>
+                <rect x="2" y="9" width="4" height="12"></rect>
+                <circle cx="4" cy="4" r="2"></circle>
+            </svg>
+        </a>
+    </div>
+</div>
+
+<!-- Hero Image -->
+<div class="hero-image">
+    <img src="images/hero-aios.jpg" alt="AI:OS — A phone displaying AI:OS against geometric color blocks">
+</div>
+
+<!-- Hero -->
+<header class="hero">
+    <div class="hero-content">
+        <div class="hero-label">Long-form Essay</div>
+        <h1>AI:OS<br>The Living <em>Operating System</em></h1>
+        <p class="hero-subtitle">Capturing, transmitting, and amplifying human authenticity through AI</p>
+        <div class="hero-meta"><span>Branko Lukic</span> &mdash; February 15, 2025</div>
+        <!-- Audio Player — expanding pill with scrubbing -->
+        <div style="margin-top:1.5rem;">
+            <div class="audio-player" id="audioPlayer" style="display:inline-flex;align-items:center;gap:12px;padding:14px 24px;background:linear-gradient(135deg,rgba(196,168,130,0.15),rgba(196,168,130,0.05));border:1px solid rgba(196,168,130,0.3);border-radius:50px;max-width:fit-content;transition:all 0.4s ease;cursor:pointer;">
+                <button id="playBtn" style="background:none;border:none;color:#dfc49e;cursor:pointer;padding:4px;display:flex;">
+                    <svg viewBox="0 0 24 24" fill="currentColor" style="width:18px;height:18px;" id="playIcon"><polygon points="5 3 19 12 5 21 5 3"/></svg>
+                </button>
+                <span class="audio-label" style="font-family:var(--sans);font-size:0.88rem;color:#dfc49e;white-space:nowrap;font-weight:400;">Listen to article</span>
+                <div id="audioControls" style="display:flex;align-items:center;gap:12px;flex:1;opacity:0;max-width:0;overflow:hidden;transition:all 0.4s ease;">
+                    <div id="audioProgress" style="flex:1;height:4px;background:rgba(255,255,255,0.12);border-radius:2px;cursor:pointer;position:relative;min-width:150px;">
+                        <div id="progressFill" style="height:100%;background:#dfc49e;border-radius:2px;width:0%;transition:width 0.1s;"></div>
+                        <div id="progressHandle" style="position:absolute;top:50%;transform:translate(-50%,-50%);width:12px;height:12px;background:#dfc49e;border-radius:50%;cursor:grab;opacity:0;transition:opacity 0.2s;left:0;"></div>
+                    </div>
+                    <span id="audioTime" style="font-family:var(--sans);font-size:0.7rem;color:var(--text-muted);white-space:nowrap;min-width:80px;text-align:right;">0:00 / 0:00</span>
+                </div>
+            </div>
+            <audio id="articleAudio" src="audio/article-aios.mp3" preload="metadata"></audio>
+        </div>
+    </div>
+</header>
+
+<!-- Article -->
+<main class="article">
+
+    <!-- A Simple Truth -->
+    <h2 class="section-heading">A Simple Truth</h2>
+
+    <p class="drop-cap">The impossible drives the possible. That has been my guiding principle for as long as I have been designing and innovating. Every breakthrough begins as something that seems out of reach, until it isn't.</p>
+
+    <p>You never needed an interface to speak with another human. You simply talk. No apps. No menus. No buttons. Just pure connection.</p>
+
+    <p>This realization struck me in 2004 while designing the CUin5 (as in: "see you in 5", a nod to the simplicity of human connection) mobile phone concept for the NONOBJECT book. This screenless device, powered by voice and agent intelligence, showed me where technology needed to go.</p>
+
+    <p>For 2.6 million years, every tool we made demanded we adapt to it. The hammer required a grip. The wheel required balance. The computer required us to learn its language&mdash;files, folders, clicks, menus.</p>
+
+    <!-- VizTimeline — Vertical stack matching site design language -->
+    <div class="viz" id="viz-timeline">
+        <div class="label">The History of Human-Tool Relationship</div>
+        <div class="timeline-vertical">
+            <div class="timeline-era"><span class="timeline-date">2.6M years ago</span></div>
+            <div class="timeline-tool-btn">Hammer</div>
+            <div class="timeline-arrow">&rarr;</div>
+            <div class="timeline-era"><span class="timeline-date">5,000 years ago</span></div>
+            <div class="timeline-tool-btn">Wheel</div>
+            <div class="timeline-arrow">&rarr;</div>
+            <div class="timeline-era"><span class="timeline-date">50 years ago</span></div>
+            <div class="timeline-tool-btn">Computer</div>
+            <div class="timeline-arrow">&rarr;</div>
+            <div class="timeline-era"><span class="timeline-date timeline-date--now">Now</span></div>
+            <div class="timeline-tool-btn timeline-tool-btn--active">AI:OS</div>
+        </div>
+        <div class="viz-caption">Every tool before AI demanded we learn its language. AI learns ours.</div>
+    </div>
+
+    <div class="section-break"></div>
+
+    <!-- The Shift -->
+    <h2 class="section-heading">The Shift</h2>
+
+    <p>Now we have a tool that learns our language instead. For the first time in human history, the tool adapts to us.</p>
+
+    <div class="pull-quote">For the first time in human history, the tool adapts to us.</div>
+
+    <!-- The New Architecture -->
+    <h2 class="section-heading">The New Architecture</h2>
+
+    <p>For decades, we translated the mechanical world, switches, buttons, handles, into every operating system and interaction model we use today. But nature doesn't work that way. There is no button to press to eat a tomato; you pick it, rinse it, and eat it.</p>
+
+    <p>Our most advanced OSs remain fundamentally mechanical, requiring us to peck and poke to get things done. The new intelligent interactions can be so much more than that.</p>
+
+    <p>Imagine a world with no apps on your phone. No software as you know it. No pings. No pongs. (what a relief!) No digital tap on the shoulder demanding your attention, no ghostly notifications haunting your screen. Just quiet, seamless experience that serves without interrupting.</p>
+
+    <p>Picture a real-time, adaptive operating system that assembles itself precisely when needed. This dynamic code lives on your device, streaming only the essential components to fulfill your intent in the moment. Think of it as having access to every Lego piece ever made, combining perfectly to build exactly what you need.</p>
+
+    <!-- VizArchitecture -->
+    <div class="viz" id="viz-architecture">
+        <div class="label">Mechanical OS &rarr; Adaptive OS</div>
+        <div class="grid-cards">
+            <div class="card">
+                <h4>Mechanical</h4>
+                <p>Switches. Buttons. Handles. Static interfaces.</p>
+            </div>
+            <div class="card">
+                <h4>Adaptive</h4>
+                <p>Context aware surfaces that assemble in real time.</p>
+            </div>
+            <div class="card">
+                <h4>Old model</h4>
+                <p>Peck and poke through rigid paths.</p>
+            </div>
+            <div class="card">
+                <h4>New model</h4>
+                <p>Quiet, seamless experience with intent-first behavior.</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="section-break"></div>
+
+    <!-- The End of the App -->
+    <h2 class="section-heading">The End of the App</h2>
+
+    <p>An app is a frozen assumption. It assumes you want to do a specific task in a specific way. But reality is fluid. Your needs shift. Your context changes. Why should your tools stay rigid?</p>
+
+    <!-- VizAppModel -->
+    <div class="viz" id="viz-appmodel">
+        <div class="label">App vs AI:OS</div>
+        <div class="grid-cards">
+            <div class="card">
+                <h4>The App Model</h4>
+                <div class="card-subtitle">Frozen Assumptions</div>
+                <p>Fixed functions. Static interfaces. You bend to the software. Install, learn, click through predetermined paths.</p>
+                <p class="result">Result: Friction</p>
+            </div>
+            <div class="card">
+                <h4>AI:OS Model</h4>
+                <div class="card-subtitle">Living Substrate</div>
+                <p>Fluid capabilities. Contextual understanding. The system bends to you. Intention, understood and assembled in real time.</p>
+                <p class="result">Result: Flow</p>
+            </div>
+        </div>
+    </div>
+
+    <p>AI:OS is not an operating system in the traditional sense. It is a living substrate that understands what you need and assembles the right capabilities in real time.</p>
+
+    <p>No app store. No installation. No learning curve. Just intention, understood.</p>
+
+    <div class="section-break"></div>
+
+    <!-- Flow Function & Adaptive Code -->
+    <h2 class="section-heading">Flow Function &amp; Adaptive Code</h2>
+
+    <p>Instead of static applications sitting idle until summoned, envision code that compiles in real time, a flow-stack where components self-organize into temporary microservices. These microservices activate partially based on learned patterns and largely on understanding your current context, meeting your needs and dissolving when done, while frequently used elements remain in memory for efficiency.</p>
+
+    <p>This is the core of what I define here as the Reasoning Operating System (ROS). Unlike traditional systems that execute predefined instructions, ROS understands context, adapts continuously, and optimizes itself based on human intent and energy constraints. It represents a dynamic interplay between user-centered design and system efficiency.</p>
+
+    <p>This system is tuned to preserve human authenticity and beautiful human imperfection.</p>
+
+    <!-- VizFlow -->
+    <div class="viz" id="viz-flow">
+        <div class="label">Flow-Stack + Microservices</div>
+        <svg viewBox="0 0 1200 340">
+            <!-- Background pulse dots -->
+            <circle cx="100" cy="80" r="6" fill="#c43e2a" opacity="0.2" class="pulse"/>
+            <circle cx="190" cy="80" r="6" fill="#c43e2a" opacity="0.2" class="pulse"/>
+            <circle cx="280" cy="80" r="6" fill="#c43e2a" opacity="0.2" class="pulse"/>
+            <circle cx="370" cy="80" r="6" fill="#c43e2a" opacity="0.2" class="pulse"/>
+            <circle cx="460" cy="80" r="6" fill="#c43e2a" opacity="0.2" class="pulse"/>
+            <circle cx="550" cy="80" r="6" fill="#c43e2a" opacity="0.2" class="pulse"/>
+            <circle cx="640" cy="80" r="6" fill="#c43e2a" opacity="0.2" class="pulse"/>
+            <circle cx="730" cy="80" r="6" fill="#c43e2a" opacity="0.2" class="pulse"/>
+            <circle cx="820" cy="80" r="6" fill="#c43e2a" opacity="0.2" class="pulse"/>
+            <circle cx="910" cy="80" r="6" fill="#c43e2a" opacity="0.2" class="pulse"/>
+            <circle cx="1000" cy="80" r="6" fill="#c43e2a" opacity="0.2" class="pulse"/>
+            <circle cx="1090" cy="80" r="6" fill="#c43e2a" opacity="0.2" class="pulse"/>
+            <circle cx="100" cy="138" r="6" fill="#c43e2a" opacity="0.2" class="pulse"/>
+            <circle cx="190" cy="138" r="6" fill="#c43e2a" opacity="0.2" class="pulse"/>
+            <circle cx="280" cy="138" r="6" fill="#c43e2a" opacity="0.2" class="pulse"/>
+            <circle cx="370" cy="138" r="6" fill="#c43e2a" opacity="0.2" class="pulse"/>
+            <circle cx="460" cy="138" r="6" fill="#c43e2a" opacity="0.2" class="pulse"/>
+            <circle cx="550" cy="138" r="6" fill="#c43e2a" opacity="0.2" class="pulse"/>
+            <circle cx="640" cy="138" r="6" fill="#c43e2a" opacity="0.2" class="pulse"/>
+            <circle cx="730" cy="138" r="6" fill="#c43e2a" opacity="0.2" class="pulse"/>
+            <circle cx="820" cy="138" r="6" fill="#c43e2a" opacity="0.2" class="pulse"/>
+            <circle cx="910" cy="138" r="6" fill="#c43e2a" opacity="0.2" class="pulse"/>
+            <circle cx="1000" cy="138" r="6" fill="#c43e2a" opacity="0.2" class="pulse"/>
+            <circle cx="1090" cy="138" r="6" fill="#c43e2a" opacity="0.2" class="pulse"/>
+            <circle cx="100" cy="196" r="6" fill="#c43e2a" opacity="0.2" class="pulse"/>
+            <circle cx="190" cy="196" r="6" fill="#c43e2a" opacity="0.2" class="pulse"/>
+            <circle cx="280" cy="196" r="6" fill="#c43e2a" opacity="0.2" class="pulse"/>
+            <circle cx="370" cy="196" r="6" fill="#c43e2a" opacity="0.2" class="pulse"/>
+            <circle cx="460" cy="196" r="6" fill="#c43e2a" opacity="0.2" class="pulse"/>
+            <circle cx="550" cy="196" r="6" fill="#c43e2a" opacity="0.2" class="pulse"/>
+            <circle cx="640" cy="196" r="6" fill="#c43e2a" opacity="0.2" class="pulse"/>
+            <circle cx="730" cy="196" r="6" fill="#c43e2a" opacity="0.2" class="pulse"/>
+            <circle cx="820" cy="196" r="6" fill="#c43e2a" opacity="0.2" class="pulse"/>
+            <circle cx="910" cy="196" r="6" fill="#c43e2a" opacity="0.2" class="pulse"/>
+            <circle cx="1000" cy="196" r="6" fill="#c43e2a" opacity="0.2" class="pulse"/>
+            <circle cx="1090" cy="196" r="6" fill="#c43e2a" opacity="0.2" class="pulse"/>
+            <circle cx="100" cy="254" r="6" fill="#c43e2a" opacity="0.2" class="pulse"/>
+            <circle cx="190" cy="254" r="6" fill="#c43e2a" opacity="0.2" class="pulse"/>
+            <circle cx="280" cy="254" r="6" fill="#c43e2a" opacity="0.2" class="pulse"/>
+            <circle cx="370" cy="254" r="6" fill="#c43e2a" opacity="0.2" class="pulse"/>
+            <circle cx="460" cy="254" r="6" fill="#c43e2a" opacity="0.2" class="pulse"/>
+            <circle cx="550" cy="254" r="6" fill="#c43e2a" opacity="0.2" class="pulse"/>
+            <circle cx="640" cy="254" r="6" fill="#c43e2a" opacity="0.2" class="pulse"/>
+            <circle cx="730" cy="254" r="6" fill="#c43e2a" opacity="0.2" class="pulse"/>
+            <circle cx="820" cy="254" r="6" fill="#c43e2a" opacity="0.2" class="pulse"/>
+            <circle cx="910" cy="254" r="6" fill="#c43e2a" opacity="0.2" class="pulse"/>
+            <circle cx="1000" cy="254" r="6" fill="#c43e2a" opacity="0.2" class="pulse"/>
+            <circle cx="1090" cy="254" r="6" fill="#c43e2a" opacity="0.2" class="pulse"/>
+            <!-- Flow boxes -->
+            <rect class="flow-box" x="120" y="132" width="150" height="70" rx="10" fill="none" stroke="#f0ede8" stroke-width="1.5" opacity="0.3"/>
+            <text x="195" y="174" text-anchor="middle" fill="#f0ede8" font-size="18" font-family="var(--sans)">Intent</text>
+            <rect class="flow-box" x="320" y="132" width="150" height="70" rx="10" fill="none" stroke="#f0ede8" stroke-width="1.5" opacity="0.3"/>
+            <text x="395" y="174" text-anchor="middle" fill="#f0ede8" font-size="18" font-family="var(--sans)">Context</text>
+            <rect class="flow-box" x="520" y="132" width="150" height="70" rx="10" fill="none" stroke="#f0ede8" stroke-width="1.5" opacity="0.3"/>
+            <text x="595" y="174" text-anchor="middle" fill="#f0ede8" font-size="18" font-family="var(--sans)">Compose</text>
+            <rect class="flow-box" x="720" y="132" width="150" height="70" rx="10" fill="none" stroke="#f0ede8" stroke-width="1.5" opacity="0.3"/>
+            <text x="795" y="174" text-anchor="middle" fill="#f0ede8" font-size="18" font-family="var(--sans)">Execute</text>
+            <rect class="flow-box" x="920" y="132" width="150" height="70" rx="10" fill="none" stroke="#f0ede8" stroke-width="1.5" opacity="0.3"/>
+            <text x="995" y="174" text-anchor="middle" fill="#f0ede8" font-size="18" font-family="var(--sans)">Dissolve</text>
+            <!-- Connectors -->
+            <path d="M270 167 L320 167" stroke="#c43e2a" stroke-width="2" opacity="0.6"/>
+            <path d="M470 167 L520 167" stroke="#c43e2a" stroke-width="2" opacity="0.6"/>
+            <path d="M670 167 L720 167" stroke="#c43e2a" stroke-width="2" opacity="0.6"/>
+            <path d="M870 167 L920 167" stroke="#c43e2a" stroke-width="2" opacity="0.6"/>
+        </svg>
+    </div>
+
+    <div class="section-break"></div>
+
+    <!-- The First Millimeter -->
+    <h2 class="section-heading">The First Millimeter</h2>
+
+    <p>In my work at Logitech, I obsess over the first millimeter&mdash;the moment where human intent becomes digital input. This is where most friction hides. This is where AI:OS must excel.</p>
+
+    <!-- VizTaxOnThought — Minimalist outline icon flow (Feather-style, matching site icons) -->
+    <div class="viz" id="viz-tax">
+        <div class="label" style="text-align:center;">The Tax on Thought</div>
+        <div class="tax-flow">
+            <div class="tax-step-item">
+                <svg class="tax-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/>
+                    <circle cx="12" cy="10" r="0.5" fill="currentColor" stroke="none"/>
+                    <circle cx="8" cy="10" r="0.5" fill="currentColor" stroke="none"/>
+                    <circle cx="16" cy="10" r="0.5" fill="currentColor" stroke="none"/>
+                </svg>
+                <span class="tax-label">Think</span>
+            </div>
+            <span class="tax-arrow">&rarr;</span>
+            <div class="tax-step-item">
+                <svg class="tax-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                    <polyline points="4 7 4 4 20 4 20 7"/>
+                    <line x1="9" y1="20" x2="15" y2="20"/>
+                    <line x1="12" y1="4" x2="12" y2="20"/>
+                </svg>
+                <span class="tax-label">Type</span>
+            </div>
+            <span class="tax-arrow">&rarr;</span>
+            <div class="tax-step-item">
+                <svg class="tax-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"/>
+                    <path d="M13.73 21a2 2 0 0 1-3.46 0"/>
+                </svg>
+                <span class="tax-label">Tap</span>
+            </div>
+            <span class="tax-arrow">&rarr;</span>
+            <div class="tax-step-item">
+                <svg class="tax-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                    <rect x="5" y="2" width="14" height="20" rx="7"/>
+                    <line x1="12" y1="6" x2="12" y2="10"/>
+                </svg>
+                <span class="tax-label">Click</span>
+            </div>
+            <span class="tax-arrow">&rarr;</span>
+            <div class="tax-step-item">
+                <svg class="tax-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                    <polyline points="20 6 9 17 4 12"/>
+                </svg>
+                <span class="tax-label">Confirm</span>
+            </div>
+        </div>
+        <div class="viz-caption" style="color:var(--terracotta);">AI:OS collapses these steps. You think. It understands. It acts.</div>
+    </div>
+
+    <p>Today, you type to search, tap to select, click to confirm. Each action is a tax on thought. AI:OS collapses these steps. You think. It understands. It acts.</p>
+
+    <p>The gap between wanting and having shrinks to nothing.</p>
+
+    <div class="section-break"></div>
+
+    <!-- Pure Intent in Action -->
+    <h2 class="section-heading">Pure Intent in Action</h2>
+
+    <p>What if businesses existed as direct experiences? No containers, just outcomes? Imagine Netflix presenting you with the relevant stand-up comedy special to unwind with, no endless searching. Of course if you want to endlessly search it's always there, and much more fun and diverse than that 14 yr old ML algorithm that never really worked. Uber, recognizing your intent through a simple request, ensures a car is already en route. Spotify plays music that matches your vibe without menus or playlists.</p>
+
+    <p>The longer you use such a system, the better it understands you, delivering outcomes precisely when you need them, app-less, layerless, and free of unnecessary steps.</p>
+
+    <!-- VizIntent -->
+    <div class="viz" id="viz-intent">
+        <div class="label">Pure Intent in Action</div>
+        <svg viewBox="0 0 1200 280">
+            <g class="intent-card">
+                <rect x="60" y="85" width="220" height="110" rx="14" fill="none" stroke="#dfc49e" opacity="0.86"/>
+                <text x="170" y="148" text-anchor="middle" fill="#f0ede8" font-size="24" font-family="var(--font-serif)">Netflix</text>
+            </g>
+            <path d="M280 140 L340 140" stroke="#c43e2a" stroke-width="2" opacity="0.5"/>
+            <g class="intent-card">
+                <rect x="340" y="85" width="220" height="110" rx="14" fill="none" stroke="#dfc49e" opacity="0.86"/>
+                <text x="450" y="148" text-anchor="middle" fill="#f0ede8" font-size="24" font-family="var(--font-serif)">Uber</text>
+            </g>
+            <path d="M560 140 L620 140" stroke="#c43e2a" stroke-width="2" opacity="0.5"/>
+            <g class="intent-card">
+                <rect x="620" y="85" width="220" height="110" rx="14" fill="none" stroke="#dfc49e" opacity="0.86"/>
+                <text x="730" y="148" text-anchor="middle" fill="#f0ede8" font-size="24" font-family="var(--font-serif)">Spotify</text>
+            </g>
+            <path d="M840 140 L900 140" stroke="#c43e2a" stroke-width="2" opacity="0.5"/>
+            <g class="intent-card">
+                <rect x="900" y="85" width="220" height="110" rx="14" fill="none" stroke="#dfc49e" opacity="0.86"/>
+                <text x="1010" y="148" text-anchor="middle" fill="#f0ede8" font-size="24" font-family="var(--font-serif)">Outcome</text>
+            </g>
+            <text x="600" y="240" text-anchor="middle" fill="#dfc49e" font-size="16" font-family="var(--font-serif)" font-style="italic">No containers, just outcomes.</text>
+        </svg>
+    </div>
+
+    <div class="section-break"></div>
+
+    <!-- Appless Natural Interaction -->
+    <h2 class="section-heading">Appless Natural Interaction</h2>
+
+    <p>Picture your mobile screen not as a grid of app icons but as adaptable spaces representing your interests and intentions. Some areas remain stable, like your flashlight, camera, or messaging, while others shift dynamically based on context.</p>
+
+    <p>In June, a sports zone might surface Wimbledon updates if you follow tennis, while a travel space could present timely flight details as you plan a trip. Your screen evolves with you, mirroring your life rather than imposing rigid structures.</p>
+
+    <!-- VizAdaptive -->
+    <div class="viz viz-fullbleed" id="viz-adaptive">
+        <div class="label">Appless Natural Interaction</div>
+        <svg viewBox="0 0 1000 520">
+            <defs>
+                <filter id="softGlow">
+                    <feGaussianBlur stdDeviation="4" result="blur"/>
+                    <feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>
+                </filter>
+            </defs>
+
+            <!-- ====== LEFT PHONE: TODAY — centered at x=330 ====== -->
+            <text x="330" y="32" text-anchor="middle" fill="#a8a29e" font-size="12" font-family="var(--mono)" letter-spacing="0.15em">TODAY</text>
+
+            <rect x="240" y="48" width="180" height="340" rx="24" fill="none" stroke="#f0ede8" opacity="0.45" stroke-width="1.5"/>
+            <rect x="293" y="55" width="74" height="5" rx="2.5" fill="#f0ede8" opacity="0.15"/>
+
+            <!-- 4x4 icon grid -->
+            <rect class="app-icon rigid" x="260" y="76" width="32" height="32" rx="7" fill="none" stroke="#f0ede8" opacity="0.28"/>
+            <rect class="app-icon rigid" x="300" y="76" width="32" height="32" rx="7" fill="none" stroke="#f0ede8" opacity="0.28"/>
+            <rect class="app-icon rigid" x="340" y="76" width="32" height="32" rx="7" fill="none" stroke="#f0ede8" opacity="0.28"/>
+            <rect class="app-icon rigid" x="380" y="76" width="32" height="32" rx="7" fill="none" stroke="#f0ede8" opacity="0.28"/>
+
+            <rect class="app-icon rigid" x="260" y="118" width="32" height="32" rx="7" fill="none" stroke="#f0ede8" opacity="0.28"/>
+            <rect class="app-icon rigid" x="300" y="118" width="32" height="32" rx="7" fill="none" stroke="#f0ede8" opacity="0.28"/>
+            <rect class="app-icon rigid" x="340" y="118" width="32" height="32" rx="7" fill="none" stroke="#f0ede8" opacity="0.28"/>
+            <rect class="app-icon rigid" x="380" y="118" width="32" height="32" rx="7" fill="none" stroke="#f0ede8" opacity="0.28"/>
+
+            <rect class="app-icon rigid" x="260" y="160" width="32" height="32" rx="7" fill="none" stroke="#f0ede8" opacity="0.28"/>
+            <rect class="app-icon rigid" x="300" y="160" width="32" height="32" rx="7" fill="none" stroke="#f0ede8" opacity="0.28"/>
+            <rect class="app-icon rigid" x="340" y="160" width="32" height="32" rx="7" fill="none" stroke="#f0ede8" opacity="0.28"/>
+            <rect class="app-icon rigid" x="380" y="160" width="32" height="32" rx="7" fill="none" stroke="#f0ede8" opacity="0.28"/>
+
+            <rect class="app-icon rigid" x="260" y="202" width="32" height="32" rx="7" fill="none" stroke="#f0ede8" opacity="0.28"/>
+            <rect class="app-icon rigid" x="300" y="202" width="32" height="32" rx="7" fill="none" stroke="#f0ede8" opacity="0.28"/>
+            <rect class="app-icon rigid" x="340" y="202" width="32" height="32" rx="7" fill="none" stroke="#f0ede8" opacity="0.28"/>
+            <rect class="app-icon rigid" x="380" y="202" width="32" height="32" rx="7" fill="none" stroke="#f0ede8" opacity="0.28"/>
+
+            <rect class="app-icon rigid" x="260" y="244" width="32" height="32" rx="7" fill="none" stroke="#f0ede8" opacity="0.28"/>
+            <rect class="app-icon rigid" x="300" y="244" width="32" height="32" rx="7" fill="none" stroke="#f0ede8" opacity="0.28"/>
+            <rect class="app-icon rigid" x="340" y="244" width="32" height="32" rx="7" fill="none" stroke="#f0ede8" opacity="0.28"/>
+            <rect class="app-icon rigid" x="380" y="244" width="32" height="32" rx="7" fill="none" stroke="#f0ede8" opacity="0.28"/>
+
+            <!-- Dock -->
+            <line x1="266" y1="300" x2="394" y2="300" stroke="#f0ede8" opacity="0.1" stroke-width="1"/>
+            <rect x="280" y="312" width="32" height="32" rx="7" fill="none" stroke="#f0ede8" opacity="0.28"/>
+            <rect x="320" y="312" width="32" height="32" rx="7" fill="none" stroke="#f0ede8" opacity="0.28"/>
+            <rect x="360" y="312" width="32" height="32" rx="7" fill="none" stroke="#f0ede8" opacity="0.28"/>
+
+            <!-- ====== CENTER: Arrow at x=500 ====== -->
+            <g class="dissolve-arrow">
+                <line class="draw-line" x1="450" y1="218" x2="530" y2="218" stroke="#dfc49e" stroke-width="1.5" opacity="0.5"/>
+                <path d="M525 213 L535 218 L525 223" fill="none" stroke="#dfc49e" stroke-width="1.5" opacity="0.5"/>
+                <circle class="particle" cx="465" cy="200" r="1.5" fill="#c43e2a" opacity="0.35"/>
+                <circle class="particle" cx="485" cy="232" r="1.2" fill="#dfc49e" opacity="0.3"/>
+                <circle class="particle" cx="500" cy="205" r="2" fill="#c43e2a" opacity="0.2"/>
+                <circle class="particle" cx="475" cy="238" r="1.5" fill="#dfc49e" opacity="0.3"/>
+                <circle class="particle" cx="515" cy="212" r="1.5" fill="#c43e2a" opacity="0.25"/>
+            </g>
+
+            <!-- ====== RIGHT PHONE: AI:OS — centered at x=670 ====== -->
+            <text x="670" y="32" text-anchor="middle" fill="#dfc49e" font-size="12" font-family="var(--mono)" letter-spacing="0.15em">AI:OS</text>
+
+            <rect x="580" y="48" width="180" height="340" rx="24" fill="none" stroke="#dfc49e" opacity="0.45" stroke-width="1.5"/>
+            <rect x="633" y="55" width="74" height="5" rx="2.5" fill="#dfc49e" opacity="0.15"/>
+
+            <!-- Morning zone -->
+            <rect class="fluid-zone" x="596" y="74" width="148" height="70" rx="16" fill="rgba(196,62,42,0.08)" stroke="#c43e2a" opacity="0.45" stroke-width="1"/>
+            <text x="670" y="104" text-anchor="middle" fill="#c43e2a" font-size="10" font-family="var(--mono)" opacity="0.8">MORNING</text>
+            <text x="670" y="118" text-anchor="middle" fill="#f0ede8" font-size="9" font-family="var(--sans)" opacity="0.55">Weather &middot; Commute &middot; News</text>
+
+            <!-- Focus zone -->
+            <rect class="fluid-zone" x="596" y="156" width="96" height="84" rx="14" fill="rgba(196,168,130,0.06)" stroke="#dfc49e" opacity="0.38" stroke-width="1"/>
+            <text x="644" y="194" text-anchor="middle" fill="#dfc49e" font-size="10" font-family="var(--mono)" opacity="0.8">FOCUS</text>
+            <text x="644" y="208" text-anchor="middle" fill="#f0ede8" font-size="9" font-family="var(--sans)" opacity="0.5">Deep work</text>
+
+            <!-- Play zone -->
+            <circle class="fluid-zone" cx="724" cy="182" r="28" fill="rgba(196,62,42,0.06)" stroke="#c43e2a" opacity="0.32" stroke-width="1"/>
+            <text x="724" y="179" text-anchor="middle" fill="#f0ede8" font-size="9" font-family="var(--mono)" opacity="0.7">PLAY</text>
+            <text x="724" y="191" text-anchor="middle" fill="#f0ede8" font-size="8" font-family="var(--sans)" opacity="0.5">Music</text>
+
+            <!-- Connect zone -->
+            <ellipse class="fluid-zone" cx="644" cy="278" rx="42" ry="32" fill="rgba(196,168,130,0.05)" stroke="#dfc49e" opacity="0.32" stroke-width="1"/>
+            <text x="644" y="275" text-anchor="middle" fill="#f0ede8" font-size="9" font-family="var(--mono)" opacity="0.7">CONNECT</text>
+            <text x="644" y="287" text-anchor="middle" fill="#f0ede8" font-size="8" font-family="var(--sans)" opacity="0.5">Messages</text>
+
+            <!-- Camera -->
+            <circle class="fluid-zone" cx="718" cy="262" r="18" fill="rgba(196,62,42,0.06)" stroke="#c43e2a" opacity="0.28" stroke-width="1"/>
+            <text x="718" y="266" text-anchor="middle" fill="#f0ede8" font-size="8" font-family="var(--mono)" opacity="0.6">CAM</text>
+
+            <!-- Flashlight -->
+            <circle cx="734" cy="300" r="6" fill="none" stroke="#f0ede8" opacity="0.18" stroke-width="0.8"/>
+            <circle cx="734" cy="300" r="1.5" fill="#f0ede8" opacity="0.28"/>
+
+            <!-- Zone connectors -->
+            <path class="zone-connector draw-line" d="M670 144 C670 150, 650 150, 644 156" fill="none" stroke="#dfc49e" stroke-width="0.8" opacity="0.25"/>
+            <path class="zone-connector draw-line" d="M688 144 C696 150, 714 158, 724 154" fill="none" stroke="#c43e2a" stroke-width="0.8" opacity="0.2"/>
+
+            <!-- ====== ANNOTATIONS — row below phones ====== -->
+            <text x="290" y="420" text-anchor="middle" fill="#dfc49e" font-family="var(--mono)" font-size="10" letter-spacing="0.08em">STABLE</text>
+            <text x="290" y="436" text-anchor="middle" fill="#a8a29e" font-size="10" font-family="var(--sans)" font-weight="300" opacity="0.6">Stays where you expect.</text>
+
+            <line x1="410" y1="414" x2="410" y2="442" stroke="#f0ede8" opacity="0.08" stroke-width="0.5"/>
+
+            <text x="500" y="420" text-anchor="middle" fill="#c43e2a" font-family="var(--mono)" font-size="10" letter-spacing="0.08em">FLUID</text>
+            <text x="500" y="436" text-anchor="middle" fill="#a8a29e" font-size="10" font-family="var(--sans)" font-weight="300" opacity="0.6">Zones shift with your moment.</text>
+
+            <line x1="590" y1="414" x2="590" y2="442" stroke="#f0ede8" opacity="0.08" stroke-width="0.5"/>
+
+            <text x="710" y="420" text-anchor="middle" fill="#f0ede8" font-family="var(--mono)" font-size="10" letter-spacing="0.08em" opacity="0.55">DISSOLVE</text>
+            <text x="710" y="436" text-anchor="middle" fill="#a8a29e" font-size="10" font-family="var(--sans)" font-weight="300" opacity="0.6">No icons. Just life, reflected.</text>
+
+            <!-- ====== Caption ====== -->
+            <text x="500" y="490" text-anchor="middle" fill="#dfc49e" font-size="14" font-family="var(--font-serif)" font-style="italic" opacity="0.8">Your screen mirrors your life &mdash; not a grid of frozen assumptions.</text>
+        </svg>
+    </div>
+
+    <div class="section-break"></div>
+
+    <!-- A Thought Experiment -->
+    <h2 class="section-heading">A Thought Experiment</h2>
+
+    <p>This is a vision, a thought experiment. A dynamic, reasoning, and adapting system holds incredible promise, but it also brings challenges. By and large, people do not like change; we are creatures of comfort.</p>
+
+    <p>Overly fluid systems risk instability, and too much change can be overwhelming for some. A balance is needed, at least in the beginning. Integrating stable elements with adaptable, real-time self assembling code may be a practical first step, a hybrid between a few rigid "containers" and the fluid adaptive system. Addressing security, privacy, and unexpected inputs will be key to making this system viable.</p>
+
+    <div class="section-break"></div>
+
+    <!-- Liberation & Exponential Evolution -->
+    <h2 class="section-heading">Liberation &amp; Exponential Evolution</h2>
+
+    <p>This isn't just an upgrade but a liberation from today's constraints. Imagine a future where your phone, laptop, and car adapt to you, rather than forcing you to adapt to them. Services dissolve the digital barriers that separate us from pure, unmediated experiences.</p>
+
+    <p>This isn't just change, it's a big jump forward, where technology serves us invisibly and intuitively, replacing interaction with purpose and potential. And let's stay centered: as humans, we need to draw the line somewhere. Talking to vacuum cleaners, fridges, and light switches might feel as silly in 2050 as it does today.</p>
+
+    <p>Think about the 10,000-hour principle, the idea that mastery emerges through dedicated practice. But unlike traditional operating systems that degrade over time, AI:OS grows, adapts, and perfects itself. It becomes more valuable as it ages, continuously evolving into a deeply personal extension of your being.</p>
+
+    <p>This is something truly strange and beautiful: a system that does not just serve you but understands you in ways that no static software ever could. As your AI:OS accumulates hours learning your patterns, preferences, and intentions, it transforms into something profound &ndash; an entity that knows exactly how to support you. Like a lifelong companion, it anticipates your needs and amplifies your capabilities through deep understanding earned over time.</p>
+
+    <p>Each person's system becomes uniquely tailored to them, preserving human authenticity and beautiful, infinitely original human imperfection.</p>
+
+    <div class="section-break"></div>
+
+    <!-- What Remains -->
+    <h2 class="section-heading">What Remains</h2>
+
+    <!-- VizWhatRemains -->
+    <div class="callout-box" id="viz-whatremains">
+        <div class="answer-label">The Answer</div>
+        <div class="answer-text">Everything that matters.</div>
+        <div class="answer-description">Deciding what is worth doing. Knowing why it matters. Feeling the meaning. The machine handles how. The human keeps why.</div>
+    </div>
+
+    <p>AI:OS is not about replacing human agency. It is about removing the friction that separates intent from outcome. It is about giving you back the time you spend wrestling with tools&mdash;so you can spend it wrestling with ideas.</p>
+
+    <p>The machine handles how. The human keeps why. This is the division of labor that makes us more human, not less.</p>
+
+    <div class="pull-quote">The machine handles how. The human keeps why.</div>
+
+    <!-- What Comes Next? -->
+    <h2 class="section-heading">What Comes Next?</h2>
+
+    <p>Imagine a world where apps and browsers dissolve, where entire ecosystems built on incremental upgrades transform into something more meaningful. How will businesses adapt when the focus shifts from tracking users to understanding intentions, and from products to pure outcomes? These are not just questions, they are powerful blueprints waiting to be realized.</p>
+
+    <p>Are we ready to leave behind the old paradigms of apps, UIs, and devices? Maybe not yet. But if we dare to envision a future where technology fades into the background, replaced by the infinite potential of our own minds. What will you do first?</p>
+
+    <div class="section-break"></div>
+
+    <p>A final note: This piece invites you to explore possibilities beyond current technological paradigms. You might find it more engaging if you temporarily set aside what you know to be "impossible" and join in imagining what could be.</p>
+
+    <p class="article-note"><em>Personal reflection. These views are my own and do not represent those of my employer. As an AI Fellow, I work at the intersection of human creativity and machine intelligence, always celebrating the power of open-minded thinking and the beauty of human imperfection. My approach to design and innovation, including authoring NONOBJECT (MIT Press, 2009), has been driven by seeing opportunities where others see challenges, and maintaining that childlike ability to imagine "what if" in everything I do.</em></p>
+
+    <p style="font-size: 0.85rem; color: var(--text-muted); letter-spacing: 0.02em;">#AI #UX #Tech #OS #ML #HCI #GenAI #Innovation</p>
+
+</main>
+
+<!-- ENGAGEMENT ZONE -->
+<div class="engagement-zone">
+
+    <!-- Share bar -->
+    <div class="share-bar">
+        <span class="share-label">Share</span>
+        <div class="share-buttons">
+            <a href="https://www.linkedin.com/sharing/share-offsite/?url=https://www.brankolukic.com/article-aios" target="_blank" rel="noopener" class="share-btn" aria-label="Share on LinkedIn">
+                <svg viewBox="0 0 24 24" fill="currentColor"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+            </a>
+            <a href="https://twitter.com/intent/tweet?url=https://www.brankolukic.com/article-aios&text=AI%3AOS%20%E2%80%94%20The%20Living%20Operating%20System%20by%20Branko%20Luki%C4%87" target="_blank" rel="noopener" class="share-btn" aria-label="Share on X">
+                <svg viewBox="0 0 24 24" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
+            </a>
+            <a href="mailto:?subject=AI%3AOS%20%E2%80%94%20The%20Living%20Operating%20System%20by%20Branko%20Luki%C4%87&body=When%20the%20tool%20learns%20our%20language%2C%20everything%20changes.%0A%0Ahttps://www.brankolukic.com/article-aios" class="share-btn" aria-label="Share via email">
+                <svg viewBox="0 0 24 24" fill="currentColor"><path d="M1.5 8.67v8.58a3 3 0 003 3h15a3 3 0 003-3V8.67l-8.928 5.493a3 3 0 01-3.144 0L1.5 8.67z"/><path d="M22.5 6.908V6.75a3 3 0 00-3-3h-15a3 3 0 00-3 3v.158l9.714 5.978a1.5 1.5 0 001.572 0L22.5 6.908z"/></svg>
+            </a>
+        </div>
+        <button class="copy-btn" onclick="copyLink(this)">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg>
+            Copy link
+        </button>
+    </div>
+
+    <!-- Email capture -->
+    <div class="email-capture">
+        <div class="email-capture-inner">
+            <h3>Follow this thinking</h3>
+            <p class="caption">Occasional writing on cognitive architecture, creative fingerprints, and the space between human intent and frontier AI. No noise.</p>
+            <form class="email-form" action="https://buttondown.com/api/emails/embed-subscribe/branko" method="post" target="popupwindow" onsubmit="window.open('https://buttondown.com/branko', 'popupwindow')">
+                <input type="email" name="email" placeholder="Your email" required />
+                <button type="submit">Subscribe</button>
+            </form>
+            <p class="email-privacy">No tracking. No cookies. No spam. Unsubscribe anytime.</p>
+        </div>
+    </div>
+
+    <!-- Continue exploring -->
+    <div class="continue-exploring">
+        <p class="section-label">Continue exploring</p>
+        <div class="explore-grid">
+            <a href="/#research" class="explore-card">
+                <span class="arrow">&rarr;</span>
+                <p class="card-label">Research</p>
+                <h4>30,000+ Experiments in Co-Cognition</h4>
+                <p class="card-desc">How human nuance can be amplified through frontier AI rather than averaged out.</p>
+            </a>
+            <a href="/#frameworks" class="explore-card">
+                <span class="arrow">&rarr;</span>
+                <p class="card-label">Framework</p>
+                <h4>The Creative Fingerprint</h4>
+                <p class="card-desc">Your imperfections are not weaknesses. They are your perspective on what needs to exist.</p>
+            </a>
+            <a href="https://nonai.space" target="_blank" class="explore-card">
+                <span class="arrow">&rarr;</span>
+                <p class="card-label">Lab</p>
+                <h4>nonai.space</h4>
+                <p class="card-desc">Ongoing research into the space between human creativity and machine intelligence.</p>
+            </a>
+            <a href="/#speaking" class="explore-card">
+                <span class="arrow">&rarr;</span>
+                <p class="card-label">Speaking</p>
+                <h4>Perfect Flaw: When Imperfection Becomes Gold</h4>
+                <p class="card-desc">iF Design Conference Berlin, April 2026.</p>
+            </a>
+        </div>
+    </div>
+
+    <!-- Author bar -->
+    <div class="author-bar">
+        <div class="author-bar-inner">
+            <div class="author-photo">
+                <img src="images/branko-portrait.jpg" alt="Branko Lukic" loading="lazy">
+            </div>
+            <div class="author-info">
+                <h4>Branko Lukic</h4>
+                <p class="author-title">Cognitive Architect · Design Perception, Cerebras · Co-founder, Creative & Design AI Lab, Logitech</p>
+                <div class="author-links">
+                    <a href="https://www.linkedin.com/in/brankolukic/" target="_blank" rel="noopener">
+                        <svg viewBox="0 0 24 24"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+                        LinkedIn
+                    </a>
+                    <a href="https://www.instagram.com/copyself.xyz/" target="_blank" rel="noopener">
+                        <svg viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/></svg>
+                        Instagram
+                    </a>
+                    <a href="mailto:branko@lukic.com">
+                        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M1.5 8.67v8.58a3 3 0 003 3h15a3 3 0 003-3V8.67l-8.928 5.493a3 3 0 01-3.144 0L1.5 8.67z"/><path d="M22.5 6.908V6.75a3 3 0 00-3-3h-15a3 3 0 00-3 3v.158l9.714 5.978a1.5 1.5 0 001.572 0L22.5 6.908z"/></svg>
+                        Contact
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <div class="engagement-footer">
+        <div class="footer-left">&copy; 2027 Branko Lukic · Silicon Valley, California</div>
+        <div class="footer-links">
+            <a href="/">Home</a>
+            <a href="/articles">Articles</a>
+            <a href="https://www.linkedin.com/in/brankolukic/" target="_blank" rel="noopener">LinkedIn</a>
+        </div>
+    </div>
+
+</div>
+
+<!-- GSAP -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+
+<script>
+gsap.registerPlugin(ScrollTrigger);
+
+// Scroll progress
+const progressBar = document.getElementById('scrollProgress');
+ScrollTrigger.create({
+    trigger: document.body,
+    start: 'top top',
+    end: 'bottom bottom',
+    onUpdate: (self) => {
+        progressBar.style.transform = 'scaleX(' + self.progress + ')';
+    }
+});
+
+// Nav scroll state
+window.addEventListener('scroll', function() {
+    document.getElementById('nav').classList.toggle('scrolled', window.scrollY > 30);
+});
+
+// Scroll indicator (top bar)
+var scrollIndicator = document.getElementById('scrollIndicator');
+ScrollTrigger.create({
+    trigger: document.body,
+    start: 'top top',
+    end: 'bottom bottom',
+    onUpdate: function(self) {
+        scrollIndicator.style.transform = 'scaleX(' + self.progress + ')';
+    }
+});
+
+// Hamburger menu
+(function() {
+    var hamburger = document.getElementById('hamburger');
+    var mobileMenu = document.getElementById('mobileMenu');
+    var mobileMenuClose = document.getElementById('mobileMenuClose');
+    if (!hamburger || !mobileMenu) return;
+
+    hamburger.addEventListener('click', function() {
+        hamburger.classList.toggle('active');
+        mobileMenu.classList.toggle('active');
+        document.body.style.overflow = mobileMenu.classList.contains('active') ? 'hidden' : '';
+    });
+    mobileMenuClose.addEventListener('click', function() {
+        hamburger.classList.remove('active');
+        mobileMenu.classList.remove('active');
+        document.body.style.overflow = '';
+    });
+    mobileMenu.querySelectorAll('a').forEach(function(link) {
+        link.addEventListener('click', function() {
+            hamburger.classList.remove('active');
+            mobileMenu.classList.remove('active');
+            document.body.style.overflow = '';
+        });
+    });
+})();
+
+// Hero parallax
+gsap.to('.hero-content', {
+    yPercent: 40,
+    opacity: 0.3,
+    ease: 'none',
+    scrollTrigger: {
+        trigger: '.hero',
+        start: 'top top',
+        end: 'bottom top',
+        scrub: 1
+    }
+});
+
+// ========== ARTICLE ANIMATIONS (matching Everything Garage exactly) ==========
+
+// Article paragraphs fade in
+gsap.utils.toArray('.article p').forEach(function(p) {
+    gsap.from(p, {
+        y: 30,
+        opacity: 0,
+        duration: 0.8,
+        ease: 'power2.out',
+        scrollTrigger: {
+            trigger: p,
+            start: 'top 88%',
+            toggleActions: 'play none none none'
+        }
+    });
+});
+
+// Section headings
+gsap.utils.toArray('.section-heading').forEach(function(h) {
+    gsap.from(h, {
+        y: 30,
+        opacity: 0,
+        duration: 0.8,
+        ease: 'power2.out',
+        scrollTrigger: {
+            trigger: h,
+            start: 'top 88%',
+            toggleActions: 'play none none none'
+        }
+    });
+});
+
+// Pull quotes
+gsap.utils.toArray('.pull-quote').forEach(function(q) {
+    gsap.from(q, {
+        y: 40,
+        opacity: 0,
+        scale: 0.96,
+        duration: 1,
+        ease: 'power3.out',
+        scrollTrigger: {
+            trigger: q,
+            start: 'top 85%',
+            toggleActions: 'play none none none'
+        }
+    });
+});
+
+// Section breaks
+gsap.utils.toArray('.section-break').forEach(function(sb) {
+    gsap.from(sb, {
+        scaleX: 0,
+        duration: 0.8,
+        scrollTrigger: {
+            trigger: sb,
+            start: 'top 90%',
+            toggleActions: 'play none none none'
+        }
+    });
+});
+
+// Viz containers
+gsap.utils.toArray('.viz').forEach(function(v) {
+    gsap.from(v, {
+        y: 40,
+        opacity: 0,
+        duration: 1,
+        ease: 'power3.out',
+        scrollTrigger: {
+            trigger: v,
+            start: 'top 85%',
+            toggleActions: 'play none none none'
+        }
+    });
+});
+
+// Callout box
+gsap.utils.toArray('.callout-box').forEach(function(c) {
+    gsap.from(c, {
+        y: 40,
+        opacity: 0,
+        scale: 0.96,
+        duration: 1,
+        ease: 'power3.out',
+        scrollTrigger: {
+            trigger: c,
+            start: 'top 85%',
+            toggleActions: 'play none none none'
+        }
+    });
+});
+
+// Cards stagger
+gsap.utils.toArray('.card').forEach(function(card, i) {
+    gsap.from(card, {
+        y: 20,
+        opacity: 0,
+        duration: 0.6,
+        delay: (i % 4) * 0.1,
+        ease: 'power2.out',
+        scrollTrigger: {
+            trigger: card,
+            start: 'top 88%',
+            toggleActions: 'play none none none'
+        }
+    });
+});
+
+// ========== SVG DRAW-IN SETUP (from Everything Garage) ==========
+function setupDrawLines(container) {
+    var lines = container.querySelectorAll('.draw-line');
+    lines.forEach(function(line) {
+        if (line.getTotalLength) {
+            var length = line.getTotalLength();
+            line.style.strokeDasharray = length;
+            line.style.strokeDashoffset = length;
+        }
+    });
+    return lines;
+}
+
+function animateDrawLines(containerId) {
+    var container = document.getElementById(containerId);
+    if (!container) return;
+    var lines = setupDrawLines(container);
+    lines.forEach(function(line, i) {
+        if (line.getTotalLength) {
+            gsap.to(line, {
+                strokeDashoffset: 0,
+                duration: 1.5,
+                delay: i * 0.1,
+                ease: 'power2.inOut',
+                scrollTrigger: {
+                    trigger: container,
+                    start: 'top 85%',
+                    toggleActions: 'play none none none'
+                }
+            });
+        }
+    });
+}
+
+// Draw-line animations for viz elements
+animateDrawLines('viz-timeline');
+animateDrawLines('viz-tax');
+
+// ========== LIVING VIGNETTE ENGINE (from Everything Garage) ==========
+class LivingVignette {
+    constructor(el, ambientFn) {
+        this.el = el;
+        this.ambientFn = ambientFn;
+        this.active = false;
+        this.raf = null;
+        this.time = 0;
+        this.intensity = 0.5; // always alive
+
+        // Track viewport proximity for intensity boost
+        ScrollTrigger.create({
+            trigger: el,
+            start: 'top 95%',
+            end: 'bottom 5%',
+            onUpdate: (self) => {
+                var progress = self.progress;
+                this.intensity = 1 - Math.abs(progress - 0.5) * 2;
+                this.intensity = Math.max(0.3, this.intensity); // never below 0.3
+            }
+        });
+
+        // Start immediately and NEVER stop
+        this.start();
+    }
+    start() {
+        if (this.active) return;
+        this.active = true;
+        this.tick();
+    }
+    tick() {
+        this.time += 0.016;
+        this.ambientFn(this.el, this.time, this.intensity);
+        this.raf = requestAnimationFrame(() => this.tick());
+    }
+}
+
+// ========== AMBIENT ANIMATIONS ==========
+
+// Pulse dots in VizFlow
+gsap.to('.pulse', {
+    opacity: 0.65,
+    stagger: { each: 0.03, yoyo: true, repeat: -1 },
+    duration: 1.6,
+    ease: 'sine.inOut'
+});
+
+// Fluid zone breathing in VizAdaptive
+(function() {
+    var el = document.getElementById('viz-adaptive');
+    if (!el) return;
+
+    // Rigid icons stay dead — no animation. That's the point.
+
+    // Fluid zones breathe organically
+    new LivingVignette(el, function(container, t, intensity) {
+        var zones = container.querySelectorAll('.fluid-zone');
+        zones.forEach(function(zone, i) {
+            var breathe = Math.sin(t * 0.5 + i * 1.1) * 0.12 * intensity;
+            var drift = Math.sin(t * 0.3 + i * 0.7) * 1.5 * intensity;
+            zone.setAttribute('opacity', (0.35 + breathe).toString());
+            zone.style.transform = 'translateY(' + drift + 'px)';
+        });
+        // Particles drift
+        var particles = container.querySelectorAll('.particle');
+        particles.forEach(function(p, i) {
+            var dx = Math.sin(t * 0.8 + i * 2.1) * 6 * intensity;
+            var dy = Math.cos(t * 0.6 + i * 1.7) * 8 * intensity;
+            p.style.transform = 'translate(' + dx + 'px,' + dy + 'px)';
+            p.setAttribute('opacity', (0.2 + Math.sin(t * 1.2 + i) * 0.2 * intensity).toString());
+        });
+    });
+})();
+
+// Intent card subtle float
+gsap.to('.intent-card', {
+    y: -4,
+    stagger: { each: 0.14, repeat: -1, yoyo: true },
+    duration: 1.5,
+    ease: 'sine.inOut'
+});
+
+// Timeline — sequential terracotta glow on tool buttons, never stops
+(function() {
+    var el = document.getElementById('viz-timeline');
+    if (!el) return;
+    var btns = el.querySelectorAll('.timeline-tool-btn');
+    if (!btns.length) return;
+    var current = -1;
+    var phase = 'pause';
+    var phaseTime = 0;
+    var pauseDur = 0;
+    function pickNext() {
+        var next;
+        do { next = Math.floor(Math.random() * btns.length); } while (next === current && btns.length > 1);
+        current = next;
+        pauseDur = 1.0 + Math.random() * 2.0;
+    }
+    pickNext();
+    new LivingVignette(el, function(container, t, intensity) {
+        phaseTime += 0.016;
+        if (phase === 'pause' && phaseTime >= pauseDur) { phase = 'brighten'; phaseTime = 0; }
+        else if (phase === 'brighten' && phaseTime >= 0.6) { phase = 'hold'; phaseTime = 0; }
+        else if (phase === 'hold' && phaseTime >= 0.4) { phase = 'fade'; phaseTime = 0; }
+        else if (phase === 'fade' && phaseTime >= 1.0) { phase = 'pause'; phaseTime = 0; pickNext(); }
+        var glow = 0;
+        if (phase === 'brighten') glow = phaseTime / 0.6;
+        else if (phase === 'hold') glow = 1;
+        else if (phase === 'fade') glow = 1 - phaseTime / 1.0;
+        btns.forEach(function(btn, i) {
+            if (i === current && glow > 0) {
+                btn.style.borderColor = 'rgba(196,62,42,' + (glow * 0.8 * intensity).toFixed(3) + ')';
+                btn.style.color = 'rgba(196,62,42,' + (0.5 + glow * 0.5 * intensity).toFixed(3) + ')';
+            } else if (!btn.classList.contains('timeline-tool-btn--active')) {
+                btn.style.borderColor = 'rgba(240,237,232,0.35)';
+                btn.style.color = 'var(--text-primary)';
+            } else {
+                btn.style.borderColor = 'var(--terracotta)';
+                btn.style.color = 'var(--terracotta)';
+            }
+        });
+    });
+})();
+
+// Tax steps — sequential icon glow via color change, never stops
+(function() {
+    var el = document.getElementById('viz-tax');
+    if (!el) return;
+    var icons = el.querySelectorAll('.tax-icon');
+    if (!icons.length) return;
+    var current = -1;
+    var phase = 'pause';
+    var phaseTime = 0;
+    var pauseDur = 0;
+    function pickNext() {
+        var next;
+        do { next = Math.floor(Math.random() * icons.length); } while (next === current && icons.length > 1);
+        current = next;
+        pauseDur = 0.8 + Math.random() * 2.0;
+    }
+    pickNext();
+    new LivingVignette(el, function(container, t, intensity) {
+        phaseTime += 0.016;
+        if (phase === 'pause' && phaseTime >= pauseDur) { phase = 'brighten'; phaseTime = 0; }
+        else if (phase === 'brighten' && phaseTime >= 0.5) { phase = 'hold'; phaseTime = 0; }
+        else if (phase === 'hold' && phaseTime >= 0.35) { phase = 'fade'; phaseTime = 0; }
+        else if (phase === 'fade' && phaseTime >= 0.9) { phase = 'pause'; phaseTime = 0; pickNext(); }
+        var glow = 0;
+        if (phase === 'brighten') glow = phaseTime / 0.5;
+        else if (phase === 'hold') glow = 1;
+        else if (phase === 'fade') glow = 1 - phaseTime / 0.9;
+        icons.forEach(function(icon, i) {
+            if (i === current && glow > 0) {
+                // Use CSS color property — currentColor drives the SVG strokes
+                var r = Math.round(240 - glow * 44 * intensity);
+                var g = Math.round(237 - glow * 175 * intensity);
+                var b = Math.round(232 - glow * 190 * intensity);
+                icon.style.color = 'rgb(' + r + ',' + g + ',' + b + ')';
+                icon.style.filter = 'drop-shadow(0 0 ' + (3 + glow * 5).toFixed(0) + 'px rgba(196,62,42,' + (glow * 0.35 * intensity).toFixed(3) + '))';
+            } else {
+                icon.style.color = 'var(--text-primary)';
+                icon.style.filter = 'none';
+            }
+        });
+    });
+})();
+
+// Architecture cards — terracotta border breathing, never stops
+(function() {
+    var el = document.getElementById('viz-architecture');
+    if (!el) return;
+    new LivingVignette(el, function(container, t, intensity) {
+        var cards = container.querySelectorAll('.card');
+        cards.forEach(function(card, i) {
+            var terra = Math.sin(t * 0.6 + i * 1.2) * 0.08 * intensity;
+            card.style.borderColor = 'rgba(196,62,42,' + (0.1 + terra) + ')';
+        });
+    });
+})();
+
+// AppModel cards — terracotta accents, never stops
+(function() {
+    var el = document.getElementById('viz-appmodel');
+    if (!el) return;
+    new LivingVignette(el, function(container, t, intensity) {
+        var cards = container.querySelectorAll('.card');
+        cards.forEach(function(card, i) {
+            var terra = Math.sin(t * 0.5 + i * 1.8) * 0.08 * intensity;
+            card.style.borderColor = 'rgba(196,62,42,' + (0.1 + terra) + ')';
+        });
+    });
+})();
+
+// Flow boxes — random terracotta fill blink, never stops
+(function() {
+    var el = document.getElementById('viz-flow');
+    if (!el) return;
+    var boxes = el.querySelectorAll('.flow-box');
+    if (!boxes.length) return;
+    var indices = [];
+    for (var i = 0; i < boxes.length; i++) indices.push(i);
+    var current = -1;
+    var phase = 'pause'; // 'brighten', 'hold', 'fade', 'pause'
+    var phaseTime = 0;
+    var pauseDur = 0;
+    var brightDur = 0.8;
+    var holdDur = 0.4;
+    var fadeDur = 1.2;
+    function pickNext() {
+        var next;
+        do { next = indices[Math.floor(Math.random() * indices.length)]; } while (next === current && indices.length > 1);
+        current = next;
+        pauseDur = 0.8 + Math.random() * 2.5;
+    }
+    pickNext();
+    new LivingVignette(el, function(container, t, intensity) {
+        phaseTime += 0.016;
+        if (phase === 'pause' && phaseTime >= pauseDur) {
+            phase = 'brighten'; phaseTime = 0;
+        } else if (phase === 'brighten' && phaseTime >= brightDur) {
+            phase = 'hold'; phaseTime = 0;
+        } else if (phase === 'hold' && phaseTime >= holdDur) {
+            phase = 'fade'; phaseTime = 0;
+        } else if (phase === 'fade' && phaseTime >= fadeDur) {
+            phase = 'pause'; phaseTime = 0; pickNext();
+        }
+        var fillOpacity = 0;
+        if (phase === 'brighten') fillOpacity = (phaseTime / brightDur);
+        else if (phase === 'hold') fillOpacity = 1;
+        else if (phase === 'fade') fillOpacity = 1 - (phaseTime / fadeDur);
+        boxes.forEach(function(r, i) {
+            if (i === current && fillOpacity > 0) {
+                r.setAttribute('fill', 'rgba(196,62,42,' + (fillOpacity * 0.45 * intensity).toFixed(3) + ')');
+                r.setAttribute('stroke', '#ffffff');
+                r.setAttribute('stroke-width', (1.5 + fillOpacity * 1.5).toFixed(1));
+                r.setAttribute('opacity', (0.3 + fillOpacity * 0.7).toFixed(2));
+            } else {
+                r.setAttribute('fill', 'none');
+                r.setAttribute('stroke', '#f0ede8');
+                r.setAttribute('stroke-width', '1.5');
+                r.setAttribute('opacity', '0.3');
+            }
+        });
+        var paths = container.querySelectorAll('path');
+        paths.forEach(function(p, i) {
+            var glow = Math.sin(t * 1.2 + i * 1.5) * 0.2 * intensity;
+            p.setAttribute('opacity', (0.4 + glow).toFixed(2));
+        });
+    });
+})();
+
+// Intent cards — random terracotta fill blink, never stops
+(function() {
+    var el = document.getElementById('viz-intent');
+    if (!el) return;
+    var cards = el.querySelectorAll('.intent-card rect');
+    if (!cards.length) return;
+    var indices = [];
+    for (var i = 0; i < cards.length; i++) indices.push(i);
+    var current = -1;
+    var phase = 'pause';
+    var phaseTime = 0;
+    var pauseDur = 0;
+    var brightDur = 0.9;
+    var holdDur = 0.5;
+    var fadeDur = 1.4;
+    function pickNext() {
+        var next;
+        do { next = indices[Math.floor(Math.random() * indices.length)]; } while (next === current && indices.length > 1);
+        current = next;
+        pauseDur = 1.0 + Math.random() * 3.0;
+    }
+    pickNext();
+    new LivingVignette(el, function(container, t, intensity) {
+        phaseTime += 0.016;
+        if (phase === 'pause' && phaseTime >= pauseDur) {
+            phase = 'brighten'; phaseTime = 0;
+        } else if (phase === 'brighten' && phaseTime >= brightDur) {
+            phase = 'hold'; phaseTime = 0;
+        } else if (phase === 'hold' && phaseTime >= holdDur) {
+            phase = 'fade'; phaseTime = 0;
+        } else if (phase === 'fade' && phaseTime >= fadeDur) {
+            phase = 'pause'; phaseTime = 0; pickNext();
+        }
+        var fillOpacity = 0;
+        if (phase === 'brighten') fillOpacity = (phaseTime / brightDur);
+        else if (phase === 'hold') fillOpacity = 1;
+        else if (phase === 'fade') fillOpacity = 1 - (phaseTime / fadeDur);
+        cards.forEach(function(card, i) {
+            if (i === current && fillOpacity > 0) {
+                card.setAttribute('fill', 'rgba(196,62,42,' + (fillOpacity * 0.4 * intensity).toFixed(3) + ')');
+                card.setAttribute('stroke', '#ffffff');
+                card.setAttribute('opacity', (0.6 + fillOpacity * 0.4).toFixed(2));
+            } else {
+                card.setAttribute('fill', 'none');
+                card.setAttribute('stroke', '#dfc49e');
+                card.setAttribute('opacity', '0.86');
+            }
+        });
+    });
+})();
+
+// What Remains callout — terracotta border pulse, never stops
+(function() {
+    var el = document.getElementById('viz-whatremains');
+    if (!el) return;
+    new LivingVignette(el, function(container, t, intensity) {
+        var terra = Math.sin(t * 0.4) * 0.1 * intensity;
+        container.style.borderColor = 'rgba(196,62,42,' + (0.15 + terra) + ')';
+    });
+})();
+
+// === AUDIO PLAYER — expanding pill with scrubbing ===
+(function() {
+    function formatTime(sec) {
+        const m = Math.floor(sec / 60);
+        const s = Math.floor(sec % 60);
+        return m + ':' + (s < 10 ? '0' : '') + s;
+    }
+
+    const audio = document.getElementById('articleAudio');
+    const player = document.getElementById('audioPlayer');
+    const playBtn = document.getElementById('playBtn');
+    const playIcon = document.getElementById('playIcon');
+    const controls = document.getElementById('audioControls');
+    const progress = document.getElementById('audioProgress');
+    const progressFill = document.getElementById('progressFill');
+    const progressHandle = document.getElementById('progressHandle');
+    const timeDisplay = document.getElementById('audioTime');
+
+    if (!audio || !player) return;
+
+    playBtn.addEventListener('click', function(e) {
+        e.stopPropagation();
+        if (audio.paused) {
+            audio.play();
+            player.style.maxWidth = '900px';
+            player.classList.add('is-playing');
+            controls.style.opacity = '1';
+            controls.style.maxWidth = '700px';
+            playIcon.innerHTML = '<rect x="6" y="4" width="4" height="16"></rect><rect x="14" y="4" width="4" height="16"></rect>';
+        } else {
+            audio.pause();
+            playIcon.innerHTML = '<polygon points="5 3 19 12 5 21 5 3"/>';
+        }
+    });
+
+    audio.addEventListener('timeupdate', function() {
+        const pct = (audio.currentTime / audio.duration) * 100;
+        progressFill.style.width = pct + '%';
+        progressHandle.style.left = pct + '%';
+        timeDisplay.textContent = formatTime(audio.currentTime) + ' / ' + formatTime(audio.duration || 0);
+    });
+
+    audio.addEventListener('ended', function() {
+        playIcon.innerHTML = '<polygon points="5 3 19 12 5 21 5 3"/>';
+        progressFill.style.width = '0%';
+        progressHandle.style.left = '0%';
+        player.classList.remove('is-playing');
+    });
+
+    audio.addEventListener('loadedmetadata', function() {
+        timeDisplay.textContent = '0:00 / ' + formatTime(audio.duration);
+    });
+
+    // Scrubbing
+    let isDragging = false;
+    function scrub(e) {
+        const rect = progress.getBoundingClientRect();
+        const pct = Math.max(0, Math.min(1, (e.clientX - rect.left) / rect.width));
+        audio.currentTime = pct * audio.duration;
+    }
+    progress.addEventListener('click', scrub);
+    progress.addEventListener('mousedown', function(e) { isDragging = true; scrub(e); });
+    document.addEventListener('mousemove', function(e) { if (isDragging) scrub(e); });
+    document.addEventListener('mouseup', function() { isDragging = false; });
+    progress.addEventListener('touchstart', function(e) { isDragging = true; scrub(e.touches[0]); }, {passive: true});
+    document.addEventListener('touchmove', function(e) { if (isDragging) scrub(e.touches[0]); }, {passive: true});
+    document.addEventListener('touchend', function() { isDragging = false; });
+
+    progress.addEventListener('mouseenter', function() { progressHandle.style.opacity = '1'; });
+    progress.addEventListener('mouseleave', function() { if (!isDragging) progressHandle.style.opacity = '0'; });
+})();
+
+// === SHARE — Copy link ===
+function copyLink(btn) {
+    navigator.clipboard.writeText('https://www.brankolukic.com/article-aios').then(function() {
+        btn.classList.add('copied');
+        btn.innerHTML = '<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg> Copied';
+        setTimeout(function() {
+            btn.classList.remove('copied');
+            btn.innerHTML = '<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copy link';
+        }, 2000);
+    });
+}
+
+// Theme toggle
+function toggleTheme() {
+  const root = document.documentElement;
+  const isLight = root.classList.toggle('light-theme');
+  localStorage.setItem('branko-theme', isLight ? 'light' : 'dark');
+  const sunIcon = document.querySelector('.sun-icon');
+  const moonIcon = document.querySelector('.moon-icon');
+  const toggleBtn = document.getElementById('themeToggle');
+  if (isLight) {
+    sunIcon.style.display = 'none';
+    moonIcon.style.display = 'block';
+    toggleBtn.title = 'Switch to dark theme';
+  } else {
+    sunIcon.style.display = 'block';
+    moonIcon.style.display = 'none';
+    toggleBtn.title = 'Switch to light theme';
+  }
+}
+
+// Apply saved theme
+(function() {
+  const savedTheme = localStorage.getItem('branko-theme');
+  if (savedTheme === 'light') {
+    document.documentElement.classList.add('light-theme');
+    document.addEventListener('DOMContentLoaded', function() {
+      const sunIcon = document.querySelector('.sun-icon');
+      const moonIcon = document.querySelector('.moon-icon');
+      const toggleBtn = document.getElementById('themeToggle');
+      if (sunIcon) sunIcon.style.display = 'none';
+      if (moonIcon) moonIcon.style.display = 'block';
+      if (toggleBtn) toggleBtn.title = 'Switch to dark theme';
+    });
+  }
+})();
+
+</script>
+</body>
+</html>
