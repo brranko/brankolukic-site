@@ -78,17 +78,17 @@
         :root.light-theme .deck-overlay .deck-bar,
         :root.light-theme .deck-overlay .radar-sweep,
         :root.light-theme .deck-overlay .deck-wave {
-            opacity: 0.6 !important;
+            opacity: 0.25 !important;
         }
         :root.light-theme .deck-overlay svg line,
         :root.light-theme .deck-overlay svg rect,
         :root.light-theme .deck-overlay svg circle,
         :root.light-theme .deck-overlay svg path,
         :root.light-theme .deck-overlay svg polyline {
-            stroke: #1a1a1a !important;
+            stroke: #c43e2a !important;
         }
         :root.light-theme .deck-overlay .deck-bar {
-            fill: #1a1a1a !important;
+            fill: #c43e2a !important;
         }
 
         /* Light theme: cube — swap dark fills to light equivalents */
@@ -353,7 +353,7 @@
             display: flex;
             flex-direction: column;
             align-items: center;
-            justify-content: center;
+            justify-content: center; padding-left: 6%;
             gap: 2rem;
             transition: right 0.4s cubic-bezier(0.22, 1, 0.36, 1);
         }
@@ -373,7 +373,7 @@
             height: 44px;
             display: flex;
             align-items: center;
-            justify-content: center;
+            justify-content: center; padding-left: 6%;
             transition: color 0.3s ease;
         }
         .mobile-menu-close:hover { color: var(--accent); }
@@ -428,7 +428,7 @@
             border-radius: 50%;
             display: flex;
             align-items: center;
-            justify-content: center;
+            justify-content: center; padding-left: 6%;
             color: var(--text-dim);
             z-index: 100;
             transition: all 0.3s ease;
@@ -703,7 +703,7 @@
             pointer-events: none;
             display: flex;
             align-items: center;
-            justify-content: center;
+            justify-content: center; padding-left: 6%;
         }
         .deck-overlay svg {
             transform: rotate(90deg);
@@ -834,7 +834,7 @@
         .share-btn {
             display: flex;
             align-items: center;
-            justify-content: center;
+            justify-content: center; padding-left: 6%;
             width: 38px;
             height: 38px;
             border-radius: 50%;
