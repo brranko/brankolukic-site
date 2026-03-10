@@ -185,8 +185,8 @@
   }
 
   @keyframes lineExpand {
-    from { transform: scaleX(0); }
-    to { transform: scaleX(1); }
+    from { transform: scaleY(0); }
+    to { transform: scaleY(1); }
   }
 
   .animate-on-scroll {
@@ -460,7 +460,7 @@
 
   .theme-toggle:hover {
     color: var(--accent);
-    border-color: var(--accent);
+    border-color: var(--border-light);
     transform: scale(1.1);
   }
 
@@ -684,8 +684,8 @@
     width: 100%;
     height: 2px;
     background: linear-gradient(90deg, var(--accent), transparent);
-    transform: scaleX(0);
-    transform-origin: left;
+    transform: scaleY(0);
+    transform-origin: top;
     transition: transform 0.5s cubic-bezier(0.22, 1, 0.36, 1);
   }
 
@@ -700,13 +700,13 @@
   }
 
   .scale-card:hover {
-    border-color: var(--accent);
+    border-color: var(--border-light);
     transform: translateY(-8px) scale(1.02);
-    box-shadow: 0 25px 50px rgba(0, 0, 0, 0.4), 0 0 0 1px var(--accent);
+    box-shadow: 0 25px 50px rgba(0, 0, 0, 0.4);
   }
 
   .scale-card:hover::before {
-    transform: scaleX(1);
+    transform: scaleY(1);
   }
 
   .scale-card:hover::after {
@@ -905,7 +905,7 @@
 
   .about-photo:hover {
     transform: scale(1.02);
-    border-color: var(--accent);
+    border-color: var(--border-light);
     box-shadow: 0 25px 50px rgba(0, 0, 0, 0.4);
   }
 
@@ -970,8 +970,8 @@
     width: 100%;
     height: 2px;
     background: var(--accent);
-    transform: scaleX(0);
-    transform-origin: left;
+    transform: scaleY(0);
+    transform-origin: top;
     transition: transform 0.5s cubic-bezier(0.22, 1, 0.36, 1);
   }
 
@@ -988,13 +988,13 @@
   }
 
   .link-block:hover {
-    border-color: var(--accent);
+    border-color: var(--border-light);
     transform: translateY(-8px) scale(1.02);
     box-shadow: 0 25px 50px rgba(0, 0, 0, 0.4), 0 0 30px rgba(196, 62, 42, 0.15);
   }
 
   .link-block:hover::before {
-    transform: scaleX(1);
+    transform: scaleY(1);
   }
 
   .link-block:hover::after {
@@ -1124,7 +1124,7 @@
 
   .event-location a:hover {
     color: var(--accent);
-    border-color: var(--accent);
+    border-color: var(--border-light);
   }
 
   .event-description {
@@ -1255,7 +1255,7 @@
   }
 
   .contact a:hover::after {
-    transform: scaleX(0);
+    transform: scaleY(0);
   }
 
   /* FOOTER */
@@ -1298,8 +1298,8 @@
     width: 100%;
     height: 3px; /* Slightly thicker for mobile visibility */
     z-index: 10000; /* Above everything including nav */
-    transform-origin: left;
-    transform: scaleX(0);
+    transform-origin: top;
+    transform: scaleY(0);
     pointer-events: none;
   }
 
