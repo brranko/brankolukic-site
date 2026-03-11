@@ -63,18 +63,12 @@
         }
 
         /* Light theme — soft light wash lifts shadows, lets text + HUD breathe */
-        /* Light theme hero: dark overlays matching dark mode — hero::after handles cream fade at bottom edge */
-        :root.light-theme .hero-overlay {
-            background: linear-gradient(to top, rgba(26,26,26,0.75) 0%, rgba(26,26,26,0.6) 40%, rgba(26,26,26,0.3) 70%, rgba(26,26,26,0.75) 100%);
+        /* Light theme hero: dark backing so everything behaves identical to dark mode */
+        :root.light-theme .hero {
+            background: #1a1a1a;
         }
-        :root.light-theme .hero-vignette {
-            background: radial-gradient(ellipse at center, transparent 40%, rgba(0,0,0,0.4) 100%);
-        }
-        :root.light-theme .hero-image img {
-            opacity: 0.65;
-        }
-        :root.light-theme .hero-image::after {
-            opacity: 0.15;
+        :root.light-theme .hero::after {
+            background: linear-gradient(to top, #1a1a1a 0%, #1a1a1a 5%, transparent 100%);
         }
         /* Light theme: HUD overlay — keep strong */
         :root.light-theme .deck-overlay svg {
@@ -89,6 +83,14 @@
         :root.light-theme .back-link:hover { color: #c43e2a; }
         :root.light-theme .audio-player { border-color: rgba(196,168,130,0.5); }
         :root.light-theme .audio-label { color: #c43e2a !important; }
+        /* Light theme: smooth transition from dark hero to cream page */
+        :root.light-theme .article::before {
+            content: '';
+            display: block;
+            height: 120px;
+            margin: -4rem -2rem 2rem;
+            background: linear-gradient(to bottom, #1a1a1a 0%, var(--bg) 100%);
+        }
 
         /* Light theme: cube — swap dark fills to light equivalents */
         :root.light-theme #vig-cube .cube-group .draw-line {
