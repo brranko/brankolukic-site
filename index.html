@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<script>(function(){var n=performance.getEntriesByType&&performance.getEntriesByType('navigation')[0];var isReload=n?n.type==='reload':(performance.navigation&&performance.navigation.type===1);if(isReload&&window.location.hash){history.replaceState(null,'',window.location.pathname);window.scrollTo(0,0);}})();</script>
+<script>(function(){var wasHere=sessionStorage.getItem('onIndex');if(wasHere&&window.location.hash){history.replaceState(null,'',window.location.pathname);window.scrollTo(0,0);}sessionStorage.setItem('onIndex','1');})();</script>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no, viewport-fit=cover">
 <title>Branko Lukic | Cognitive Architecture — Building the Missing Layer Between Human Creativity and Frontier AI</title>
@@ -2128,25 +2128,18 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
   });
 });
 
-// On reload, scroll to top and clear hash. On navigation from another page, honor the hash.
+// Handle hash navigation from other pages vs reload
 (function() {
-  var navEntry = performance.getEntriesByType && performance.getEntriesByType('navigation')[0];
-  var isReload = navEntry ? navEntry.type === 'reload' : (performance.navigation && performance.navigation.type === 1);
-  if (isReload) {
-    if (window.location.hash) history.replaceState(null, '', window.location.pathname);
-    window.scrollTo(0, 0);
-    window.addEventListener('load', () => {
-      window.scrollTo(0, 0);
-      navLinks.forEach(link => link.classList.remove('active'));
-    });
-  } else if (window.location.hash) {
-    // Arrived from another page with a hash — scroll to the target after load
+  if (window.location.hash) {
+    // We have a hash — scroll to that section after page loads
     window.addEventListener('load', () => {
       const target = document.querySelector(window.location.hash);
       if (target) {
         const navHeight = document.querySelector('nav').offsetHeight;
         const targetTop = target.getBoundingClientRect().top + window.scrollY - navHeight - 10;
         window.scrollTo({ top: targetTop, behavior: 'smooth' });
+        // Trigger scroll spy to highlight the correct nav item
+        setTimeout(updateActiveNav, 100);
       }
     });
   }
