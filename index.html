@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+<script>if(window.location.hash){history.replaceState(null,'',window.location.pathname);window.scrollTo(0,0);}</script>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no, viewport-fit=cover">
 <title>Branko Lukic | Cognitive Architecture — Building the Missing Layer Between Human Creativity and Frontier AI</title>
@@ -1715,7 +1716,7 @@ function toggleTheme() {
   </div>
 </section>
 
-<div class="pillars-section">
+<div id="research" class="pillars-section">
   <div class="pillar-card" data-section="research">
     <div class="pillar-image-wrap">
       <img src="images/card-research.webp" alt="Research and Experiments" loading="lazy">
@@ -1778,7 +1779,7 @@ function toggleTheme() {
 <div class="divider"><hr></div>
 
 <!-- THREE SHIFTS -->
-<section id="research">
+<section>
   <div class="section-label animate-on-scroll">Research</div>
   <h2 class="animate-on-scroll">Exploring four shifts</h2>
   <div class="shifts">
@@ -2075,7 +2076,8 @@ document.querySelectorAll('.animate-on-scroll').forEach(el => {
 });
 
 // Scroll spy for nav active states
-const sections = document.querySelectorAll('section[id]');
+// Uses range-based detection: each named section "owns" all space until the next named section
+const sections = Array.from(document.querySelectorAll('#research, #frameworks, #about, #speaking'));
 const navLinks = document.querySelectorAll('.nav-links a[data-section], .mobile-menu-links a[data-section]');
 
 function updateActiveNav() {
@@ -2090,27 +2092,24 @@ function updateActiveNav() {
     return;
   }
 
-  let found = false;
-  sections.forEach(section => {
-    const sectionTop = section.offsetTop;
-    const sectionHeight = section.offsetHeight;
-    const sectionId = section.getAttribute('id');
+  // Find which section range we're in
+  let activeSectionId = null;
+  for (let i = 0; i < sections.length; i++) {
+    const sectionTop = sections[i].offsetTop;
+    const nextTop = (i + 1 < sections.length) ? sections[i + 1].offsetTop : Infinity;
+    if (scrollPos >= sectionTop && scrollPos < nextTop) {
+      activeSectionId = sections[i].getAttribute('id');
+      break;
+    }
+  }
 
-    if (scrollPos >= sectionTop && scrollPos < sectionTop + sectionHeight) {
-      navLinks.forEach(link => {
-        link.classList.remove('active');
-        if (link.getAttribute('data-section') === sectionId) {
-          link.classList.add('active');
-          found = true;
-        }
-      });
+  navLinks.forEach(link => {
+    if (activeSectionId && link.getAttribute('data-section') === activeSectionId) {
+      link.classList.add('active');
+    } else {
+      link.classList.remove('active');
     }
   });
-
-  // If no section matched, clear all
-  if (!found) {
-    navLinks.forEach(link => link.classList.remove('active'));
-  }
 }
 
 window.addEventListener('scroll', updateActiveNav);
@@ -2131,13 +2130,15 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
   });
 });
 
-// On page load/refresh, always start at top — clear any hash anchoring
+// On page load/refresh, always start at top — belt and suspenders with the <head> script
 if (window.location.hash) {
   history.replaceState(null, '', window.location.pathname);
-  window.scrollTo(0, 0);
 }
+window.scrollTo(0, 0);
 window.addEventListener('load', () => {
   window.scrollTo(0, 0);
+  // Clear any nav active state on fresh load at top
+  navLinks.forEach(link => link.classList.remove('active'));
 });
 
 // ========== GSAP SOTA ANIMATIONS ==========
