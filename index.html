@@ -2080,21 +2080,37 @@ const navLinks = document.querySelectorAll('.nav-links a[data-section], .mobile-
 
 function updateActiveNav() {
   const scrollPos = window.scrollY + 150;
-  
+
+  // If still in hero area, no nav item is active
+  const heroSection = document.querySelector('.hero');
+  const heroBottom = heroSection ? heroSection.offsetTop + heroSection.offsetHeight : 0;
+
+  if (scrollPos < heroBottom) {
+    navLinks.forEach(link => link.classList.remove('active'));
+    return;
+  }
+
+  let found = false;
   sections.forEach(section => {
     const sectionTop = section.offsetTop;
     const sectionHeight = section.offsetHeight;
     const sectionId = section.getAttribute('id');
-    
+
     if (scrollPos >= sectionTop && scrollPos < sectionTop + sectionHeight) {
       navLinks.forEach(link => {
         link.classList.remove('active');
         if (link.getAttribute('data-section') === sectionId) {
           link.classList.add('active');
+          found = true;
         }
       });
     }
   });
+
+  // If no section matched, clear all
+  if (!found) {
+    navLinks.forEach(link => link.classList.remove('active'));
+  }
 }
 
 window.addEventListener('scroll', updateActiveNav);
