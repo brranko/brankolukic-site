@@ -73,17 +73,9 @@
             opacity: 0.55;
             filter: brightness(0.7) contrast(1.3);
         }
-        /* Light theme: HUD overlay — boost visibility on light background */
-        :root.light-theme .deck-overlay .draw-line,
-        :root.light-theme .deck-overlay .hud-text,
-        :root.light-theme .deck-overlay .hud-readout,
-        :root.light-theme .deck-overlay .compass-needle,
-        :root.light-theme .deck-overlay .hud-wave,
-        :root.light-theme .deck-overlay .hud-bar {
-            opacity: 0.7 !important;
-        }
-        :root.light-theme .deck-overlay .hud-particle {
-            opacity: 0.12 !important;
+        /* Light theme: HUD overlay — keep strong on light bg too */
+        :root.light-theme .deck-overlay svg {
+            opacity: 0.9;
         }
 
         /* Light theme: cube — swap dark fills to light equivalents */
@@ -1306,390 +1298,390 @@
     <div class="vignette vignette-wide deck-overlay" id="vig-garage">
         <svg viewBox="0 0 1000 600" fill="none" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid meet">
             <!-- === LARGE CONCENTRIC ARCS === -->
-            <path class="draw-line" d="M255.7,211.1 A260,260 0 1,1 300.8,467.1" stroke="#c43e2a" stroke-width="0.4" fill="none" opacity="0.08"/>
-            <path class="draw-line" d="M268.9,192.2 A255,255 0 1,1 319.7,480.3" stroke="#c43e2a" stroke-width="0.3" fill="none" opacity="0.06" stroke-dasharray="2,4"/>
-            <path class="draw-line" d="M300.8,185.0 A230,230 0 1,1 352.2,476.2" stroke="#c43e2a" stroke-width="0.5" fill="none" opacity="0.1"/>
-            <path class="draw-line" d="M315.7,170.9 A225,225 0 1,1 370.9,484.3" stroke="#c43e2a" stroke-width="0.25" fill="none" opacity="0.06" stroke-dasharray="1,3"/>
-            <path class="draw-line" d="M346.8,171.4 A200,200 0 1,1 400.0,473.2" stroke="#c43e2a" stroke-width="0.4" fill="none" opacity="0.09"/>
-            <path class="draw-line" d="M412.5,148.4 A175,175 0 1,1 469.6,472.3" stroke="#c43e2a" stroke-width="0.35" fill="none" opacity="0.08"/>
-            <path class="draw-line" d="M428.2,145.9 A170,170 0 1,1 485.2,469.4" stroke="#c43e2a" stroke-width="0.2" fill="none" opacity="0.05" stroke-dasharray="3,6"/>
-            <path class="draw-line" d="M448.7,159.0 A150,150 0 1,1 526.0,447.7" stroke="#c43e2a" stroke-width="0.4" fill="none" opacity="0.09"/>
-            <path class="draw-line" d="M287.8,422.5 A245,245 0 0,1 258.7,257.5" stroke="#c43e2a" stroke-width="0.3" fill="none" opacity="0.07"/>
-            <path class="draw-line" d="M339.1,435.0 A210,210 0 0,1 290.0,300.0" stroke="#c43e2a" stroke-width="0.3" fill="none" opacity="0.06"/>
-            <path class="draw-line" d="M317.8,267.9 A185,185 0 0,1 348.5,193.9" stroke="#c43e2a" stroke-width="0.3" fill="none" opacity="0.07"/>
-            <path class="draw-line" d="M260.9,279.1 A240,240 0 0,1 271.7,225.8" stroke="#c43e2a" stroke-width="0.5" fill="none" opacity="0.1"/>
+            <path class="draw-line" d="M255.7,211.1 A260,260 0 1,1 300.8,467.1" stroke="#c43e2a" stroke-width="0.4" fill="none" opacity="0.24"/>
+            <path class="draw-line" d="M268.9,192.2 A255,255 0 1,1 319.7,480.3" stroke="#c43e2a" stroke-width="0.3" fill="none" opacity="0.18" stroke-dasharray="2,4"/>
+            <path class="draw-line" d="M300.8,185.0 A230,230 0 1,1 352.2,476.2" stroke="#c43e2a" stroke-width="0.5" fill="none" opacity="0.30"/>
+            <path class="draw-line" d="M315.7,170.9 A225,225 0 1,1 370.9,484.3" stroke="#c43e2a" stroke-width="0.25" fill="none" opacity="0.18" stroke-dasharray="1,3"/>
+            <path class="draw-line" d="M346.8,171.4 A200,200 0 1,1 400.0,473.2" stroke="#c43e2a" stroke-width="0.4" fill="none" opacity="0.27"/>
+            <path class="draw-line" d="M412.5,148.4 A175,175 0 1,1 469.6,472.3" stroke="#c43e2a" stroke-width="0.35" fill="none" opacity="0.24"/>
+            <path class="draw-line" d="M428.2,145.9 A170,170 0 1,1 485.2,469.4" stroke="#c43e2a" stroke-width="0.2" fill="none" opacity="0.15" stroke-dasharray="3,6"/>
+            <path class="draw-line" d="M448.7,159.0 A150,150 0 1,1 526.0,447.7" stroke="#c43e2a" stroke-width="0.4" fill="none" opacity="0.27"/>
+            <path class="draw-line" d="M287.8,422.5 A245,245 0 0,1 258.7,257.5" stroke="#c43e2a" stroke-width="0.3" fill="none" opacity="0.21"/>
+            <path class="draw-line" d="M339.1,435.0 A210,210 0 0,1 290.0,300.0" stroke="#c43e2a" stroke-width="0.3" fill="none" opacity="0.18"/>
+            <path class="draw-line" d="M317.8,267.9 A185,185 0 0,1 348.5,193.9" stroke="#c43e2a" stroke-width="0.3" fill="none" opacity="0.21"/>
+            <path class="draw-line" d="M260.9,279.1 A240,240 0 0,1 271.7,225.8" stroke="#c43e2a" stroke-width="0.5" fill="none" opacity="0.30"/>
             <!-- Arc tick marks -->
-            <line x1="278.3" y1="172.0" x2="271.4" y2="168.0" stroke="#c43e2a" stroke-width="0.4" opacity="0.12"/>
-            <line x1="290.3" y1="153.2" x2="287.0" y2="150.9" stroke="#c43e2a" stroke-width="0.25" opacity="0.06"/>
-            <line x1="303.9" y1="135.4" x2="300.8" y2="132.9" stroke="#c43e2a" stroke-width="0.25" opacity="0.06"/>
-            <line x1="319.0" y1="119.0" x2="313.3" y2="113.3" stroke="#c43e2a" stroke-width="0.4" opacity="0.12"/>
-            <line x1="335.4" y1="103.9" x2="332.9" y2="100.8" stroke="#c43e2a" stroke-width="0.25" opacity="0.06"/>
-            <line x1="353.2" y1="90.3" x2="350.9" y2="87.0" stroke="#c43e2a" stroke-width="0.25" opacity="0.06"/>
-            <line x1="372.0" y1="78.3" x2="368.0" y2="71.4" stroke="#c43e2a" stroke-width="0.4" opacity="0.12"/>
-            <line x1="391.8" y1="68.0" x2="390.1" y2="64.4" stroke="#c43e2a" stroke-width="0.25" opacity="0.06"/>
-            <line x1="412.4" y1="59.4" x2="411.1" y2="55.7" stroke="#c43e2a" stroke-width="0.25" opacity="0.06"/>
-            <line x1="433.7" y1="52.7" x2="431.7" y2="45.0" stroke="#c43e2a" stroke-width="0.4" opacity="0.12"/>
-            <line x1="455.5" y1="47.9" x2="454.9" y2="43.9" stroke="#c43e2a" stroke-width="0.25" opacity="0.06"/>
-            <line x1="477.7" y1="45.0" x2="477.3" y2="41.0" stroke="#c43e2a" stroke-width="0.25" opacity="0.06"/>
-            <line x1="500.0" y1="44.0" x2="500.0" y2="36.0" stroke="#c43e2a" stroke-width="0.4" opacity="0.12"/>
-            <line x1="522.3" y1="45.0" x2="522.7" y2="41.0" stroke="#c43e2a" stroke-width="0.25" opacity="0.06"/>
-            <line x1="544.5" y1="47.9" x2="545.1" y2="43.9" stroke="#c43e2a" stroke-width="0.25" opacity="0.06"/>
-            <line x1="566.3" y1="52.7" x2="568.3" y2="45.0" stroke="#c43e2a" stroke-width="0.4" opacity="0.12"/>
-            <line x1="587.6" y1="59.4" x2="588.9" y2="55.7" stroke="#c43e2a" stroke-width="0.25" opacity="0.06"/>
-            <line x1="608.2" y1="68.0" x2="609.9" y2="64.4" stroke="#c43e2a" stroke-width="0.25" opacity="0.06"/>
-            <line x1="628.0" y1="78.3" x2="632.0" y2="71.4" stroke="#c43e2a" stroke-width="0.4" opacity="0.12"/>
-            <line x1="646.8" y1="90.3" x2="649.1" y2="87.0" stroke="#c43e2a" stroke-width="0.25" opacity="0.06"/>
-            <line x1="664.6" y1="103.9" x2="667.1" y2="100.8" stroke="#c43e2a" stroke-width="0.25" opacity="0.06"/>
-            <line x1="681.0" y1="119.0" x2="686.7" y2="113.3" stroke="#c43e2a" stroke-width="0.4" opacity="0.12"/>
-            <line x1="696.1" y1="135.4" x2="699.2" y2="132.9" stroke="#c43e2a" stroke-width="0.25" opacity="0.06"/>
-            <line x1="709.7" y1="153.2" x2="713.0" y2="150.9" stroke="#c43e2a" stroke-width="0.25" opacity="0.06"/>
-            <line x1="721.7" y1="172.0" x2="728.6" y2="168.0" stroke="#c43e2a" stroke-width="0.4" opacity="0.12"/>
-            <line x1="732.0" y1="191.8" x2="735.6" y2="190.1" stroke="#c43e2a" stroke-width="0.25" opacity="0.06"/>
-            <line x1="740.6" y1="212.4" x2="744.3" y2="211.1" stroke="#c43e2a" stroke-width="0.25" opacity="0.06"/>
-            <line x1="747.3" y1="233.7" x2="755.0" y2="231.7" stroke="#c43e2a" stroke-width="0.4" opacity="0.12"/>
-            <line x1="752.1" y1="255.5" x2="756.1" y2="254.9" stroke="#c43e2a" stroke-width="0.25" opacity="0.06"/>
-            <line x1="755.0" y1="277.7" x2="759.0" y2="277.3" stroke="#c43e2a" stroke-width="0.25" opacity="0.06"/>
-            <line x1="756.0" y1="300.0" x2="764.0" y2="300.0" stroke="#c43e2a" stroke-width="0.4" opacity="0.12"/>
-            <line x1="755.0" y1="322.3" x2="759.0" y2="322.7" stroke="#c43e2a" stroke-width="0.25" opacity="0.06"/>
-            <line x1="752.1" y1="344.5" x2="756.1" y2="345.1" stroke="#c43e2a" stroke-width="0.25" opacity="0.06"/>
-            <line x1="747.3" y1="366.3" x2="755.0" y2="368.3" stroke="#c43e2a" stroke-width="0.4" opacity="0.12"/>
-            <line x1="740.6" y1="387.6" x2="744.3" y2="388.9" stroke="#c43e2a" stroke-width="0.25" opacity="0.06"/>
-            <line x1="732.0" y1="408.2" x2="735.6" y2="409.9" stroke="#c43e2a" stroke-width="0.25" opacity="0.06"/>
-            <line x1="721.7" y1="428.0" x2="728.6" y2="432.0" stroke="#c43e2a" stroke-width="0.4" opacity="0.12"/>
-            <line x1="709.7" y1="446.8" x2="713.0" y2="449.1" stroke="#c43e2a" stroke-width="0.25" opacity="0.06"/>
-            <line x1="696.1" y1="464.6" x2="699.2" y2="467.1" stroke="#c43e2a" stroke-width="0.25" opacity="0.06"/>
-            <line x1="681.0" y1="481.0" x2="686.7" y2="486.7" stroke="#c43e2a" stroke-width="0.4" opacity="0.12"/>
-            <line x1="664.6" y1="496.1" x2="667.1" y2="499.2" stroke="#c43e2a" stroke-width="0.25" opacity="0.06"/>
-            <line x1="646.8" y1="509.7" x2="649.1" y2="513.0" stroke="#c43e2a" stroke-width="0.25" opacity="0.06"/>
-            <line x1="628.0" y1="521.7" x2="632.0" y2="528.6" stroke="#c43e2a" stroke-width="0.4" opacity="0.12"/>
-            <line x1="608.2" y1="532.0" x2="609.9" y2="535.6" stroke="#c43e2a" stroke-width="0.25" opacity="0.06"/>
-            <line x1="587.6" y1="540.6" x2="588.9" y2="544.3" stroke="#c43e2a" stroke-width="0.25" opacity="0.06"/>
-            <line x1="566.3" y1="547.3" x2="568.3" y2="555.0" stroke="#c43e2a" stroke-width="0.4" opacity="0.12"/>
-            <line x1="544.5" y1="552.1" x2="545.1" y2="556.1" stroke="#c43e2a" stroke-width="0.25" opacity="0.06"/>
-            <line x1="522.3" y1="555.0" x2="522.7" y2="559.0" stroke="#c43e2a" stroke-width="0.25" opacity="0.06"/>
-            <line x1="500.0" y1="556.0" x2="500.0" y2="564.0" stroke="#c43e2a" stroke-width="0.4" opacity="0.12"/>
-            <line x1="477.7" y1="555.0" x2="477.3" y2="559.0" stroke="#c43e2a" stroke-width="0.25" opacity="0.06"/>
-            <line x1="455.5" y1="552.1" x2="454.9" y2="556.1" stroke="#c43e2a" stroke-width="0.25" opacity="0.06"/>
-            <line x1="433.7" y1="547.3" x2="431.7" y2="555.0" stroke="#c43e2a" stroke-width="0.4" opacity="0.12"/>
-            <line x1="412.4" y1="540.6" x2="411.1" y2="544.3" stroke="#c43e2a" stroke-width="0.25" opacity="0.06"/>
-            <line x1="391.8" y1="532.0" x2="390.1" y2="535.6" stroke="#c43e2a" stroke-width="0.25" opacity="0.06"/>
-            <line x1="372.0" y1="521.7" x2="368.0" y2="528.6" stroke="#c43e2a" stroke-width="0.4" opacity="0.12"/>
-            <line x1="353.2" y1="509.7" x2="350.9" y2="513.0" stroke="#c43e2a" stroke-width="0.25" opacity="0.06"/>
-            <line x1="335.4" y1="496.1" x2="332.9" y2="499.2" stroke="#c43e2a" stroke-width="0.25" opacity="0.06"/>
-            <line x1="319.0" y1="481.0" x2="313.3" y2="486.7" stroke="#c43e2a" stroke-width="0.4" opacity="0.12"/>
-            <text class="hud-text" x="264.44109017063266" y="166.00000000000003" fill="#c43e2a" font-family="'Courier New', monospace" font-size="5" text-anchor="middle" opacity="0.1" letter-spacing="0.15em">-150°</text>
-            <text class="hud-text" x="364.00000000000006" y="66.44109017063266" fill="#c43e2a" font-family="'Courier New', monospace" font-size="5" text-anchor="middle" opacity="0.1" letter-spacing="0.15em">-120°</text>
-            <text class="hud-text" x="500.0" y="30.0" fill="#c43e2a" font-family="'Courier New', monospace" font-size="5" text-anchor="middle" opacity="0.1" letter-spacing="0.15em">-90°</text>
-            <text class="hud-text" x="636.0" y="66.44109017063269" fill="#c43e2a" font-family="'Courier New', monospace" font-size="5" text-anchor="middle" opacity="0.1" letter-spacing="0.15em">-60°</text>
-            <text class="hud-text" x="735.5589098293674" y="166.00000000000003" fill="#c43e2a" font-family="'Courier New', monospace" font-size="5" text-anchor="middle" opacity="0.1" letter-spacing="0.15em">-30°</text>
-            <text class="hud-text" x="772.0" y="302.0" fill="#c43e2a" font-family="'Courier New', monospace" font-size="5" text-anchor="middle" opacity="0.1" letter-spacing="0.15em">0°</text>
-            <text class="hud-text" x="735.5589098293674" y="438.0" fill="#c43e2a" font-family="'Courier New', monospace" font-size="5" text-anchor="middle" opacity="0.1" letter-spacing="0.15em">30°</text>
-            <text class="hud-text" x="636.0" y="537.5589098293673" fill="#c43e2a" font-family="'Courier New', monospace" font-size="5" text-anchor="middle" opacity="0.1" letter-spacing="0.15em">60°</text>
-            <text class="hud-text" x="500.0" y="574.0" fill="#c43e2a" font-family="'Courier New', monospace" font-size="5" text-anchor="middle" opacity="0.1" letter-spacing="0.15em">90°</text>
-            <text class="hud-text" x="364.00000000000006" y="537.5589098293674" fill="#c43e2a" font-family="'Courier New', monospace" font-size="5" text-anchor="middle" opacity="0.1" letter-spacing="0.15em">120°</text>
+            <line x1="278.3" y1="172.0" x2="271.4" y2="168.0" stroke="#c43e2a" stroke-width="0.4" opacity="0.30"/>
+            <line x1="290.3" y1="153.2" x2="287.0" y2="150.9" stroke="#c43e2a" stroke-width="0.25" opacity="0.15"/>
+            <line x1="303.9" y1="135.4" x2="300.8" y2="132.9" stroke="#c43e2a" stroke-width="0.25" opacity="0.15"/>
+            <line x1="319.0" y1="119.0" x2="313.3" y2="113.3" stroke="#c43e2a" stroke-width="0.4" opacity="0.30"/>
+            <line x1="335.4" y1="103.9" x2="332.9" y2="100.8" stroke="#c43e2a" stroke-width="0.25" opacity="0.15"/>
+            <line x1="353.2" y1="90.3" x2="350.9" y2="87.0" stroke="#c43e2a" stroke-width="0.25" opacity="0.15"/>
+            <line x1="372.0" y1="78.3" x2="368.0" y2="71.4" stroke="#c43e2a" stroke-width="0.4" opacity="0.30"/>
+            <line x1="391.8" y1="68.0" x2="390.1" y2="64.4" stroke="#c43e2a" stroke-width="0.25" opacity="0.15"/>
+            <line x1="412.4" y1="59.4" x2="411.1" y2="55.7" stroke="#c43e2a" stroke-width="0.25" opacity="0.15"/>
+            <line x1="433.7" y1="52.7" x2="431.7" y2="45.0" stroke="#c43e2a" stroke-width="0.4" opacity="0.30"/>
+            <line x1="455.5" y1="47.9" x2="454.9" y2="43.9" stroke="#c43e2a" stroke-width="0.25" opacity="0.15"/>
+            <line x1="477.7" y1="45.0" x2="477.3" y2="41.0" stroke="#c43e2a" stroke-width="0.25" opacity="0.15"/>
+            <line x1="500.0" y1="44.0" x2="500.0" y2="36.0" stroke="#c43e2a" stroke-width="0.4" opacity="0.30"/>
+            <line x1="522.3" y1="45.0" x2="522.7" y2="41.0" stroke="#c43e2a" stroke-width="0.25" opacity="0.15"/>
+            <line x1="544.5" y1="47.9" x2="545.1" y2="43.9" stroke="#c43e2a" stroke-width="0.25" opacity="0.15"/>
+            <line x1="566.3" y1="52.7" x2="568.3" y2="45.0" stroke="#c43e2a" stroke-width="0.4" opacity="0.30"/>
+            <line x1="587.6" y1="59.4" x2="588.9" y2="55.7" stroke="#c43e2a" stroke-width="0.25" opacity="0.15"/>
+            <line x1="608.2" y1="68.0" x2="609.9" y2="64.4" stroke="#c43e2a" stroke-width="0.25" opacity="0.15"/>
+            <line x1="628.0" y1="78.3" x2="632.0" y2="71.4" stroke="#c43e2a" stroke-width="0.4" opacity="0.30"/>
+            <line x1="646.8" y1="90.3" x2="649.1" y2="87.0" stroke="#c43e2a" stroke-width="0.25" opacity="0.15"/>
+            <line x1="664.6" y1="103.9" x2="667.1" y2="100.8" stroke="#c43e2a" stroke-width="0.25" opacity="0.15"/>
+            <line x1="681.0" y1="119.0" x2="686.7" y2="113.3" stroke="#c43e2a" stroke-width="0.4" opacity="0.30"/>
+            <line x1="696.1" y1="135.4" x2="699.2" y2="132.9" stroke="#c43e2a" stroke-width="0.25" opacity="0.15"/>
+            <line x1="709.7" y1="153.2" x2="713.0" y2="150.9" stroke="#c43e2a" stroke-width="0.25" opacity="0.15"/>
+            <line x1="721.7" y1="172.0" x2="728.6" y2="168.0" stroke="#c43e2a" stroke-width="0.4" opacity="0.30"/>
+            <line x1="732.0" y1="191.8" x2="735.6" y2="190.1" stroke="#c43e2a" stroke-width="0.25" opacity="0.15"/>
+            <line x1="740.6" y1="212.4" x2="744.3" y2="211.1" stroke="#c43e2a" stroke-width="0.25" opacity="0.15"/>
+            <line x1="747.3" y1="233.7" x2="755.0" y2="231.7" stroke="#c43e2a" stroke-width="0.4" opacity="0.30"/>
+            <line x1="752.1" y1="255.5" x2="756.1" y2="254.9" stroke="#c43e2a" stroke-width="0.25" opacity="0.15"/>
+            <line x1="755.0" y1="277.7" x2="759.0" y2="277.3" stroke="#c43e2a" stroke-width="0.25" opacity="0.15"/>
+            <line x1="756.0" y1="300.0" x2="764.0" y2="300.0" stroke="#c43e2a" stroke-width="0.4" opacity="0.30"/>
+            <line x1="755.0" y1="322.3" x2="759.0" y2="322.7" stroke="#c43e2a" stroke-width="0.25" opacity="0.15"/>
+            <line x1="752.1" y1="344.5" x2="756.1" y2="345.1" stroke="#c43e2a" stroke-width="0.25" opacity="0.15"/>
+            <line x1="747.3" y1="366.3" x2="755.0" y2="368.3" stroke="#c43e2a" stroke-width="0.4" opacity="0.30"/>
+            <line x1="740.6" y1="387.6" x2="744.3" y2="388.9" stroke="#c43e2a" stroke-width="0.25" opacity="0.15"/>
+            <line x1="732.0" y1="408.2" x2="735.6" y2="409.9" stroke="#c43e2a" stroke-width="0.25" opacity="0.15"/>
+            <line x1="721.7" y1="428.0" x2="728.6" y2="432.0" stroke="#c43e2a" stroke-width="0.4" opacity="0.30"/>
+            <line x1="709.7" y1="446.8" x2="713.0" y2="449.1" stroke="#c43e2a" stroke-width="0.25" opacity="0.15"/>
+            <line x1="696.1" y1="464.6" x2="699.2" y2="467.1" stroke="#c43e2a" stroke-width="0.25" opacity="0.15"/>
+            <line x1="681.0" y1="481.0" x2="686.7" y2="486.7" stroke="#c43e2a" stroke-width="0.4" opacity="0.30"/>
+            <line x1="664.6" y1="496.1" x2="667.1" y2="499.2" stroke="#c43e2a" stroke-width="0.25" opacity="0.15"/>
+            <line x1="646.8" y1="509.7" x2="649.1" y2="513.0" stroke="#c43e2a" stroke-width="0.25" opacity="0.15"/>
+            <line x1="628.0" y1="521.7" x2="632.0" y2="528.6" stroke="#c43e2a" stroke-width="0.4" opacity="0.30"/>
+            <line x1="608.2" y1="532.0" x2="609.9" y2="535.6" stroke="#c43e2a" stroke-width="0.25" opacity="0.15"/>
+            <line x1="587.6" y1="540.6" x2="588.9" y2="544.3" stroke="#c43e2a" stroke-width="0.25" opacity="0.15"/>
+            <line x1="566.3" y1="547.3" x2="568.3" y2="555.0" stroke="#c43e2a" stroke-width="0.4" opacity="0.30"/>
+            <line x1="544.5" y1="552.1" x2="545.1" y2="556.1" stroke="#c43e2a" stroke-width="0.25" opacity="0.15"/>
+            <line x1="522.3" y1="555.0" x2="522.7" y2="559.0" stroke="#c43e2a" stroke-width="0.25" opacity="0.15"/>
+            <line x1="500.0" y1="556.0" x2="500.0" y2="564.0" stroke="#c43e2a" stroke-width="0.4" opacity="0.30"/>
+            <line x1="477.7" y1="555.0" x2="477.3" y2="559.0" stroke="#c43e2a" stroke-width="0.25" opacity="0.15"/>
+            <line x1="455.5" y1="552.1" x2="454.9" y2="556.1" stroke="#c43e2a" stroke-width="0.25" opacity="0.15"/>
+            <line x1="433.7" y1="547.3" x2="431.7" y2="555.0" stroke="#c43e2a" stroke-width="0.4" opacity="0.30"/>
+            <line x1="412.4" y1="540.6" x2="411.1" y2="544.3" stroke="#c43e2a" stroke-width="0.25" opacity="0.15"/>
+            <line x1="391.8" y1="532.0" x2="390.1" y2="535.6" stroke="#c43e2a" stroke-width="0.25" opacity="0.15"/>
+            <line x1="372.0" y1="521.7" x2="368.0" y2="528.6" stroke="#c43e2a" stroke-width="0.4" opacity="0.30"/>
+            <line x1="353.2" y1="509.7" x2="350.9" y2="513.0" stroke="#c43e2a" stroke-width="0.25" opacity="0.15"/>
+            <line x1="335.4" y1="496.1" x2="332.9" y2="499.2" stroke="#c43e2a" stroke-width="0.25" opacity="0.15"/>
+            <line x1="319.0" y1="481.0" x2="313.3" y2="486.7" stroke="#c43e2a" stroke-width="0.4" opacity="0.30"/>
+            <text class="hud-text" x="264.44109017063266" y="166.00000000000003" fill="#c43e2a" font-family="'Courier New', monospace" font-size="5" text-anchor="middle" opacity="0.25" letter-spacing="0.15em">-150°</text>
+            <text class="hud-text" x="364.00000000000006" y="66.44109017063266" fill="#c43e2a" font-family="'Courier New', monospace" font-size="5" text-anchor="middle" opacity="0.25" letter-spacing="0.15em">-120°</text>
+            <text class="hud-text" x="500.0" y="30.0" fill="#c43e2a" font-family="'Courier New', monospace" font-size="5" text-anchor="middle" opacity="0.25" letter-spacing="0.15em">-90°</text>
+            <text class="hud-text" x="636.0" y="66.44109017063269" fill="#c43e2a" font-family="'Courier New', monospace" font-size="5" text-anchor="middle" opacity="0.25" letter-spacing="0.15em">-60°</text>
+            <text class="hud-text" x="735.5589098293674" y="166.00000000000003" fill="#c43e2a" font-family="'Courier New', monospace" font-size="5" text-anchor="middle" opacity="0.25" letter-spacing="0.15em">-30°</text>
+            <text class="hud-text" x="772.0" y="302.0" fill="#c43e2a" font-family="'Courier New', monospace" font-size="5" text-anchor="middle" opacity="0.25" letter-spacing="0.15em">0°</text>
+            <text class="hud-text" x="735.5589098293674" y="438.0" fill="#c43e2a" font-family="'Courier New', monospace" font-size="5" text-anchor="middle" opacity="0.25" letter-spacing="0.15em">30°</text>
+            <text class="hud-text" x="636.0" y="537.5589098293673" fill="#c43e2a" font-family="'Courier New', monospace" font-size="5" text-anchor="middle" opacity="0.25" letter-spacing="0.15em">60°</text>
+            <text class="hud-text" x="500.0" y="574.0" fill="#c43e2a" font-family="'Courier New', monospace" font-size="5" text-anchor="middle" opacity="0.25" letter-spacing="0.15em">90°</text>
+            <text class="hud-text" x="364.00000000000006" y="537.5589098293674" fill="#c43e2a" font-family="'Courier New', monospace" font-size="5" text-anchor="middle" opacity="0.25" letter-spacing="0.15em">120°</text>
             <!-- === CENTRAL COMPASS === -->
-            <circle class="draw-line" cx="500" cy="300" r="45" stroke="#c43e2a" stroke-width="0.5" fill="none" opacity="0.12"/>
-            <circle class="draw-line" cx="500" cy="300" r="42" stroke="#c43e2a" stroke-width="0.25" fill="none" opacity="0.06" stroke-dasharray="2,3"/>
-            <circle class="draw-line" cx="500" cy="300" r="35" stroke="#c43e2a" stroke-width="0.3" fill="none" opacity="0.08"/>
-            <circle class="draw-line" cx="500" cy="300" r="20" stroke="#c43e2a" stroke-width="0.2" fill="none" opacity="0.06"/>
-            <circle class="draw-line" cx="500" cy="300" r="3" stroke="#c43e2a" stroke-width="0" fill="#c43e2a" opacity="0.15"/>
-            <line class="draw-line" x1="450" y1="300" x2="475" y2="300" stroke="#c43e2a" stroke-width="0.3" opacity="0.1"/>
-            <line class="draw-line" x1="525" y1="300" x2="550" y2="300" stroke="#c43e2a" stroke-width="0.3" opacity="0.1"/>
-            <line class="draw-line" x1="500" y1="250" x2="500" y2="275" stroke="#c43e2a" stroke-width="0.3" opacity="0.1"/>
-            <line class="draw-line" x1="500" y1="325" x2="500" y2="350" stroke="#c43e2a" stroke-width="0.3" opacity="0.1"/>
-            <text class="hud-text" x="500" y="245" fill="#c43e2a" font-family="'Courier New', monospace" font-size="8" text-anchor="middle" opacity="0.2" letter-spacing="0.15em">N</text>
-            <text class="hud-text" x="558" y="303" fill="#c43e2a" font-family="'Courier New', monospace" font-size="7" text-anchor="middle" opacity="0.15" letter-spacing="0.15em">E</text>
-            <text class="hud-text" x="442" y="303" fill="#c43e2a" font-family="'Courier New', monospace" font-size="7" text-anchor="middle" opacity="0.15" letter-spacing="0.15em">W</text>
-            <text class="hud-text" x="500" y="362" fill="#c43e2a" font-family="'Courier New', monospace" font-size="6" text-anchor="middle" opacity="0.1" letter-spacing="0.15em">S</text>
-            <circle cx="539.0" cy="322.5" r="1.2" fill="#c43e2a" opacity="0.1"/>
-            <circle cx="522.5" cy="339.0" r="1.2" fill="#c43e2a" opacity="0.1"/>
-            <circle cx="477.5" cy="339.0" r="1.2" fill="#c43e2a" opacity="0.1"/>
-            <circle cx="461.0" cy="322.5" r="1.2" fill="#c43e2a" opacity="0.1"/>
-            <circle cx="461.0" cy="277.5" r="1.2" fill="#c43e2a" opacity="0.1"/>
-            <circle cx="477.5" cy="261.0" r="1.2" fill="#c43e2a" opacity="0.1"/>
-            <circle cx="522.5" cy="261.0" r="1.2" fill="#c43e2a" opacity="0.1"/>
-            <circle cx="539.0" cy="277.5" r="1.2" fill="#c43e2a" opacity="0.1"/>
-            <line class="compass-needle" x1="500" y1="300" x2="500" y2="262" stroke="#c43e2a" stroke-width="0.6" opacity="0.2"/>
-            <line class="compass-needle-s" x1="500" y1="300" x2="500" y2="330" stroke="#c43e2a" stroke-width="0.3" opacity="0.1"/>
+            <circle class="draw-line" cx="500" cy="300" r="45" stroke="#c43e2a" stroke-width="0.5" fill="none" opacity="0.36"/>
+            <circle class="draw-line" cx="500" cy="300" r="42" stroke="#c43e2a" stroke-width="0.25" fill="none" opacity="0.18" stroke-dasharray="2,3"/>
+            <circle class="draw-line" cx="500" cy="300" r="35" stroke="#c43e2a" stroke-width="0.3" fill="none" opacity="0.24"/>
+            <circle class="draw-line" cx="500" cy="300" r="20" stroke="#c43e2a" stroke-width="0.2" fill="none" opacity="0.18"/>
+            <circle class="draw-line" cx="500" cy="300" r="3" stroke="#c43e2a" stroke-width="0" fill="#c43e2a" opacity="0.40"/>
+            <line class="draw-line" x1="450" y1="300" x2="475" y2="300" stroke="#c43e2a" stroke-width="0.3" opacity="0.30"/>
+            <line class="draw-line" x1="525" y1="300" x2="550" y2="300" stroke="#c43e2a" stroke-width="0.3" opacity="0.30"/>
+            <line class="draw-line" x1="500" y1="250" x2="500" y2="275" stroke="#c43e2a" stroke-width="0.3" opacity="0.30"/>
+            <line class="draw-line" x1="500" y1="325" x2="500" y2="350" stroke="#c43e2a" stroke-width="0.3" opacity="0.30"/>
+            <text class="hud-text" x="500" y="245" fill="#c43e2a" font-family="'Courier New', monospace" font-size="8" text-anchor="middle" opacity="0.35" letter-spacing="0.15em">N</text>
+            <text class="hud-text" x="558" y="303" fill="#c43e2a" font-family="'Courier New', monospace" font-size="7" text-anchor="middle" opacity="0.35" letter-spacing="0.15em">E</text>
+            <text class="hud-text" x="442" y="303" fill="#c43e2a" font-family="'Courier New', monospace" font-size="7" text-anchor="middle" opacity="0.35" letter-spacing="0.15em">W</text>
+            <text class="hud-text" x="500" y="362" fill="#c43e2a" font-family="'Courier New', monospace" font-size="6" text-anchor="middle" opacity="0.25" letter-spacing="0.15em">S</text>
+            <circle cx="539.0" cy="322.5" r="1.2" fill="#c43e2a" opacity="0.25"/>
+            <circle cx="522.5" cy="339.0" r="1.2" fill="#c43e2a" opacity="0.25"/>
+            <circle cx="477.5" cy="339.0" r="1.2" fill="#c43e2a" opacity="0.25"/>
+            <circle cx="461.0" cy="322.5" r="1.2" fill="#c43e2a" opacity="0.25"/>
+            <circle cx="461.0" cy="277.5" r="1.2" fill="#c43e2a" opacity="0.25"/>
+            <circle cx="477.5" cy="261.0" r="1.2" fill="#c43e2a" opacity="0.25"/>
+            <circle cx="522.5" cy="261.0" r="1.2" fill="#c43e2a" opacity="0.25"/>
+            <circle cx="539.0" cy="277.5" r="1.2" fill="#c43e2a" opacity="0.25"/>
+            <line class="compass-needle" x1="500" y1="300" x2="500" y2="262" stroke="#c43e2a" stroke-width="0.6" opacity="0.45"/>
+            <line class="compass-needle-s" x1="500" y1="300" x2="500" y2="330" stroke="#c43e2a" stroke-width="0.3" opacity="0.25"/>
             <!-- === DATA READOUT PANELS === -->
             <!-- Top-left data panel -->
-            <path class="draw-line" d="M140,123 L140,105 L158,105" stroke="#c43e2a" stroke-width="0.5" fill="none" opacity="0.14"/>
-            <path class="draw-line" d="M295,167 L295,185 L277,185" stroke="#c43e2a" stroke-width="0.5" fill="none" opacity="0.14"/>
-            <text class="hud-text" x="165" y="120" fill="#c43e2a" font-family="'Courier New', monospace" font-size="6" text-anchor="start" opacity="0.13" letter-spacing="0.15em">ARM PRGM</text>
-            <text class="hud-readout" x="165" y="135" fill="#c43e2a" font-family="'Courier New', monospace" font-size="14" text-anchor="start" opacity="0.22" letter-spacing="0.15em">29°</text>
-            <text class="hud-text" x="165" y="150" fill="#c43e2a" font-family="'Courier New', monospace" font-size="5" text-anchor="start" opacity="0.09" letter-spacing="0.15em">AZIMUTH</text>
-            <line class="draw-line" x1="160" y1="125" x2="280" y2="125" stroke="#c43e2a" stroke-width="0.2" opacity="0.06"/>
-            <line class="draw-line" x1="160" y1="155" x2="250" y2="155" stroke="#c43e2a" stroke-width="0.2" opacity="0.05"/>
-            <text class="hud-text" x="240" y="120" fill="#c43e2a" font-family="'Courier New', monospace" font-size="5" text-anchor="start" opacity="0.1" letter-spacing="0.15em">DPS</text>
-            <text class="hud-readout" x="240" y="135" fill="#c43e2a" font-family="'Courier New', monospace" font-size="10" text-anchor="start" opacity="0.18" letter-spacing="0.15em">64</text>
-            <text class="hud-readout" x="240" y="148" fill="#c43e2a" font-family="'Courier New', monospace" font-size="7" text-anchor="start" opacity="0.12" letter-spacing="0.15em">.011</text>
+            <path class="draw-line" d="M140,123 L140,105 L158,105" stroke="#c43e2a" stroke-width="0.5" fill="none" opacity="0.40"/>
+            <path class="draw-line" d="M295,167 L295,185 L277,185" stroke="#c43e2a" stroke-width="0.5" fill="none" opacity="0.40"/>
+            <text class="hud-text" x="165" y="120" fill="#c43e2a" font-family="'Courier New', monospace" font-size="6" text-anchor="start" opacity="0.33" letter-spacing="0.15em">ARM PRGM</text>
+            <text class="hud-readout" x="165" y="135" fill="#c43e2a" font-family="'Courier New', monospace" font-size="14" text-anchor="start" opacity="0.45" letter-spacing="0.15em">29°</text>
+            <text class="hud-text" x="165" y="150" fill="#c43e2a" font-family="'Courier New', monospace" font-size="5" text-anchor="start" opacity="0.22" letter-spacing="0.15em">AZIMUTH</text>
+            <line class="draw-line" x1="160" y1="125" x2="280" y2="125" stroke="#c43e2a" stroke-width="0.2" opacity="0.18"/>
+            <line class="draw-line" x1="160" y1="155" x2="250" y2="155" stroke="#c43e2a" stroke-width="0.2" opacity="0.15"/>
+            <text class="hud-text" x="240" y="120" fill="#c43e2a" font-family="'Courier New', monospace" font-size="5" text-anchor="start" opacity="0.25" letter-spacing="0.15em">DPS</text>
+            <text class="hud-readout" x="240" y="135" fill="#c43e2a" font-family="'Courier New', monospace" font-size="10" text-anchor="start" opacity="0.40" letter-spacing="0.15em">64</text>
+            <text class="hud-readout" x="240" y="148" fill="#c43e2a" font-family="'Courier New', monospace" font-size="7" text-anchor="start" opacity="0.26" letter-spacing="0.15em">.011</text>
             <!-- Top-right data panel -->
-            <path class="draw-line" d="M860,123 L860,105 L842,105" stroke="#c43e2a" stroke-width="0.5" fill="none" opacity="0.14"/>
-            <path class="draw-line" d="M705,167 L705,185 L723,185" stroke="#c43e2a" stroke-width="0.5" fill="none" opacity="0.14"/>
-            <text class="hud-text" x="835" y="120" fill="#c43e2a" font-family="'Courier New', monospace" font-size="6" text-anchor="end" opacity="0.13" letter-spacing="0.15em">DISTANCE</text>
-            <text class="hud-readout" x="835" y="135" fill="#c43e2a" font-family="'Courier New', monospace" font-size="12" text-anchor="end" opacity="0.2" letter-spacing="0.15em">M-5A 6</text>
-            <text class="hud-text" x="835" y="150" fill="#c43e2a" font-family="'Courier New', monospace" font-size="5" text-anchor="end" opacity="0.09" letter-spacing="0.15em">SECTOR</text>
-            <line class="draw-line" x1="720" y1="125" x2="840" y2="125" stroke="#c43e2a" stroke-width="0.2" opacity="0.06"/>
-            <line class="draw-line" x1="750" y1="155" x2="840" y2="155" stroke="#c43e2a" stroke-width="0.2" opacity="0.05"/>
-            <text class="hud-text" x="760" y="120" fill="#c43e2a" font-family="'Courier New', monospace" font-size="5" text-anchor="end" opacity="0.1" letter-spacing="0.15em">IPS</text>
-            <text class="hud-readout" x="760" y="135" fill="#c43e2a" font-family="'Courier New', monospace" font-size="10" text-anchor="end" opacity="0.18" letter-spacing="0.15em">1.42</text>
-            <text class="hud-readout" x="760" y="148" fill="#c43e2a" font-family="'Courier New', monospace" font-size="7" text-anchor="end" opacity="0.12" letter-spacing="0.15em">2.74</text>
+            <path class="draw-line" d="M860,123 L860,105 L842,105" stroke="#c43e2a" stroke-width="0.5" fill="none" opacity="0.40"/>
+            <path class="draw-line" d="M705,167 L705,185 L723,185" stroke="#c43e2a" stroke-width="0.5" fill="none" opacity="0.40"/>
+            <text class="hud-text" x="835" y="120" fill="#c43e2a" font-family="'Courier New', monospace" font-size="6" text-anchor="end" opacity="0.33" letter-spacing="0.15em">DISTANCE</text>
+            <text class="hud-readout" x="835" y="135" fill="#c43e2a" font-family="'Courier New', monospace" font-size="12" text-anchor="end" opacity="0.44" letter-spacing="0.15em">M-5A 6</text>
+            <text class="hud-text" x="835" y="150" fill="#c43e2a" font-family="'Courier New', monospace" font-size="5" text-anchor="end" opacity="0.22" letter-spacing="0.15em">SECTOR</text>
+            <line class="draw-line" x1="720" y1="125" x2="840" y2="125" stroke="#c43e2a" stroke-width="0.2" opacity="0.18"/>
+            <line class="draw-line" x1="750" y1="155" x2="840" y2="155" stroke="#c43e2a" stroke-width="0.2" opacity="0.15"/>
+            <text class="hud-text" x="760" y="120" fill="#c43e2a" font-family="'Courier New', monospace" font-size="5" text-anchor="end" opacity="0.25" letter-spacing="0.15em">IPS</text>
+            <text class="hud-readout" x="760" y="135" fill="#c43e2a" font-family="'Courier New', monospace" font-size="10" text-anchor="end" opacity="0.40" letter-spacing="0.15em">1.42</text>
+            <text class="hud-readout" x="760" y="148" fill="#c43e2a" font-family="'Courier New', monospace" font-size="7" text-anchor="end" opacity="0.26" letter-spacing="0.15em">2.74</text>
             <!-- Bottom-left data panel -->
-            <path class="draw-line" d="M145,416 L145,400 L161,400" stroke="#c43e2a" stroke-width="0.5" fill="none" opacity="0.12"/>
-            <path class="draw-line" d="M310,454 L310,470 L294,470" stroke="#c43e2a" stroke-width="0.5" fill="none" opacity="0.12"/>
-            <text class="hud-text" x="168" y="415" fill="#c43e2a" font-family="'Courier New', monospace" font-size="6" text-anchor="start" opacity="0.12" letter-spacing="0.15em">TEMP</text>
-            <text class="hud-readout" x="168" y="432" fill="#c43e2a" font-family="'Courier New', monospace" font-size="11" text-anchor="start" opacity="0.18" letter-spacing="0.15em">38.7</text>
-            <text class="hud-text" x="168" y="445" fill="#c43e2a" font-family="'Courier New', monospace" font-size="5" text-anchor="start" opacity="0.08" letter-spacing="0.15em">CELSIUS</text>
-            <line class="draw-line" x1="165" y1="420" x2="295" y2="420" stroke="#c43e2a" stroke-width="0.2" opacity="0.05"/>
-            <text class="hud-text" x="245" y="415" fill="#c43e2a" font-family="'Courier New', monospace" font-size="6" text-anchor="start" opacity="0.12" letter-spacing="0.15em">SPEED</text>
-            <text class="hud-readout" x="245" y="432" fill="#c43e2a" font-family="'Courier New', monospace" font-size="11" text-anchor="start" opacity="0.18" letter-spacing="0.15em">0.87</text>
-            <text class="hud-text" x="245" y="445" fill="#c43e2a" font-family="'Courier New', monospace" font-size="5" text-anchor="start" opacity="0.08" letter-spacing="0.15em">M/SEC</text>
+            <path class="draw-line" d="M145,416 L145,400 L161,400" stroke="#c43e2a" stroke-width="0.5" fill="none" opacity="0.36"/>
+            <path class="draw-line" d="M310,454 L310,470 L294,470" stroke="#c43e2a" stroke-width="0.5" fill="none" opacity="0.36"/>
+            <text class="hud-text" x="168" y="415" fill="#c43e2a" font-family="'Courier New', monospace" font-size="6" text-anchor="start" opacity="0.30" letter-spacing="0.15em">TEMP</text>
+            <text class="hud-readout" x="168" y="432" fill="#c43e2a" font-family="'Courier New', monospace" font-size="11" text-anchor="start" opacity="0.40" letter-spacing="0.15em">38.7</text>
+            <text class="hud-text" x="168" y="445" fill="#c43e2a" font-family="'Courier New', monospace" font-size="5" text-anchor="start" opacity="0.20" letter-spacing="0.15em">CELSIUS</text>
+            <line class="draw-line" x1="165" y1="420" x2="295" y2="420" stroke="#c43e2a" stroke-width="0.2" opacity="0.15"/>
+            <text class="hud-text" x="245" y="415" fill="#c43e2a" font-family="'Courier New', monospace" font-size="6" text-anchor="start" opacity="0.30" letter-spacing="0.15em">SPEED</text>
+            <text class="hud-readout" x="245" y="432" fill="#c43e2a" font-family="'Courier New', monospace" font-size="11" text-anchor="start" opacity="0.40" letter-spacing="0.15em">0.87</text>
+            <text class="hud-text" x="245" y="445" fill="#c43e2a" font-family="'Courier New', monospace" font-size="5" text-anchor="start" opacity="0.20" letter-spacing="0.15em">M/SEC</text>
             <!-- Bottom-right data panel -->
-            <path class="draw-line" d="M855,416 L855,400 L839,400" stroke="#c43e2a" stroke-width="0.5" fill="none" opacity="0.12"/>
-            <path class="draw-line" d="M690,454 L690,470 L706,470" stroke="#c43e2a" stroke-width="0.5" fill="none" opacity="0.12"/>
-            <text class="hud-text" x="832" y="415" fill="#c43e2a" font-family="'Courier New', monospace" font-size="6" text-anchor="end" opacity="0.12" letter-spacing="0.15em">WRLSS INT</text>
-            <text class="hud-readout" x="832" y="432" fill="#c43e2a" font-family="'Courier New', monospace" font-size="11" text-anchor="end" opacity="0.18" letter-spacing="0.15em">ACTIVE</text>
-            <text class="hud-text" x="832" y="445" fill="#c43e2a" font-family="'Courier New', monospace" font-size="5" text-anchor="end" opacity="0.08" letter-spacing="0.15em">STATUS</text>
-            <line class="draw-line" x1="705" y1="420" x2="835" y2="420" stroke="#c43e2a" stroke-width="0.2" opacity="0.05"/>
-            <text class="hud-text" x="755" y="415" fill="#c43e2a" font-family="'Courier New', monospace" font-size="6" text-anchor="end" opacity="0.12" letter-spacing="0.15em">PRM CACHE</text>
-            <text class="hud-readout" x="755" y="432" fill="#c43e2a" font-family="'Courier New', monospace" font-size="11" text-anchor="end" opacity="0.18" letter-spacing="0.15em">97.3</text>
-            <text class="hud-text" x="755" y="445" fill="#c43e2a" font-family="'Courier New', monospace" font-size="5" text-anchor="end" opacity="0.08" letter-spacing="0.15em">PERCENT</text>
+            <path class="draw-line" d="M855,416 L855,400 L839,400" stroke="#c43e2a" stroke-width="0.5" fill="none" opacity="0.36"/>
+            <path class="draw-line" d="M690,454 L690,470 L706,470" stroke="#c43e2a" stroke-width="0.5" fill="none" opacity="0.36"/>
+            <text class="hud-text" x="832" y="415" fill="#c43e2a" font-family="'Courier New', monospace" font-size="6" text-anchor="end" opacity="0.30" letter-spacing="0.15em">WRLSS INT</text>
+            <text class="hud-readout" x="832" y="432" fill="#c43e2a" font-family="'Courier New', monospace" font-size="11" text-anchor="end" opacity="0.40" letter-spacing="0.15em">ACTIVE</text>
+            <text class="hud-text" x="832" y="445" fill="#c43e2a" font-family="'Courier New', monospace" font-size="5" text-anchor="end" opacity="0.20" letter-spacing="0.15em">STATUS</text>
+            <line class="draw-line" x1="705" y1="420" x2="835" y2="420" stroke="#c43e2a" stroke-width="0.2" opacity="0.15"/>
+            <text class="hud-text" x="755" y="415" fill="#c43e2a" font-family="'Courier New', monospace" font-size="6" text-anchor="end" opacity="0.30" letter-spacing="0.15em">PRM CACHE</text>
+            <text class="hud-readout" x="755" y="432" fill="#c43e2a" font-family="'Courier New', monospace" font-size="11" text-anchor="end" opacity="0.40" letter-spacing="0.15em">97.3</text>
+            <text class="hud-text" x="755" y="445" fill="#c43e2a" font-family="'Courier New', monospace" font-size="5" text-anchor="end" opacity="0.20" letter-spacing="0.15em">PERCENT</text>
             <!-- === SCALE BAR === -->
-            <line class="draw-line" x1="380" y1="380" x2="620" y2="380" stroke="#c43e2a" stroke-width="0.4" opacity="0.12"/>
-            <line class="draw-line" x1="380" y1="376" x2="380" y2="384" stroke="#c43e2a" stroke-width="0.4" opacity="0.1"/>
-            <text class="hud-text" x="380" y="396" fill="#c43e2a" font-family="'Courier New', monospace" font-size="6" text-anchor="middle" opacity="0.12" letter-spacing="0.15em">-60</text>
-            <line class="draw-line" x1="440" y1="376" x2="440" y2="384" stroke="#c43e2a" stroke-width="0.4" opacity="0.1"/>
-            <text class="hud-text" x="440" y="396" fill="#c43e2a" font-family="'Courier New', monospace" font-size="6" text-anchor="middle" opacity="0.12" letter-spacing="0.15em">-30</text>
-            <line class="draw-line" x1="500" y1="374" x2="500" y2="386" stroke="#c43e2a" stroke-width="0.4" opacity="0.15"/>
-            <text class="hud-text" x="500" y="396" fill="#c43e2a" font-family="'Courier New', monospace" font-size="6" text-anchor="middle" opacity="0.12" letter-spacing="0.15em">0</text>
-            <line class="draw-line" x1="560" y1="376" x2="560" y2="384" stroke="#c43e2a" stroke-width="0.4" opacity="0.1"/>
-            <text class="hud-text" x="560" y="396" fill="#c43e2a" font-family="'Courier New', monospace" font-size="6" text-anchor="middle" opacity="0.12" letter-spacing="0.15em">30</text>
-            <line class="draw-line" x1="620" y1="376" x2="620" y2="384" stroke="#c43e2a" stroke-width="0.4" opacity="0.1"/>
-            <text class="hud-text" x="620" y="396" fill="#c43e2a" font-family="'Courier New', monospace" font-size="6" text-anchor="middle" opacity="0.12" letter-spacing="0.15em">60</text>
-            <line class="draw-line" x1="380" y1="378" x2="380" y2="382" stroke="#c43e2a" stroke-width="0.2" opacity="0.06"/>
-            <line class="draw-line" x1="390" y1="378" x2="390" y2="382" stroke="#c43e2a" stroke-width="0.2" opacity="0.06"/>
-            <line class="draw-line" x1="400" y1="378" x2="400" y2="382" stroke="#c43e2a" stroke-width="0.2" opacity="0.06"/>
-            <line class="draw-line" x1="410" y1="378" x2="410" y2="382" stroke="#c43e2a" stroke-width="0.2" opacity="0.06"/>
-            <line class="draw-line" x1="420" y1="378" x2="420" y2="382" stroke="#c43e2a" stroke-width="0.2" opacity="0.06"/>
-            <line class="draw-line" x1="430" y1="378" x2="430" y2="382" stroke="#c43e2a" stroke-width="0.2" opacity="0.06"/>
-            <line class="draw-line" x1="440" y1="378" x2="440" y2="382" stroke="#c43e2a" stroke-width="0.2" opacity="0.06"/>
-            <line class="draw-line" x1="450" y1="378" x2="450" y2="382" stroke="#c43e2a" stroke-width="0.2" opacity="0.06"/>
-            <line class="draw-line" x1="460" y1="378" x2="460" y2="382" stroke="#c43e2a" stroke-width="0.2" opacity="0.06"/>
-            <line class="draw-line" x1="470" y1="378" x2="470" y2="382" stroke="#c43e2a" stroke-width="0.2" opacity="0.06"/>
-            <line class="draw-line" x1="480" y1="378" x2="480" y2="382" stroke="#c43e2a" stroke-width="0.2" opacity="0.06"/>
-            <line class="draw-line" x1="490" y1="378" x2="490" y2="382" stroke="#c43e2a" stroke-width="0.2" opacity="0.06"/>
-            <line class="draw-line" x1="500" y1="378" x2="500" y2="382" stroke="#c43e2a" stroke-width="0.2" opacity="0.06"/>
-            <line class="draw-line" x1="510" y1="378" x2="510" y2="382" stroke="#c43e2a" stroke-width="0.2" opacity="0.06"/>
-            <line class="draw-line" x1="520" y1="378" x2="520" y2="382" stroke="#c43e2a" stroke-width="0.2" opacity="0.06"/>
-            <line class="draw-line" x1="530" y1="378" x2="530" y2="382" stroke="#c43e2a" stroke-width="0.2" opacity="0.06"/>
-            <line class="draw-line" x1="540" y1="378" x2="540" y2="382" stroke="#c43e2a" stroke-width="0.2" opacity="0.06"/>
-            <line class="draw-line" x1="550" y1="378" x2="550" y2="382" stroke="#c43e2a" stroke-width="0.2" opacity="0.06"/>
-            <line class="draw-line" x1="560" y1="378" x2="560" y2="382" stroke="#c43e2a" stroke-width="0.2" opacity="0.06"/>
-            <line class="draw-line" x1="570" y1="378" x2="570" y2="382" stroke="#c43e2a" stroke-width="0.2" opacity="0.06"/>
-            <line class="draw-line" x1="580" y1="378" x2="580" y2="382" stroke="#c43e2a" stroke-width="0.2" opacity="0.06"/>
-            <line class="draw-line" x1="590" y1="378" x2="590" y2="382" stroke="#c43e2a" stroke-width="0.2" opacity="0.06"/>
-            <line class="draw-line" x1="600" y1="378" x2="600" y2="382" stroke="#c43e2a" stroke-width="0.2" opacity="0.06"/>
-            <line class="draw-line" x1="610" y1="378" x2="610" y2="382" stroke="#c43e2a" stroke-width="0.2" opacity="0.06"/>
-            <line class="draw-line" x1="620" y1="378" x2="620" y2="382" stroke="#c43e2a" stroke-width="0.2" opacity="0.06"/>
-            <text class="hud-text" x="500" y="408" fill="#c43e2a" font-family="'Courier New', monospace" font-size="5" text-anchor="middle" opacity="0.09" letter-spacing="0.15em">GRID ZOOM</text>
+            <line class="draw-line" x1="380" y1="380" x2="620" y2="380" stroke="#c43e2a" stroke-width="0.4" opacity="0.36"/>
+            <line class="draw-line" x1="380" y1="376" x2="380" y2="384" stroke="#c43e2a" stroke-width="0.4" opacity="0.30"/>
+            <text class="hud-text" x="380" y="396" fill="#c43e2a" font-family="'Courier New', monospace" font-size="6" text-anchor="middle" opacity="0.30" letter-spacing="0.15em">-60</text>
+            <line class="draw-line" x1="440" y1="376" x2="440" y2="384" stroke="#c43e2a" stroke-width="0.4" opacity="0.30"/>
+            <text class="hud-text" x="440" y="396" fill="#c43e2a" font-family="'Courier New', monospace" font-size="6" text-anchor="middle" opacity="0.30" letter-spacing="0.15em">-30</text>
+            <line class="draw-line" x1="500" y1="374" x2="500" y2="386" stroke="#c43e2a" stroke-width="0.4" opacity="0.40"/>
+            <text class="hud-text" x="500" y="396" fill="#c43e2a" font-family="'Courier New', monospace" font-size="6" text-anchor="middle" opacity="0.30" letter-spacing="0.15em">0</text>
+            <line class="draw-line" x1="560" y1="376" x2="560" y2="384" stroke="#c43e2a" stroke-width="0.4" opacity="0.30"/>
+            <text class="hud-text" x="560" y="396" fill="#c43e2a" font-family="'Courier New', monospace" font-size="6" text-anchor="middle" opacity="0.30" letter-spacing="0.15em">30</text>
+            <line class="draw-line" x1="620" y1="376" x2="620" y2="384" stroke="#c43e2a" stroke-width="0.4" opacity="0.30"/>
+            <text class="hud-text" x="620" y="396" fill="#c43e2a" font-family="'Courier New', monospace" font-size="6" text-anchor="middle" opacity="0.30" letter-spacing="0.15em">60</text>
+            <line class="draw-line" x1="380" y1="378" x2="380" y2="382" stroke="#c43e2a" stroke-width="0.2" opacity="0.18"/>
+            <line class="draw-line" x1="390" y1="378" x2="390" y2="382" stroke="#c43e2a" stroke-width="0.2" opacity="0.18"/>
+            <line class="draw-line" x1="400" y1="378" x2="400" y2="382" stroke="#c43e2a" stroke-width="0.2" opacity="0.18"/>
+            <line class="draw-line" x1="410" y1="378" x2="410" y2="382" stroke="#c43e2a" stroke-width="0.2" opacity="0.18"/>
+            <line class="draw-line" x1="420" y1="378" x2="420" y2="382" stroke="#c43e2a" stroke-width="0.2" opacity="0.18"/>
+            <line class="draw-line" x1="430" y1="378" x2="430" y2="382" stroke="#c43e2a" stroke-width="0.2" opacity="0.18"/>
+            <line class="draw-line" x1="440" y1="378" x2="440" y2="382" stroke="#c43e2a" stroke-width="0.2" opacity="0.18"/>
+            <line class="draw-line" x1="450" y1="378" x2="450" y2="382" stroke="#c43e2a" stroke-width="0.2" opacity="0.18"/>
+            <line class="draw-line" x1="460" y1="378" x2="460" y2="382" stroke="#c43e2a" stroke-width="0.2" opacity="0.18"/>
+            <line class="draw-line" x1="470" y1="378" x2="470" y2="382" stroke="#c43e2a" stroke-width="0.2" opacity="0.18"/>
+            <line class="draw-line" x1="480" y1="378" x2="480" y2="382" stroke="#c43e2a" stroke-width="0.2" opacity="0.18"/>
+            <line class="draw-line" x1="490" y1="378" x2="490" y2="382" stroke="#c43e2a" stroke-width="0.2" opacity="0.18"/>
+            <line class="draw-line" x1="500" y1="378" x2="500" y2="382" stroke="#c43e2a" stroke-width="0.2" opacity="0.18"/>
+            <line class="draw-line" x1="510" y1="378" x2="510" y2="382" stroke="#c43e2a" stroke-width="0.2" opacity="0.18"/>
+            <line class="draw-line" x1="520" y1="378" x2="520" y2="382" stroke="#c43e2a" stroke-width="0.2" opacity="0.18"/>
+            <line class="draw-line" x1="530" y1="378" x2="530" y2="382" stroke="#c43e2a" stroke-width="0.2" opacity="0.18"/>
+            <line class="draw-line" x1="540" y1="378" x2="540" y2="382" stroke="#c43e2a" stroke-width="0.2" opacity="0.18"/>
+            <line class="draw-line" x1="550" y1="378" x2="550" y2="382" stroke="#c43e2a" stroke-width="0.2" opacity="0.18"/>
+            <line class="draw-line" x1="560" y1="378" x2="560" y2="382" stroke="#c43e2a" stroke-width="0.2" opacity="0.18"/>
+            <line class="draw-line" x1="570" y1="378" x2="570" y2="382" stroke="#c43e2a" stroke-width="0.2" opacity="0.18"/>
+            <line class="draw-line" x1="580" y1="378" x2="580" y2="382" stroke="#c43e2a" stroke-width="0.2" opacity="0.18"/>
+            <line class="draw-line" x1="590" y1="378" x2="590" y2="382" stroke="#c43e2a" stroke-width="0.2" opacity="0.18"/>
+            <line class="draw-line" x1="600" y1="378" x2="600" y2="382" stroke="#c43e2a" stroke-width="0.2" opacity="0.18"/>
+            <line class="draw-line" x1="610" y1="378" x2="610" y2="382" stroke="#c43e2a" stroke-width="0.2" opacity="0.18"/>
+            <line class="draw-line" x1="620" y1="378" x2="620" y2="382" stroke="#c43e2a" stroke-width="0.2" opacity="0.18"/>
+            <text class="hud-text" x="500" y="408" fill="#c43e2a" font-family="'Courier New', monospace" font-size="5" text-anchor="middle" opacity="0.22" letter-spacing="0.15em">GRID ZOOM</text>
             <!-- === CONNECTING LINES === -->
-            <line class="draw-line" x1="465" y1="272" x2="295" y2="140" stroke="#c43e2a" stroke-width="0.25" opacity="0.06" stroke-dasharray="4,8"/>
-            <line class="draw-line" x1="535" y1="272" x2="705" y2="140" stroke="#c43e2a" stroke-width="0.25" opacity="0.06" stroke-dasharray="4,8"/>
-            <line class="draw-line" x1="465" y1="328" x2="310" y2="420" stroke="#c43e2a" stroke-width="0.25" opacity="0.06" stroke-dasharray="4,8"/>
-            <line class="draw-line" x1="535" y1="328" x2="690" y2="420" stroke="#c43e2a" stroke-width="0.25" opacity="0.06" stroke-dasharray="4,8"/>
+            <line class="draw-line" x1="465" y1="272" x2="295" y2="140" stroke="#c43e2a" stroke-width="0.25" opacity="0.18" stroke-dasharray="4,8"/>
+            <line class="draw-line" x1="535" y1="272" x2="705" y2="140" stroke="#c43e2a" stroke-width="0.25" opacity="0.18" stroke-dasharray="4,8"/>
+            <line class="draw-line" x1="465" y1="328" x2="310" y2="420" stroke="#c43e2a" stroke-width="0.25" opacity="0.18" stroke-dasharray="4,8"/>
+            <line class="draw-line" x1="535" y1="328" x2="690" y2="420" stroke="#c43e2a" stroke-width="0.25" opacity="0.18" stroke-dasharray="4,8"/>
             <!-- === BOTTOM TIMELINE === -->
-            <line class="draw-line" x1="120" y1="560" x2="880" y2="560" stroke="#c43e2a" stroke-width="0.35" opacity="0.1"/>
-            <line class="draw-line" x1="120" y1="555" x2="120" y2="565" stroke="#c43e2a" stroke-width="0.25" opacity="0.1"/>
-            <line class="draw-line" x1="140" y1="558" x2="140" y2="562" stroke="#c43e2a" stroke-width="0.25" opacity="0.05"/>
-            <line class="draw-line" x1="160" y1="558" x2="160" y2="562" stroke="#c43e2a" stroke-width="0.25" opacity="0.05"/>
-            <line class="draw-line" x1="180" y1="558" x2="180" y2="562" stroke="#c43e2a" stroke-width="0.25" opacity="0.05"/>
-            <line class="draw-line" x1="200" y1="558" x2="200" y2="562" stroke="#c43e2a" stroke-width="0.25" opacity="0.05"/>
-            <line class="draw-line" x1="220" y1="555" x2="220" y2="565" stroke="#c43e2a" stroke-width="0.25" opacity="0.1"/>
-            <line class="draw-line" x1="240" y1="558" x2="240" y2="562" stroke="#c43e2a" stroke-width="0.25" opacity="0.05"/>
-            <line class="draw-line" x1="260" y1="558" x2="260" y2="562" stroke="#c43e2a" stroke-width="0.25" opacity="0.05"/>
-            <line class="draw-line" x1="280" y1="558" x2="280" y2="562" stroke="#c43e2a" stroke-width="0.25" opacity="0.05"/>
-            <line class="draw-line" x1="300" y1="558" x2="300" y2="562" stroke="#c43e2a" stroke-width="0.25" opacity="0.05"/>
-            <line class="draw-line" x1="320" y1="555" x2="320" y2="565" stroke="#c43e2a" stroke-width="0.25" opacity="0.1"/>
-            <line class="draw-line" x1="340" y1="558" x2="340" y2="562" stroke="#c43e2a" stroke-width="0.25" opacity="0.05"/>
-            <line class="draw-line" x1="360" y1="558" x2="360" y2="562" stroke="#c43e2a" stroke-width="0.25" opacity="0.05"/>
-            <line class="draw-line" x1="380" y1="558" x2="380" y2="562" stroke="#c43e2a" stroke-width="0.25" opacity="0.05"/>
-            <line class="draw-line" x1="400" y1="558" x2="400" y2="562" stroke="#c43e2a" stroke-width="0.25" opacity="0.05"/>
-            <line class="draw-line" x1="420" y1="555" x2="420" y2="565" stroke="#c43e2a" stroke-width="0.25" opacity="0.1"/>
-            <line class="draw-line" x1="440" y1="558" x2="440" y2="562" stroke="#c43e2a" stroke-width="0.25" opacity="0.05"/>
-            <line class="draw-line" x1="460" y1="558" x2="460" y2="562" stroke="#c43e2a" stroke-width="0.25" opacity="0.05"/>
-            <line class="draw-line" x1="480" y1="558" x2="480" y2="562" stroke="#c43e2a" stroke-width="0.25" opacity="0.05"/>
-            <line class="draw-line" x1="500" y1="558" x2="500" y2="562" stroke="#c43e2a" stroke-width="0.25" opacity="0.05"/>
-            <line class="draw-line" x1="520" y1="555" x2="520" y2="565" stroke="#c43e2a" stroke-width="0.25" opacity="0.1"/>
-            <line class="draw-line" x1="540" y1="558" x2="540" y2="562" stroke="#c43e2a" stroke-width="0.25" opacity="0.05"/>
-            <line class="draw-line" x1="560" y1="558" x2="560" y2="562" stroke="#c43e2a" stroke-width="0.25" opacity="0.05"/>
-            <line class="draw-line" x1="580" y1="558" x2="580" y2="562" stroke="#c43e2a" stroke-width="0.25" opacity="0.05"/>
-            <line class="draw-line" x1="600" y1="558" x2="600" y2="562" stroke="#c43e2a" stroke-width="0.25" opacity="0.05"/>
-            <line class="draw-line" x1="620" y1="555" x2="620" y2="565" stroke="#c43e2a" stroke-width="0.25" opacity="0.1"/>
-            <line class="draw-line" x1="640" y1="558" x2="640" y2="562" stroke="#c43e2a" stroke-width="0.25" opacity="0.05"/>
-            <line class="draw-line" x1="660" y1="558" x2="660" y2="562" stroke="#c43e2a" stroke-width="0.25" opacity="0.05"/>
-            <line class="draw-line" x1="680" y1="558" x2="680" y2="562" stroke="#c43e2a" stroke-width="0.25" opacity="0.05"/>
-            <line class="draw-line" x1="700" y1="558" x2="700" y2="562" stroke="#c43e2a" stroke-width="0.25" opacity="0.05"/>
-            <line class="draw-line" x1="720" y1="555" x2="720" y2="565" stroke="#c43e2a" stroke-width="0.25" opacity="0.1"/>
-            <line class="draw-line" x1="740" y1="558" x2="740" y2="562" stroke="#c43e2a" stroke-width="0.25" opacity="0.05"/>
-            <line class="draw-line" x1="760" y1="558" x2="760" y2="562" stroke="#c43e2a" stroke-width="0.25" opacity="0.05"/>
-            <line class="draw-line" x1="780" y1="558" x2="780" y2="562" stroke="#c43e2a" stroke-width="0.25" opacity="0.05"/>
-            <line class="draw-line" x1="800" y1="558" x2="800" y2="562" stroke="#c43e2a" stroke-width="0.25" opacity="0.05"/>
-            <line class="draw-line" x1="820" y1="555" x2="820" y2="565" stroke="#c43e2a" stroke-width="0.25" opacity="0.1"/>
-            <line class="draw-line" x1="840" y1="558" x2="840" y2="562" stroke="#c43e2a" stroke-width="0.25" opacity="0.05"/>
-            <line class="draw-line" x1="860" y1="558" x2="860" y2="562" stroke="#c43e2a" stroke-width="0.25" opacity="0.05"/>
-            <line class="draw-line" x1="880" y1="558" x2="880" y2="562" stroke="#c43e2a" stroke-width="0.25" opacity="0.05"/>
-            <text class="hud-text" x="120" y="574" fill="#c43e2a" font-family="'Courier New', monospace" font-size="5" text-anchor="middle" opacity="0.08" letter-spacing="0.15em">T+0</text>
-            <text class="hud-text" x="220" y="574" fill="#c43e2a" font-family="'Courier New', monospace" font-size="5" text-anchor="middle" opacity="0.08" letter-spacing="0.15em">T+10</text>
-            <text class="hud-text" x="320" y="574" fill="#c43e2a" font-family="'Courier New', monospace" font-size="5" text-anchor="middle" opacity="0.08" letter-spacing="0.15em">T+20</text>
-            <text class="hud-text" x="420" y="574" fill="#c43e2a" font-family="'Courier New', monospace" font-size="5" text-anchor="middle" opacity="0.08" letter-spacing="0.15em">T+30</text>
-            <text class="hud-text" x="520" y="574" fill="#c43e2a" font-family="'Courier New', monospace" font-size="5" text-anchor="middle" opacity="0.08" letter-spacing="0.15em">T+40</text>
-            <text class="hud-text" x="620" y="574" fill="#c43e2a" font-family="'Courier New', monospace" font-size="5" text-anchor="middle" opacity="0.08" letter-spacing="0.15em">T+50</text>
-            <text class="hud-text" x="720" y="574" fill="#c43e2a" font-family="'Courier New', monospace" font-size="5" text-anchor="middle" opacity="0.08" letter-spacing="0.15em">T+60</text>
-            <text class="hud-text" x="820" y="574" fill="#c43e2a" font-family="'Courier New', monospace" font-size="5" text-anchor="middle" opacity="0.08" letter-spacing="0.15em">T+70</text>
-            <rect class="hud-timeline-marker" x="497" y="556" width="6" height="8" fill="#c43e2a" opacity="0.15" rx="1"/>
-            <text class="hud-text" x="500" y="588" fill="#c43e2a" font-family="'Courier New', monospace" font-size="5" text-anchor="middle" opacity="0.08" letter-spacing="0.15em">SEQUENCE</text>
+            <line class="draw-line" x1="120" y1="560" x2="880" y2="560" stroke="#c43e2a" stroke-width="0.35" opacity="0.30"/>
+            <line class="draw-line" x1="120" y1="555" x2="120" y2="565" stroke="#c43e2a" stroke-width="0.25" opacity="0.30"/>
+            <line class="draw-line" x1="140" y1="558" x2="140" y2="562" stroke="#c43e2a" stroke-width="0.25" opacity="0.15"/>
+            <line class="draw-line" x1="160" y1="558" x2="160" y2="562" stroke="#c43e2a" stroke-width="0.25" opacity="0.15"/>
+            <line class="draw-line" x1="180" y1="558" x2="180" y2="562" stroke="#c43e2a" stroke-width="0.25" opacity="0.15"/>
+            <line class="draw-line" x1="200" y1="558" x2="200" y2="562" stroke="#c43e2a" stroke-width="0.25" opacity="0.15"/>
+            <line class="draw-line" x1="220" y1="555" x2="220" y2="565" stroke="#c43e2a" stroke-width="0.25" opacity="0.30"/>
+            <line class="draw-line" x1="240" y1="558" x2="240" y2="562" stroke="#c43e2a" stroke-width="0.25" opacity="0.15"/>
+            <line class="draw-line" x1="260" y1="558" x2="260" y2="562" stroke="#c43e2a" stroke-width="0.25" opacity="0.15"/>
+            <line class="draw-line" x1="280" y1="558" x2="280" y2="562" stroke="#c43e2a" stroke-width="0.25" opacity="0.15"/>
+            <line class="draw-line" x1="300" y1="558" x2="300" y2="562" stroke="#c43e2a" stroke-width="0.25" opacity="0.15"/>
+            <line class="draw-line" x1="320" y1="555" x2="320" y2="565" stroke="#c43e2a" stroke-width="0.25" opacity="0.30"/>
+            <line class="draw-line" x1="340" y1="558" x2="340" y2="562" stroke="#c43e2a" stroke-width="0.25" opacity="0.15"/>
+            <line class="draw-line" x1="360" y1="558" x2="360" y2="562" stroke="#c43e2a" stroke-width="0.25" opacity="0.15"/>
+            <line class="draw-line" x1="380" y1="558" x2="380" y2="562" stroke="#c43e2a" stroke-width="0.25" opacity="0.15"/>
+            <line class="draw-line" x1="400" y1="558" x2="400" y2="562" stroke="#c43e2a" stroke-width="0.25" opacity="0.15"/>
+            <line class="draw-line" x1="420" y1="555" x2="420" y2="565" stroke="#c43e2a" stroke-width="0.25" opacity="0.30"/>
+            <line class="draw-line" x1="440" y1="558" x2="440" y2="562" stroke="#c43e2a" stroke-width="0.25" opacity="0.15"/>
+            <line class="draw-line" x1="460" y1="558" x2="460" y2="562" stroke="#c43e2a" stroke-width="0.25" opacity="0.15"/>
+            <line class="draw-line" x1="480" y1="558" x2="480" y2="562" stroke="#c43e2a" stroke-width="0.25" opacity="0.15"/>
+            <line class="draw-line" x1="500" y1="558" x2="500" y2="562" stroke="#c43e2a" stroke-width="0.25" opacity="0.15"/>
+            <line class="draw-line" x1="520" y1="555" x2="520" y2="565" stroke="#c43e2a" stroke-width="0.25" opacity="0.30"/>
+            <line class="draw-line" x1="540" y1="558" x2="540" y2="562" stroke="#c43e2a" stroke-width="0.25" opacity="0.15"/>
+            <line class="draw-line" x1="560" y1="558" x2="560" y2="562" stroke="#c43e2a" stroke-width="0.25" opacity="0.15"/>
+            <line class="draw-line" x1="580" y1="558" x2="580" y2="562" stroke="#c43e2a" stroke-width="0.25" opacity="0.15"/>
+            <line class="draw-line" x1="600" y1="558" x2="600" y2="562" stroke="#c43e2a" stroke-width="0.25" opacity="0.15"/>
+            <line class="draw-line" x1="620" y1="555" x2="620" y2="565" stroke="#c43e2a" stroke-width="0.25" opacity="0.30"/>
+            <line class="draw-line" x1="640" y1="558" x2="640" y2="562" stroke="#c43e2a" stroke-width="0.25" opacity="0.15"/>
+            <line class="draw-line" x1="660" y1="558" x2="660" y2="562" stroke="#c43e2a" stroke-width="0.25" opacity="0.15"/>
+            <line class="draw-line" x1="680" y1="558" x2="680" y2="562" stroke="#c43e2a" stroke-width="0.25" opacity="0.15"/>
+            <line class="draw-line" x1="700" y1="558" x2="700" y2="562" stroke="#c43e2a" stroke-width="0.25" opacity="0.15"/>
+            <line class="draw-line" x1="720" y1="555" x2="720" y2="565" stroke="#c43e2a" stroke-width="0.25" opacity="0.30"/>
+            <line class="draw-line" x1="740" y1="558" x2="740" y2="562" stroke="#c43e2a" stroke-width="0.25" opacity="0.15"/>
+            <line class="draw-line" x1="760" y1="558" x2="760" y2="562" stroke="#c43e2a" stroke-width="0.25" opacity="0.15"/>
+            <line class="draw-line" x1="780" y1="558" x2="780" y2="562" stroke="#c43e2a" stroke-width="0.25" opacity="0.15"/>
+            <line class="draw-line" x1="800" y1="558" x2="800" y2="562" stroke="#c43e2a" stroke-width="0.25" opacity="0.15"/>
+            <line class="draw-line" x1="820" y1="555" x2="820" y2="565" stroke="#c43e2a" stroke-width="0.25" opacity="0.30"/>
+            <line class="draw-line" x1="840" y1="558" x2="840" y2="562" stroke="#c43e2a" stroke-width="0.25" opacity="0.15"/>
+            <line class="draw-line" x1="860" y1="558" x2="860" y2="562" stroke="#c43e2a" stroke-width="0.25" opacity="0.15"/>
+            <line class="draw-line" x1="880" y1="558" x2="880" y2="562" stroke="#c43e2a" stroke-width="0.25" opacity="0.15"/>
+            <text class="hud-text" x="120" y="574" fill="#c43e2a" font-family="'Courier New', monospace" font-size="5" text-anchor="middle" opacity="0.20" letter-spacing="0.15em">T+0</text>
+            <text class="hud-text" x="220" y="574" fill="#c43e2a" font-family="'Courier New', monospace" font-size="5" text-anchor="middle" opacity="0.20" letter-spacing="0.15em">T+10</text>
+            <text class="hud-text" x="320" y="574" fill="#c43e2a" font-family="'Courier New', monospace" font-size="5" text-anchor="middle" opacity="0.20" letter-spacing="0.15em">T+20</text>
+            <text class="hud-text" x="420" y="574" fill="#c43e2a" font-family="'Courier New', monospace" font-size="5" text-anchor="middle" opacity="0.20" letter-spacing="0.15em">T+30</text>
+            <text class="hud-text" x="520" y="574" fill="#c43e2a" font-family="'Courier New', monospace" font-size="5" text-anchor="middle" opacity="0.20" letter-spacing="0.15em">T+40</text>
+            <text class="hud-text" x="620" y="574" fill="#c43e2a" font-family="'Courier New', monospace" font-size="5" text-anchor="middle" opacity="0.20" letter-spacing="0.15em">T+50</text>
+            <text class="hud-text" x="720" y="574" fill="#c43e2a" font-family="'Courier New', monospace" font-size="5" text-anchor="middle" opacity="0.20" letter-spacing="0.15em">T+60</text>
+            <text class="hud-text" x="820" y="574" fill="#c43e2a" font-family="'Courier New', monospace" font-size="5" text-anchor="middle" opacity="0.20" letter-spacing="0.15em">T+70</text>
+            <rect class="hud-timeline-marker" x="497" y="556" width="6" height="8" fill="#c43e2a" opacity="0.35" rx="1"/>
+            <text class="hud-text" x="500" y="588" fill="#c43e2a" font-family="'Courier New', monospace" font-size="5" text-anchor="middle" opacity="0.20" letter-spacing="0.15em">SEQUENCE</text>
             <!-- === PARTICLES === -->
             <g class="hud-particles">
-            <circle class="hud-particle" cx="628.3" cy="53.3" r="0.6" fill="#c43e2a" opacity="0.041160536907441134"/>
-            <circle class="hud-particle" cx="717.6" cy="398.7" r="1.1" fill="#c43e2a" opacity="0.034346941631470805"/>
-            <circle class="hud-particle" cx="428.2" cy="55.8" r="0.6" fill="#c43e2a" opacity="0.05526776440516812"/>
-            <circle class="hud-particle" cx="64.4" cy="145.4" r="0.9" fill="#c43e2a" opacity="0.057247074030160834"/>
-            <circle class="hud-particle" cx="242.8" cy="352.3" r="1.0" fill="#c43e2a" opacity="0.03032493798390305"/>
-            <circle class="hud-particle" cx="781.4" cy="410.0" r="0.7" fill="#c43e2a" opacity="0.03777397499058908"/>
-            <circle class="hud-particle" cx="920.6" cy="218.4" r="0.5" fill="#c43e2a" opacity="0.0348358188416732"/>
-            <circle class="hud-particle" cx="819.7" cy="360.0" r="1.0" fill="#c43e2a" opacity="0.0664865893346909"/>
-            <circle class="hud-particle" cx="533.3" cy="555.8" r="0.7" fill="#c43e2a" opacity="0.05760203156366135"/>
-            <circle class="hud-particle" cx="803.1" cy="367.8" r="1.1" fill="#c43e2a" opacity="0.0588676072628381"/>
-            <circle class="hud-particle" cx="688.2" cy="64.3" r="0.6" fill="#c43e2a" opacity="0.044469398180105355"/>
-            <circle class="hud-particle" cx="113.4" cy="163.4" r="0.5" fill="#c43e2a" opacity="0.043898680155504605"/>
-            <circle class="hud-particle" cx="624.8" cy="233.4" r="0.7" fill="#c43e2a" opacity="0.040475351538574386"/>
-            <circle class="hud-particle" cx="285.6" cy="536.4" r="0.9" fill="#c43e2a" opacity="0.06045655028334941"/>
-            <circle class="hud-particle" cx="197.4" cy="426.4" r="0.5" fill="#c43e2a" opacity="0.048972772087882394"/>
-            <circle class="hud-particle" cx="950.4" cy="379.2" r="0.8" fill="#c43e2a" opacity="0.06423071254949372"/>
-            <circle class="hud-particle" cx="815.4" cy="451.3" r="0.6" fill="#c43e2a" opacity="0.031605012195201884"/>
-            <circle class="hud-particle" cx="330.2" cy="181.9" r="0.6" fill="#c43e2a" opacity="0.07714548571675273"/>
-            <circle class="hud-particle" cx="846.3" cy="206.8" r="0.9" fill="#c43e2a" opacity="0.049781595053033215"/>
-            <circle class="hud-particle" cx="881.4" cy="283.2" r="0.6" fill="#c43e2a" opacity="0.04233137538469917"/>
-            <circle class="hud-particle" cx="556.5" cy="179.3" r="0.9" fill="#c43e2a" opacity="0.07489114418012385"/>
-            <circle class="hud-particle" cx="407.4" cy="156.2" r="1.2" fill="#c43e2a" opacity="0.055476314683823226"/>
-            <circle class="hud-particle" cx="123.6" cy="65.0" r="0.5" fill="#c43e2a" opacity="0.061372302085154505"/>
-            <circle class="hud-particle" cx="768.7" cy="263.7" r="0.5" fill="#c43e2a" opacity="0.04908096432532684"/>
-            <circle class="hud-particle" cx="956.4" cy="320.4" r="1.2" fill="#c43e2a" opacity="0.07303898511172491"/>
-            <circle class="hud-particle" cx="50.6" cy="422.0" r="0.9" fill="#c43e2a" opacity="0.05684851652043976"/>
-            <circle class="hud-particle" cx="285.5" cy="379.7" r="0.5" fill="#c43e2a" opacity="0.051738262533455245"/>
-            <circle class="hud-particle" cx="457.4" cy="545.5" r="1.1" fill="#c43e2a" opacity="0.04316945253755454"/>
-            <circle class="hud-particle" cx="500.5" cy="134.7" r="1.1" fill="#c43e2a" opacity="0.07352592849183834"/>
-            <circle class="hud-particle" cx="314.6" cy="378.6" r="0.9" fill="#c43e2a" opacity="0.03764196342748174"/>
-            <circle class="hud-particle" cx="741.5" cy="325.9" r="1.0" fill="#c43e2a" opacity="0.056517683609758874"/>
-            <circle class="hud-particle" cx="40.5" cy="211.8" r="0.4" fill="#c43e2a" opacity="0.07645493081323085"/>
-            <circle class="hud-particle" cx="848.4" cy="480.8" r="0.6" fill="#c43e2a" opacity="0.032896258324709375"/>
-            <circle class="hud-particle" cx="847.8" cy="541.9" r="0.5" fill="#c43e2a" opacity="0.054299523165830685"/>
-            <circle class="hud-particle" cx="103.7" cy="443.1" r="1.0" fill="#c43e2a" opacity="0.036419573224988136"/>
-            <circle class="hud-particle" cx="283.9" cy="502.4" r="0.7" fill="#c43e2a" opacity="0.0405899102721041"/>
-            <circle class="hud-particle" cx="536.2" cy="426.9" r="0.6" fill="#c43e2a" opacity="0.04558581456504475"/>
-            <circle class="hud-particle" cx="955.5" cy="384.4" r="0.8" fill="#c43e2a" opacity="0.055878792051779536"/>
-            <circle class="hud-particle" cx="151.3" cy="159.1" r="0.7" fill="#c43e2a" opacity="0.059415435922861665"/>
-            <circle class="hud-particle" cx="251.7" cy="156.7" r="0.5" fill="#c43e2a" opacity="0.061555147863504946"/>
-            <circle class="hud-particle" cx="250.6" cy="519.9" r="1.1" fill="#c43e2a" opacity="0.03354286749443267"/>
-            <circle class="hud-particle" cx="259.0" cy="394.6" r="0.6" fill="#c43e2a" opacity="0.036615592436251246"/>
-            <circle class="hud-particle" cx="900.7" cy="342.7" r="0.8" fill="#c43e2a" opacity="0.06923097121453767"/>
-            <circle class="hud-particle" cx="782.9" cy="140.9" r="0.5" fill="#c43e2a" opacity="0.05155255912031888"/>
-            <circle class="hud-particle" cx="710.7" cy="396.9" r="1.2" fill="#c43e2a" opacity="0.03492089355759794"/>
-            <circle class="hud-particle" cx="410.4" cy="219.8" r="1.1" fill="#c43e2a" opacity="0.04243281669601428"/>
-            <circle class="hud-particle" cx="215.0" cy="277.8" r="0.7" fill="#c43e2a" opacity="0.04392725723334702"/>
-            <circle class="hud-particle" cx="269.8" cy="529.3" r="0.8" fill="#c43e2a" opacity="0.07306745523809152"/>
-            <circle class="hud-particle" cx="546.3" cy="66.8" r="1.2" fill="#c43e2a" opacity="0.0718013792539976"/>
-            <circle class="hud-particle" cx="931.5" cy="531.0" r="1.1" fill="#c43e2a" opacity="0.0383155555301957"/>
-            <circle class="hud-particle" cx="486.8" cy="153.3" r="0.7" fill="#c43e2a" opacity="0.032931769998608945"/>
-            <circle class="hud-particle" cx="388.7" cy="562.2" r="0.6" fill="#c43e2a" opacity="0.06920353009742847"/>
-            <circle class="hud-particle" cx="920.7" cy="567.6" r="0.8" fill="#c43e2a" opacity="0.0659204137648163"/>
-            <circle class="hud-particle" cx="182.4" cy="197.3" r="1.2" fill="#c43e2a" opacity="0.058959014540812815"/>
-            <circle class="hud-particle" cx="538.8" cy="436.4" r="0.4" fill="#c43e2a" opacity="0.05920887972294856"/>
-            <circle class="hud-particle" cx="502.6" cy="491.9" r="0.5" fill="#c43e2a" opacity="0.07803894516372252"/>
-            <circle class="hud-particle" cx="113.7" cy="138.5" r="0.9" fill="#c43e2a" opacity="0.06376062768020452"/>
-            <circle class="hud-particle" cx="256.4" cy="103.5" r="1.1" fill="#c43e2a" opacity="0.04231076738943124"/>
-            <circle class="hud-particle" cx="587.0" cy="368.3" r="0.7" fill="#c43e2a" opacity="0.05918361446456123"/>
-            <circle class="hud-particle" cx="521.0" cy="535.4" r="0.6" fill="#c43e2a" opacity="0.06580959003947073"/>
-            <circle class="hud-particle" cx="259.6" cy="249.8" r="0.9" fill="#c43e2a" opacity="0.04499985398993811"/>
-            <circle class="hud-particle" cx="330.9" cy="438.5" r="0.5" fill="#c43e2a" opacity="0.052914276130929305"/>
-            <circle class="hud-particle" cx="958.6" cy="567.9" r="0.5" fill="#c43e2a" opacity="0.04065771561335202"/>
-            <circle class="hud-particle" cx="284.0" cy="534.6" r="1.1" fill="#c43e2a" opacity="0.07396351212422714"/>
-            <circle class="hud-particle" cx="380.0" cy="123.6" r="1.1" fill="#c43e2a" opacity="0.06517699625436854"/>
-            <circle class="hud-particle" cx="602.7" cy="563.2" r="0.9" fill="#c43e2a" opacity="0.030391155357607898"/>
-            <circle class="hud-particle" cx="791.7" cy="198.7" r="0.9" fill="#c43e2a" opacity="0.0769465001963552"/>
-            <circle class="hud-particle" cx="163.5" cy="101.2" r="0.5" fill="#c43e2a" opacity="0.0576611820442408"/>
-            <circle class="hud-particle" cx="290.6" cy="360.6" r="1.0" fill="#c43e2a" opacity="0.04017986561637264"/>
-            <circle class="hud-particle" cx="623.5" cy="179.9" r="0.8" fill="#c43e2a" opacity="0.07526682455396616"/>
-            <circle class="hud-particle" cx="818.4" cy="88.9" r="0.7" fill="#c43e2a" opacity="0.043834011198612584"/>
-            <circle class="hud-particle" cx="43.3" cy="448.7" r="0.9" fill="#c43e2a" opacity="0.04309776312171741"/>
-            <circle class="hud-particle" cx="721.9" cy="332.4" r="0.7" fill="#c43e2a" opacity="0.030483484980416996"/>
-            <circle class="hud-particle" cx="109.2" cy="508.0" r="1.1" fill="#c43e2a" opacity="0.05727951446027611"/>
-            <circle class="hud-particle" cx="807.8" cy="348.7" r="0.5" fill="#c43e2a" opacity="0.036372275964106936"/>
-            <circle class="hud-particle" cx="323.6" cy="516.5" r="1.0" fill="#c43e2a" opacity="0.07303512910004514"/>
-            <circle class="hud-particle" cx="867.0" cy="151.3" r="0.6" fill="#c43e2a" opacity="0.03513968108358928"/>
+            <circle class="hud-particle" cx="628.3" cy="53.3" r="0.6" fill="#c43e2a" opacity="0.10"/>
+            <circle class="hud-particle" cx="717.6" cy="398.7" r="1.1" fill="#c43e2a" opacity="0.09"/>
+            <circle class="hud-particle" cx="428.2" cy="55.8" r="0.6" fill="#c43e2a" opacity="0.14"/>
+            <circle class="hud-particle" cx="64.4" cy="145.4" r="0.9" fill="#c43e2a" opacity="0.14"/>
+            <circle class="hud-particle" cx="242.8" cy="352.3" r="1.0" fill="#c43e2a" opacity="0.08"/>
+            <circle class="hud-particle" cx="781.4" cy="410.0" r="0.7" fill="#c43e2a" opacity="0.09"/>
+            <circle class="hud-particle" cx="920.6" cy="218.4" r="0.5" fill="#c43e2a" opacity="0.09"/>
+            <circle class="hud-particle" cx="819.7" cy="360.0" r="1.0" fill="#c43e2a" opacity="0.17"/>
+            <circle class="hud-particle" cx="533.3" cy="555.8" r="0.7" fill="#c43e2a" opacity="0.14"/>
+            <circle class="hud-particle" cx="803.1" cy="367.8" r="1.1" fill="#c43e2a" opacity="0.15"/>
+            <circle class="hud-particle" cx="688.2" cy="64.3" r="0.6" fill="#c43e2a" opacity="0.11"/>
+            <circle class="hud-particle" cx="113.4" cy="163.4" r="0.5" fill="#c43e2a" opacity="0.11"/>
+            <circle class="hud-particle" cx="624.8" cy="233.4" r="0.7" fill="#c43e2a" opacity="0.10"/>
+            <circle class="hud-particle" cx="285.6" cy="536.4" r="0.9" fill="#c43e2a" opacity="0.15"/>
+            <circle class="hud-particle" cx="197.4" cy="426.4" r="0.5" fill="#c43e2a" opacity="0.12"/>
+            <circle class="hud-particle" cx="950.4" cy="379.2" r="0.8" fill="#c43e2a" opacity="0.16"/>
+            <circle class="hud-particle" cx="815.4" cy="451.3" r="0.6" fill="#c43e2a" opacity="0.08"/>
+            <circle class="hud-particle" cx="330.2" cy="181.9" r="0.6" fill="#c43e2a" opacity="0.18"/>
+            <circle class="hud-particle" cx="846.3" cy="206.8" r="0.9" fill="#c43e2a" opacity="0.12"/>
+            <circle class="hud-particle" cx="881.4" cy="283.2" r="0.6" fill="#c43e2a" opacity="0.11"/>
+            <circle class="hud-particle" cx="556.5" cy="179.3" r="0.9" fill="#c43e2a" opacity="0.18"/>
+            <circle class="hud-particle" cx="407.4" cy="156.2" r="1.2" fill="#c43e2a" opacity="0.14"/>
+            <circle class="hud-particle" cx="123.6" cy="65.0" r="0.5" fill="#c43e2a" opacity="0.15"/>
+            <circle class="hud-particle" cx="768.7" cy="263.7" r="0.5" fill="#c43e2a" opacity="0.12"/>
+            <circle class="hud-particle" cx="956.4" cy="320.4" r="1.2" fill="#c43e2a" opacity="0.18"/>
+            <circle class="hud-particle" cx="50.6" cy="422.0" r="0.9" fill="#c43e2a" opacity="0.14"/>
+            <circle class="hud-particle" cx="285.5" cy="379.7" r="0.5" fill="#c43e2a" opacity="0.13"/>
+            <circle class="hud-particle" cx="457.4" cy="545.5" r="1.1" fill="#c43e2a" opacity="0.11"/>
+            <circle class="hud-particle" cx="500.5" cy="134.7" r="1.1" fill="#c43e2a" opacity="0.18"/>
+            <circle class="hud-particle" cx="314.6" cy="378.6" r="0.9" fill="#c43e2a" opacity="0.09"/>
+            <circle class="hud-particle" cx="741.5" cy="325.9" r="1.0" fill="#c43e2a" opacity="0.14"/>
+            <circle class="hud-particle" cx="40.5" cy="211.8" r="0.4" fill="#c43e2a" opacity="0.18"/>
+            <circle class="hud-particle" cx="848.4" cy="480.8" r="0.6" fill="#c43e2a" opacity="0.08"/>
+            <circle class="hud-particle" cx="847.8" cy="541.9" r="0.5" fill="#c43e2a" opacity="0.14"/>
+            <circle class="hud-particle" cx="103.7" cy="443.1" r="1.0" fill="#c43e2a" opacity="0.09"/>
+            <circle class="hud-particle" cx="283.9" cy="502.4" r="0.7" fill="#c43e2a" opacity="0.10"/>
+            <circle class="hud-particle" cx="536.2" cy="426.9" r="0.6" fill="#c43e2a" opacity="0.11"/>
+            <circle class="hud-particle" cx="955.5" cy="384.4" r="0.8" fill="#c43e2a" opacity="0.14"/>
+            <circle class="hud-particle" cx="151.3" cy="159.1" r="0.7" fill="#c43e2a" opacity="0.15"/>
+            <circle class="hud-particle" cx="251.7" cy="156.7" r="0.5" fill="#c43e2a" opacity="0.15"/>
+            <circle class="hud-particle" cx="250.6" cy="519.9" r="1.1" fill="#c43e2a" opacity="0.08"/>
+            <circle class="hud-particle" cx="259.0" cy="394.6" r="0.6" fill="#c43e2a" opacity="0.09"/>
+            <circle class="hud-particle" cx="900.7" cy="342.7" r="0.8" fill="#c43e2a" opacity="0.17"/>
+            <circle class="hud-particle" cx="782.9" cy="140.9" r="0.5" fill="#c43e2a" opacity="0.13"/>
+            <circle class="hud-particle" cx="710.7" cy="396.9" r="1.2" fill="#c43e2a" opacity="0.09"/>
+            <circle class="hud-particle" cx="410.4" cy="219.8" r="1.1" fill="#c43e2a" opacity="0.11"/>
+            <circle class="hud-particle" cx="215.0" cy="277.8" r="0.7" fill="#c43e2a" opacity="0.11"/>
+            <circle class="hud-particle" cx="269.8" cy="529.3" r="0.8" fill="#c43e2a" opacity="0.18"/>
+            <circle class="hud-particle" cx="546.3" cy="66.8" r="1.2" fill="#c43e2a" opacity="0.18"/>
+            <circle class="hud-particle" cx="931.5" cy="531.0" r="1.1" fill="#c43e2a" opacity="0.10"/>
+            <circle class="hud-particle" cx="486.8" cy="153.3" r="0.7" fill="#c43e2a" opacity="0.08"/>
+            <circle class="hud-particle" cx="388.7" cy="562.2" r="0.6" fill="#c43e2a" opacity="0.17"/>
+            <circle class="hud-particle" cx="920.7" cy="567.6" r="0.8" fill="#c43e2a" opacity="0.16"/>
+            <circle class="hud-particle" cx="182.4" cy="197.3" r="1.2" fill="#c43e2a" opacity="0.15"/>
+            <circle class="hud-particle" cx="538.8" cy="436.4" r="0.4" fill="#c43e2a" opacity="0.15"/>
+            <circle class="hud-particle" cx="502.6" cy="491.9" r="0.5" fill="#c43e2a" opacity="0.18"/>
+            <circle class="hud-particle" cx="113.7" cy="138.5" r="0.9" fill="#c43e2a" opacity="0.16"/>
+            <circle class="hud-particle" cx="256.4" cy="103.5" r="1.1" fill="#c43e2a" opacity="0.11"/>
+            <circle class="hud-particle" cx="587.0" cy="368.3" r="0.7" fill="#c43e2a" opacity="0.15"/>
+            <circle class="hud-particle" cx="521.0" cy="535.4" r="0.6" fill="#c43e2a" opacity="0.16"/>
+            <circle class="hud-particle" cx="259.6" cy="249.8" r="0.9" fill="#c43e2a" opacity="0.11"/>
+            <circle class="hud-particle" cx="330.9" cy="438.5" r="0.5" fill="#c43e2a" opacity="0.13"/>
+            <circle class="hud-particle" cx="958.6" cy="567.9" r="0.5" fill="#c43e2a" opacity="0.10"/>
+            <circle class="hud-particle" cx="284.0" cy="534.6" r="1.1" fill="#c43e2a" opacity="0.18"/>
+            <circle class="hud-particle" cx="380.0" cy="123.6" r="1.1" fill="#c43e2a" opacity="0.16"/>
+            <circle class="hud-particle" cx="602.7" cy="563.2" r="0.9" fill="#c43e2a" opacity="0.08"/>
+            <circle class="hud-particle" cx="791.7" cy="198.7" r="0.9" fill="#c43e2a" opacity="0.18"/>
+            <circle class="hud-particle" cx="163.5" cy="101.2" r="0.5" fill="#c43e2a" opacity="0.14"/>
+            <circle class="hud-particle" cx="290.6" cy="360.6" r="1.0" fill="#c43e2a" opacity="0.10"/>
+            <circle class="hud-particle" cx="623.5" cy="179.9" r="0.8" fill="#c43e2a" opacity="0.18"/>
+            <circle class="hud-particle" cx="818.4" cy="88.9" r="0.7" fill="#c43e2a" opacity="0.11"/>
+            <circle class="hud-particle" cx="43.3" cy="448.7" r="0.9" fill="#c43e2a" opacity="0.11"/>
+            <circle class="hud-particle" cx="721.9" cy="332.4" r="0.7" fill="#c43e2a" opacity="0.08"/>
+            <circle class="hud-particle" cx="109.2" cy="508.0" r="1.1" fill="#c43e2a" opacity="0.14"/>
+            <circle class="hud-particle" cx="807.8" cy="348.7" r="0.5" fill="#c43e2a" opacity="0.09"/>
+            <circle class="hud-particle" cx="323.6" cy="516.5" r="1.0" fill="#c43e2a" opacity="0.18"/>
+            <circle class="hud-particle" cx="867.0" cy="151.3" r="0.6" fill="#c43e2a" opacity="0.09"/>
             </g>
             <!-- === CORNER MARKERS === -->
-            <path class="draw-line" d="M30,55 L30,30 L55,30" stroke="#c43e2a" stroke-width="0.5" fill="none" opacity="0.1"/>
-            <path class="draw-line" d="M970,55 L970,30 L945,30" stroke="#c43e2a" stroke-width="0.5" fill="none" opacity="0.1"/>
-            <path class="draw-line" d="M30,545 L30,570 L55,570" stroke="#c43e2a" stroke-width="0.5" fill="none" opacity="0.1"/>
-            <path class="draw-line" d="M970,545 L970,570 L945,570" stroke="#c43e2a" stroke-width="0.5" fill="none" opacity="0.1"/>
-            <text class="hud-text" x="62" y="42" fill="#c43e2a" font-family="'Courier New', monospace" font-size="5" text-anchor="start" opacity="0.07" letter-spacing="0.15em">SYS</text>
-            <text class="hud-text" x="938" y="42" fill="#c43e2a" font-family="'Courier New', monospace" font-size="5" text-anchor="end" opacity="0.07" letter-spacing="0.15em">HUD</text>
-            <text class="hud-text" x="62" y="565" fill="#c43e2a" font-family="'Courier New', monospace" font-size="5" text-anchor="start" opacity="0.07" letter-spacing="0.15em">REF</text>
-            <text class="hud-text" x="938" y="565" fill="#c43e2a" font-family="'Courier New', monospace" font-size="5" text-anchor="end" opacity="0.07" letter-spacing="0.15em">LOG</text>
+            <path class="draw-line" d="M30,55 L30,30 L55,30" stroke="#c43e2a" stroke-width="0.5" fill="none" opacity="0.30"/>
+            <path class="draw-line" d="M970,55 L970,30 L945,30" stroke="#c43e2a" stroke-width="0.5" fill="none" opacity="0.30"/>
+            <path class="draw-line" d="M30,545 L30,570 L55,570" stroke="#c43e2a" stroke-width="0.5" fill="none" opacity="0.30"/>
+            <path class="draw-line" d="M970,545 L970,570 L945,570" stroke="#c43e2a" stroke-width="0.5" fill="none" opacity="0.30"/>
+            <text class="hud-text" x="62" y="42" fill="#c43e2a" font-family="'Courier New', monospace" font-size="5" text-anchor="start" opacity="0.18" letter-spacing="0.15em">SYS</text>
+            <text class="hud-text" x="938" y="42" fill="#c43e2a" font-family="'Courier New', monospace" font-size="5" text-anchor="end" opacity="0.18" letter-spacing="0.15em">HUD</text>
+            <text class="hud-text" x="62" y="565" fill="#c43e2a" font-family="'Courier New', monospace" font-size="5" text-anchor="start" opacity="0.18" letter-spacing="0.15em">REF</text>
+            <text class="hud-text" x="938" y="565" fill="#c43e2a" font-family="'Courier New', monospace" font-size="5" text-anchor="end" opacity="0.18" letter-spacing="0.15em">LOG</text>
             <!-- === REFERENCE LINES === -->
-            <line class="draw-line" x1="80" y1="300" x2="445" y2="300" stroke="#c43e2a" stroke-width="0.2" opacity="0.04" stroke-dasharray="8,12"/>
-            <line class="draw-line" x1="555" y1="300" x2="920" y2="300" stroke="#c43e2a" stroke-width="0.2" opacity="0.04" stroke-dasharray="8,12"/>
-            <line class="draw-line" x1="500" y1="50" x2="500" y2="245" stroke="#c43e2a" stroke-width="0.2" opacity="0.04" stroke-dasharray="8,12"/>
-            <line class="draw-line" x1="500" y1="355" x2="500" y2="540" stroke="#c43e2a" stroke-width="0.2" opacity="0.04" stroke-dasharray="8,12"/>
+            <line class="draw-line" x1="80" y1="300" x2="445" y2="300" stroke="#c43e2a" stroke-width="0.2" opacity="0.12" stroke-dasharray="8,12"/>
+            <line class="draw-line" x1="555" y1="300" x2="920" y2="300" stroke="#c43e2a" stroke-width="0.2" opacity="0.12" stroke-dasharray="8,12"/>
+            <line class="draw-line" x1="500" y1="50" x2="500" y2="245" stroke="#c43e2a" stroke-width="0.2" opacity="0.12" stroke-dasharray="8,12"/>
+            <line class="draw-line" x1="500" y1="355" x2="500" y2="540" stroke="#c43e2a" stroke-width="0.2" opacity="0.12" stroke-dasharray="8,12"/>
             <!-- === INNER DETAIL ARCS === -->
-            <path class="draw-line" d="M552.0,270.0 A60,60 0 0,1 552.0,330.0" stroke="#c43e2a" stroke-width="0.3" fill="none" opacity="0.08"/>
-            <path class="draw-line" d="M448.0,330.0 A60,60 0 0,1 448.0,270.0" stroke="#c43e2a" stroke-width="0.3" fill="none" opacity="0.08"/>
-            <path class="draw-line" d="M532.5,356.3 A65,65 0 0,1 467.5,356.3" stroke="#c43e2a" stroke-width="0.25" fill="none" opacity="0.06" stroke-dasharray="2,4"/>
-            <path class="draw-line" d="M467.5,243.7 A65,65 0 0,1 532.5,243.7" stroke="#c43e2a" stroke-width="0.25" fill="none" opacity="0.06" stroke-dasharray="2,4"/>
-            <path class="draw-line" d="M550.0,213.4 A100,100 0 0,1 600.0,300.0" stroke="#c43e2a" stroke-width="0.35" fill="none" opacity="0.08"/>
-            <path class="draw-line" d="M400.0,300.0 A100,100 0 0,1 450.0,213.4" stroke="#c43e2a" stroke-width="0.35" fill="none" opacity="0.08"/>
-            <path class="draw-line" d="M608.3,280.9 A110,110 0 0,1 584.3,370.7" stroke="#c43e2a" stroke-width="0.2" fill="none" opacity="0.05" stroke-dasharray="3,5"/>
-            <path class="draw-line" d="M391.7,280.9 A110,110 0 0,1 429.3,215.7" stroke="#c43e2a" stroke-width="0.2" fill="none" opacity="0.05" stroke-dasharray="3,5"/>
-            <line x1="548.0" y1="216.9" x2="552.0" y2="209.9" stroke="#c43e2a" stroke-width="0.25" opacity="0.06"/>
-            <line x1="561.7" y1="226.5" x2="566.8" y2="220.3" stroke="#c43e2a" stroke-width="0.25" opacity="0.06"/>
-            <line x1="573.5" y1="238.3" x2="579.7" y2="233.2" stroke="#c43e2a" stroke-width="0.25" opacity="0.06"/>
-            <line x1="583.1" y1="252.0" x2="590.1" y2="248.0" stroke="#c43e2a" stroke-width="0.25" opacity="0.06"/>
-            <line x1="590.2" y1="267.2" x2="597.7" y2="264.4" stroke="#c43e2a" stroke-width="0.25" opacity="0.06"/>
-            <line x1="594.5" y1="283.3" x2="602.4" y2="281.9" stroke="#c43e2a" stroke-width="0.25" opacity="0.06"/>
-            <line x1="596.0" y1="300.0" x2="604.0" y2="300.0" stroke="#c43e2a" stroke-width="0.25" opacity="0.06"/>
-            <line x1="594.5" y1="316.7" x2="602.4" y2="318.1" stroke="#c43e2a" stroke-width="0.25" opacity="0.06"/>
-            <line x1="590.2" y1="332.8" x2="597.7" y2="335.6" stroke="#c43e2a" stroke-width="0.25" opacity="0.06"/>
-            <line x1="583.1" y1="348.0" x2="590.1" y2="352.0" stroke="#c43e2a" stroke-width="0.25" opacity="0.06"/>
-            <line x1="573.5" y1="361.7" x2="579.7" y2="366.8" stroke="#c43e2a" stroke-width="0.25" opacity="0.06"/>
-            <line x1="561.7" y1="373.5" x2="566.8" y2="379.7" stroke="#c43e2a" stroke-width="0.25" opacity="0.06"/>
-            <line x1="548.0" y1="383.1" x2="552.0" y2="390.1" stroke="#c43e2a" stroke-width="0.25" opacity="0.06"/>
+            <path class="draw-line" d="M552.0,270.0 A60,60 0 0,1 552.0,330.0" stroke="#c43e2a" stroke-width="0.3" fill="none" opacity="0.24"/>
+            <path class="draw-line" d="M448.0,330.0 A60,60 0 0,1 448.0,270.0" stroke="#c43e2a" stroke-width="0.3" fill="none" opacity="0.24"/>
+            <path class="draw-line" d="M532.5,356.3 A65,65 0 0,1 467.5,356.3" stroke="#c43e2a" stroke-width="0.25" fill="none" opacity="0.18" stroke-dasharray="2,4"/>
+            <path class="draw-line" d="M467.5,243.7 A65,65 0 0,1 532.5,243.7" stroke="#c43e2a" stroke-width="0.25" fill="none" opacity="0.18" stroke-dasharray="2,4"/>
+            <path class="draw-line" d="M550.0,213.4 A100,100 0 0,1 600.0,300.0" stroke="#c43e2a" stroke-width="0.35" fill="none" opacity="0.24"/>
+            <path class="draw-line" d="M400.0,300.0 A100,100 0 0,1 450.0,213.4" stroke="#c43e2a" stroke-width="0.35" fill="none" opacity="0.24"/>
+            <path class="draw-line" d="M608.3,280.9 A110,110 0 0,1 584.3,370.7" stroke="#c43e2a" stroke-width="0.2" fill="none" opacity="0.15" stroke-dasharray="3,5"/>
+            <path class="draw-line" d="M391.7,280.9 A110,110 0 0,1 429.3,215.7" stroke="#c43e2a" stroke-width="0.2" fill="none" opacity="0.15" stroke-dasharray="3,5"/>
+            <line x1="548.0" y1="216.9" x2="552.0" y2="209.9" stroke="#c43e2a" stroke-width="0.25" opacity="0.15"/>
+            <line x1="561.7" y1="226.5" x2="566.8" y2="220.3" stroke="#c43e2a" stroke-width="0.25" opacity="0.15"/>
+            <line x1="573.5" y1="238.3" x2="579.7" y2="233.2" stroke="#c43e2a" stroke-width="0.25" opacity="0.15"/>
+            <line x1="583.1" y1="252.0" x2="590.1" y2="248.0" stroke="#c43e2a" stroke-width="0.25" opacity="0.15"/>
+            <line x1="590.2" y1="267.2" x2="597.7" y2="264.4" stroke="#c43e2a" stroke-width="0.25" opacity="0.15"/>
+            <line x1="594.5" y1="283.3" x2="602.4" y2="281.9" stroke="#c43e2a" stroke-width="0.25" opacity="0.15"/>
+            <line x1="596.0" y1="300.0" x2="604.0" y2="300.0" stroke="#c43e2a" stroke-width="0.25" opacity="0.15"/>
+            <line x1="594.5" y1="316.7" x2="602.4" y2="318.1" stroke="#c43e2a" stroke-width="0.25" opacity="0.15"/>
+            <line x1="590.2" y1="332.8" x2="597.7" y2="335.6" stroke="#c43e2a" stroke-width="0.25" opacity="0.15"/>
+            <line x1="583.1" y1="348.0" x2="590.1" y2="352.0" stroke="#c43e2a" stroke-width="0.25" opacity="0.15"/>
+            <line x1="573.5" y1="361.7" x2="579.7" y2="366.8" stroke="#c43e2a" stroke-width="0.25" opacity="0.15"/>
+            <line x1="561.7" y1="373.5" x2="566.8" y2="379.7" stroke="#c43e2a" stroke-width="0.25" opacity="0.15"/>
+            <line x1="548.0" y1="383.1" x2="552.0" y2="390.1" stroke="#c43e2a" stroke-width="0.25" opacity="0.15"/>
             <!-- === LABEL CLUSTERS === -->
-            <text class="hud-text" x="95" y="280" fill="#c43e2a" font-family="'Courier New', monospace" font-size="5" text-anchor="start" opacity="0.09" letter-spacing="0.15em">FREQ</text>
-            <text class="hud-readout" x="95" y="292" fill="#c43e2a" font-family="'Courier New', monospace" font-size="8" text-anchor="start" opacity="0.14" letter-spacing="0.15em">2401</text>
-            <line class="draw-line" x1="90" y1="295" x2="140" y2="295" stroke="#c43e2a" stroke-width="0.2" opacity="0.06"/>
-            <text class="hud-text" x="905" y="280" fill="#c43e2a" font-family="'Courier New', monospace" font-size="5" text-anchor="end" opacity="0.09" letter-spacing="0.15em">SYNC</text>
-            <text class="hud-readout" x="905" y="292" fill="#c43e2a" font-family="'Courier New', monospace" font-size="8" text-anchor="end" opacity="0.14" letter-spacing="0.15em">OK</text>
-            <line class="draw-line" x1="860" y1="295" x2="910" y2="295" stroke="#c43e2a" stroke-width="0.2" opacity="0.06"/>
-            <text class="hud-text" x="500" y="65" fill="#c43e2a" font-family="'Courier New', monospace" font-size="5" text-anchor="middle" opacity="0.09" letter-spacing="0.15em">ELEVATION</text>
-            <text class="hud-readout" x="500" y="78" fill="#c43e2a" font-family="'Courier New', monospace" font-size="9" text-anchor="middle" opacity="0.15" letter-spacing="0.15em">47.2</text>
-            <text class="hud-text" x="500" y="510" fill="#c43e2a" font-family="'Courier New', monospace" font-size="5" text-anchor="middle" opacity="0.09" letter-spacing="0.15em">BEARING</text>
-            <text class="hud-readout" x="500" y="523" fill="#c43e2a" font-family="'Courier New', monospace" font-size="9" text-anchor="middle" opacity="0.15" letter-spacing="0.15em">218°</text>
+            <text class="hud-text" x="95" y="280" fill="#c43e2a" font-family="'Courier New', monospace" font-size="5" text-anchor="start" opacity="0.22" letter-spacing="0.15em">FREQ</text>
+            <text class="hud-readout" x="95" y="292" fill="#c43e2a" font-family="'Courier New', monospace" font-size="8" text-anchor="start" opacity="0.31" letter-spacing="0.15em">2401</text>
+            <line class="draw-line" x1="90" y1="295" x2="140" y2="295" stroke="#c43e2a" stroke-width="0.2" opacity="0.18"/>
+            <text class="hud-text" x="905" y="280" fill="#c43e2a" font-family="'Courier New', monospace" font-size="5" text-anchor="end" opacity="0.22" letter-spacing="0.15em">SYNC</text>
+            <text class="hud-readout" x="905" y="292" fill="#c43e2a" font-family="'Courier New', monospace" font-size="8" text-anchor="end" opacity="0.31" letter-spacing="0.15em">OK</text>
+            <line class="draw-line" x1="860" y1="295" x2="910" y2="295" stroke="#c43e2a" stroke-width="0.2" opacity="0.18"/>
+            <text class="hud-text" x="500" y="65" fill="#c43e2a" font-family="'Courier New', monospace" font-size="5" text-anchor="middle" opacity="0.22" letter-spacing="0.15em">ELEVATION</text>
+            <text class="hud-readout" x="500" y="78" fill="#c43e2a" font-family="'Courier New', monospace" font-size="9" text-anchor="middle" opacity="0.33" letter-spacing="0.15em">47.2</text>
+            <text class="hud-text" x="500" y="510" fill="#c43e2a" font-family="'Courier New', monospace" font-size="5" text-anchor="middle" opacity="0.22" letter-spacing="0.15em">BEARING</text>
+            <text class="hud-readout" x="500" y="523" fill="#c43e2a" font-family="'Courier New', monospace" font-size="9" text-anchor="middle" opacity="0.33" letter-spacing="0.15em">218°</text>
             <!-- === SIGNAL BARS === -->
             <g class="hud-signal-bars">
-            <rect class="hud-bar" x="80" y="344.0" width="5" height="6.0" fill="#c43e2a" opacity="0.08"/>
-            <rect class="hud-bar" x="88" y="341.5" width="5" height="8.5" fill="#c43e2a" opacity="0.08"/>
-            <rect class="hud-bar" x="96" y="339.0" width="5" height="11.0" fill="#c43e2a" opacity="0.08"/>
-            <rect class="hud-bar" x="104" y="336.5" width="5" height="13.5" fill="#c43e2a" opacity="0.08"/>
-            <rect class="hud-bar" x="112" y="334.0" width="5" height="16.0" fill="#c43e2a" opacity="0.08"/>
-            <rect class="hud-bar" x="120" y="331.5" width="5" height="18.5" fill="#c43e2a" opacity="0.08"/>
-            <rect class="hud-bar" x="128" y="329.0" width="5" height="21.0" fill="#c43e2a" opacity="0.08"/>
-            <rect class="hud-bar" x="136" y="326.5" width="5" height="23.5" fill="#c43e2a" opacity="0.08"/>
+            <rect class="hud-bar" x="80" y="344.0" width="5" height="6.0" fill="#c43e2a" opacity="0.24"/>
+            <rect class="hud-bar" x="88" y="341.5" width="5" height="8.5" fill="#c43e2a" opacity="0.24"/>
+            <rect class="hud-bar" x="96" y="339.0" width="5" height="11.0" fill="#c43e2a" opacity="0.24"/>
+            <rect class="hud-bar" x="104" y="336.5" width="5" height="13.5" fill="#c43e2a" opacity="0.24"/>
+            <rect class="hud-bar" x="112" y="334.0" width="5" height="16.0" fill="#c43e2a" opacity="0.24"/>
+            <rect class="hud-bar" x="120" y="331.5" width="5" height="18.5" fill="#c43e2a" opacity="0.24"/>
+            <rect class="hud-bar" x="128" y="329.0" width="5" height="21.0" fill="#c43e2a" opacity="0.24"/>
+            <rect class="hud-bar" x="136" y="326.5" width="5" height="23.5" fill="#c43e2a" opacity="0.24"/>
             </g>
-            <text class="hud-text" x="108" y="362" fill="#c43e2a" font-family="'Courier New', monospace" font-size="5" text-anchor="middle" opacity="0.08" letter-spacing="0.15em">SIG STR</text>
+            <text class="hud-text" x="108" y="362" fill="#c43e2a" font-family="'Courier New', monospace" font-size="5" text-anchor="middle" opacity="0.20" letter-spacing="0.15em">SIG STR</text>
             <!-- === WAVEFORM === -->
-            <polyline class="hud-wave" points="860.0,350.0 865.0,356.4 870.0,359.9 875.0,358.6 880.0,353.3 885.0,346.5 890.0,341.3 895.0,340.2 900.0,343.7 905.0,350.2 910.0,356.6 915.0,359.9 920.0,358.5 925.0,353.2 930.0,346.3 935.0,341.2 940.0,340.2 945.0,343.8 950.0,350.3 955.0,356.7" stroke="#c43e2a" stroke-width="0.4" fill="none" opacity="0.1"/>
-            <text class="hud-text" x="910" y="372" fill="#c43e2a" font-family="'Courier New', monospace" font-size="5" text-anchor="middle" opacity="0.08" letter-spacing="0.15em">WAVEFORM</text>
+            <polyline class="hud-wave" points="860.0,350.0 865.0,356.4 870.0,359.9 875.0,358.6 880.0,353.3 885.0,346.5 890.0,341.3 895.0,340.2 900.0,343.7 905.0,350.2 910.0,356.6 915.0,359.9 920.0,358.5 925.0,353.2 930.0,346.3 935.0,341.2 940.0,340.2 945.0,343.8 950.0,350.3 955.0,356.7" stroke="#c43e2a" stroke-width="0.4" fill="none" opacity="0.30"/>
+            <text class="hud-text" x="910" y="372" fill="#c43e2a" font-family="'Courier New', monospace" font-size="5" text-anchor="middle" opacity="0.20" letter-spacing="0.15em">WAVEFORM</text>
         </svg>
     </div>
 </section>
