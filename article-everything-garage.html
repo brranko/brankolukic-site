@@ -62,19 +62,23 @@
             --surface-2: #dbd9d6;
         }
 
-        /* Light theme — hero keeps the SAME dark, moody look as dark theme */
+        /* Light theme — hero photo shown clean, no dark overlays */
         :root.light-theme .hero-overlay {
-            background: linear-gradient(to top, var(--bg) 0%, #1a1a1a 2%, rgba(26,26,26,0.65) 40%, rgba(26,26,26,0.25) 70%, rgba(26,26,26,0.45) 100%);
+            background: none;
         }
         :root.light-theme .hero-vignette {
-            background: radial-gradient(ellipse at center, transparent 40%, rgba(0,0,0,0.4) 100%);
+            background: none;
         }
         :root.light-theme .hero-image img {
-            opacity: 0.6;
+            opacity: 1;
+            filter: none;
         }
-        /* Light theme: HUD overlay — keep strong on light bg too */
+        :root.light-theme .hero-image::after {
+            display: none;
+        }
+        /* Light theme: HUD overlay — keep visible */
         :root.light-theme .deck-overlay svg {
-            opacity: 0.9;
+            opacity: 0.85;
         }
 
         /* Light theme: cube — swap dark fills to light equivalents */
@@ -476,6 +480,18 @@
             flex-direction: column;
             justify-content: flex-end;
             overflow: hidden;
+        }
+        /* Soft feathered bottom edge — page bg fades up into hero */
+        .hero::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            height: 25%;
+            background: linear-gradient(to top, var(--bg) 0%, var(--bg) 5%, transparent 100%);
+            z-index: 2;
+            pointer-events: none;
         }
         .hero-image {
             position: absolute;
