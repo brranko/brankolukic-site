@@ -70,10 +70,10 @@
             background: radial-gradient(ellipse at center, transparent 50%, rgba(232,230,227,0.35) 100%);
         }
         :root.light-theme .hero-image img {
-            filter: none;
+            filter: grayscale(100%);
             opacity: 1;
         }
-        /* Light theme: boost structural lines only (deck-overlay = garage blueprint) */
+        /* Light theme: deck-overlay — terracotta thin lines (same as dark theme) */
         :root.light-theme .deck-overlay .draw-line,
         :root.light-theme .deck-overlay .deck-bar,
         :root.light-theme .deck-overlay .radar-sweep,
@@ -85,10 +85,11 @@
         :root.light-theme .deck-overlay svg circle,
         :root.light-theme .deck-overlay svg path,
         :root.light-theme .deck-overlay svg polyline {
-            stroke: #1a1a1a !important;
+            stroke: #c43e2a !important;
+            stroke-width: 1 !important;
         }
         :root.light-theme .deck-overlay .deck-bar {
-            fill: #1a1a1a !important;
+            fill: #c43e2a !important;
         }
 
         /* Light theme: cube — swap dark fills to light equivalents */
@@ -694,8 +695,8 @@
         .deck-overlay {
             position: absolute;
             top: 0;
-            left: 0;
-            width: 100%;
+            left: 10px;
+            width: calc(100% - 10px);
             height: 100%;
             z-index: 3;
             margin: 0;
