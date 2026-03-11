@@ -702,6 +702,45 @@
             user-select: none;
         }
 
+        /* === COMPASS RING ROTATION — pure CSS, bulletproof === */
+        .compass-ring {
+            transform-box: fill-box;
+            transform-origin: center;
+        }
+        .compass-ring[data-speed="-0.6"] {
+            animation: ring-ccw 60s linear infinite;
+        }
+        .compass-ring[data-speed="1.5"] {
+            animation: ring-cw 24s linear infinite;
+        }
+        .compass-ring[data-speed="-2.2"] {
+            animation: ring-ccw 16s linear infinite;
+        }
+        .compass-ring[data-speed="3.5"] {
+            animation: ring-cw 10s linear infinite;
+        }
+        .compass-needle {
+            transform-box: fill-box;
+            transform-origin: center;
+            animation: needle-sweep 8s ease-in-out infinite alternate;
+        }
+        @keyframes ring-cw {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
+        @keyframes ring-ccw {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(-360deg); }
+        }
+        @keyframes needle-sweep {
+            0% { transform: rotate(-30deg); }
+            20% { transform: rotate(45deg); }
+            40% { transform: rotate(10deg); }
+            60% { transform: rotate(70deg); }
+            80% { transform: rotate(-15deg); }
+            100% { transform: rotate(50deg); }
+        }
+
         /* Audio player pill */
         .audio-player:hover {
             border-color: rgba(196,168,130,0.5);
@@ -1415,10 +1454,7 @@
             </g>
             <!-- Center dot (static) -->
             <circle cx="500" cy="300" r="4" fill="#c43e2a" opacity="0.55"/>
-            <line class="draw-line" x1="450" y1="300" x2="475" y2="300" stroke="#c43e2a" stroke-width="0.9" opacity="0.54"/>
-            <line class="draw-line" x1="525" y1="300" x2="550" y2="300" stroke="#c43e2a" stroke-width="0.9" opacity="0.54"/>
-            <line class="draw-line" x1="500" y1="250" x2="500" y2="275" stroke="#c43e2a" stroke-width="0.9" opacity="0.54"/>
-            <line class="draw-line" x1="500" y1="325" x2="500" y2="350" stroke="#c43e2a" stroke-width="0.9" opacity="0.54"/>
+            <!-- Removed static crosshair lines — they made the compass look like a clock -->
             <text class="hud-text" x="500" y="245" fill="#c43e2a" font-family="'Courier New', monospace" font-size="12" text-anchor="middle" opacity="0.50" letter-spacing="0.15em">N</text>
             <text class="hud-text" x="558" y="303" fill="#c43e2a" font-family="'Courier New', monospace" font-size="10" text-anchor="middle" opacity="0.50" letter-spacing="0.15em">E</text>
             <text class="hud-text" x="442" y="303" fill="#c43e2a" font-family="'Courier New', monospace" font-size="10" text-anchor="middle" opacity="0.50" letter-spacing="0.15em">W</text>
@@ -1431,11 +1467,16 @@
             <circle cx="477.5" cy="261.0" r="1.2" fill="#c43e2a" opacity="0.45"/>
             <circle cx="522.5" cy="261.0" r="1.2" fill="#c43e2a" opacity="0.45"/>
             <circle cx="539.0" cy="277.5" r="1.2" fill="#c43e2a" opacity="0.45"/>
-            <!-- Compass needle — single instrument needle, not a clock -->
+            <!-- Compass needle — thick instrument gauge needle, asymmetric, NOT a clock -->
             <g class="compass-needle">
-                <line x1="500" y1="300" x2="500" y2="248" stroke="#c43e2a" stroke-width="2.0" opacity="0.75"/>
-                <line x1="500" y1="300" x2="500" y2="310" stroke="#c43e2a" stroke-width="1.2" opacity="0.5"/>
-                <circle cx="500" cy="248" r="2" fill="#c43e2a" opacity="0.6"/>
+                <!-- Main needle arm — thick, tapered via polygon -->
+                <polygon points="498,300 502,300 500.5,245 499.5,245" fill="#c43e2a" opacity="0.8"/>
+                <!-- Arrowhead tip -->
+                <polygon points="496,250 504,250 500,238" fill="#c43e2a" opacity="0.75"/>
+                <!-- Short counter-weight nub -->
+                <rect x="499" y="300" width="2" height="12" fill="#c43e2a" opacity="0.5" rx="1"/>
+                <!-- Center pivot dot -->
+                <circle cx="500" cy="300" r="3.5" fill="#c43e2a" opacity="0.7"/>
             </g>
             <!-- === DATA READOUT PANELS === -->
             <!-- Top-left data panel -->
@@ -2498,20 +2539,9 @@ animateDrawLines('vig-garage');
     new LivingVignette(el, (container, t, intensity) => {
 
         // ============================================================
-        // 1. COMPASS — rings rotate independently via GSAP, needle drifts
+        // 1. COMPASS — rotation handled by CSS @keyframes (bulletproof)
+        //    JS only handles center dot pulse
         // ============================================================
-        compassRings.forEach((ring) => {
-            const speed = parseFloat(ring.dataset.speed) || 0.5;
-            const angle = (t * speed * 15) % 360;
-            gsap.set(ring, { rotation: angle, svgOrigin: '500 300' });
-        });
-
-        // Single instrument needle — slow sweep with organic wobble
-        if (needle) {
-            const base = (t * 6) % 360;
-            const wobble = Math.sin(t * 0.3) * 8 + Math.sin(t * 0.18 + 1.3) * 5 + Math.sin(t * 0.07) * 3;
-            gsap.set(needle, { rotation: base + wobble, svgOrigin: '500 300' });
-        }
 
         // ============================================================
         // 2. ARCS — slow rotation around center + opacity breathing
