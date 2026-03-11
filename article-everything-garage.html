@@ -62,12 +62,12 @@
             --surface-2: #dbd9d6;
         }
 
-        /* Light theme — hero & animation fixes */
+        /* Light theme — hero keeps the SAME dark, moody look as dark theme */
         :root.light-theme .hero-overlay {
-            background: linear-gradient(to top, var(--bg) 0%, rgba(232,230,227,0.4) 40%, rgba(232,230,227,0.1) 70%, rgba(232,230,227,0.2) 100%);
+            background: linear-gradient(to top, var(--bg) 0%, rgba(26,26,26,0.5) 40%, rgba(26,26,26,0.15) 70%, rgba(26,26,26,0.3) 100%);
         }
         :root.light-theme .hero-vignette {
-            background: radial-gradient(ellipse at center, transparent 50%, rgba(232,230,227,0.35) 100%);
+            background: radial-gradient(ellipse at center, transparent 40%, rgba(0,0,0,0.3) 100%);
         }
         :root.light-theme .hero-image img {
             opacity: 0.65;
@@ -1379,12 +1379,42 @@
             <text class="hud-text" x="636.0" y="537.5589098293673" fill="#c43e2a" font-family="'Courier New', monospace" font-size="8" text-anchor="middle" opacity="0.45" letter-spacing="0.15em">60°</text>
             <text class="hud-text" x="500.0" y="574.0" fill="#c43e2a" font-family="'Courier New', monospace" font-size="8" text-anchor="middle" opacity="0.45" letter-spacing="0.15em">90°</text>
             <text class="hud-text" x="364.00000000000006" y="537.5589098293674" fill="#c43e2a" font-family="'Courier New', monospace" font-size="8" text-anchor="middle" opacity="0.45" letter-spacing="0.15em">120°</text>
-            <!-- === CENTRAL COMPASS === -->
-            <circle class="draw-line compass-ring" data-speed="-0.8" cx="500" cy="300" r="45" stroke="#c43e2a" stroke-width="1.5" fill="none" opacity="0.55"/>
-            <circle class="draw-line compass-ring" data-speed="1.2" cx="500" cy="300" r="42" stroke="#c43e2a" stroke-width="0.8" fill="none" opacity="0.32" stroke-dasharray="2,3"/>
-            <circle class="draw-line compass-ring" data-speed="-1.8" cx="500" cy="300" r="35" stroke="#c43e2a" stroke-width="0.9" fill="none" opacity="0.43"/>
-            <circle class="draw-line compass-ring" data-speed="2.5" cx="500" cy="300" r="20" stroke="#c43e2a" stroke-width="0.6" fill="none" opacity="0.32"/>
-            <circle class="draw-line" cx="500" cy="300" r="3" stroke="#c43e2a" stroke-width="0.0" fill="#c43e2a" opacity="0.55"/>
+            <!-- === CENTRAL COMPASS — rings as groups with tick marks so rotation is visible === -->
+            <!-- Ring 1: r=45, slow CCW -->
+            <g class="compass-ring" data-speed="-0.6">
+                <circle cx="500" cy="300" r="45" stroke="#c43e2a" stroke-width="1.5" fill="none" opacity="0.55"/>
+                <line x1="500" y1="255" x2="500" y2="248" stroke="#c43e2a" stroke-width="1.2" opacity="0.5"/>
+                <line x1="500" y1="345" x2="500" y2="352" stroke="#c43e2a" stroke-width="1.0" opacity="0.4"/>
+                <line x1="545" y1="300" x2="552" y2="300" stroke="#c43e2a" stroke-width="1.0" opacity="0.4"/>
+                <line x1="455" y1="300" x2="448" y2="300" stroke="#c43e2a" stroke-width="1.0" opacity="0.4"/>
+                <line x1="531.8" y1="268.2" x2="536.8" y2="263.2" stroke="#c43e2a" stroke-width="0.8" opacity="0.3"/>
+                <line x1="468.2" y1="331.8" x2="463.2" y2="336.8" stroke="#c43e2a" stroke-width="0.8" opacity="0.3"/>
+                <line x1="531.8" y1="331.8" x2="536.8" y2="336.8" stroke="#c43e2a" stroke-width="0.8" opacity="0.3"/>
+                <line x1="468.2" y1="268.2" x2="463.2" y2="263.2" stroke="#c43e2a" stroke-width="0.8" opacity="0.3"/>
+            </g>
+            <!-- Ring 2: r=42, dashed, CW faster -->
+            <g class="compass-ring" data-speed="1.5">
+                <circle cx="500" cy="300" r="42" stroke="#c43e2a" stroke-width="0.9" fill="none" opacity="0.4" stroke-dasharray="4,8"/>
+                <line x1="500" y1="258" x2="500" y2="253" stroke="#c43e2a" stroke-width="0.9" opacity="0.4"/>
+                <line x1="542" y1="300" x2="547" y2="300" stroke="#c43e2a" stroke-width="0.9" opacity="0.4"/>
+                <line x1="500" y1="342" x2="500" y2="347" stroke="#c43e2a" stroke-width="0.9" opacity="0.35"/>
+                <line x1="458" y1="300" x2="453" y2="300" stroke="#c43e2a" stroke-width="0.9" opacity="0.35"/>
+            </g>
+            <!-- Ring 3: r=35, CCW faster -->
+            <g class="compass-ring" data-speed="-2.2">
+                <circle cx="500" cy="300" r="35" stroke="#c43e2a" stroke-width="1.0" fill="none" opacity="0.45" stroke-dasharray="6,4,2,4"/>
+                <line x1="500" y1="265" x2="500" y2="259" stroke="#c43e2a" stroke-width="1.0" opacity="0.45"/>
+                <line x1="524.7" y1="275.3" x2="528.8" y2="271.2" stroke="#c43e2a" stroke-width="0.8" opacity="0.35"/>
+                <line x1="475.3" y1="324.7" x2="471.2" y2="328.8" stroke="#c43e2a" stroke-width="0.8" opacity="0.35"/>
+            </g>
+            <!-- Ring 4: r=20, CW fastest -->
+            <g class="compass-ring" data-speed="3.5">
+                <circle cx="500" cy="300" r="20" stroke="#c43e2a" stroke-width="0.8" fill="none" opacity="0.4" stroke-dasharray="3,5"/>
+                <line x1="500" y1="280" x2="500" y2="275" stroke="#c43e2a" stroke-width="0.9" opacity="0.4"/>
+                <line x1="520" y1="300" x2="525" y2="300" stroke="#c43e2a" stroke-width="0.9" opacity="0.4"/>
+            </g>
+            <!-- Center dot (static) -->
+            <circle cx="500" cy="300" r="4" fill="#c43e2a" opacity="0.55"/>
             <line class="draw-line" x1="450" y1="300" x2="475" y2="300" stroke="#c43e2a" stroke-width="0.9" opacity="0.54"/>
             <line class="draw-line" x1="525" y1="300" x2="550" y2="300" stroke="#c43e2a" stroke-width="0.9" opacity="0.54"/>
             <line class="draw-line" x1="500" y1="250" x2="500" y2="275" stroke="#c43e2a" stroke-width="0.9" opacity="0.54"/>
@@ -1401,8 +1431,9 @@
             <circle cx="477.5" cy="261.0" r="1.2" fill="#c43e2a" opacity="0.45"/>
             <circle cx="522.5" cy="261.0" r="1.2" fill="#c43e2a" opacity="0.45"/>
             <circle cx="539.0" cy="277.5" r="1.2" fill="#c43e2a" opacity="0.45"/>
-            <line class="compass-needle" x1="500" y1="300" x2="500" y2="262" stroke="#c43e2a" stroke-width="1.8" opacity="0.50"/>
-            <line class="compass-needle-s" x1="500" y1="300" x2="500" y2="330" stroke="#c43e2a" stroke-width="0.9" opacity="0.45"/>
+            <!-- Compass needles — thick, visible, will rotate independently -->
+            <line class="compass-needle" x1="500" y1="300" x2="500" y2="255" stroke="#c43e2a" stroke-width="2.2" opacity="0.7"/>
+            <line class="compass-needle-s" x1="500" y1="300" x2="500" y2="340" stroke="#c43e2a" stroke-width="1.4" opacity="0.55"/>
             <!-- === DATA READOUT PANELS === -->
             <!-- Top-left data panel -->
             <path class="draw-line" d="M140,123 L140,105 L158,105" stroke="#c43e2a" stroke-width="1.5" fill="none" opacity="0.55"/>
@@ -2473,17 +2504,19 @@ animateDrawLines('vig-garage');
             ring.setAttribute('transform', `rotate(${angle}, 500, 300)`);
         });
 
-        // Needles: slow organic drift independent of rings
+        // Needle N: continuous slow CW rotation + organic wobble
         if (needle) {
-            const drift = Math.sin(t * 0.15) * 25 + Math.sin(t * 0.09 + 1.3) * 12;
-            needle.setAttribute('transform', `rotate(${drift}, 500, 300)`);
-            needle.setAttribute('opacity', (0.4 + Math.sin(t * 0.3) * 0.1) * intensity);
+            const base = (t * 8) % 360; // steady rotation ~8 deg/sec
+            const wobble = Math.sin(t * 0.4) * 6 + Math.sin(t * 0.25 + 1.3) * 4;
+            needle.setAttribute('transform', `rotate(${base + wobble}, 500, 300)`);
+            needle.setAttribute('opacity', (0.6 + Math.sin(t * 0.3) * 0.1) * intensity);
         }
+        // Needle S: continuous slow CCW rotation + different wobble
         if (needleS) {
-            // South needle drifts opposite direction
-            const drift = Math.sin(t * 0.15) * 25 + Math.sin(t * 0.09 + 1.3) * 12;
-            needleS.setAttribute('transform', `rotate(${drift}, 500, 300)`);
-            needleS.setAttribute('opacity', (0.3 + Math.sin(t * 0.3) * 0.08) * intensity);
+            const base = (-t * 5) % 360; // counter-rotation ~5 deg/sec
+            const wobble = Math.sin(t * 0.35 + 2) * 8 + Math.sin(t * 0.2) * 3;
+            needleS.setAttribute('transform', `rotate(${base + wobble}, 500, 300)`);
+            needleS.setAttribute('opacity', (0.45 + Math.sin(t * 0.35) * 0.1) * intensity);
         }
 
         // ============================================================
