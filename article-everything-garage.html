@@ -735,11 +735,6 @@
         .compass-ring[data-speed="3.5"] {
             animation: ring-cw 10s linear infinite;
         }
-        .compass-needle {
-            transform-box: fill-box;
-            transform-origin: center;
-            animation: needle-sweep 8s ease-in-out infinite alternate;
-        }
         @keyframes ring-cw {
             from { transform: rotate(0deg); }
             to { transform: rotate(360deg); }
@@ -747,14 +742,6 @@
         @keyframes ring-ccw {
             from { transform: rotate(0deg); }
             to { transform: rotate(-360deg); }
-        }
-        @keyframes needle-sweep {
-            0% { transform: rotate(-30deg); }
-            20% { transform: rotate(45deg); }
-            40% { transform: rotate(10deg); }
-            60% { transform: rotate(70deg); }
-            80% { transform: rotate(-15deg); }
-            100% { transform: rotate(50deg); }
         }
         /* Outer ring (2 arcs + all tick marks) — very slow rotation */
         .hud-outer-ring {
@@ -1515,10 +1502,7 @@
             <circle cx="477.5" cy="261.0" r="1.2" fill="#c43e2a" opacity="0.45"/>
             <circle cx="522.5" cy="261.0" r="1.2" fill="#c43e2a" opacity="0.45"/>
             <circle cx="539.0" cy="277.5" r="1.2" fill="#c43e2a" opacity="0.45"/>
-            <!-- Compass needle — single thin line, sweeps like an instrument -->
-            <g class="compass-needle">
-                <line x1="500" y1="300" x2="500" y2="252" stroke="#c43e2a" stroke-width="1.8" opacity="0.7"/>
-            </g>
+            <!-- Needle removed — handles provide the rotating line effect -->
             <!-- === DATA READOUT PANELS === -->
             <!-- Top-left data panel -->
             <path class="draw-line" d="M140,123 L140,105 L158,105" stroke="#c43e2a" stroke-width="1.5" fill="none" opacity="0.55"/>
@@ -2469,9 +2453,7 @@ animateDrawLines('vig-garage');
     if (!svg) return;
 
     // Gather ALL element groups
-    const needle = el.querySelector('.compass-needle');
     const compassRings = Array.from(el.querySelectorAll('.compass-ring'));
-    console.log('[HUD] compassRings found:', compassRings.length, 'needle:', !!needle);
     const particles = Array.from(el.querySelectorAll('.hud-particle'));
     const readouts = Array.from(el.querySelectorAll('.hud-readout'));
     const bars = Array.from(el.querySelectorAll('.hud-bar'));
