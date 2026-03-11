@@ -2095,9 +2095,10 @@
         <div class="email-capture-inner">
             <h3>Follow this thinking</h3>
             <p class="caption">Occasional writing on cognitive architecture, creative fingerprints, and the space between human intent and frontier AI. No noise.</p>
-            <div class="substack-embed-wrapper" style="max-width:480px;margin-top:1rem;">
-                <iframe src="https://copyself.substack.com/embed" width="100%" height="150" style="border:none; background:transparent;" frameborder="0" scrolling="no"></iframe>
-            </div>
+            <form class="email-form" id="substackForm" onsubmit="return handleSubstackSubscribe(event)">
+                <input type="email" placeholder="Type your email..." required id="substackEmail" autocomplete="email">
+                <button type="submit" id="substackBtn">Subscribe</button>
+            </form>
             <p class="email-privacy">No spam. Unsubscribe anytime.</p>
         </div>
     </div>
@@ -3258,6 +3259,49 @@ window.addEventListener('scroll', () => {
   const scrolled = (winScroll / height);
   scrollIndicator.style.transform = `scaleX(${scrolled})`;
 });
+
+// Substack subscribe handler
+function handleSubstackSubscribe(e) {
+    e.preventDefault();
+    const email = document.getElementById('substackEmail').value;
+    const btn = document.getElementById('substackBtn');
+    const origText = btn.textContent;
+    btn.textContent = '...';
+    btn.disabled = true;
+
+    fetch('https://copyself.substack.com/api/v1/free?noSendEmail=true', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+            first_url: window.location.href,
+            first_referrer: document.referrer || '',
+            current_url: window.location.href,
+            current_referrer: document.referrer || '',
+            referral_code: '',
+            source: 'embed',
+            referring_pub_id: '',
+            additional_referring_pub_ids: '',
+            email: email
+        })
+    })
+    .then(r => {
+        if (r.ok || r.status === 400) {
+            btn.textContent = 'Subscribed';
+            btn.style.opacity = '0.6';
+            document.getElementById('substackEmail').value = '';
+            document.getElementById('substackEmail').placeholder = 'You\'re in.';
+        } else {
+            throw new Error('Subscribe failed');
+        }
+    })
+    .catch(() => {
+        // Fallback: open Substack subscribe page directly
+        window.open('https://copyself.substack.com/subscribe', '_blank');
+        btn.textContent = origText;
+        btn.disabled = false;
+    });
+    return false;
+}
 
 </script>
 </body>
