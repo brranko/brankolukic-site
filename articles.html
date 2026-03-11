@@ -81,6 +81,13 @@
     border-bottom: 1px solid var(--border);
     box-shadow: 0 2px 20px rgba(0,0,0,0.08);
   }
+  /* Light theme: subtle nav bottom border always visible */
+  :root.light-theme nav {
+      border-bottom: 1px solid rgba(0,0,0,0.1);
+  }
+  :root.light-theme nav.scrolled {
+      border-bottom: 1px solid rgba(0,0,0,0.15);
+  }
 
   .nav-left {
     display: flex;
@@ -535,17 +542,17 @@
 </button>
 
 <nav id="nav">
-  <a href="/" class="nav-left" onclick="if(location.pathname==='/'){event.preventDefault();window.scrollTo({top:0,behavior:'smooth'});}">
+  <a href="/" class="nav-left">
     <span class="logo">Branko Lukic</span>
     <span class="nav-tagline">COGNITIVE ARCHITECTURE</span>
   </a>
   <div class="nav-right">
     <div class="nav-links">
-      <a href="/#research">research</a>
-      <a href="/#frameworks">frameworks</a>
-      <a href="/#about">about</a>
-      <a href="/#speaking">speaking</a>
-      <a href="articles.html" class="active">articles</a>
+      <a href="/#research">RESEARCH</a>
+      <a href="/#frameworks">FRAMEWORKS</a>
+      <a href="about.html">ABOUT</a>
+      <a href="/#speaking">SPEAKING</a>
+      <a href="articles.html">ARTICLES</a>
     </div>
     <div class="nav-social">
       <a href="https://www.instagram.com/copyself.xyz/" target="_blank" title="Instagram">
@@ -575,11 +582,11 @@
 <div class="mobile-menu-overlay" id="mobileMenu">
   <button class="mobile-menu-close" id="mobileMenuClose" aria-label="Close menu">&times;</button>
   <div class="mobile-menu-links">
-    <a href="/#research">research</a>
-    <a href="/#frameworks">frameworks</a>
-    <a href="/#about">about</a>
-    <a href="/#speaking">speaking</a>
-    <a href="articles.html" class="active">articles</a>
+    <a href="/#research">RESEARCH</a>
+    <a href="/#frameworks">FRAMEWORKS</a>
+    <a href="about.html">ABOUT</a>
+    <a href="/#speaking">SPEAKING</a>
+    <a href="articles.html">ARTICLES</a>
   </div>
   <div class="mobile-menu-social">
     <a href="https://www.instagram.com/copyself.xyz/" target="_blank" title="Instagram">

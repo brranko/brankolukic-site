@@ -174,6 +174,13 @@
             border-bottom: 1px solid var(--border);
             box-shadow: 0 2px 20px rgba(0,0,0,0.15);
         }
+  /* Light theme: subtle nav bottom border always visible */
+  :root.light-theme nav {
+      border-bottom: 1px solid rgba(0,0,0,0.1);
+  }
+  :root.light-theme nav.scrolled {
+      border-bottom: 1px solid rgba(0,0,0,0.15);
+  }
         .nav-left {
             display: flex;
             align-items: baseline;
@@ -1090,53 +1097,53 @@
 
 <!-- Navigation -->
 <nav id="nav">
-    <a href="/" class="nav-left" onclick="if(location.pathname==='/'){event.preventDefault();window.scrollTo({top:0,behavior:'smooth'});}">
-        <span class="logo">Branko Lukic</span>
-        <span class="nav-tagline">COGNITIVE ARCHITECTURE</span>
-    </a>
-    <div class="nav-right">
-        <div class="nav-links">
-            <a href="/">home</a>
-            <a href="/articles.html" class="active">articles</a>
-            <a href="/about.html">about</a>
-        </div>
-        <div class="nav-social">
-            <a href="https://www.instagram.com/copyself.xyz/" target="_blank" title="Instagram">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
-                    <rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect>
-                    <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path>
-                    <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line>
-                </svg>
-            </a>
-            <a href="https://www.linkedin.com/in/brankolukic/" target="_blank" title="LinkedIn">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
-                    <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path>
-                    <rect x="2" y="9" width="4" height="12"></rect>
-                    <circle cx="4" cy="4" r="2"></circle>
-                </svg>
-            </a>
-        </div>
-        <button class="theme-toggle" id="themeToggle" onclick="toggleTheme()" title="Switch to light theme" style="background:none;border:none;cursor:pointer;padding:6px;color:var(--text-muted);display:flex;align-items:center;transition:color 0.2s;">
-            <svg class="sun-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" style="width:18px;height:18px;"><circle cx="12" cy="12" r="5"/><path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"/></svg>
-            <svg class="moon-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" style="width:18px;height:18px;display:none;"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
-        </button>
-        <button class="hamburger" id="hamburger" aria-label="Menu">
-            <span></span>
-            <span></span>
-            <span></span>
-        </button>
+  <a href="/" class="nav-left">
+    <span class="logo">Branko Lukic</span>
+    <span class="nav-tagline">COGNITIVE ARCHITECTURE</span>
+  </a>
+  <div class="nav-right">
+    <div class="nav-links">
+      <a href="/#research">RESEARCH</a>
+      <a href="/#frameworks">FRAMEWORKS</a>
+      <a href="about.html">ABOUT</a>
+      <a href="/#speaking">SPEAKING</a>
+      <a href="articles.html">ARTICLES</a>
     </div>
+    <div class="nav-social">
+      <a href="https://www.instagram.com/copyself.xyz/" target="_blank" title="Instagram">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+          <rect x="2" y="2" width="20" height="20" rx="5" ry="5"/>
+          <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/>
+          <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/>
+        </svg>
+      </a>
+      <a href="https://www.linkedin.com/in/brankolukic/" target="_blank" title="LinkedIn">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+          <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/>
+          <rect x="2" y="9" width="4" height="12"/>
+          <circle cx="4" cy="4" r="2"/>
+        </svg>
+      </a>
+    </div>
+    <button class="hamburger" id="hamburger" aria-label="Menu">
+      <span></span>
+      <span></span>
+      <span></span>
+    </button>
+  </div>
 </nav>
 
 <!-- Mobile menu overlay -->
 <div class="mobile-menu-overlay" id="mobileMenu">
     <button class="mobile-menu-close" id="mobileMenuClose">&times;</button>
     <div class="mobile-menu-links">
-        <a href="/">Home</a>
-        <a href="/articles.html" class="active">Articles</a>
-        <a href="/about.html">About</a>
-    </div>
-    <div class="mobile-menu-social">
+    <a href="/#research">RESEARCH</a>
+    <a href="/#frameworks">FRAMEWORKS</a>
+    <a href="about.html">ABOUT</a>
+    <a href="/#speaking">SPEAKING</a>
+    <a href="articles.html">ARTICLES</a>
+  </div>
+  <div class="mobile-menu-social">
         <a href="https://www.instagram.com/copyself.xyz/" target="_blank">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
                 <rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect>

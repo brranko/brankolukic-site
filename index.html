@@ -343,6 +343,13 @@
     border-bottom: 1px solid var(--border);
     box-shadow: 0 2px 20px rgba(0,0,0,0.15);
   }
+  /* Light theme: subtle nav bottom border always visible */
+  :root.light-theme nav {
+      border-bottom: 1px solid rgba(0,0,0,0.1);
+  }
+  :root.light-theme nav.scrolled {
+      border-bottom: 1px solid rgba(0,0,0,0.15);
+  }
 
   .nav-left {
     display: flex;
@@ -1615,11 +1622,11 @@ function toggleTheme() {
   </a>
   <div class="nav-right">
     <div class="nav-links">
-      <a href="#research" data-section="research">research</a>
-      <a href="#frameworks" data-section="frameworks">frameworks</a>
-      <a href="about.html">about</a>
-      <a href="#speaking" data-section="speaking">speaking</a>
-      <a href="articles.html">articles</a>
+      <a href="#research" data-section="research">RESEARCH</a>
+      <a href="#frameworks" data-section="frameworks">FRAMEWORKS</a>
+      <a href="about.html">ABOUT</a>
+      <a href="#speaking" data-section="speaking">SPEAKING</a>
+      <a href="articles.html">ARTICLES</a>
     </div>
     <div class="nav-social">
       <a href="https://www.instagram.com/copyself.xyz/" target="_blank" title="Instagram">
@@ -1649,11 +1656,11 @@ function toggleTheme() {
 <div class="mobile-menu-overlay" id="mobileMenu">
   <button class="mobile-menu-close" id="mobileMenuClose" aria-label="Close menu">&times;</button>
   <div class="mobile-menu-links">
-    <a href="#research" data-section="research">research</a>
-    <a href="#frameworks" data-section="frameworks">frameworks</a>
-    <a href="about.html">about</a>
-    <a href="#speaking" data-section="speaking">speaking</a>
-    <a href="articles.html">articles</a>
+    <a href="#research" data-section="research">RESEARCH</a>
+    <a href="#frameworks" data-section="frameworks">FRAMEWORKS</a>
+    <a href="about.html">ABOUT</a>
+    <a href="#speaking" data-section="speaking">SPEAKING</a>
+    <a href="articles.html">ARTICLES</a>
   </div>
   <div class="mobile-menu-social">
     <a href="https://www.instagram.com/copyself.xyz/" target="_blank" title="Instagram">
