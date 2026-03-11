@@ -64,13 +64,13 @@
 
         /* Light theme — hero keeps the SAME dark, moody look as dark theme */
         :root.light-theme .hero-overlay {
-            background: linear-gradient(to top, var(--bg) 0%, rgba(26,26,26,0.5) 40%, rgba(26,26,26,0.15) 70%, rgba(26,26,26,0.3) 100%);
+            background: linear-gradient(to top, var(--bg) 0%, #1a1a1a 2%, rgba(26,26,26,0.65) 40%, rgba(26,26,26,0.25) 70%, rgba(26,26,26,0.45) 100%);
         }
         :root.light-theme .hero-vignette {
-            background: radial-gradient(ellipse at center, transparent 40%, rgba(0,0,0,0.3) 100%);
+            background: radial-gradient(ellipse at center, transparent 40%, rgba(0,0,0,0.4) 100%);
         }
         :root.light-theme .hero-image img {
-            opacity: 0.65;
+            opacity: 0.6;
         }
         /* Light theme: HUD overlay — keep strong on light bg too */
         :root.light-theme .deck-overlay svg {
@@ -1431,9 +1431,12 @@
             <circle cx="477.5" cy="261.0" r="1.2" fill="#c43e2a" opacity="0.45"/>
             <circle cx="522.5" cy="261.0" r="1.2" fill="#c43e2a" opacity="0.45"/>
             <circle cx="539.0" cy="277.5" r="1.2" fill="#c43e2a" opacity="0.45"/>
-            <!-- Compass needles — thick, visible, will rotate independently -->
-            <line class="compass-needle" x1="500" y1="300" x2="500" y2="255" stroke="#c43e2a" stroke-width="2.2" opacity="0.7"/>
-            <line class="compass-needle-s" x1="500" y1="300" x2="500" y2="340" stroke="#c43e2a" stroke-width="1.4" opacity="0.55"/>
+            <!-- Compass needle — single instrument needle, not a clock -->
+            <g class="compass-needle">
+                <line x1="500" y1="300" x2="500" y2="248" stroke="#c43e2a" stroke-width="2.0" opacity="0.75"/>
+                <line x1="500" y1="300" x2="500" y2="310" stroke="#c43e2a" stroke-width="1.2" opacity="0.5"/>
+                <circle cx="500" cy="248" r="2" fill="#c43e2a" opacity="0.6"/>
+            </g>
             <!-- === DATA READOUT PANELS === -->
             <!-- Top-left data panel -->
             <path class="draw-line" d="M140,123 L140,105 L158,105" stroke="#c43e2a" stroke-width="1.5" fill="none" opacity="0.55"/>
@@ -2385,8 +2388,8 @@ animateDrawLines('vig-garage');
 
     // Gather ALL element groups
     const needle = el.querySelector('.compass-needle');
-    const needleS = el.querySelector('.compass-needle-s');
     const compassRings = Array.from(el.querySelectorAll('.compass-ring'));
+    console.log('[HUD] compassRings found:', compassRings.length, 'needle:', !!needle);
     const particles = Array.from(el.querySelectorAll('.hud-particle'));
     const readouts = Array.from(el.querySelectorAll('.hud-readout'));
     const bars = Array.from(el.querySelectorAll('.hud-bar'));
@@ -2495,28 +2498,19 @@ animateDrawLines('vig-garage');
     new LivingVignette(el, (container, t, intensity) => {
 
         // ============================================================
-        // 1. COMPASS — rings rotate independently, needles drift
+        // 1. COMPASS — rings rotate independently via GSAP, needle drifts
         // ============================================================
-        // Each ring rotates at its own speed/direction (set via data-speed)
         compassRings.forEach((ring) => {
             const speed = parseFloat(ring.dataset.speed) || 0.5;
-            const angle = (t * speed * 15) % 360; // degrees
-            ring.setAttribute('transform', `rotate(${angle}, 500, 300)`);
+            const angle = (t * speed * 15) % 360;
+            gsap.set(ring, { rotation: angle, svgOrigin: '500 300' });
         });
 
-        // Needle N: continuous slow CW rotation + organic wobble
+        // Single instrument needle — slow sweep with organic wobble
         if (needle) {
-            const base = (t * 8) % 360; // steady rotation ~8 deg/sec
-            const wobble = Math.sin(t * 0.4) * 6 + Math.sin(t * 0.25 + 1.3) * 4;
-            needle.setAttribute('transform', `rotate(${base + wobble}, 500, 300)`);
-            needle.setAttribute('opacity', (0.6 + Math.sin(t * 0.3) * 0.1) * intensity);
-        }
-        // Needle S: continuous slow CCW rotation + different wobble
-        if (needleS) {
-            const base = (-t * 5) % 360; // counter-rotation ~5 deg/sec
-            const wobble = Math.sin(t * 0.35 + 2) * 8 + Math.sin(t * 0.2) * 3;
-            needleS.setAttribute('transform', `rotate(${base + wobble}, 500, 300)`);
-            needleS.setAttribute('opacity', (0.45 + Math.sin(t * 0.35) * 0.1) * intensity);
+            const base = (t * 6) % 360;
+            const wobble = Math.sin(t * 0.3) * 8 + Math.sin(t * 0.18 + 1.3) * 5 + Math.sin(t * 0.07) * 3;
+            gsap.set(needle, { rotation: base + wobble, svgOrigin: '500 300' });
         }
 
         // ============================================================
@@ -2524,7 +2518,7 @@ animateDrawLines('vig-garage');
         // ============================================================
         pureArcs.forEach((a) => {
             const angle = t * a._rotSpeed;
-            a.setAttribute('transform', `rotate(${angle}, 500, 300)`);
+            gsap.set(a, { rotation: angle, svgOrigin: '500 300' });
             const breathe = a._baseOp * (0.7 + Math.sin(t * a._breathFreq + a._breathPhase) * 0.3);
             a.setAttribute('opacity', breathe * intensity);
         });
