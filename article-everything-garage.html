@@ -676,14 +676,14 @@
             letter-spacing: -0.01em;
         }
 
-        /* HUD cockpit overlay on hero — centered, full viewport */
+        /* HUD cockpit overlay on hero — centered, full viewport, TOP of stack */
         .deck-overlay {
             position: absolute;
             top: 0;
             left: 0;
             width: 100%;
             height: 100%;
-            z-index: 3;
+            z-index: 5;
             margin: 0;
             padding: 0;
             pointer-events: none;
@@ -696,6 +696,7 @@
             width: 100%;
             height: 100%;
             opacity: 1;
+            /* no filter — z-index 5 puts HUD above all hero layers */
         }
         .deck-overlay svg text {
             pointer-events: none;
