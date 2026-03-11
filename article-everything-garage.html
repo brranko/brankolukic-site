@@ -533,7 +533,7 @@
         }
         .hero-content {
             position: relative;
-            z-index: 2;
+            z-index: 4;
             max-width: 900px;
             margin: 0 auto;
             padding: 0 2rem 6rem;
@@ -691,20 +691,17 @@
             letter-spacing: -0.01em;
         }
 
-        /* Deck overlay on hero — rotated 90°, full coverage */
+        /* Deck overlay on hero — full viewport coverage, behind title */
         .deck-overlay {
             position: absolute;
             top: 0;
-            left: 143px;
-            width: calc(100% - 143px);
+            left: 0;
+            width: 100%;
             height: 100%;
-            z-index: 3;
+            z-index: 1;
             margin: 0;
             padding: 0;
             pointer-events: none;
-            display: flex;
-            align-items: center;
-            justify-content: center;
         }
         .deck-overlay svg {
             width: 100%;
@@ -1163,23 +1160,23 @@
             .pull-quote { padding: 3rem 0.5rem; font-size: 1.4rem; }
             .hero h1 { font-size: 2.4rem; }
             .vignette { max-width: 100%; }
-            /* Thicken all SVG strokes on mobile */
-            .vignette svg, .vignette-wide svg {
+            /* Thicken article vignette strokes on mobile (NOT the deck overlay) */
+            .vignette:not(.deck-overlay) svg, .vignette-wide:not(.deck-overlay) svg {
                 stroke-width: 1.5;
             }
-            .vignette svg line,
-            .vignette svg rect,
-            .vignette svg path,
-            .vignette svg circle,
-            .vignette svg polyline {
+            .vignette:not(.deck-overlay) svg line,
+            .vignette:not(.deck-overlay) svg rect,
+            .vignette:not(.deck-overlay) svg path,
+            .vignette:not(.deck-overlay) svg circle,
+            .vignette:not(.deck-overlay) svg polyline {
                 stroke-width: 1.8px !important;
             }
-            .vignette svg .deck-light,
-            .vignette svg .deck-bar {
+            .vignette:not(.deck-overlay) svg .deck-light,
+            .vignette:not(.deck-overlay) svg .deck-bar {
                 stroke-width: 0 !important;
             }
-            .deck-light { r: 3px; }
-            /* Deck fills on mobile — slice crops right edge naturally */
+            .vignette:not(.deck-overlay) .deck-light { r: 3px; }
+            /* Deck overlay on mobile — full coverage, keep delicate strokes */
             .deck-overlay svg {
                 width: 100%;
                 height: 100%;
@@ -2795,7 +2792,7 @@ animateDrawLines('vig-garage');
 
         // === RADAR SWEEP ===
         if (sweep) {
-            const angle = (t * 40) % 360;
+            const angle = (t * 12) % 360;  // slow sweep
             const cx = 230, cy = 310;
             sweep.setAttribute('transform', `rotate(${angle}, ${cx}, ${cy})`);
             sweep.setAttribute('opacity', 0.25 * intensity);
@@ -2805,22 +2802,37 @@ animateDrawLines('vig-garage');
             }
         }
 
-        // === BAR GRAPHS — equalizer bounce ===
+        // === BAR GRAPHS — each bar has its own organic rhythm ===
         bars.forEach((bar, i) => {
-            const isSpectrum = bar.classList.contains('deck-spectrum');
-            const baseH = parseFloat(bar.getAttribute('height')) || 20;
-            const freq = isSpectrum ? 3.5 + (i % 5) * 0.7 : 2.5;
-            const h = 5 + Math.abs(Math.sin(t * freq + i * 0.7)) * baseH * intensity;
-            const baseY = parseFloat(bar.dataset.baseY || bar.getAttribute('y'));
-            if (!bar.dataset.baseY) bar.dataset.baseY = (parseFloat(bar.getAttribute('y')) + parseFloat(bar.getAttribute('height'))).toString();
+            // One-time init: assign each bar a unique speed, phase, secondary freq
+            if (!bar.dataset.baseY) {
+                bar.dataset.baseY = (parseFloat(bar.getAttribute('y')) + parseFloat(bar.getAttribute('height'))).toString();
+                bar.dataset.maxH = bar.getAttribute('height');
+                // Unique per bar — seeded from index but widely spread
+                bar.dataset.speed = (0.08 + (((i * 7 + 3) % 17) / 17) * 0.6).toString();  // 0.08 to 0.68
+                bar.dataset.phase = (((i * 13 + 5) % 23) / 23 * Math.PI * 2).toString();
+                bar.dataset.speed2 = (0.03 + (((i * 11 + 7) % 19) / 19) * 0.25).toString(); // secondary drift
+                bar.dataset.phase2 = (((i * 17 + 2) % 29) / 29 * Math.PI * 2).toString();
+                bar.dataset.restH = (3 + (((i * 5 + 1) % 11) / 11) * 8).toString(); // resting height 3-11
+            }
+            const speed = parseFloat(bar.dataset.speed);
+            const phase = parseFloat(bar.dataset.phase);
+            const speed2 = parseFloat(bar.dataset.speed2);
+            const phase2 = parseFloat(bar.dataset.phase2);
+            const maxH = parseFloat(bar.dataset.maxH);
+            const restH = parseFloat(bar.dataset.restH);
             const bottomY = parseFloat(bar.dataset.baseY);
-            bar.setAttribute('height', h);
-            bar.setAttribute('y', bottomY - h);
-            bar.setAttribute('opacity', 0.08 + Math.sin(t * 2 + i) * 0.06 * intensity);
+            // Two layered sine waves at very different speeds = organic feel
+            const wave1 = Math.sin(t * speed + phase) * 0.5 + 0.5;      // slow primary
+            const wave2 = Math.sin(t * speed2 + phase2) * 0.3 + 0.5;    // slower drift
+            const h = restH + wave1 * wave2 * maxH * intensity;
+            bar.setAttribute('height', h.toFixed(1));
+            bar.setAttribute('y', (bottomY - h).toFixed(1));
+            bar.setAttribute('opacity', (0.06 + wave1 * 0.1 * intensity).toFixed(3));
         });
 
-        // === WAVEFORMS — oscillate using data attributes ===
-        waves.forEach((wave) => {
+        // === WAVEFORMS — slow organic oscillation ===
+        waves.forEach((wave, wi) => {
             const cx = parseFloat(wave.dataset.cx);
             const cy = parseFloat(wave.dataset.cy);
             const w = parseFloat(wave.dataset.w);
@@ -2828,10 +2840,11 @@ animateDrawLines('vig-garage');
             const freq = parseFloat(wave.dataset.freq);
             const pts = [];
             const steps = Math.floor(w / 4);
+            const waveSpeed = 0.3 + wi * 0.15;  // each waveform at its own slow speed
             for (let i = 0; i <= steps; i++) {
                 const x = cx + (i / steps) * w;
-                const y = cy + Math.sin(t * 2.5 + i * 0.4 * (freq / 5)) * amp * intensity
-                         + Math.sin(t * 1.2 + i * 0.7) * amp * 0.3 * intensity;
+                const y = cy + Math.sin(t * waveSpeed + i * 0.35 * (freq / 5)) * amp * intensity
+                         + Math.sin(t * (waveSpeed * 0.4) + i * 0.6) * amp * 0.25 * intensity;
                 pts.push(`${x.toFixed(1)},${y.toFixed(1)}`);
             }
             wave.setAttribute('points', pts.join(' '));
@@ -2844,12 +2857,12 @@ animateDrawLines('vig-garage');
             s.setAttribute('y', y.toFixed(1));
         });
 
-        // === KNOBS — rotate at different speeds ===
+        // === KNOBS — each rotates at its own slow organic pace ===
         knobs.forEach((k, i) => {
             const cx = parseFloat(k.dataset.cx);
             const cy = parseFloat(k.dataset.cy);
-            const speed = 0.15 + i * 0.12;
-            const angle = (t * speed * 60 + i * 90) % 360;
+            const speed = 0.02 + i * 0.015;  // very slow, each unique
+            const angle = (t * speed * 60 + i * 60) % 360;
             k.setAttribute('transform', `rotate(${angle.toFixed(1)}, ${cx}, ${cy})`);
         });
 
