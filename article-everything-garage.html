@@ -2351,12 +2351,15 @@ function animateDrawLines(containerId) {
     });
 }
 
-// ========== HUD COCKPIT OVERLAY — subtle living instrumentation ==========
+// ========== HUD COCKPIT OVERLAY — EVERYTHING ALIVE ==========
 animateDrawLines('vig-garage');
 (function() {
     const el = document.getElementById('vig-garage');
     if (!el) return;
+    const svg = el.querySelector('svg');
+    if (!svg) return;
 
+    // Gather ALL element groups
     const needle = el.querySelector('.compass-needle');
     const needleS = el.querySelector('.compass-needle-s');
     const particles = Array.from(el.querySelectorAll('.hud-particle'));
@@ -2364,19 +2367,75 @@ animateDrawLines('vig-garage');
     const bars = Array.from(el.querySelectorAll('.hud-bar'));
     const wave = el.querySelector('.hud-wave');
     const marker = el.querySelector('.hud-timeline-marker');
+    const allTexts = Array.from(el.querySelectorAll('.hud-text'));
+    const allDrawLines = Array.from(el.querySelectorAll('.draw-line'));
 
-    // Assign each particle a unique drift
+    // Separate draw-lines by type for different animations
+    const arcs = allDrawLines.filter(e => e.tagName === 'path');
+    const circles = allDrawLines.filter(e => e.tagName === 'circle');
+    const lines = allDrawLines.filter(e => e.tagName === 'line');
+    const brackets = allDrawLines.filter(e => {
+        const d = e.getAttribute('d') || '';
+        return e.tagName === 'path' && (d.includes('L') && d.split('L').length === 3);
+    });
+    const pureArcs = arcs.filter(e => !brackets.includes(e));
+
+    // === SEED EACH ELEMENT with unique animation parameters ===
+
+    // Particles
     particles.forEach((p, i) => {
-        p.dataset.freq = (0.15 + Math.random() * 0.4).toString();
-        p.dataset.phase = (Math.random() * Math.PI * 2).toString();
-        p.dataset.baseOp = p.getAttribute('opacity');
+        p._freq = 0.15 + Math.random() * 0.4;
+        p._phase = Math.random() * Math.PI * 2;
+        p._baseOp = parseFloat(p.getAttribute('opacity')) || 0.05;
     });
 
-    // Assign readouts their base opacity and a flicker seed
+    // Readouts — store original text for digit cycling
     readouts.forEach((r, i) => {
-        r.dataset.baseOp = r.getAttribute('opacity');
-        r.dataset.freq = (0.08 + Math.random() * 0.15).toString();
-        r.dataset.phase = (Math.random() * Math.PI * 2).toString();
+        r._baseOp = parseFloat(r.getAttribute('opacity')) || 0.15;
+        r._freq = 0.08 + Math.random() * 0.2;
+        r._phase = Math.random() * Math.PI * 2;
+        r._origText = r.textContent;
+        r._isNumeric = /^[\d.\-°]+$/.test(r.textContent.trim());
+        r._cycleSpeed = 0.3 + Math.random() * 0.7; // how fast digits change
+        r._lastCycle = 0;
+    });
+
+    // Text labels — each gets its own subtle pulse
+    allTexts.forEach((t, i) => {
+        t._baseOp = parseFloat(t.getAttribute('opacity')) || 0.1;
+        t._freq = 0.05 + Math.random() * 0.12;
+        t._phase = Math.random() * Math.PI * 2;
+    });
+
+    // Arcs — categorize by radius (distance from center 500,300) for rotation groups
+    pureArcs.forEach((a, i) => {
+        a._baseOp = parseFloat(a.getAttribute('opacity')) || 0.08;
+        a._rotSpeed = (0.3 + Math.random() * 0.8) * (Math.random() > 0.5 ? 1 : -1); // degrees/sec, some CW some CCW
+        a._breathFreq = 0.06 + Math.random() * 0.15;
+        a._breathPhase = Math.random() * Math.PI * 2;
+    });
+
+    // Circles (compass rings, etc.) — slow rotation
+    circles.forEach((c, i) => {
+        c._baseOp = parseFloat(c.getAttribute('opacity')) || 0.08;
+        c._cx = parseFloat(c.getAttribute('cx'));
+        c._cy = parseFloat(c.getAttribute('cy'));
+        c._pulseFreq = 0.08 + Math.random() * 0.2;
+        c._pulsePhase = Math.random() * Math.PI * 2;
+    });
+
+    // Lines (tick marks, reference lines, crosshairs) — subtle shift
+    lines.forEach((l, i) => {
+        l._baseOp = parseFloat(l.getAttribute('opacity')) || 0.06;
+        l._freq = 0.04 + Math.random() * 0.1;
+        l._phase = Math.random() * Math.PI * 2;
+    });
+
+    // Brackets — subtle breathing
+    brackets.forEach((b, i) => {
+        b._baseOp = parseFloat(b.getAttribute('opacity')) || 0.12;
+        b._freq = 0.06 + Math.random() * 0.1;
+        b._phase = Math.random() * Math.PI * 2;
     });
 
     // Initial bar reveal
@@ -2388,10 +2447,32 @@ animateDrawLines('vig-garage');
         });
     });
 
+    // Helper: cycle a numeric string's digits subtly
+    function cycleDigits(orig, t, speed) {
+        const stripped = orig.trim();
+        if (!stripped) return orig;
+        let result = '';
+        for (let i = 0; i < stripped.length; i++) {
+            const ch = stripped[i];
+            if (ch >= '0' && ch <= '9') {
+                // Each digit position shifts independently
+                const base = parseInt(ch);
+                const drift = Math.floor(Math.sin(t * speed + i * 2.3) * 1.5);
+                const newDigit = ((base + drift) % 10 + 10) % 10;
+                result += newDigit;
+            } else {
+                result += ch; // keep °, ., -, letters
+            }
+        }
+        return result;
+    }
+
     new LivingVignette(el, (container, t, intensity) => {
-        // === COMPASS NEEDLE — very slow drift, like a real compass settling ===
+
+        // ============================================================
+        // 1. COMPASS NEEDLE — slow organic drift
+        // ============================================================
         if (needle) {
-            // Organic drift: two layered sine waves at different speeds
             const drift = Math.sin(t * 0.12) * 15 + Math.sin(t * 0.07 + 1.3) * 8;
             needle.setAttribute('transform', `rotate(${drift}, 500, 300)`);
             needle.setAttribute('opacity', (0.18 + Math.sin(t * 0.3) * 0.04) * intensity);
@@ -2402,50 +2483,103 @@ animateDrawLines('vig-garage');
             needleS.setAttribute('opacity', (0.08 + Math.sin(t * 0.3) * 0.02) * intensity);
         }
 
-        // === PARTICLES — gentle breathing ===
+        // ============================================================
+        // 2. ARCS — slow rotation around center + opacity breathing
+        // ============================================================
+        pureArcs.forEach((a) => {
+            const angle = t * a._rotSpeed;
+            a.setAttribute('transform', `rotate(${angle}, 500, 300)`);
+            const breathe = a._baseOp * (0.7 + Math.sin(t * a._breathFreq + a._breathPhase) * 0.3);
+            a.setAttribute('opacity', breathe * intensity);
+        });
+
+        // ============================================================
+        // 3. CIRCLES — gentle radius pulse + opacity pulse
+        // ============================================================
+        circles.forEach((c) => {
+            const pulse = Math.sin(t * c._pulseFreq + c._pulsePhase);
+            const op = c._baseOp * (0.7 + pulse * 0.3);
+            c.setAttribute('opacity', op * intensity);
+        });
+
+        // ============================================================
+        // 4. LINES (ticks, crosshairs, reference) — opacity flutter
+        // ============================================================
+        lines.forEach((l) => {
+            const flutter = Math.sin(t * l._freq + l._phase);
+            const op = l._baseOp * (0.6 + flutter * 0.4);
+            l.setAttribute('opacity', op * intensity);
+        });
+
+        // ============================================================
+        // 5. BRACKETS — breathing opacity
+        // ============================================================
+        brackets.forEach((b) => {
+            const breathe = Math.sin(t * b._freq + b._phase);
+            const op = b._baseOp * (0.7 + breathe * 0.3);
+            b.setAttribute('opacity', op * intensity);
+        });
+
+        // ============================================================
+        // 6. PARTICLES — gentle breathing
+        // ============================================================
         particles.forEach((p) => {
-            const freq = parseFloat(p.dataset.freq);
-            const phase = parseFloat(p.dataset.phase);
-            const baseOp = parseFloat(p.dataset.baseOp);
-            const val = baseOp * (0.6 + Math.sin(t * freq + phase) * 0.4);
+            const val = p._baseOp * (0.4 + Math.sin(t * p._freq + p._phase) * 0.6);
             p.setAttribute('opacity', val * intensity);
         });
 
-        // === DATA READOUTS — subtle flicker like CRT display ===
+        // ============================================================
+        // 7. DATA READOUTS — CRT flicker + DIGIT CYCLING
+        // ============================================================
         readouts.forEach((r) => {
-            const freq = parseFloat(r.dataset.freq);
-            const phase = parseFloat(r.dataset.phase);
-            const baseOp = parseFloat(r.dataset.baseOp);
-            // Gentle opacity variation — NOT jittery, just a slow pulse
-            const flicker = baseOp * (0.85 + Math.sin(t * freq + phase) * 0.15);
+            // Opacity flicker
+            const flicker = r._baseOp * (0.8 + Math.sin(t * r._freq + r._phase) * 0.2);
             r.setAttribute('opacity', flicker * intensity);
+            // Cycle digits for numeric readouts
+            if (r._isNumeric) {
+                r.textContent = cycleDigits(r._origText, t, r._cycleSpeed);
+            }
         });
 
-        // === SIGNAL BARS — slow individual growth ===
+        // ============================================================
+        // 8. TEXT LABELS — subtle pulse + occasional character glitch
+        // ============================================================
+        allTexts.forEach((tx) => {
+            const pulse = Math.sin(t * tx._freq + tx._phase);
+            const op = tx._baseOp * (0.7 + pulse * 0.3);
+            tx.setAttribute('opacity', op * intensity);
+        });
+
+        // ============================================================
+        // 9. SIGNAL BARS — individual growth at own pace
+        // ============================================================
         bars.forEach((bar, i) => {
             const baseH = 6 + i * 2.5;
-            const h = baseH * (0.7 + Math.sin(t * (0.15 + i * 0.03) + i * 0.8) * 0.3 * intensity);
-            bar.setAttribute('height', h);
-            const baseY = parseFloat(bar.getAttribute('y'));
-            bar.setAttribute('y', 350 - h);
+            const h = baseH * (0.5 + Math.sin(t * (0.12 + i * 0.04) + i * 0.8) * 0.5 * intensity);
+            bar.setAttribute('height', Math.max(1, h));
+            bar.setAttribute('y', 350 - Math.max(1, h));
         });
 
-        // === WAVEFORM — gentle undulation ===
+        // ============================================================
+        // 10. WAVEFORM — continuous undulation
+        // ============================================================
         if (wave) {
             const pts = [];
             for (let i = 0; i < 20; i++) {
                 const x = 860 + i * 5;
-                const y = 350 + Math.sin(t * 0.5 + i * 0.7) * 10 * intensity;
+                const y = 350 + Math.sin(t * 0.6 + i * 0.7) * 12 * intensity;
                 pts.push(`${x.toFixed(1)},${y.toFixed(1)}`);
             }
             wave.setAttribute('points', pts.join(' '));
         }
 
-        // === TIMELINE MARKER — slow scan ===
+        // ============================================================
+        // 11. TIMELINE MARKER — slow scan back and forth
+        // ============================================================
         if (marker) {
-            const x = 380 + Math.sin(t * 0.08) * 100;
+            const x = 380 + Math.sin(t * 0.1) * 120;
             marker.setAttribute('x', x);
-            marker.setAttribute('opacity', (0.12 + Math.sin(t * 0.4) * 0.04) * intensity);
+            marker.setAttribute('opacity', (0.12 + Math.sin(t * 0.4) * 0.05) * intensity);
         }
     });
 })();
