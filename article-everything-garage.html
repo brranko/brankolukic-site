@@ -64,14 +64,14 @@
 
         /* Light theme — hero & animation fixes */
         :root.light-theme .hero-overlay {
-            background: linear-gradient(to top, var(--bg) 0%, rgba(232,230,227,0.4) 40%, rgba(232,230,227,0.1) 70%, rgba(232,230,227,0.2) 100%);
+            background: linear-gradient(to top, var(--bg) 0%, rgba(60,58,55,0.35) 40%, rgba(60,58,55,0.1) 70%, rgba(60,58,55,0.2) 100%);
         }
         :root.light-theme .hero-vignette {
-            background: radial-gradient(ellipse at center, transparent 50%, rgba(232,230,227,0.35) 100%);
+            background: radial-gradient(ellipse at center, transparent 50%, rgba(40,38,35,0.25) 100%);
         }
         :root.light-theme .hero-image img {
-            opacity: 0.55;
-            filter: brightness(0.7) contrast(1.3);
+            opacity: 0.7;
+            filter: brightness(0.45) contrast(1.5);
         }
         /* Light theme: HUD overlay — keep strong on light bg too */
         :root.light-theme .deck-overlay svg {
@@ -1381,10 +1381,10 @@
             <text class="hud-text" x="500.0" y="574.0" fill="#c43e2a" font-family="'Courier New', monospace" font-size="8" text-anchor="middle" opacity="0.45" letter-spacing="0.15em">90°</text>
             <text class="hud-text" x="364.00000000000006" y="537.5589098293674" fill="#c43e2a" font-family="'Courier New', monospace" font-size="8" text-anchor="middle" opacity="0.45" letter-spacing="0.15em">120°</text>
             <!-- === CENTRAL COMPASS === -->
-            <circle class="draw-line" cx="500" cy="300" r="45" stroke="#c43e2a" stroke-width="1.5" fill="none" opacity="0.55"/>
-            <circle class="draw-line" cx="500" cy="300" r="42" stroke="#c43e2a" stroke-width="0.8" fill="none" opacity="0.32" stroke-dasharray="2,3"/>
-            <circle class="draw-line" cx="500" cy="300" r="35" stroke="#c43e2a" stroke-width="0.9" fill="none" opacity="0.43"/>
-            <circle class="draw-line" cx="500" cy="300" r="20" stroke="#c43e2a" stroke-width="0.6" fill="none" opacity="0.32"/>
+            <circle class="draw-line compass-ring" data-speed="-0.8" cx="500" cy="300" r="45" stroke="#c43e2a" stroke-width="1.5" fill="none" opacity="0.55"/>
+            <circle class="draw-line compass-ring" data-speed="1.2" cx="500" cy="300" r="42" stroke="#c43e2a" stroke-width="0.8" fill="none" opacity="0.32" stroke-dasharray="2,3"/>
+            <circle class="draw-line compass-ring" data-speed="-1.8" cx="500" cy="300" r="35" stroke="#c43e2a" stroke-width="0.9" fill="none" opacity="0.43"/>
+            <circle class="draw-line compass-ring" data-speed="2.5" cx="500" cy="300" r="20" stroke="#c43e2a" stroke-width="0.6" fill="none" opacity="0.32"/>
             <circle class="draw-line" cx="500" cy="300" r="3" stroke="#c43e2a" stroke-width="0.0" fill="#c43e2a" opacity="0.55"/>
             <line class="draw-line" x1="450" y1="300" x2="475" y2="300" stroke="#c43e2a" stroke-width="0.9" opacity="0.54"/>
             <line class="draw-line" x1="525" y1="300" x2="550" y2="300" stroke="#c43e2a" stroke-width="0.9" opacity="0.54"/>
@@ -2356,6 +2356,7 @@ animateDrawLines('vig-garage');
     // Gather ALL element groups
     const needle = el.querySelector('.compass-needle');
     const needleS = el.querySelector('.compass-needle-s');
+    const compassRings = Array.from(el.querySelectorAll('.compass-ring'));
     const particles = Array.from(el.querySelectorAll('.hud-particle'));
     const readouts = Array.from(el.querySelectorAll('.hud-readout'));
     const bars = Array.from(el.querySelectorAll('.hud-bar'));
@@ -2464,17 +2465,26 @@ animateDrawLines('vig-garage');
     new LivingVignette(el, (container, t, intensity) => {
 
         // ============================================================
-        // 1. COMPASS NEEDLE — slow organic drift
+        // 1. COMPASS — rings rotate independently, needles drift
         // ============================================================
+        // Each ring rotates at its own speed/direction (set via data-speed)
+        compassRings.forEach((ring) => {
+            const speed = parseFloat(ring.dataset.speed) || 0.5;
+            const angle = (t * speed * 15) % 360; // degrees
+            ring.setAttribute('transform', `rotate(${angle}, 500, 300)`);
+        });
+
+        // Needles: slow organic drift independent of rings
         if (needle) {
-            const drift = Math.sin(t * 0.12) * 15 + Math.sin(t * 0.07 + 1.3) * 8;
+            const drift = Math.sin(t * 0.15) * 25 + Math.sin(t * 0.09 + 1.3) * 12;
             needle.setAttribute('transform', `rotate(${drift}, 500, 300)`);
-            needle.setAttribute('opacity', (0.18 + Math.sin(t * 0.3) * 0.04) * intensity);
+            needle.setAttribute('opacity', (0.4 + Math.sin(t * 0.3) * 0.1) * intensity);
         }
         if (needleS) {
-            const drift = Math.sin(t * 0.12) * 15 + Math.sin(t * 0.07 + 1.3) * 8;
+            // South needle drifts opposite direction
+            const drift = Math.sin(t * 0.15) * 25 + Math.sin(t * 0.09 + 1.3) * 12;
             needleS.setAttribute('transform', `rotate(${drift}, 500, 300)`);
-            needleS.setAttribute('opacity', (0.08 + Math.sin(t * 0.3) * 0.02) * intensity);
+            needleS.setAttribute('opacity', (0.3 + Math.sin(t * 0.3) * 0.08) * intensity);
         }
 
         // ============================================================
