@@ -63,15 +63,15 @@
         }
 
         /* Light theme — soft light wash lifts shadows, lets text + HUD breathe */
-        /* Light theme hero: same dark overlays as dark mode — NO filters, just opacity/transparency */
+        /* Light theme hero: dark overlays matching dark mode — hero::after handles cream fade at bottom edge */
         :root.light-theme .hero-overlay {
-            background: linear-gradient(to top, var(--bg) 0%, rgba(26,26,26,0.55) 40%, rgba(26,26,26,0.15) 70%, rgba(26,26,26,0.35) 100%);
+            background: linear-gradient(to top, rgba(26,26,26,0.7) 0%, rgba(26,26,26,0.6) 40%, rgba(26,26,26,0.2) 70%, rgba(26,26,26,0.4) 100%);
         }
         :root.light-theme .hero-vignette {
-            background: radial-gradient(ellipse at center, transparent 40%, rgba(0,0,0,0.35) 100%);
+            background: radial-gradient(ellipse at center, transparent 40%, rgba(0,0,0,0.4) 100%);
         }
         :root.light-theme .hero-image img {
-            opacity: 0.85;
+            opacity: 0.65;
         }
         :root.light-theme .hero-image::after {
             opacity: 0.15;
@@ -87,7 +87,7 @@
         :root.light-theme .hero-label { color: #c43e2a; }
         :root.light-theme .back-link { color: #c4bfb8; }
         :root.light-theme .back-link:hover { color: #c43e2a; }
-        :root.light-theme .audio-player { border-color: rgba(196,168,130,0.3); }
+        :root.light-theme .audio-player { border-color: rgba(196,168,130,0.5); }
         :root.light-theme .audio-label { color: #c43e2a !important; }
 
         /* Light theme: cube — swap dark fills to light equivalents */
