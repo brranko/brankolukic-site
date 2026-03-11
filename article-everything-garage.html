@@ -62,23 +62,23 @@
             --surface-2: #dbd9d6;
         }
 
-        /* Light theme — hero photo shown clean, no dark overlays */
+        /* Light theme — soft light wash lifts shadows, lets text + HUD breathe */
         :root.light-theme .hero-overlay {
-            background: none;
+            background: rgba(232,230,227,0.35);
         }
         :root.light-theme .hero-vignette {
-            background: none;
+            background: radial-gradient(ellipse at center, transparent 50%, rgba(232,230,227,0.25) 100%);
         }
         :root.light-theme .hero-image img {
-            opacity: 1;
-            filter: none;
+            opacity: 0.85;
+            filter: brightness(1.15) contrast(0.85);
         }
         :root.light-theme .hero-image::after {
-            display: none;
+            opacity: 0.15;
         }
-        /* Light theme: HUD overlay — keep visible */
+        /* Light theme: HUD overlay — keep strong */
         :root.light-theme .deck-overlay svg {
-            opacity: 0.85;
+            opacity: 0.9;
         }
 
         /* Light theme: cube — swap dark fills to light equivalents */
