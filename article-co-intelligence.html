@@ -1779,11 +1779,11 @@
         <div class="email-capture-inner">
             <h3>Follow this thinking</h3>
             <p class="caption">Occasional writing on cognitive architecture, creative fingerprints, and the space between human intent and frontier AI. No noise.</p>
-            <form class="email-form" action="https://buttondown.com/api/emails/embed-subscribe/branko" method="post" target="popupwindow" onsubmit="window.open('https://buttondown.com/branko', 'popupwindow')">
+            <form class="email-form" onsubmit="event.preventDefault();var e=this.querySelector('input[type=email]').value;window.open('https://copyself.substack.com/subscribe?email='+encodeURIComponent(e),'_blank');this.querySelector('button').textContent='Opening Substack…';this.querySelector('button').style.opacity='0.7';this.querySelector('input[type=email]').disabled=true;this.querySelector('button').disabled=true;setTimeout(function(){this.querySelector('button').textContent='Check your new tab';}.bind(this),1500);">
                 <input type="email" name="email" placeholder="Your email" required />
                 <button type="submit">Subscribe</button>
             </form>
-            <p class="email-privacy">No tracking. No cookies. No spam. Unsubscribe anytime.</p>
+            <p class="email-privacy">Completes on Substack. No spam. Unsubscribe anytime.</p>
         </div>
     </div>
 

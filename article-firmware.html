@@ -1266,7 +1266,7 @@
         <div class="hero-label" style="margin-top:1rem;">Essay</div>
         <h1>Human Firmware<br><em>Update Required</em></h1>
         <p class="hero-subtitle">What about the human? What about our stack?</p>
-        <p class="hero-meta">By <span>Branko Lukic</span> · March 5, 2026</p>
+        <p class="hero-meta">By <span>Branko Lukic</span> · March 2026</p>
         <!-- Audio Player — expanding pill with scrubbing -->
         <div style="margin-top:1.5rem;">
             <div class="audio-player" id="audioPlayer" style="display:inline-flex;align-items:center;gap:12px;padding:14px 24px;background:linear-gradient(135deg,rgba(196,168,130,0.15),rgba(196,168,130,0.05));border:1px solid rgba(196,168,130,0.3);border-radius:50px;max-width:fit-content;transition:all 0.4s ease;cursor:pointer;">
@@ -1479,11 +1479,11 @@
         <div class="email-capture-inner">
             <h3>Follow this thinking</h3>
             <p class="caption">Occasional writing on cognitive architecture, creative fingerprints, and the space between human intent and frontier AI. No noise.</p>
-            <form class="email-form" action="https://buttondown.com/api/emails/embed-subscribe/branko" method="post" target="popupwindow" onsubmit="window.open('https://buttondown.com/branko', 'popupwindow')">
+            <form class="email-form" onsubmit="event.preventDefault();var e=this.querySelector('input[type=email]').value;window.open('https://copyself.substack.com/subscribe?email='+encodeURIComponent(e),'_blank');this.querySelector('button').textContent='Opening Substack…';this.querySelector('button').style.opacity='0.7';this.querySelector('input[type=email]').disabled=true;this.querySelector('button').disabled=true;setTimeout(function(){this.querySelector('button').textContent='Check your new tab';}.bind(this),1500);">
                 <input type="email" name="email" placeholder="Your email" required />
                 <button type="submit">Subscribe</button>
             </form>
-            <p class="email-privacy">No tracking. No cookies. No spam. Unsubscribe anytime.</p>
+            <p class="email-privacy">Completes on Substack. No spam. Unsubscribe anytime.</p>
         </div>
     </div>
 
