@@ -593,7 +593,7 @@
 </button>
 
 <nav id="nav">
-  <a href="/" class="nav-left">
+  <a href="/" class="nav-left" onclick="if(location.pathname==='/'){event.preventDefault();window.scrollTo({top:0,behavior:'smooth'});}">
     <span class="logo">Branko Lukic</span>
     <span class="nav-tagline">COGNITIVE ARCHITECTURE</span>
   </a>
