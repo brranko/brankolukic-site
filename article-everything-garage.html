@@ -691,21 +691,25 @@
             letter-spacing: -0.01em;
         }
 
-        /* Deck overlay on hero — full viewport coverage, behind title */
+        /* Deck overlay on hero — full viewport, above gradient, below title */
         .deck-overlay {
             position: absolute;
             top: 0;
             left: 0;
             width: 100%;
             height: 100%;
-            z-index: 1;
+            z-index: 2;
             margin: 0;
             padding: 0;
             pointer-events: none;
+            overflow: hidden;
         }
         .deck-overlay svg {
-            width: 100%;
+            position: absolute;
+            left: 0;
+            top: 0;
             height: 100%;
+            width: auto;
             opacity: 0.9;
         }
         .deck-overlay svg .deck-light,
@@ -1307,7 +1311,7 @@
     </div>
     <!-- VIGNETTE: Spaceship deck — overlaid on hero -->
     <div class="vignette vignette-wide deck-overlay" id="vig-garage">
-        <svg viewBox="0 0 2400 700" preserveAspectRatio="xMinYMid slice" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <svg viewBox="0 0 2400 700" fill="none" xmlns="http://www.w3.org/2000/svg">
             <line class="draw-line" x1="0" y1="350" x2="2400" y2="350" stroke="#c43e2a" stroke-width="0.3" opacity="0.04"/>
             <line class="draw-line" x1="20" y1="150" x2="2200" y2="150" stroke="#c43e2a" stroke-width="0.2" opacity="0.03"/>
             <line class="draw-line" x1="20" y1="550" x2="2200" y2="550" stroke="#c43e2a" stroke-width="0.2" opacity="0.03"/>
